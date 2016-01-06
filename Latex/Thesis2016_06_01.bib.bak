@@ -1,4 +1,147 @@
 
+@techreport{anderson_credit_2007,
+	type = {{OUP} {Catalogue}},
+	title = {The {Credit} {Scoring} {Toolkit}: {Theory} and {Practice} for {Retail} {Credit} {Risk} {Management} and {Decision} {Automation}},
+	shorttitle = {The {Credit} {Scoring} {Toolkit}},
+	url = {http://econpapers.repec.org/bookchap/oxpobooks/9780199226405.htm},
+	abstract = {The Credit Scoring Toolkit provides an all-encompassing view of the use of statistical models to assess retail credit risk and provide automated decisions. In eight modules, the book provides frameworks for both theory and practice. It first explores the economic justification and history of Credit Scoring, risk linkages and decision science, statistical and mathematical tools, the assessment of business enterprises, and regulatory issues ranging from data privacy to Basel II. It then provides a practical how-to-guide for scorecard development, including data collection, scorecard implementation, and use within the credit risk management cycle. Including numerous real-life examples and an extensive glossary and bibliography, the text assumes little prior knowledge making it an indispensable desktop reference for graduate students in statistics, business, economics and finance, MBA students, credit risk and financial practitioners.},
+	urldate = {2015-08-22},
+	institution = {Oxford University Press},
+	author = {Anderson, Raymond},
+	year = {2007},
+	file = {RePEc Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/C4NUUVDR/9780199226405.html:text/html}
+}
+
+@book{van_gestel_credit_2008,
+	title = {Credit {Risk} {Management}: {Basic} {Concepts}: {Financial} {Risk} {Components}, {Rating} {Analysis}, {Models}, {Economic} and {Regulatory} {Capital}: {Basic} {Concepts}: {Financial} {Risk} {Components}, {Rating} {Analysis}, {Models}, {Economic} and {Regulatory} {Capital}},
+	shorttitle = {Credit {Risk} {Management}},
+	publisher = {Oxford University Press},
+	author = {Van Gestel, Tony and Baesens, Bart},
+	year = {2008}
+}
+
+@article{baesens_50_2009,
+	title = {50 years of data mining and {OR}: upcoming trends and challenges},
+	volume = {60},
+	issn = {0160-5682},
+	shorttitle = {50 years of data mining and {OR}},
+	url = {http://www.palgrave-journals.com/jors/journal/v60/ns1/full/jors2008171a.html},
+	doi = {10.1057/jors.2008.171},
+	abstract = {Data mining involves extracting interesting patterns from data and can be found at the heart of operational research (OR), as its aim is to create and enhance decision support systems. Even in the early days, some data mining approaches relied on traditional OR methods such as linear programming and forecasting, and modern data mining methods are based on a wide variety of OR methods including linear and quadratic optimization, genetic algorithms and concepts based on artificial ant colonies. The use of data mining has rapidly become widespread, with applications in domains ranging from credit risk, marketing, and fraud detection to counter-terrorism. In all of these, data mining is increasingly playing a key role in decision making. Nonetheless, many challenges still need to be tackled, ranging from data quality issues to the problem of how to include domain experts' knowledge, or how to monitor model performance. In this paper, we outline a series of upcoming trends and challenges for data mining and its role within OR. Journal of the Operational Research Society (2009) 60, S16–S23. doi:10.1057/jors.2008.171 Published online 11 February 2009},
+	language = {en},
+	number = {S1},
+	urldate = {2015-08-23},
+	journal = {Journal of the Operational Research Society},
+	author = {Baesens, B. and Mues, C. and Martens, D. and Vanthienen, J.},
+	month = feb,
+	year = {2009},
+	pages = {S16--S23},
+	file = {Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/P54MNUAU/jors2008171a.html:text/html}
+}
+
+@article{alvaro_rocha_framework_2012,
+	title = {Framework for a global quality evaluation of a websitenull},
+	volume = {36},
+	issn = {1468-4527},
+	url = {http://www.emeraldinsight.com/doi/abs/10.1108/14684521211241404},
+	doi = {10.1108/14684521211241404},
+	number = {3},
+	urldate = {2015-08-23},
+	journal = {Online Information Review},
+	author = {{Álvaro Rocha}},
+	month = jun,
+	year = {2012},
+	pages = {374--382},
+	file = {Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/ENJA7JJX/14684521211241404.html:text/html}
+}
+
+@article{parker_evaluation_2006,
+	title = {An evaluation of {Information} quality frameworks for the {World} {Wide} {Web}},
+	url = {http://eprints.soton.ac.uk/262908/},
+	urldate = {2015-08-23},
+	author = {Parker, M. B. and Moleshe, V. and De la Harpe, R. and Wills, G. B.},
+	year = {2006},
+	file = {[PDF] from soton.ac.uk:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/WC4HRJ39/Parker et al. - 2006 - An evaluation of Information quality frameworks fo.pdf:application/pdf;Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/KTA58ZMB/262908.html:text/html}
+}
+
+@misc{_introduction_????,
+	title = {An introduction to credit scoring lewis athena press - {Google} {Search}},
+	url = {https://www.google.ie/search?q=Lewis%2C+E.+(1992).+An+introduction+to+credit+scoring.+Athena+Press%3A+San+Rafael%2C+CA.+71&oq=Lewis%2C+E.+(1992).+An+introduction+to+credit+scoring.+Athena+Press%3A+San+Rafael%2C+CA.+71&aqs=chrome..69i57j69i60.532j0j7&sourceid=chrome&es_sm=91&ie=UTF-8#q=An+introduction+to+credit+scoring+lewis+athena+press},
+	urldate = {2015-08-23},
+	file = {An introduction to credit scoring lewis athena press - Google Search:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/7VFF9JBI/search.html:text/html}
+}
+
+@book{lewis_introduction_1992,
+	title = {An {Introduction} to {Credit} {Scoring}},
+	language = {en},
+	publisher = {Athena Press},
+	author = {Lewis, Edward M.},
+	year = {1992}
+}
+
+@book{naeem_credit_2006,
+	title = {Credit {Risk} {Scorecards} {Developing} and {Implementing} {Intelligent} {Credit} {Scoring}},
+	publisher = {John Wiley \& Sons, Inc},
+	author = {Naeem, Siddiqui},
+	year = {2006}
+}
+
+@book{jr_applied_2004,
+	title = {Applied {Logistic} {Regression}},
+	isbn = {9780471654025},
+	abstract = {From the reviews of the First Edition. "An interesting, useful, and well-written book on logistic regression models . . . Hosmer and Lemeshow have used very little mathematics, have presented difficult concepts heuristically and through illustrative examples, and have included references." -"Choice" "Well written, clearly organized, and comprehensive . . . the authors carefully walk the reader through the estimation of interpretation of coefficients from a wide variety of logistic regression models . . . their careful explication of the quantitative re-expression of coefficients from these various models is excellent." -"Contemporary Sociology" "An extremely well-written book that will certainly prove an invaluable acquisition to the practicing statistician who finds other literature on analysis of discrete data hard to follow or heavily theoretical." -"The Statistician" In this revised and updated edition of their popular book, David Hosmer and Stanley Lemeshow continue to provide an amazingly accessible introduction to the logistic regression model while incorporating advances of the last decade, including a variety of software packages for the analysis of data sets. Hosmer and Lemeshow extend the discussion from biostatistics and epidemiology to cutting-edge applications in data mining and machine learning, guiding readers step-by-step through the use of modeling techniques for dichotomous data in diverse fields. Ample new topics and expanded discussions of existing material are accompanied by a wealth of real-world examples-with extensive data sets available over the Internet.},
+	language = {en},
+	publisher = {John Wiley \& Sons},
+	author = {Jr, David W. Hosmer and Lemeshow, Stanley},
+	month = oct,
+	year = {2004},
+	keywords = {Mathematics / Probability \& Statistics / Regression Analysis, Mathematics / Probability \& Statistics / Stochastic Processes}
+}
+
+@article{hand_evaluating_2010,
+	title = {Evaluating models for classifying customers in retail banking collections},
+	volume = {61},
+	issn = {0160-5682},
+	url = {http://www.palgrave-journals.com/jors/journal/v61/n10/full/jors2009129a.html},
+	doi = {10.1057/jors.2009.129},
+	abstract = {When seeking to establish a repayment strategy with delinquent borrowers, it is useful to determine how they are likely to behave, so that an optimal use of resources can be made. We examine two behavioural classifications (‘settle immediately’ versus ‘not settle immediately’, and ‘make some repayment’ versus ‘make no repayment’) and apply a variety of rules for predicting into which class each customer is likely to belong. Since no such rule will yield perfect predictions, the way in which performance is evaluated is crucial in choosing a good rule, and hence subsequently in obtaining accurate predictions of likely future behaviour. We examine some popular standard performance evaluation criteria, showing that they have major weaknesses. We describe and illustrate the use of an alternative measure that overcomes these weaknesses.},
+	language = {en},
+	number = {10},
+	urldate = {2015-08-23},
+	journal = {Journal of the Operational Research Society},
+	author = {Hand, D. J. and Zhou, F.},
+	month = oct,
+	year = {2010},
+	pages = {1540--1547},
+	file = {Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/SPJNJNWH/jors2009129a.html:text/html}
+}
+
+@article{hand_statistical_1997,
+	title = {Statistical classification methods in consumer credit scoring: a review},
+	shorttitle = {Statistical classification methods in consumer credit scoring},
+	url = {http://www.jstor.org/stable/2983268},
+	urldate = {2016-01-06},
+	journal = {Journal of the Royal Statistical Society. Series A (Statistics in Society)},
+	author = {Hand, David J. and Henley, William E.},
+	year = {1997},
+	pages = {523--541},
+	file = {Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/QASSAX75/2983268.html:text/html}
+}
+
+@article{agarwal_thy_2012,
+	title = {Thy neighbor’s mortgage: {Does} living in a subprime neighborhood affect one’s probability of default?},
+	volume = {40},
+	shorttitle = {Thy neighbor’s mortgage},
+	url = {http://onlinelibrary.wiley.com/doi/10.1111/j.1540-6229.2011.00311.x/pdf},
+	number = {1},
+	urldate = {2016-01-05},
+	journal = {Real Estate Economics},
+	author = {Agarwal, Sumit and Ambrose, Brent W. and Chomsisengphet, Souphala and Sanders, Anthony B.},
+	year = {2012},
+	pages = {1--22},
+	file = {[PDF] from psu.edu:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/HW2S5DSK/Agarwal et al. - 2012 - Thy neighbor’s mortgage Does living in a subprime.pdf:application/pdf;Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/SEWQUJJT/pdf.html:text/html}
+}
+
 @article{mccarthy_proposal_2006,
 	title = {A {Proposal} for the {Dartmouth} {Summer} {Research} {Project} on {Artificial} {Intelligence}, {August} 31, 1955},
 	volume = {27},
@@ -63,7 +206,7 @@
 	file = {[PDF] from waikato.ac.nz:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/C7GR2ZTA/Hempstalk - 2009 - Continuous typist verification using machine learn.pdf:application/pdf;Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/SGWX7TWH/3282.html:text/html}
 }
 
-@article{hand_statistical_1997,
+@article{hand_statistical_1997-1,
 	title = {Statistical classification methods in consumer credit scoring: a review},
 	shorttitle = {Statistical classification methods in consumer credit scoring},
 	url = {http://www.jstor.org/stable/2983268},
@@ -99,7 +242,7 @@
 	file = {[HTML] from palgrave-journals.com:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/BIRUHHZQ/jors2009104a.html:text/html;Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/NH4NS258/jors2009104a.html:text/html}
 }
 
-@article{baesens_50_2009,
+@article{baesens_50_2009-1,
 	title = {50 years of data mining and {OR}: upcoming trends and challenges},
 	shorttitle = {50 years of data mining and {OR}},
 	url = {http://www.palgrave-journals.com/jors/journal/v60/ns1/abs/jors2008171a.html},
@@ -118,7 +261,7 @@
 	year = {2000}
 }
 
-@article{hand_evaluating_2010,
+@article{hand_evaluating_2010-1,
 	title = {Evaluating models for classifying customers in retail banking collections},
 	volume = {61},
 	url = {http://www.palgrave-journals.com/jors/journal/v61/n10/abs/jors2009129a.html},
@@ -446,7 +589,7 @@
 	file = {[PDF] from wustl.edu:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/42C43X6Z/Demšar - 2006 - Statistical comparisons of classifiers over multip.pdf:application/pdf;Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/RVEHCBPA/citation.html:text/html}
 }
 
-@book{anderson_credit_2007,
+@book{anderson_credit_2007-1,
 	title = {The {Credit} {Scoring} {Toolkit}: {Theory} and {Practice} for {Retail} {Credit} {Risk} {Management} and {Decision} {Automation}: {Theory} and {Practice} for {Retail} {Credit} {Risk} {Management} and {Decision} {Automation}},
 	shorttitle = {The {Credit} {Scoring} {Toolkit}},
 	publisher = {OUP Oxford},
@@ -480,7 +623,7 @@
 @book{van_gestel_credit_2009,
 	title = {Credit risk management: basic concepts: financial risk components, rating analysis, models, economic and regulatory capital},
 	shorttitle = {Credit risk management},
-	url = "\url{http://is.muni.cz/do/econ/soubory/aktivity/fai/17809295/FAI_issue2010_01_valova.pdf?so=ed;pocnep=1}",
+	url = {http://is.muni.cz/do/econ/soubory/aktivity/fai/17809295/FAI_issue2010_01_valova.pdf?so=ed;pocnep=1},
 	urldate = {2015-11-20},
 	publisher = {Oxford University Press},
 	author = {Van Gestel, Tony and Baesens, Bart},
@@ -495,7 +638,7 @@
 	file = {Poll\: Data preparation part in data mining projects:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/P2KZDJR2/data_preparation.html:text/html}
 }
 
-@article{baesens_50_2009-1,
+@article{baesens_50_2009-2,
 	title = {50 years of data mining and {OR}: upcoming trends and challenges},
 	shorttitle = {50 years of data mining and {OR}},
 	url = {http://www.palgrave-journals.com/jors/journal/v60/ns1/abs/jors2008171a.html},
@@ -533,7 +676,7 @@
 	file = {[HTML] from palgrave-journals.com:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/6AARF98M/jors200966a.html:text/html;Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/J7U8KXZ4/jors200966a.html:text/html}
 }
 
-@book{anderson_credit_2007-1,
+@book{anderson_credit_2007-2,
 	title = {The {Credit} {Scoring} {Toolkit}: {Theory} and {Practice} for {Retail} {Credit} {Risk} {Management} and {Decision} {Automation}: {Theory} and {Practice} for {Retail} {Credit} {Risk} {Management} and {Decision} {Automation}},
 	shorttitle = {The {Credit} {Scoring} {Toolkit}},
 	publisher = {OUP Oxford},
@@ -613,7 +756,7 @@
 	year = {2000}
 }
 
-@book{anderson_credit_2007-2,
+@book{anderson_credit_2007-3,
 	title = {The {Credit} {Scoring} {Toolkit}: {Theory} and {Practice} for {Retail} {Credit} {Risk} {Management} and {Decision} {Automation}: {Theory} and {Practice} for {Retail} {Credit} {Risk} {Management} and {Decision} {Automation}},
 	shorttitle = {The {Credit} {Scoring} {Toolkit}},
 	publisher = {OUP Oxford},
@@ -744,7 +887,7 @@
 	file = {Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/FW83W6VP/S0957417405000850.html:text/html}
 }
 
-@article{baesens_50_2009-2,
+@article{baesens_50_2009-3,
 	title = {50 years of data mining and {OR}: upcoming trends and challenges},
 	shorttitle = {50 years of data mining and {OR}},
 	url = {http://www.palgrave-journals.com/jors/journal/v60/ns1/abs/jors2008171a.html},
@@ -899,16 +1042,4 @@
 	author = {Stein, Roger M.},
 	year = {2002},
 	file = {[PDF] from rogermstein.com:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/JXSCC58K/Stein - 2002 - Benchmarking default prediction models Pitfalls a.pdf:application/pdf}
-}
-
-@article{hand_statistical_1997,
-	title = {Statistical classification methods in consumer credit scoring: a review},
-	shorttitle = {Statistical classification methods in consumer credit scoring},
-	url = {http://www.jstor.org/stable/2983268},
-	urldate = {2016-01-06},
-	journal = {Journal of the Royal Statistical Society. Series A (Statistics in Society)},
-	author = {Hand, David J. and Henley, William E.},
-	year = {1997},
-	pages = {523--541},
-	file = {Snapshot:/Users/Kevin/Library/Application Support/Zotero/Profiles/j2ehnqa5.default/zotero/storage/QASSAX75/2983268.html:text/html}
 }
