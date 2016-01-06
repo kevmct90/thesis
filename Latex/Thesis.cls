@@ -180,7 +180,7 @@
 %	defined as \examname above so you cite it as \examname
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Predicting SME arrears } % Your thesis title - this is used in the title and abstract
+\thesistitle{Investigation into the predictiveness of location-based features in SME credit scoring } % Your thesis title - this is used in the title and abstract
 %-------------------------------------------------  
 \supervisor{Dr. Sarah Jane Delany} % You supervisor's name - this is used in the title page
 %-------------------------------------------------   
