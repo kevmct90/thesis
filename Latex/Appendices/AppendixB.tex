@@ -1,0 +1,36 @@
+% Appendix A
+
+\chapter{Additional Pseudocode} % Main appendix title
+
+\label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
+
+\lhead{Appendix A. \emph{Pseudocode}} % This is for the header on each page - perhaps a shortened title
+
+\begin{algorithm}[h!]
+	\caption{Ordinal Rank Web Scraper}\label{alg:ordProg}
+	\begin{algorithmic}[1]
+		\State \textbf{Initial Data:} \\
+		\textit{pages} (array of pages names(ordered)),\\ 
+		\textit{elems} (array of page element names)
+		\Function{GetOrdinalElemRank}{$pages,elems$}
+		\State browser $\gets newBrowser()$ \Comment{The program requires a access to browser}
+		\State table $\gets newTable()$ \Comment{We will output an ordered table}
+		\For{i \textbf{from} 0 \textbf{to} length(pages)-1 }
+		\State webpage $\gets$ browser.open(page[i])
+		\For{j \textbf{from} 0 \textbf{to} length(elems)-1 }
+		\State DOMelem = webpage$.find($elem[j]$)$ \Comment{Document Object Model Element}
+		\If{$NotEmpty($DOMelem$)$}
+		\State H $\gets$ DOMelem$.getTop()$
+		\State W $\gets$ DOMelem$.getLeft()$
+		\State row $\gets newRow($i,H,W$)$ 
+		\State table $\gets combine($table,row$)$
+		\EndIf
+		\EndFor 
+		\EndFor
+		\State table = table$.orderByColumns($1,2,3$)$\\
+		\Return table
+		\EndFunction
+		
+		
+	\end{algorithmic}
+\end{algorithm}

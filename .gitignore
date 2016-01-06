@@ -1,0 +1,14 @@
+*.aux
+*.bbl
+*.blg
+*.lof
+*.log
+*.lot
+*.out
+*.pdf
+*.gz
+*.toc
+*.cls
+*.doc
+*.png
+*.sty

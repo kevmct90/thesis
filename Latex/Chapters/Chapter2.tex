@@ -1,0 +1,77 @@
+% Chapter Template
+
+\chapter{State-of-the-art} % Main chapter title
+
+\label{Chapter2} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Chapter 2. \emph{State-of-the-art}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+\section{Introduction}
+This chapter will review research literature in the field of predictive modelling and data mining
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+\section{High Volume Web Log Data}
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+\section{Predictive Modelling}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+\section{Modelling Algorithms}\label{modelAlgos}
+The research question can be qualified as a sequential data analysis problem but in other respects, it is akin to standard two-class classification; will the user complete the process or not?
+
+
+\subsection{Nearest Neighbours \& Distance Measures} \label{kNN}
+When the \textit{k} nearest classifications are considered, 
+
+
+\subsection{Decision Trees} \label{decTrees}
+Decision Tree algorithms seek to split records into classes based on the inherent characteristics of the variables in the dataset and their relationship with the target variable(class).\\Prior to splitting the data, if we were to randomly pick a record from the dataset, the degree of uncertainty as to what class we would expect it to be would be relative to the distribution of the classes in the original dataset.
+
+
+\subsection{Ensemble models \& Boosting} \label{boosting}
+In 1907, statistician Sir Francis Galton attended a fair in which there was a competition to judge the weight of an Ox. Upon reviewing the 787 predictions made by the competing public, he observed that while there was a 
+
+
+\subsection{Regression} \label{logicReg}
+Regression models involve the modelling of linear relationships between features in a feature space. In it's simplest form we can think of a basic linear regression model where there is one independent variable and one 
+ 
+
+\subsection{Neural Networks} \label{neuralNets}
+Neural Networks in broad terms are a class of model that attempt to learn patterns in data by simulating the activity in a human brain.
+
+
+\subsection{Support Vector Machines} \label{SVM}
+Support Vector Machines (SVM) were developed from Statistical Learning Theory 
+
+
+\subsection{Sequential Association Rules, N-grams \& Markov Chains} \label{assosRules}
+In their paper, introduce the concept of association rules for discovering statistically significant relationships between frequently occurring items in large datasets. The algorithm..
+
+
+\subsection{Applications of Techniques in 2-Class Classification \& Path Prediction}\label{applic}
+Compared using k-NN versus association rules as an approach to personalising recommendations on websites based on presenting users with pages that they are likely to visit next based on a history of page requests. The results showed that using association rules provided better coverage and precision than k-NN when they used a window of 4 previous page requests.
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 5
+%----------------------------------------------------------------------------------------
+\section{Model Evaluation Methods}\label{modelEval}
+When calculating a measure of model accuracy there are some considerations to be made to increase the likelihood of the model making accurate predictions on unseen data. If we build a model using the full historical dataset available and subsequently test the accuracy of the model against the same dataset then we are in danger of generating a model that is over-fitted to the training set and the accuracy observed from the subsequent test may be biased (i.e. optimistic of the accuracy of the model).
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 6
+%----------------------------------------------------------------------------------------
+\section{Conclusion}\label{sotaConc}
+This chapter has summarised the relevant literature available for two-class classification and web data analysis, with discussion of predicting future behaviour based on sequential click patterns. Various models have been discussed including K-Nearest Neighbours, Association Rules, Decision Trees, SVM, Neural Networks, Regression Models and ensemble models

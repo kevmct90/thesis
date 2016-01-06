@@ -1,0 +1,56 @@
+% Chapter Template
+
+\chapter{Design / methodology} % Main chapter title
+
+\label{Chapter3} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Chapter 3. \emph{Design / methodology}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+\section{Introduction}
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
+
+This chapter will review the design of the experiments to be undertaken in attempting to detect pathological sequences of events that indicate a user finding difficulty or hesitancy in completing a process. It will detail the click pattern data available and all the pre-processing, data reduction and feature generation techniques used in the creation of an Analytics Base Table (ABT).
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+\section{Data pre-processing \& ABT Generation}
+To generate a view of customer experience online, client-side logging has been implemented on desktop internet banking in \subjectname. The data source for this project is the logs from
+
+
+\subsection{Transforming Log Data using MapReduce}
+Ultimately much of the initial data pre-processing task involves simple checks for logs of relevant activity relating to the personal loan application process and discarding the others. This step is performed using 
+
+
+\subsection{Generating Ordinal Reference Data}\label{ordRef}
+In the literature we reviewed ideas about distance and ordinal distance measures and postulated the potential in analysing pages and clicks as ordinal variables by considering their position in the context of a particular process. 
+
+
+\subsection{Generating the ABTs}
+We now have a reference list that allows us to apply a rank to all achievable loan application events prior to completion. A method is required to join this reference list with our csv (comma seperated value) log files resulting from the MapReduce job. 
+
+
+%Fine from here
+\subsection{Software Used}\label{soft}
+Java MapReduce was used to extract the appropriate event data and create the target variable. Further processing could be implemented at this stage using MapReduce but at an early stage of data exploration, it was felt that it was better to not reduce the data any more than was needed for it to be processed in memory.
+
+
+\section{Building Models}
+In order to avoid over-fitting models, considerations need to be made as to what data to use in training the model. Each of the models built will be trained using a training set which is a subset of the over all available samples. We discussed possible options for training set selection in subsection
+
+
+\section{Evaluation Methods}
+Several evaluation techniques will be applied to quantify the usefulness of all models produced. As discussed in section \ref{modelEval}, there are various ways to evaluate the performance of a classifier. A common metric used is overall accuracy (\% of records correctly classified). 
+
+
+\section{Conclusions}\label{desConc}
+This chapter has discussed the processes required to carry out data mining techniques on non-relational web log data. The required data transformations have been discussed as well as the implemented methods for feature generation.
+
+
+

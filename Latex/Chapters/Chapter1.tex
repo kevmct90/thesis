@@ -1,0 +1,96 @@
+% Chapter Template
+
+\chapter{Introduction} % Main chapter title
+
+\label{Chapter1} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+
+\lhead{Chapter 1. \emph{Introduction}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+
+% INTRO
+This chapter introduces my research topic, the predictiveness of geospatial features in SME credit scoring, and how it can potentially can be used to improve credit scoring in financial institutions. The motivation for the research question are discussed with details of its significance. The aims of the thesis along with the research objectives and analytical approach are then stated. The scope and limitation of this research are then described. The chapter concludes with a summary and outlines of this thesis.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Overview of Project Area}
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Background}
+Since the financial crisis of 2007-2008 there has been a a much greater emphasis on credit scoring in the consumer lending process in banking. One of the most common methods of building scorecards is by using data mining \citep{baesens_50_2009}. One of the benefits to improving the scoring accuracy of a credit model is obviously the significant future savings \citep{west 2000} but also financial institutions are under increasing pressures from global (Bank for International Settlements) e.g. The European Central Bank and national bank e.g. Central bank of Ireland. Since the crisis these regulators police that financial institutions keep better care of their credit scoring systems. Poor performing credit systems can have massive adverse affects financially, reputation and supporting the economy.
+\\\\
+There are three main stages of a typical credit scorecard development \cite{van_gestel_credit_2009}
+
+\begin{itemize}
+	\item Dataset Construction
+	\item Modelling
+	\item Documentation 
+\end{itemize}
+
+This can dispalyed using this archtectural diagram. Insert find diagram.
+\\\\
+Each stage of this process cannot be left out when completing a industry credit scorecard, however for this research I will be focus particularly on the data contruction and modelling stages. The documentation stage is critcal for deployment of an industry scorecard but will not be investigated further in this thesis. 
+
+%----------------------------------------------------------------------------------------
+%	
+%----------------------------------------------------------------------------------------
+
+\section{Motivation}
+The primary aim of this research project is to build a quantitive creidt scorecard that will identify Small Medium Enterprise (SME) customers who are likely to go into arrears/defaults.
+
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+
+\section{Research Project}
+The primary aim of this research project is to build a quantitive creidt scorecard that will identify Small Medium Enterprise (SME) customers who are likely to go into arrears/defaults.
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+
+\section{Research Objectives}
+ The primary goals is to assess if customers spend and default trends by location are indicative of SME customers likely to go into arrears/default. The second aim will be to understand and build a quantitive credit scorecard using these features and compare the results a histotic scorecard that has already been deployed in \subjectname.
+
+The objectives of this research are:
+
+\begin{itemize}
+	\item To study the relevant state-of-the-art literature and industry best practices on builiding quanitive credit scorecards.
+	\item Design framework for assigning a GPS co-ordinate to each of the customers in \subjectname's database. 
+	\item Build base model to compare my research and experiment with.
+	\item Aggregate millions od customers spending transactions and default trend to location creating an analytical base table to enhance the existing scorecard.
+	\item Evaluate the success/failure of the experiment.
+	\item Determine what future research could be undertaken in the area to expand on the project.
+\end{itemize}
+	
+
+%----------------------------------------------------------------------------------------
+%	SECTION 5
+%----------------------------------------------------------------------------------------
+\section{Research Methodology \& Analytical Approach}
+The research methodology to be utilised here is empirical evaluation which will involve performing experimentation on a recorded history of user interactions on AIB's website. Appropriate evaluation methodologies will be used to determine the success of these experiments. Suitable techniques will also be used to measure, compare and analyse the performance by means of statistical methods, but also practical considerations related to the complexity of the technique being evaluated.
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 6
+%----------------------------------------------------------------------------------------
+\section{Scope and Limitations}
+The project will focus on building an SME credit scorecard, subset of the customers in \subjectname. A holdout dataset will be taken to build the model which will be predicting 12 months in advance.
+\\\\
+The data used in this project will be taken from the transaction visa debit table, in an ideal world for this analysis you get the location of the actual transactions taking place but this was not available so I had to roll it back to the customers address. Diagram possibly
+\\\\ 
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 7
+%----------------------------------------------------------------------------------------
+\section{Thesis Outline}
+The remaining chapters of the dissertation are organised in to the Literature Review of the state-of-the-art..
+
+
+The geography of the data  Provinces  Ireland is divided into four provinces: Leinster, Ulster, Munster and Connacht. Although at present they do not have any  administrative functions, they are relevant for a number of historical, cultural and sporting reasons. The borders of the  provinces coincide exactly with the boundaries of the administrative counties. Three of the nine counties in Ulster are  within the jurisdiction of the State.  NUTS boundaries  The Nomenclature of Territorial Units for Statistics (NUTS) were drawn up by Eurostat in order to define territorial  units for the production of regional statistics across the European Union. The NUTS classification has been used in EU  legislation since 1988, but it was only in 2003 that the EU Member States, the European Parliament and the  Commission established the NUTS regions within a legal framework.  The Irish NUTS 3 regions comprise the eight Regional Authorities established under the Local Government Act, 1991  (Regional Authorities) (Establishment) Order, 1993 which came into operation on January 1st 1994. The NUTS 2  regions, which were proposed by Government and agreed to by Eurostat in 1999, are groupings of the Regional  Authorities.  Administrative counties  In census reports the country is divided into 29 counties/administrative counties and the five Cities which represent the  local authority areas. Outside Dublin there are 26 administrative counties (North Tipperary and South Tipperary each  ranks as a separate county for administrative purposes) and four Cities, i.e. Cork, Limerick, Waterford and Galway. In  Dublin the four local authority areas are identified separately, i.e. Dublin City and the three administrative counties of  Dún Laoghaire-Rathdown, Fingal and South Dublin.  Electoral Divisions  There are 3,440 Electoral Divisions (EDs) which are the smallest legally defined administrative areas in the State. One  ED, St. Mary's, straddles the Louth-Meath county border, and is presented in two parts in the SAPS1 tables, with one  part in Louth and the other in Meath. There are 32 EDs with low population, which for reasons of confidentiality have  been amalgamated into neighbouring EDs giving a total of 3,409 EDs which appear in the SAPS tables.  Small Areas  Small Areas are areas of population comprising between 50 and 200 dwellings created by The National Institute of  Regional and Spatial Analysis(NIRSA) on behalf of the Ordnance Survey Ireland(OSi) in consultation with CSO. Small  Areas were designed as the lowest level of geography for the compilation of statistics in line with data protection and  generally comprise either complete or part of townlands or neighbourhoods. There is a constraint on Small Areas that  they must nest within Electoral Division boundaries.  Small areas were used as the basis for the Enumeration in Census 2011. Enumerators were assigned a number of  adjacent Small Areas constituting around 400 dwelling in which they had to visit every dwelling and deliver and collect  a completed census form and record the dwelling status of unoccupied dwellings.  The small area boundaries have been amended in line with population data from Census 2011  2007 Constituency boundaries  For the purpose of elections to Dáil Éireann the country is divided into Constituencies which, under Article 16.4 of the  Constitution of Ireland, have to be revised at least once every twelve years with due regard to changes in the distribution  of the population. The Constituencies were revised in 2007.  Gaeltacht Areas  The Gaeltacht Areas Orders, 1956, 1967, 1974 and 1982 defined the Gaeltacht as comprising 155 Electoral Divisions or  parts of Electoral Divisions in the counties of Cork, Donegal, Galway, Kerry, Mayo, Meath and Waterford.  2008 Local Electoral Areas  For the purposes of County Council and Corporation elections each county and city is divided into Local Electoral  Areas (LEAs) which are constituted on the basis of Orders made under the Local Government Act, 1941. In general,  LEAs are formed by aggregating Electoral Divisions. However, in a number of cases Electoral Divisions are divided  between LEAs to facilitate electors.  Legal Towns and Cities  Urban areas with legally defined boundaries consist of the five Cities (Cork, Dublin, Galway, Limerick and Waterford),  five Boroughs (Clonmel, Drogheda, Kilkenny, Sligo and Wexford) and 75 Towns as established under the Local  Government Act, 2001 (S.I. 591 of 2001). Extensions to the boundaries can also occur, subject to legislation passed  under the instruction of the Department of Environment, Community and Local Government.  Settlements (Census towns, legal towns and environs, cities and suburbs)  In order to distinguish between the urban and rural population for census analysis, the boundaries of distinct settlements  need to be defined. This requires the creation of suburbs and extensions to existing cities and legal towns as well as  delineating boundaries for settlements which are not legally defined (called Census towns).  From 1971 to 2006, Census towns were defined as a cluster of fifty or more occupied dwellings where, within a radius  of 800 metres there was a nucleus of thirty occupied dwellings (on both sides of a road, or twenty on one side of a  road), along with a clearly defined urban centre e.g. a shop, a school, a place of worship or a community centre. Census  town boundaries where extended over time where there was an occupied dwelling within 200 metres of the existing  boundary.  To avoid the agglomeration of adjacent towns caused by the inclusion of low density one off dwellings on the approach  routes to towns, the 2011 criteria were tightened, in line with UN criteria.  In Census 2011 a new Census town was defined as being a cluster with a minimum of 50 occupied dwellings, with a  maximum distance between any dwelling and the building closest to it of 100 metres, and where there was evidence of  an urban centre (shop, school etc). The proximity criteria for extending existing 2006 Census town boundaries was also  amended to include all occupied dwellings within 100 metres of an existing building. Other information based on OSi  mapping and orthogonal photography was taken into account when extending boundaries. Boundary extensions were  generally made to include the land parcel on which a dwelling was built or using other physical features such as roads,  paths etc.  Extensions to the environs and suburbs of legal towns and cities were also constructed using the 100 metre proximity  rule applied to Census towns.  1 SAPS – Small Area Population Statistics  For census reports, urban settlements are towns with a population of 1,500 or more, while settlements with a population  of less than 1,500 are classified as rural.
