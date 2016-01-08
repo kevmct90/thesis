@@ -74,7 +74,7 @@ and in terms of reputation.
 %----------------------------------------------------------------------------------------
 
 \section{Research Project}
-The primary aim of this research project is to build a quantitive creidt scorecard that will identify Small Medium Enterprise (SME) customers who are likely to go into arrears/defaults.
+The research projects aims to build a SME credit scorecard, combine a base model in \subjectname combined with features based on SME locations. The aim of this scorecard is to identify SME customers who are likely to default and aim would be use these features in a scorecard in \subjectname.
 
 
 %----------------------------------------------------------------------------------------
@@ -82,16 +82,19 @@ The primary aim of this research project is to build a quantitive creidt scoreca
 %----------------------------------------------------------------------------------------
 
 \section{Research Objectives}
- The primary goals is to assess if customers spend and default trends by location are indicative of SME customers likely to go into arrears/default. The second aim will be to understand and build a quantitive credit scorecard using these features and compare the results a histotic scorecard that has already been deployed in \subjectname.
-
+The primary goals of this research is to investigate if location based metrics are indicative to whether a SME customer is likely to default on their financial obligation or not. The credit score model built will make use of a historic credit score model in \subjectname and this will be combined with location based metrics in an attempt to improve the scorecard. 
+ 
 The objectives of this research are:
 
 \begin{itemize}
-	\item To study the relevant state-of-the-art literature and industry best practices on builiding quanitive credit scorecards.
-	\item Design framework for assigning a GPS co-ordinate to each of the customers in \subjectname's database. 
-	\item Build base model to compare my research and experiment with.
-	\item Aggregate millions od customers spending transactions and default trend to location creating an analytical base table to enhance the existing scorecard.
-	\item Evaluate the success/failure of the experiment.
+	\item To study the relevant state-of-the-art literature and industry best practices on building credit scorecards.
+	\item Create a search address engine and for mapping customer addresses to locations in an address database.
+	\item Create location based metrics using internal data from \subjectname such transactional, arrears ratio, post code and open data from the CSO.
+	\item Identify most predictable features using feature reduction techniques.
+	\item Build base model/scorecard to compare my research and experiment with.
+	\item Build scorecard including location based metrics and evaluate results
+	\item Assess is it possible to deploy the scorecard in \subjectname on out of time data.
+	\item Assess whether the experiment was a success or failure.
 	\item Determine what future research could be undertaken in the area to expand on the project.
 \end{itemize}
 	
@@ -116,8 +119,16 @@ The data used in this project will be taken from the transaction visa debit tabl
 %----------------------------------------------------------------------------------------
 %	SECTION 7
 %----------------------------------------------------------------------------------------
-\section{Thesis Outline}
-The remaining chapters of the dissertation are organised in to the Literature Review of the state-of-the-art..
+\section{Outline of the Thesis}
+The remainder of this thesis is organised as follows:
 
+\begin{itemize}
+	\item Chapter 2
+	\item Chapter 3
+	\item Chapter 4
+	\item Chapter 5
+	\item Chapter 6
+\end{itemize}
 
+\section{GeoDirectory}
 The geography of the data  Provinces  Ireland is divided into four provinces: Leinster, Ulster, Munster and Connacht. Although at present they do not have any  administrative functions, they are relevant for a number of historical, cultural and sporting reasons. The borders of the  provinces coincide exactly with the boundaries of the administrative counties. Three of the nine counties in Ulster are  within the jurisdiction of the State.  NUTS boundaries  The Nomenclature of Territorial Units for Statistics (NUTS) were drawn up by Eurostat in order to define territorial  units for the production of regional statistics across the European Union. The NUTS classification has been used in EU  legislation since 1988, but it was only in 2003 that the EU Member States, the European Parliament and the  Commission established the NUTS regions within a legal framework.  The Irish NUTS 3 regions comprise the eight Regional Authorities established under the Local Government Act, 1991  (Regional Authorities) (Establishment) Order, 1993 which came into operation on January 1st 1994. The NUTS 2  regions, which were proposed by Government and agreed to by Eurostat in 1999, are groupings of the Regional  Authorities.  Administrative counties  In census reports the country is divided into 29 counties/administrative counties and the five Cities which represent the  local authority areas. Outside Dublin there are 26 administrative counties (North Tipperary and South Tipperary each  ranks as a separate county for administrative purposes) and four Cities, i.e. Cork, Limerick, Waterford and Galway. In  Dublin the four local authority areas are identified separately, i.e. Dublin City and the three administrative counties of  Dún Laoghaire-Rathdown, Fingal and South Dublin.  Electoral Divisions  There are 3,440 Electoral Divisions (EDs) which are the smallest legally defined administrative areas in the State. One  ED, St. Mary's, straddles the Louth-Meath county border, and is presented in two parts in the SAPS1 tables, with one  part in Louth and the other in Meath. There are 32 EDs with low population, which for reasons of confidentiality have  been amalgamated into neighbouring EDs giving a total of 3,409 EDs which appear in the SAPS tables.  Small Areas  Small Areas are areas of population comprising between 50 and 200 dwellings created by The National Institute of  Regional and Spatial Analysis(NIRSA) on behalf of the Ordnance Survey Ireland(OSi) in consultation with CSO. Small  Areas were designed as the lowest level of geography for the compilation of statistics in line with data protection and  generally comprise either complete or part of townlands or neighbourhoods. There is a constraint on Small Areas that  they must nest within Electoral Division boundaries.  Small areas were used as the basis for the Enumeration in Census 2011. Enumerators were assigned a number of  adjacent Small Areas constituting around 400 dwelling in which they had to visit every dwelling and deliver and collect  a completed census form and record the dwelling status of unoccupied dwellings.  The small area boundaries have been amended in line with population data from Census 2011  2007 Constituency boundaries  For the purpose of elections to Dáil Éireann the country is divided into Constituencies which, under Article 16.4 of the  Constitution of Ireland, have to be revised at least once every twelve years with due regard to changes in the distribution  of the population. The Constituencies were revised in 2007.  Gaeltacht Areas  The Gaeltacht Areas Orders, 1956, 1967, 1974 and 1982 defined the Gaeltacht as comprising 155 Electoral Divisions or  parts of Electoral Divisions in the counties of Cork, Donegal, Galway, Kerry, Mayo, Meath and Waterford.  2008 Local Electoral Areas  For the purposes of County Council and Corporation elections each county and city is divided into Local Electoral  Areas (LEAs) which are constituted on the basis of Orders made under the Local Government Act, 1941. In general,  LEAs are formed by aggregating Electoral Divisions. However, in a number of cases Electoral Divisions are divided  between LEAs to facilitate electors.  Legal Towns and Cities  Urban areas with legally defined boundaries consist of the five Cities (Cork, Dublin, Galway, Limerick and Waterford),  five Boroughs (Clonmel, Drogheda, Kilkenny, Sligo and Wexford) and 75 Towns as established under the Local  Government Act, 2001 (S.I. 591 of 2001). Extensions to the boundaries can also occur, subject to legislation passed  under the instruction of the Department of Environment, Community and Local Government.  Settlements (Census towns, legal towns and environs, cities and suburbs)  In order to distinguish between the urban and rural population for census analysis, the boundaries of distinct settlements  need to be defined. This requires the creation of suburbs and extensions to existing cities and legal towns as well as  delineating boundaries for settlements which are not legally defined (called Census towns).  From 1971 to 2006, Census towns were defined as a cluster of fifty or more occupied dwellings where, within a radius  of 800 metres there was a nucleus of thirty occupied dwellings (on both sides of a road, or twenty on one side of a  road), along with a clearly defined urban centre e.g. a shop, a school, a place of worship or a community centre. Census  town boundaries where extended over time where there was an occupied dwelling within 200 metres of the existing  boundary.  To avoid the agglomeration of adjacent towns caused by the inclusion of low density one off dwellings on the approach  routes to towns, the 2011 criteria were tightened, in line with UN criteria.  In Census 2011 a new Census town was defined as being a cluster with a minimum of 50 occupied dwellings, with a  maximum distance between any dwelling and the building closest to it of 100 metres, and where there was evidence of  an urban centre (shop, school etc). The proximity criteria for extending existing 2006 Census town boundaries was also  amended to include all occupied dwellings within 100 metres of an existing building. Other information based on OSi  mapping and orthogonal photography was taken into account when extending boundaries. Boundary extensions were  generally made to include the land parcel on which a dwelling was built or using other physical features such as roads,  paths etc.  Extensions to the environs and suburbs of legal towns and cities were also constructed using the 100 metre proximity  rule applied to Census towns.  1 SAPS – Small Area Population Statistics  For census reports, urban settlements are towns with a population of 1,500 or more, while settlements with a population  of less than 1,500 are classified as rural.
