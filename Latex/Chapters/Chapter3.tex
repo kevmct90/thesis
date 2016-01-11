@@ -23,11 +23,44 @@ Statistical analysis and evaluation methods used to assess the strength of model
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\section{Data pre-processing \& ABT Generation}
-To generate a view of customer experience online, client-side logging has been implemented on desktop internet banking in \subjectname. The data source for this project is the logs from
+\section{Data for Research}
+This research project will combine data from an existing scorecard in \subjectname\ with location based data. There will be three new sources of location based data for this experiment. They are as follows......
+
+\begin{itemize}
+	\item \subjectname's Customers Transactional behaviour by location.
+	\item \subjectname\ default ratio by location.
+	\item CSO metrics captured using the 2011 census. 
+\end{itemize}
+
+Locations for this research will be found using \subjectname's customer addresses. These will be cleansed to be standardised them and will put through a search engine built using Solr. The top 10 results are returned using Solr, a matching algorithms are then ran to compare the searched address and returned results. The two distance formulas used to compare the are the following \textit{Levenshtein distance} and the \textit{Jaro-Winkler distance}.
+
+\subsection{Mapping Addresses using Apache Solr}
 
 
-\subsection{Transforming Log Data using MapReduce}
+\begin{figure}[h!]
+	\includegraphics[width=0.8\textwidth,center]{Solr_Example_Search}
+	\caption[Query Example and Syntax]
+	{Query Example and Syntax}
+	\label{fig:Solr_Example_Search}
+\end{figure}
+
+\begin{figure}[h!]
+	\includegraphics[width=0.8\textwidth,center]{Solr_Inverted_Index}
+	\caption[Illustration of Inverted Indexing]
+	{Illustration of Inverted Indexing}
+	\label{fig:Solr_Inverted_Index}
+\end{figure}
+
+\subsubsection{Levenshtein Distance}
+Mathematically, the Levenshtein distance between two strings a, b (of length |a| and |b| respectively) is given by \\
+
+$lev_{a,b}(i - 1,j) + 1 $\\
+$lev_{a,b}(i,j - 1) + 1 $\\
+not equal 
+$lev_{a,b}(i -1 ,j - 1) + 1_{(a_{i}=!b_{j})} $
+
+\subsubsection{Jaro-Winkler Distance}
+
 Ultimately much of the initial data pre-processing task involves simple checks for logs of relevant activity relating to the personal loan application process and discarding the others. This step is performed using 
 
 
