@@ -10,26 +10,20 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 \section{Introduction}
-This chapter will review research literature in the field of predictive modelling and data mining
+This chapter will review research literature in the field of machine learning and credit scoring. We 
 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\section{High Volume Web Log Data}
+\section{Predictive Modelling}
 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
-\section{Predictive Modelling}
-
-%----------------------------------------------------------------------------------------
-%	SECTION 4
-%----------------------------------------------------------------------------------------
 \section{Modelling Algorithms}\label{modelAlgos}
 The research question can be qualified as a sequential data analysis problem but in other respects, it is akin to standard two-class classification; will the user complete the process or not?
-
 
 \subsection{Nearest Neighbours \& Distance Measures} \label{kNN}
 When the \textit{k} nearest classifications are considered, 
@@ -45,7 +39,7 @@ In 1907, statistician Sir Francis Galton attended a fair in which there was a co
 
 \subsection{Regression} \label{logicReg}
 Regression models involve the modelling of linear relationships between features in a feature space. In it's simplest form we can think of a basic linear regression model where there is one independent variable and one 
- 
+
 
 \subsection{Neural Networks} \label{neuralNets}
 Neural Networks in broad terms are a class of model that attempt to learn patterns in data by simulating the activity in a human brain.
@@ -64,14 +58,17 @@ Compared using k-NN versus association rules as an approach to personalising rec
 
 
 %----------------------------------------------------------------------------------------
-%	SECTION 5
+%	SECTION 4
 %----------------------------------------------------------------------------------------
 \section{Model Evaluation Methods}\label{modelEval}
 When calculating a measure of model accuracy there are some considerations to be made to increase the likelihood of the model making accurate predictions on unseen data. If we build a model using the full historical dataset available and subsequently test the accuracy of the model against the same dataset then we are in danger of generating a model that is over-fitted to the training set and the accuracy observed from the subsequent test may be biased (i.e. optimistic of the accuracy of the model).
 
+%----------------------------------------------------------------------------------------
+%	SECTION 5
+%----------------------------------------------------------------------------------------
+\section{Conclusion}\label{sotaConc}
+This chapter has summarised the relevant literature available for two-class classification and web data analysis, with discussion of predicting future behaviour based on sequential click patterns. Various models have been discussed including K-Nearest Neighbours, Association Rules, Decision Trees, SVM, Neural Networks, Regression Models and ensemble models
 
 %----------------------------------------------------------------------------------------
 %	SECTION 6
 %----------------------------------------------------------------------------------------
-\section{Conclusion}\label{sotaConc}
-This chapter has summarised the relevant literature available for two-class classification and web data analysis, with discussion of predicting future behaviour based on sequential click patterns. Various models have been discussed including K-Nearest Neighbours, Association Rules, Decision Trees, SVM, Neural Networks, Regression Models and ensemble models

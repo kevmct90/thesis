@@ -1,0 +1,31 @@
+\begin{thebibliography}{xx}
+
+\harvarditem[Baesens et~al.]{Baesens, Mues, Martens \harvardand\
+  Vanthienen}{2009}{baesens_50_2009}
+Baesens, B., Mues, C., Martens, D. \harvardand\ Vanthienen, J.
+  \harvardyearleft 2009\harvardyearright , `50 years of data mining and {OR}:
+  upcoming trends and challenges', {\em Journal of the Operational Research
+  Society} pp.~S16--S23.
+\newline\harvardurl{http://www.palgrave-journals.com/jors/journal/v60/ns1/abs/jors2008171a.html}
+
+\harvarditem{Hand \harvardand\ Henley}{1997}{hand_statistical_1997}
+Hand, D.~J. \harvardand\ Henley, W.~E.  \harvardyearleft 1997\harvardyearright
+  , `Statistical classification methods in consumer credit scoring: a review',
+  {\em Journal of the Royal Statistical Society. Series A (Statistics in
+  Society)} pp.~523--541.
+\newline\harvardurl{http://www.jstor.org/stable/2983268}
+
+\harvarditem{Japkowicz}{2000}{japkowicz_class_2000}
+Japkowicz, N.  \harvardyearleft 2000\harvardyearright , The class imbalance
+  problem: {Significance} and strategies, {\em in} `Proc. of the {Int}’l
+  {Conf}. on {Artificial} {Intelligence}', Citeseer.
+\newline\harvardurl{\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1693&rep=rep1&type=pdf}}
+
+\harvarditem{Van~Gestel \harvardand\ Baesens}{2009}{van_gestel_credit_2009}
+Van~Gestel, T. \harvardand\ Baesens, B.  \harvardyearleft 2009\harvardyearright
+  , {\em Credit risk management: basic concepts: financial risk components,
+  rating analysis, models, economic and regulatory capital}, Oxford University
+  Press.
+\newline\harvardurl{\url{http://is.muni.cz/do/econ/soubory/aktivity/fai/17809295/FAI_issue2010_01_valova.pdf?so=ed;pocnep=1}}
+
+\end{thebibliography}
