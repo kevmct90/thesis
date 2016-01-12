@@ -1,5 +1,12 @@
 \begin{thebibliography}{xx}
 
+\harvarditem{Anderson}{2007}{anderson_credit_2007}
+Anderson, R.  \harvardyearleft 2007\harvardyearright , {\em The {Credit}
+  {Scoring} {Toolkit}: {Theory} and {Practice} for {Retail} {Credit} {Risk}
+  {Management} and {Decision} {Automation}: {Theory} and {Practice} for
+  {Retail} {Credit} {Risk} {Management} and {Decision} {Automation}}, OUP
+  Oxford.
+
 \harvarditem[Baesens et~al.]{Baesens, Mues, Martens \harvardand\
   Vanthienen}{2009}{baesens_50_2009}
 Baesens, B., Mues, C., Martens, D. \harvardand\ Vanthienen, J.
@@ -19,7 +26,19 @@ Hand, D.~J. \harvardand\ Henley, W.~E.  \harvardyearleft 1997\harvardyearright
 Japkowicz, N.  \harvardyearleft 2000\harvardyearright , The class imbalance
   problem: {Significance} and strategies, {\em in} `Proc. of the {Int}’l
   {Conf}. on {Artificial} {Intelligence}', Citeseer.
-\newline\harvardurl{\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1693&rep=rep1&type=pdf}}
+\newline\harvardurl{url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1693&rep=rep1&type=pdf}}
+
+\harvarditem[Martens et~al.]{Martens, Van~Gestel, De~Backer, Haesen, Vanthienen
+  \harvardand\ Baesens}{2010}{martens_credit_2010}
+Martens, D., Van~Gestel, T., De~Backer, M., Haesen, R., Vanthienen, J.
+  \harvardand\ Baesens, B.  \harvardyearleft 2010\harvardyearright , `Credit
+  rating prediction using ant colony optimization', {\em Journal of the
+  Operational Research Society} {\bf 61}(4),~561--573.
+\newline\harvardurl{http://www.palgrave-journals.com/jors/journal/v61/n4/abs/jors2008164a.html}
+
+\harvarditem{McNab \harvardand\ Wynn}{2000}{mcnab_principles_2000}
+McNab, H. \harvardand\ Wynn, A.  \harvardyearleft 2000\harvardyearright , {\em
+  Principles and practice of consumer credit risk management}, CIB Publishing.
 
 \harvarditem{Van~Gestel \harvardand\ Baesens}{2009}{van_gestel_credit_2009}
 Van~Gestel, T. \harvardand\ Baesens, B.  \harvardyearleft 2009\harvardyearright

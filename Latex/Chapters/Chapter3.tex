@@ -83,12 +83,23 @@ Where:
 	\item $t$ is half the number of transpositions
 \end{itemize}
 
-\subsubsection{Example}
+\subsubsection{Examples}
 Give example of how addresses are cleansed, standardised, searched and results are calculated.
 
+\subsection{Sampling Period for ABT}
+As already stated in the thesis, predictive models are built using historical data. It must be stated that past performance can be useful predictor of default it does not guarantee that future predictions of the model will be accurate or reliable. A training dataset is built to build a predictive model, customers are observed at two different points in time \citep{martens_credit_2010}, these are called the \textit{observation point and prediction point/"default observation point"} (cite). The time period between these two points is referred to the \textit{outcome window}. This can vary based on business objectives and requirements, industry standard in \subjectname\ dictates that this usually 12 months. \\\\
 
-\subsection{Generating Ordinal Reference Data}\label{ordRef}
-In the literature we reviewed ideas about distance and ordinal distance measures and postulated the potential in analysing pages and clicks as ordinal variables by considering their position in the context of a particular process. 
+Reason/Arguments for shorter/longer periods may need to be added here \\
+
+\subsection{Class Label Definition ABT}
+For customer to be defined as defaulted is dependant on what the objective of that predictive model is and the requirements of the financial institution \citep{mcnab_principles_2000}. The Basel II definition (paragraph 452) which is widely used by financial institutions and \subjectname\ considers a default to have taken place when either or both of the following criteria are met:
+\vspace{-3mm} 
+\begin{itemize}
+	\item The bank/financial institution considers that the obligor is unlikely to pay its credit obligations to the banking group in full, without recourse by the bank to actions such as realising security (if held).
+	\item The obligor is past due more than 90 days on any material credit obligation to the banking group. Overdrafts will be considered as being past due once the customer has breached an advised limit or been advised of a limit smaller than current outstandings.
+\end{itemize} 
+
+There are two well known approaches to class label definition that financial institutions can choose according to \cite{anderson_credit_2007}: (\textit{i}) a \textit{current status} label definition which classifies a customer to have defaulted or not at the end of the outcome window; or option (\textit{ii}) a \textit{worst status} label definition which classifies whether the customer has defaulted or not throughout the outcome window. It is \subjectname\'s industry standard to use the \textit{worst status} option. This agrees with \citep{basel_international_2006}, that customers 90 days worst status covering a one-year period is considered the standard definition for customers that have defaulted. 
 
 
 \subsection{Generating the ABTs}
@@ -96,8 +107,9 @@ We now have a reference list that allows us to apply a rank to all achievable lo
 
 
 %Fine from here
-\subsection{Software Used}\label{soft}
-Java MapReduce was used to extract the appropriate event data and create the target variable. Further processing could be implemented at this stage using MapReduce but at an early stage of data exploration, it was felt that it was better to not reduce the data any more than was needed for it to be processed in memory.
+\subsection{Software Used}\label{softwareUsed}
+Python program built to cleanse data, query Solr api for each address. 1.8 million addresses.
+SAS and R used for predictive modelling. R used for visualisation.
 
 
 \section{Building Models}
