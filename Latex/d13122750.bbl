@@ -15,6 +15,12 @@ Baesens, B., Mues, C., Martens, D. \harvardand\ Vanthienen, J.
   Society} pp.~S16--S23.
 \newline\harvardurl{http://www.palgrave-journals.com/jors/journal/v60/ns1/abs/jors2008171a.html}
 
+\harvarditem{BCBS}{2005}{basel_international_2006}
+BCBS  \harvardyearleft 2005\harvardyearright , `International {Convergence} of
+  {Capital} {Measurement} and {Capital} {Standards}: {A} {Revised} {Framework}
+  - {Comprehensive} {Version}, {June} 2006 - bcbs128.pdf'.
+\newline\harvardurl{http://www.bis.org/publ/bcbs128.pdf}
+
 \harvarditem{Hand \harvardand\ Henley}{1997}{hand_statistical_1997}
 Hand, D.~J. \harvardand\ Henley, W.~E.  \harvardyearleft 1997\harvardyearright
   , `Statistical classification methods in consumer credit scoring: a review',
@@ -26,7 +32,7 @@ Hand, D.~J. \harvardand\ Henley, W.~E.  \harvardyearleft 1997\harvardyearright
 Japkowicz, N.  \harvardyearleft 2000\harvardyearright , The class imbalance
   problem: {Significance} and strategies, {\em in} `Proc. of the {Int}’l
   {Conf}. on {Artificial} {Intelligence}', Citeseer.
-\newline\harvardurl{url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1693&rep=rep1&type=pdf}}
+\newline\harvardurl{\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1693&rep=rep1&type=pdf}}
 
 \harvarditem[Martens et~al.]{Martens, Van~Gestel, De~Backer, Haesen, Vanthienen
   \harvardand\ Baesens}{2010}{martens_credit_2010}

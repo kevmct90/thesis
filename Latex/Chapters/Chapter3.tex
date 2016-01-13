@@ -1,6 +1,6 @@
 % Chapter Template
 
-\chapter{Design / Methodology} % Main chapter title
+\chapter{Experiment Design} % Main chapter title
 
 \label{Chapter3} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
@@ -23,9 +23,12 @@ Statistical analysis and evaluation methods used to assess the strength of model
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\section{Data for Research}
+\section{Data for Research and Data Preparation}
 This research project will combine data from an existing scorecard in \subjectname\ with location based data. There will be three new sources of location based data for this experiment. They are as follows......
 
+\subsection{Existing Data in \subjectname's Model}
+
+\subsection{Electoral Division and Local Authority Classification}
 \begin{itemize}
 	\item \subjectname's Customers Transactional behaviour by location.
 	\item \subjectname\ default ratio by location.
@@ -56,12 +59,12 @@ Mathematically, the Levenshtein distance between two strings \textit{a}, \textit
 \begin{align}
 lev_{a,b}(i,j) = 
 \begin{cases}
-	\max(i,j) & \text{ if} \min(i,j)=0, \\
-	\min \begin{cases}
-		\operatorname{lev}_{a,b}(i-1,j) + 1 \\
-		\operatorname{lev}_{a,b}(i,j-1) + 1 \\
-		\operatorname{lev}_{a,b}(i-1,j-1) + 1_{(a_i \neq b_j)}
-	\end{cases} & \text{ otherwise.}
+\max(i,j) & \text{ if} \min(i,j)=0, \\
+\min \begin{cases}
+\operatorname{lev}_{a,b}(i-1,j) + 1 \\
+\operatorname{lev}_{a,b}(i,j-1) + 1 \\
+\operatorname{lev}_{a,b}(i-1,j-1) + 1_{(a_i \neq b_j)}
+\end{cases} & \text{ otherwise.}
 \end{cases}
 \end{align}
 where $1_{(a_i \neq b_j)}$ is the indicator function equal to $0$ when $a_i = b_j$ and equal to 1 otherwise, and $\operatorname{lev}_{a,b}(i,j)$ is the distance between the first $i$ characters of $a$ and the first $j$ characters of $b$.
@@ -73,8 +76,8 @@ The Jaro distance $d_j$ of two given strings $s_1$ and $s_2$ is
 \begin{align}
 d_j =\begin{cases}
 \begin{array}{l l}
-	0 & \text{if }m = 0\\
-	\frac{1}{3}\left(\frac{m}{|s_1|} + \frac{m}{|s_2|} + \frac{m-t}{m}\right) & \text{otherwise} \end{array} \end{cases}
+0 & \text{if }m = 0\\
+\frac{1}{3}\left(\frac{m}{|s_1|} + \frac{m}{|s_2|} + \frac{m-t}{m}\right) & \text{otherwise} \end{array} \end{cases}
 \end{align}
 Where: 
 \vspace{-7mm} 
@@ -86,25 +89,18 @@ Where:
 \subsubsection{Examples}
 Give example of how addresses are cleansed, standardised, searched and results are calculated.
 
-\subsection{Sampling Period for ABT}
-As already stated in the thesis, predictive models are built using historical data. It must be stated that past performance can be useful predictor of default it does not guarantee that future predictions of the model will be accurate or reliable. A training dataset is built to build a predictive model, customers are observed at two different points in time \citep{martens_credit_2010}, these are called the \textit{observation point and prediction point/"default observation point"} (cite). The time period between these two points is referred to the \textit{outcome window}. This can vary based on business objectives and requirements, industry standard in \subjectname\ dictates that this usually 12 months. \\\\
+\subsection{Visa Debit Transactional Data}
+\subsubsection{Discretionary Non-Discretionary Categorisation}
 
-Reason/Arguments for shorter/longer periods may need to be added here \\
+\subsection{CSO Data Provided by Census 2011 Ireland}
+\subsubsection{Employment Data}
+\subsubsection{Occupation}
+\subsubsection{Education}
 
-\subsection{Class Label Definition ABT}
-For customer to be defined as defaulted is dependant on what the objective of that predictive model is and the requirements of the financial institution \citep{mcnab_principles_2000}. The Basel II definition (paragraph 452) which is widely used by financial institutions and \subjectname\ considers a default to have taken place when either or both of the following criteria are met:
-\vspace{-3mm} 
-\begin{itemize}
-	\item The bank/financial institution considers that the obligor is unlikely to pay its credit obligations to the banking group in full, without recourse by the bank to actions such as realising security (if held).
-	\item The obligor is past due more than 90 days on any material credit obligation to the banking group. Overdrafts will be considered as being past due once the customer has breached an advised limit or been advised of a limit smaller than current outstandings.
-\end{itemize} 
-
-There are two well known approaches to class label definition that financial institutions can choose according to \cite{anderson_credit_2007}: (\textit{i}) a \textit{current status} label definition which classifies a customer to have defaulted or not at the end of the outcome window; or option (\textit{ii}) a \textit{worst status} label definition which classifies whether the customer has defaulted or not throughout the outcome window. It is \subjectname\'s industry standard to use the \textit{worst status} option. This agrees with \citep{basel_international_2006}, that customers 90 days worst status covering a one-year period is considered the standard definition for customers that have defaulted. 
-
+\subsection{Arrears Ratio for \subjectname\ Personal Customers}
 
 \subsection{Generating the ABTs}
 We now have a reference list that allows us to apply a rank to all achievable loan application events prior to completion. A method is required to join this reference list with our csv (comma seperated value) log files resulting from the MapReduce job. 
-
 
 %Fine from here
 \subsection{Software Used}\label{softwareUsed}
@@ -122,6 +118,4 @@ Several evaluation techniques will be applied to quantify the usefulness of all 
 
 \section{Conclusions}\label{desConc}
 This chapter has discussed the processes required to carry out data mining techniques on non-relational web log data. The required data transformations have been discussed as well as the implemented methods for feature generation.
-
-
 
