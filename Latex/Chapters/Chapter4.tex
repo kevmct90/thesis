@@ -1,6 +1,6 @@
 % Chapter Template
 
-\chapter{Implementation / results evaluation} % Main chapter title
+\chapter{Experiment Implementation and Evaluation} % Main chapter title
 
 \label{Chapter4} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
@@ -16,33 +16,27 @@ This chapter will present the implementation of experiments performed in the att
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\section{Baseline Benchmarks}
+\section{Baseline Benchmarks in \subjectname\ }
 When building predictive models, it is useful to have a benchmark with which to form a basis for model comparison that is not simply the \textit{no information rate}. The model will ultimately be deployed for decision making in real time so models that are overly complex will need to compensate for additional complexity with substantial up-lift in accuracy. 
 
 
-\section{Feature Reduction}
+\section{Feature Selection}
 With respect to creating a model that could be utilised in real time, reduction of dimensionality is of key importance. Generating all of the 400 metrics used in the initial model based on on-going session activity would be very complex to implement in practice. A feature selection process was implemented at this point to reduce the complexity of the dataset. 
+\subsection{Correlation}
+\subsection{Stepwise Analysis}
 
+\section{Binning / Coarse Classification}
 
-\section{Comparing Models Built on Reduced Feature Sample}
-The next iteration of model building involved re-training and validating the models on two reductions in the feature set, firstly by using all 115 features found relevant by the weighted average entropy metric (MEAN), and then by using the top 40 as detailed in table.
+\section{Addressing Imbalance}
+\subsection{Undersampling}
+\subsection{Oversampling}
 
+\section{Comparing Results of Various Experiments}
 
-\section{Modelling In-Application Behaviour}
-The models so far have been trained on user behaviour recorded from both pre-application and in-application activity. From a deployment point of view it is preferable that a model require as few inputs as possible especially in the context of being able to generate an ABT in real-time. 
+\section{Model Selection/Validation}
 
+\section{Interpretation of Results}
 
-\section{Membership Functions}
-In the literature review, the idea of fuzzy set notation for binary class labels was explored. Many of the eager learning models trained so far have shown little worthwhile improvement above the benchmark.
+\section{Evaluation of Experiments}
 
-
-\section{Model Validation}
-Test
-
-
-\section{(Alternative Analysis) Visualising the Case Base}
-Drop-off prediction is only possible where there are clear interpretable signals inherent in the logs that capture a difference in behaviour between a user destined to complete and a user about to exit the process. So far, statistical methodologies have been implemented to mine for those click patterns. 
-
-
-\section{Interpretation of results and experiment overview}
-This chapter has presented details of the iterative process involved in generating the predictive models. At each step an appraisal was made as to what knowledge was garnered from the previous versions, with new ideas spawning from aspects of the implementation of one model, leading to new approaches being pursued in others. 
+\section{Conclusion}
