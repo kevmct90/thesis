@@ -57,15 +57,15 @@ Locations for this research will be found using \subjectname's customer addresse
 \subsubsection{Levenshtein Distance}
 Mathematically, the Levenshtein distance between two strings \textit{a}, \textit{b} (of length \text{\textbar}a\text{\textbar} and \text{\textbar}b\text{\textbar} respectively) is given by lev$_{a,b}$ (\text{\textbar}a\text{\textbar},\text{\textbar}b\text{\textbar}) where
 \begin{align}
-lev_{a,b}(i,j) = 
-\begin{cases}
-\max(i,j) & \text{ if} \min(i,j)=0, \\
-\min \begin{cases}
-\operatorname{lev}_{a,b}(i-1,j) + 1 \\
-\operatorname{lev}_{a,b}(i,j-1) + 1 \\
-\operatorname{lev}_{a,b}(i-1,j-1) + 1_{(a_i \neq b_j)}
-\end{cases} & \text{ otherwise.}
-\end{cases}
+	lev_{a,b}(i,j) = 
+	\begin{cases}
+		\max(i,j) & \text{ if} \min(i,j)=0, \\
+		\min \begin{cases}
+			\operatorname{lev}_{a,b}(i-1,j) + 1 \\
+			\operatorname{lev}_{a,b}(i,j-1) + 1 \\
+			\operatorname{lev}_{a,b}(i-1,j-1) + 1_{(a_i \neq b_j)}
+		\end{cases} & \text{ otherwise.}
+	\end{cases}
 \end{align}
 where $1_{(a_i \neq b_j)}$ is the indicator function equal to $0$ when $a_i = b_j$ and equal to 1 otherwise, and $\operatorname{lev}_{a,b}(i,j)$ is the distance between the first $i$ characters of $a$ and the first $j$ characters of $b$.
 
@@ -74,10 +74,10 @@ where $1_{(a_i \neq b_j)}$ is the indicator function equal to $0$ when $a_i = b_
 The Jaro distance $d_j$ of two given strings $s_1$ and $s_2$ is
 
 \begin{align}
-d_j =\begin{cases}
-\begin{array}{l l}
-0 & \text{if }m = 0\\
-\frac{1}{3}\left(\frac{m}{|s_1|} + \frac{m}{|s_2|} + \frac{m-t}{m}\right) & \text{otherwise} \end{array} \end{cases}
+	d_j =\begin{cases}
+		\begin{array}{l l}
+			0 & \text{if }m = 0\\
+			\frac{1}{3}\left(\frac{m}{|s_1|} + \frac{m}{|s_2|} + \frac{m-t}{m}\right) & \text{otherwise} \end{array} \end{cases}
 \end{align}
 Where: 
 \vspace{-7mm} 
@@ -92,12 +92,58 @@ Give example of how addresses are cleansed, standardised, searched and results a
 \subsection{Visa Debit Transactional Data}
 \subsubsection{Discretionary Non-Discretionary Categorisation}
 
+\begin{table}[H]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|l|p{3cm}|p{4cm}|l|}
+		\hline
+		\textbf{MCC Category} & \textbf{Parent}          & \textbf{Child}                 & \textbf{Spend / Live} \\ \hline
+		2.2                   & Bills \& Utilities       & Cable/Satellite TV \& Internet & Spend                 \\ \hline
+		2.7                   & Bills \& Utilities       & Gas/Electricity/Energy         & Live                  \\ \hline
+		3.1                   & Leisure \& Entertainment & Cinema \& Theatre              & Spend                 \\ \hline
+		4.1                   & Shopping                 & Grocercies                     & Live                  \\ \hline
+		4.4                   & Shopping                 & Clothing \& Accessories        & Spend                 \\ \hline
+		5.2                   & Health \& Personal Care  & Doctor                         & Live                  \\ \hline
+		5.6                   & Health \& Personal Care  & Hair \& Beauty                 & Spend                 \\ \hline
+		6.2                   & Household/Home           & Household Maintenance          & Live                  \\ \hline
+		6.5                   & Household/Home           & Computers \& Technology        & Spend                 \\ \hline
+\end{tabular}
+\caption{Spend Live Categorisation }
+\end{table}
+
 \subsection{CSO Data Provided by Census 2011 Ireland}
+
+\begin{table}[H]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|l|l|p{10cm}|}
+		\hline
+		\textbf{Feature} & \textbf{Data Type} & \textbf{Description}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \hline
+		ED\_ID           & Categorical        & There are 3,440 Electoral Divisions (EDs) which are the smallest legally defined administrative areas in Ireland.                                                                                                                                                                                                                                                                                                                                                                             \\ \hline
+		LA\_ID           & Categorical        & In census reports the country is divided into 29 counties/administrative counties and the five Cities which represent the local authority areas. Outside Dublin there are 26 administrative counties (North Tipperary and South Tipperary each ranks as a separate county for administrative purposes) and four Cities, i.e. Cork, Limerick, Waterford and Galway. In Dublin the four local authority areas are identified separately, i.e. Dublin City and the three administrative counties of Dun Laoghaire-Rathdown, Fingal and South Dublin. \\ \hline
+	\end{tabular}
+	\caption{Electoral Division and Local Authority Details }
+\end{table}
+
+
 \subsubsection{Employment Data}
 \subsubsection{Occupation}
 \subsubsection{Education}
 
 \subsection{Arrears Ratio for \subjectname\ Personal Customers}
+\begin{table}[H]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|l|l|p{8cm}|}
+		\hline
+		\textbf{Feature} & \textbf{Data Type} & \textbf{Description}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \hline
+		ED\_Arrears\_Ratio          & Interval        & Percentage of personal customers in a ED to be in arrears.                                                                                                                                                                                                                                                                                                                                                                           \\ \hline
+		LA\_Arrears\_Ratio           & Interval        & Percentage of personal customers in a LA to be in arrears \\ \hline
+	\end{tabular}
+	\caption{Arrears Ratio for \subjectname\ Personal Customers }
+\end{table}
+
+
 
 \subsection{Generating the ABTs}
 We now have a reference list that allows us to apply a rank to all achievable loan application events prior to completion. A method is required to join this reference list with our csv (comma seperated value) log files resulting from the MapReduce job. 
@@ -118,4 +164,3 @@ Several evaluation techniques will be applied to quantify the usefulness of all 
 
 \section{Conclusions}\label{desConc}
 This chapter has discussed the processes required to carry out data mining techniques on non-relational web log data. The required data transformations have been discussed as well as the implemented methods for feature generation.
-
