@@ -107,9 +107,10 @@ Give example of how addresses are cleansed, standardised, searched and results a
 		5.6                   & Health \& Personal Care  & Hair \& Beauty                 & Spend                 \\ \hline
 		6.2                   & Household/Home           & Household Maintenance          & Live                  \\ \hline
 		6.5                   & Household/Home           & Computers \& Technology        & Spend                 \\ \hline
-\end{tabular}
-\caption{Spend Live Categorisation }
+	\end{tabular}
+	\caption{Spend Live Categorisation }
 \end{table}
+
 
 
 \subsubsection{Percentage Change}
@@ -199,7 +200,29 @@ A question I wanted to address was there was areas with higher concentrations of
 	\caption{Arrears Ratio for \subjectname\ Personal Customers }
 \end{table}
 
-
+\begin{table}[H]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|l|p{3.5cm}|p{4cm}|l|}
+		\hline
+		\textbf{Product Summary Description} & \textbf{Product Detailed Description} \\ \hline
+		Branch Advances     & Fixed Loans \\ \hline
+		Branch Advances     & Matrix Loans \\ \hline
+		Branch Advances     & Other Loans \\ \hline
+		Branch Advances     & Premium Business Rate \\ \hline
+		Branch Advances     & Prime Loans \\ \hline
+		Branch Advances     & Staff Credit Flex \\ \hline
+		Branch Advances		& Suspense Interest \\ \hline
+		Home Loan           & Buy to Let \\ \hline
+		Home Loan           & Commercial Mortgages \\ \hline
+		Home Loan           & Home Loan \\ \hline
+		Home Loan           & Staff Homeflex \\ \hline
+		Home Loan           & Standard Mortgages \\ \hline	
+		Home Loan           & Surplus Builder \\ \hline		
+		Home Loan           & Tracker Mortgages \\ \hline		
+	\end{tabular}
+	\caption{Lending Product Classification }
+\end{table}
 
 \subsection{Generating the ABTs}
 We now have a reference list that allows us to apply a rank to all achievable loan application events prior to completion. A method is required to join this reference list with our csv (comma seperated value) log files resulting from the MapReduce job. 
