@@ -10,18 +10,56 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 \section{Introduction}
-This chapter will present the implementation of experiments performed in the attempt to predict drop-offs from the loan application process on \subjectname's internet banking website. The predictive capacity of the standard aggregate summaries of click patterns will be discussed as well as evaluating the usefulness of the ordinal rank encoding applied to events in the loan application process.
+This chapter describes the experiment set-up and methodology for this project to predict if SME customers will go into arrears. The predictive capability of many macro location-based features will be discussed, examined and evaluated.
 
+There is relatively limited literature to support the location-based features chosen in this thesis, decisions are largely made due to anecdotal evidence and subject matter experts knowledge. To address this issue, empirical analysis of these features will be completed where one set of results will cascade new results and inspire further analysis. 
+
+To understand if the location-based features in this analysis are useful, an initial model will be used as a baseline model from which we will look to improve iteratively. The features from this model will be derived from a historic scorecard used in \subjectname.  
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\section{Baseline Benchmarks in \subjectname\ }
-When building predictive models, it is useful to have a benchmark with which to form a basis for model comparison that is not simply the \textit{no information rate}. The model will ultimately be deployed for decision making in real time so models that are overly complex will need to compensate for additional complexity with substantial up-lift in accuracy. 
+\section{Experiment Set-up}
+This section will detail high level experimental information. In Fig. \ref{fig:experiment_setup} below SME accounts/customers are selected at the \textit{observation point}, June 2014. These accounts are not in default at the point. Information prior to the observation point will be used for modelling to predict if someone is likely to go into default, this can be termed the \textit{performance window}.
+
+Data from each individual customers/accounts performance will be taken from data in the performance window time period, which will be combined with macro location-based data prior to the observation point also. This data will be aggregated and structured into features for an ABT. The aim will be that these features will be able to distinguish what customers/accounts are likely to default on there repayment in the next 12 months. 
+
+\begin{figure}[h!]
+	\includegraphics[width=0.8\textwidth,center]{experiment_setup}
+	\caption[Experiment Performance Window and Outcome Window]
+	{Experiment Performance Window and Outcome Window}
+	\label{fig:experiment_setup}
+\end{figure}
+
+Previous, Section \ref{classLabelDef} described that there were two methods used to define if a customer was in default or not: (i) the \textit{worst status} label definition method; and (ii) the \textit{current status} label method approach. As mentioned previously, for the purpose of this experiment we will be using the industry standard worst status method
+
+\section{Baseline Benchmark in \subjectname\ }
+A model will be built as a baseline benchmark to compare the results of the models run in the experiments. The baseline model will actually be two models, based on a historic scorecards in \subjectname. One model will be based of features from a scorecard for customers who have been delinquent in the past and the other for customers who have not been in delinquent in the past. The customers will be modelled with these features first and results will be recorded. As part of the experiment Geo-location features will be added to be modelled, with the aim that these features will statistically significant for predicting SME arrears. 
+
+As mentioned before at the observation point, June 2014 SME accounts were selected that were not in default. These accounts are the basis for this experiment with a total a population size of is 27,082. 
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l p{5cm} r}
+		\hline
+		\textbf{Scorecard} & \textbf{Status After Outcome Window June 2015} & \textbf{\# SME Accounts} \\
+		\hline
+		Previous Delinquency          & In Default        & 728 \\
+		Previous Delinquency          & Not in Default        & 2,198 \\ 
+		No Previous Delinquency          & In Default        & 651 \\ 
+		No Previous Delinquency          & Not In Default        & 23,505 \\
+	\end{tabular}
+	\caption{Base Model Account Detail}
+\end{table}
+
+The industry model of choice for credit scoring is logistic regression so that will be used here for building the base line model also. The two segmented models are are ran separately, and are then combined to give an overall accuracy of the predictive model. 
 
 
 \section{Feature Selection}
 With respect to creating a model that could be utilised in real time, reduction of dimensionality is of key importance. Generating all of the 400 metrics used in the initial model based on on-going session activity would be very complex to implement in practice. A feature selection process was implemented at this point to reduce the complexity of the dataset. 
+
+
 \subsection{Correlation}
 \subsection{Stepwise Analysis}
 
