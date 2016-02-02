@@ -107,7 +107,35 @@ Compared using k-NN versus association rules as an approach to personalising rec
 %	SECTION 9
 %----------------------------------------------------------------------------------------
 \section{Model Evaluation Methods}\label{modelEval}
+
+\url{http://www.saedsayad.com/model_evaluation_c.htm}
+
+
 When calculating a measure of model accuracy there are some considerations to be made to increase the likelihood of the model making accurate predictions on unseen data. If we build a model using the full historical dataset available and subsequently test the accuracy of the model against the same dataset then we are in danger of generating a model that is over-fitted to the training set and the accuracy observed from the subsequent test may be biased (i.e. optimistic of the accuracy of the model).
+
+\subsubsection{Confusion Matrix}
+Confusion Matrix is used to evaluating a model where you have divided the output into distinct or discrete categories. A confusion matrix can be reconstructed for any point on the ROC curve. The confusion matrix illustrate how many correct and incorrect predictions are made by the predictive model compared to the target value. 
+
+"ROBBED" \textit{The matrix can be a $N \times N$, where $N$ is the number of target classes/groups. Performance of such models is commonly evaluated using the data in the matrix.}
+
+\begin{table}[]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{Confusion Matrix}} & \multicolumn{2}{c|}{Target}                                                                                                           & \multirow{2}{*}{}                   \\ \cline{3-4}
+		\multicolumn{2}{|c|}{}                                  & Positive                                                          & Negative                                                          &                                     \\ \hline
+		\multirow{2}{*}{Model}            & Positive            & $a$                                                                 & $b$                                                                 & Positive Predictive Value $= a/(a+b)$  \\ \cline{2-5}
+		& Negative            & $c$                                                                 & $d$                                                                 & Negative Predictive Value $= d/(c+d)$ \\ \hline
+		\multicolumn{2}{|c|}{}                                  & \begin{tabular}[c]{@{}c@{}}Sensitivity\\ $=$\\ $a/(a+c)$\end{tabular} & \begin{tabular}[c]{@{}c@{}}Specificity\\ $=$\\ $d/(b+d)$\end{tabular} & Accuracy $= (a+d)/(a+b+c+d)$          \\ \hline
+	\end{tabular}
+\end{table}
+
+
+\subsubsection{Lift Chart}
+"Robbed"
+The
 
 %----------------------------------------------------------------------------------------
 %	SECTION 5

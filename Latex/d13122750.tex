@@ -17,7 +17,7 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 \documentclass[11pt, oneside]{Thesis} % The default font size and one-sided printing (no margin offsets)
-\graphicspath{{Pictures/}{Pictures/balancedcorrelationcharts/}{Pictures/unbalancedcorrelationcharts/}} % Specifies the directory where pictures are stored
+\graphicspath{{Pictures/}{Pictures/balancedcorrelationcharts/}{Pictures/unbalancedcorrelationcharts/}{Pictures//}} % Specifies the directory where pictures are stored
 \usepackage{mathtools}
 \usepackage{natbib}
 \usepackage{float}
@@ -31,6 +31,9 @@
 \usepackage{graphicx}
 \usepackage{algorithm}% http://ctan.org/pkg/algorithm
 \usepackage{algpseudocode}% http://ctan.org/pkg/algorithmicx
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{colortbl}
 \captionsetup[subfigure]{labelfont=rm}
  % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
 \setcitestyle{authoryear}
@@ -206,6 +209,9 @@ I would like to thank my supervisor, \supname , for all the help she has provide
 \textbf{CRAN} & The \textbf{C}omprehensive \textbf{R} \textbf{A}chive \textbf{N}etwork\\
 \textbf{R} & The \textbf{R} Project for Statistical Computing\\
 \textbf{SAS} & \textbf{S}tatistical \textbf{A}nalysis \textbf{S}ystem\\
+\textbf{ROC} & \textbf{R}eceiver \textbf{O}perating \textbf{C}haracteristic \\
+
+\\
 
 \textbf{ABT} & \textbf{A}nalytics \textbf{B}ase \textbf{T}able \\
 \textbf{AJAX} & \textbf{A}synchronous \textbf{J}avascript \textbf{A}nd \textbf{X}ML \\
