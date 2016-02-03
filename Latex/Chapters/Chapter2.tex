@@ -118,24 +118,39 @@ Confusion Matrix is used to evaluating a model where you have divided the output
 
 "ROBBED" \textit{The matrix can be a $N \times N$, where $N$ is the number of target classes/groups. Performance of such models is commonly evaluated using the data in the matrix.}
 
-\begin{table}[]
-	\centering
-	\caption{My caption}
-	\label{my-label}
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\multicolumn{2}{|c|}{\multirow{2}{*}{Confusion Matrix}} & \multicolumn{2}{c|}{Target}                                                                                                           & \multirow{2}{*}{}                   \\ \cline{3-4}
-		\multicolumn{2}{|c|}{}                                  & Positive                                                          & Negative                                                          &                                     \\ \hline
-		\multirow{2}{*}{Model}            & Positive            & $a$                                                                 & $b$                                                                 & Positive Predictive Value $= a/(a+b)$  \\ \cline{2-5}
-		& Negative            & $c$                                                                 & $d$                                                                 & Negative Predictive Value $= d/(c+d)$ \\ \hline
-		\multicolumn{2}{|c|}{}                                  & \begin{tabular}[c]{@{}c@{}}Sensitivity\\ $=$\\ $a/(a+c)$\end{tabular} & \begin{tabular}[c]{@{}c@{}}Specificity\\ $=$\\ $d/(b+d)$\end{tabular} & Accuracy $= (a+d)/(a+b+c+d)$          \\ \hline
-	\end{tabular}
-\end{table}
+\begin{figure}[H]
+	\includegraphics[width=0.8\textwidth,center]{Confusion_Matrix}
+	\caption[Confusion Matrix]
+	{Confusion Matrix}
+	\label{fig:ConfusionMatrix}
+\end{figure}
+
+\begin{itemize}
+	\item \textbf{Accuracy:} the proportion  of the total number of predictions that were correct.
+	\item \textbf{Precision} or \textbf{Positive Predictive Value:} the proportion of positive cases that were correctly identified.
+	\item \textbf{Negative Predictive Value:} the proportion of negative cases that were correctly identified.
+	\item \textbf{Sensitivity} or \textbf{Recall:} the proportion of actual positive cases which are correctly identified.
+	\item \textbf{Specificity:} the proportion of actual negative cases which are correctly identified.
+\end{itemize}
+
+
+\begin{figure}[H]
+	\includegraphics[width=0.8\textwidth,center]{Confusion_Matrix_Example}
+	\caption[Confusion Matrix Example]
+	{Confusion Matrix Example}
+	\label{fig:ConfusionMatrixExample}
+\end{figure}
+
 
 
 \subsubsection{Lift Chart}
-"Robbed"
-The
+"Robbed" The
+
+\subsubsection{ROC Chart \& AUC}
+
+
+\subsubsection{Gini Coefficient}
+Also known as Gini index or gini ratio
 
 %----------------------------------------------------------------------------------------
 %	SECTION 5
