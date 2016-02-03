@@ -118,12 +118,16 @@ Confusion Matrix is used to evaluating a model where you have divided the output
 
 "ROBBED" \textit{The matrix can be a $N \times N$, where $N$ is the number of target classes/groups. Performance of such models is commonly evaluated using the data in the matrix.}
 
+\textit{In binary classification, often a quality of a model is calculated by the term Accuracy. Before the accuracy can be measured, one need to calculate the true positive (TP) and true negative rate(TN). True positive calculate the number of positive prediction provided that the actual value is positive. True negative calculate the number of negative prediction provided that the actual value is negative.}
+
 \begin{figure}[H]
 	\includegraphics[width=0.8\textwidth,center]{Confusion_Matrix}
 	\caption[Confusion Matrix]
 	{Confusion Matrix}
 	\label{fig:ConfusionMatrix}
 \end{figure}
+
+\textit{The term of positive and negative in above paragraph is a common term for binary classification (2 class prediction). The value 1 and 0 also can be used. For example, in email, some email can be cateorized as not a spam and some others can be categorized as a spam. Not a spam is clasified as True or 1, while a spam is classified as 0 or negative.}
 
 \begin{itemize}
 	\item \textbf{Accuracy:} the proportion  of the total number of predictions that were correct.
@@ -142,15 +146,48 @@ Confusion Matrix is used to evaluating a model where you have divided the output
 \end{figure}
 
 
-
 \subsubsection{Lift Chart}
 "Robbed" The
 
-\subsubsection{ROC Chart \& AUC}
+\subsubsection{K-S Chart}
+\url{http://www.saedsayad.com/model_evaluation_c.htm}
+\textit{K-S or Kolmogorov-Smirnov chart measures performance of classification models. More accurately, K-S is a measure of the degree of separation between the positive and negative distributions. The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models the K-S will fall between 0 and 100, and that the higher the value the better the model is at separating the positive from negative cases.}
 
+\subsubsection{ROC Chart, AUC and Gini Coefficient}
+\url{https://staesthetic.wordpress.com/2014/04/14/gini-roc-auc-and-accuracy/}
 
-\subsubsection{Gini Coefficient}
-Also known as Gini index or gini ratio
+\textit{ROC is a graphical plot which illustrates the performance of a binary classifier system as its discrimination threshold is varied (from wikipedia), while AUC is the Area Under ROC Curve. The last term, gini, is calculated by 1-2*AUC, in another source, it was calculated by 2*AUC-1.}
+
+\textit{Another method to measure the performance in binary classification beside accurary is the ROC method. Different from accuracy, ROC analysis uses the true positive rate (TPR) and false positive rate (FPR). TPR is the proportion positive correctly classified (TP/P) and  False positive rate (FPR) is calculated by 1-TNR (TN/N). The ROC region plot TPR against FPR.}
+
+\textit{Above is the example of ROC plot for classification model. Please remember that the ROC is used to evaluate the performance of a classifier model. The first thing to do before creating the ROC plot is of course creating the model. The iterative method of ROC development can be summarized into three step. Step 1 is developing the model that can produce a score for each individual data with based on all its variable. The score usually is the probability that this data will be postitive. Step 2 involves the data and its subsequent score is then ordered, usually in descending order (score). The last step is plot the ROC.}
+
+\textit{When observing the plot, if the plot follow the straight line from lower left to upper right, then the classifier cannot differentiate between negative and postive data. If the curve tend to bend to the upper left, then the model can differentiate the actual positive and negative data. On the contrary, if the curve tend to bend to lower right, then it just completely wrong prediction model.
+To performance of a classifier model is then calculated by calculating the Area Under Curve (AUC). The AUC score will be between 0 and 1. The higher the value of AUC, usually the better the model is.}
+
+\begin{figure}[H]
+	\includegraphics[width=0.8\textwidth,center]{ROC}
+	\caption[ROC]
+	{ROC}
+	\label{fig:ROC}
+\end{figure}
+
+\textit{Area under ROC curve is often used as a measure of quality of the classification models. A random classifier has an area under the curve of 0.5, while AUC for a perfect classifier is equal to 1. In practice, most of the classification models have an AUC between 0.5 and 1.}
+
+\textit{An area under the ROC curve of 0.8, for example, means that a randomly selected case from the group with the target equals 1 has a score larger than that for a randomly chosen case from the group with the target equals 0 in 80\% of the time. When a classifier cannot distinguish between the two groups, the area will be equal to 0.5 (the ROC curve will coincide with the diagonal). When there is a perfect separation of the two groups, i.e., no overlapping of the distributions, the area under the ROC curve reaches to 1 (the ROC curve will reach the upper left corner of the plot).}
+
+\textit{AUC
+AUC stands for “area under curve”, and as it's name implies, it refers to the amount of area under the ROC curve, which theoretically is a value between 0 and 1. As I explained, the worst possible curve in practice is a diagonal line, hence the AUC should never be lower than 0.5 (for large data sets) .
+Using the AUC metric you can quickly compare multiple learning models. Remember that the ROC curves of two models usually don’t cross each other, hence when comparing two models, the one with a higher AUC will be the better one regardless of the threshold setting. Compared to the statistical measures of accuracy, precision, recall and F1 score, AUC’s independence of threshold makes it uniquely qualified for model selection.
+On the other hand, unlike accuracy, precision, recall and F1 score, AUC does not tell us what performance to expect from the model for a given threshold setting, nor can it be used to determine the optimal value for threshold. In that regard it doesn't take away the need for the other statistical measures.
+Putting it together
+The ROC plot and the AUC are very useful for comparing and selecting the best machine learning model for a given data set. A model with an AUC score near 1, and where the ROC curve comes close to the upper left corner, has a very good performance. A model with a score near 0.5 will have a curve near to the diagonal and its performance is hardly better than a random predictor.
+After selecting the best model, the next step will be to configure the threshold and the other model configuration settings. The Precision/Recall plot can be helpful for understanding the trade-off between false positives and false negatives. In the third article we’ll look closer at the threshold value and learn now to calculate the optimal value for it.
+}
+
+Gini Coefficient is also known as Gini index or gini ratio. It is very closely related to the calculation of AUC and can be computed by\\
+$Gini = 2 \times AUC - 1$
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 5
