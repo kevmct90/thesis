@@ -146,8 +146,33 @@ Confusion Matrix is used to evaluating a model where you have divided the output
 \end{figure}
 
 
-\subsubsection{Lift Chart}
+\subsubsection{Gain \& Lift}
 "Robbed" The
+\textit{Gain or lift is a measure of the effectiveness of a classification model calculated as the ratio between the results obtained with and without the model. Gain and lift charts are visual aids for evaluating performance of classification models. However, in contrast to the confusion matrix that evaluates models on the whole population gain or lift chart evaluates model performance in a portion of the population. }
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.90\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=4cm]{gains_ratio_process}\caption{Process}\label{fig:gains_ratio_process}
+	\end{subfigure} 
+	\medskip
+	\newline
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth]{gains}
+		\caption{Gain Chart}\label{fig:gains}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth]{lift}
+		\caption{Lift Chart}\label{fig:lift}
+	\end{subfigure}
+	\caption{Gain \& Lift Work-flow}
+	\label{fig:unbal_corr_analysis}
+\end{figure}
+
+\textit{The lift chart shows how much more likely we are to receive positive responses than if we contact a random sample of customers. For example, by contacting only 10\% of customers based on the predictive model we will reach 3 times as many respondents, as if we use no model.}
 
 \subsubsection{K-S Chart}
 \url{http://www.saedsayad.com/model_evaluation_c.htm}
