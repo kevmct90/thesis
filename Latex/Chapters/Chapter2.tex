@@ -208,6 +208,22 @@ To performance of a classifier model is then calculated by calculating the Area 
 
 \textit{Area under ROC curve is often used as a measure of quality of the classification models. A random classifier has an area under the curve of 0.5, while AUC for a perfect classifier is equal to 1. In practice, most of the classification models have an AUC between 0.5 and 1.}
 
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth]{Confusion_Matrix_threshold_065}
+		\caption{Threshold $=.65$}\label{fig:Threshold65}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.025cm]{Confusion_Matrix_threshold_050}
+		\caption{Threshold $=.50$}\label{fig:Threshold50}
+	\end{subfigure}
+	\caption{Confusion Matrix Threshold comparison}
+	\label{fig:matric_compare}
+\end{figure}
+
 \textit{An area under the ROC curve of 0.8, for example, means that a randomly selected case from the group with the target equals 1 has a score larger than that for a randomly chosen case from the group with the target equals 0 in 80\% of the time. When a classifier cannot distinguish between the two groups, the area will be equal to 0.5 (the ROC curve will coincide with the diagonal). When there is a perfect separation of the two groups, i.e., no overlapping of the distributions, the area under the ROC curve reaches to 1 (the ROC curve will reach the upper left corner of the plot).}
 
 \textit{AUC
