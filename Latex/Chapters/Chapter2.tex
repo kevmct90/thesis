@@ -114,6 +114,7 @@ Compared using k-NN versus association rules as an approach to personalising rec
 When calculating a measure of model accuracy there are some considerations to be made to increase the likelihood of the model making accurate predictions on unseen data. If we build a model using the full historical dataset available and subsequently test the accuracy of the model against the same dataset then we are in danger of generating a model that is over-fitted to the training set and the accuracy observed from the subsequent test may be biased (i.e. optimistic of the accuracy of the model).
 
 \subsubsection{Confusion Matrix}
+
 Confusion Matrix is used to evaluating a model where you have divided the output into distinct or discrete categories. A confusion matrix can be reconstructed for any point on the ROC curve. The confusion matrix illustrate how many correct and incorrect predictions are made by the predictive model compared to the target value. 
 
 "ROBBED" \textit{The matrix can be a $N \times N$, where $N$ is the number of target classes/groups. Performance of such models is commonly evaluated using the data in the matrix.}
@@ -137,13 +138,23 @@ Confusion Matrix is used to evaluating a model where you have divided the output
 	\item \textbf{Specificity:} the proportion of actual negative cases which are correctly identified.
 \end{itemize}
 
-
 \begin{figure}[H]
 	\includegraphics[width=0.8\textwidth,center]{Confusion_Matrix_Example}
 	\caption[Confusion Matrix Example]
 	{Confusion Matrix Example}
 	\label{fig:ConfusionMatrixExample}
 \end{figure}
+
+\textit{if u r talking about cut point for probability value, u can decide it by 2 ways .
+	1. Calculate the misclassification cost for different probability values, and choose the one which will have least misclassification cost. .
+	2 . Draw lift chart for probability values, number of accurately classified events per decile (In precise Results of KS test). Point where u get highest distance is the cut of point for your probability	
+}
+
+\begin{equation}
+	Misclassification\ Rate = \frac{FP + FN}{TN + FP + FN + TP} = 1 - Accuracy
+\end{equation}
+
+
 
 
 \subsubsection{Gain \& Lift}
@@ -189,6 +200,11 @@ Confusion Matrix is used to evaluating a model where you have divided the output
 
 \subsubsection{ROC Chart, AUC and Gini Coefficient}
 \url{https://staesthetic.wordpress.com/2014/04/14/gini-roc-auc-and-accuracy/}
+
+(1) AUC doesn't give total probability 
+(2) AUC is used to compare the performance of your model on the training and test datasets. if there is significant drop from the AUC on training to that on test, it shows it doesn't generalise well.
+
+\textit{ROC curves are used to evaluate and compare the performance of diagnostic tests; they can also be used to evaluate model fit. An ROC curve is just a plot of the proportion of true positives (events predicted to be events) versus the proportion of false positives (nonevents predicted to be events).}
 
 \textit{ROC is a graphical plot which illustrates the performance of a binary classifier system as its discrimination threshold is varied (from wikipedia), while AUC is the Area Under ROC Curve. The last term, gini, is calculated by 1-2*AUC, in another source, it was calculated by 2*AUC-1.}
 

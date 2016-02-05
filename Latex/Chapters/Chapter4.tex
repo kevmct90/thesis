@@ -41,7 +41,7 @@ As mentioned before at the observation point, June 2014 SME accounts were select
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{l p{5cm} r}
+	\begin{tabular}{l| p{5cm}| r}
 		\hline
 		\textbf{Scorecard} & \textbf{Status After Outcome Window June 2015} & \textbf{\# SME Accounts} \\
 		\hline
@@ -49,12 +49,49 @@ As mentioned before at the observation point, June 2014 SME accounts were select
 		Previous Delinquency          & Not in Default        & 2,198 \\ 
 		No Previous Delinquency          & In Default        & 651 \\ 
 		No Previous Delinquency          & Not In Default        & 23,505 \\
+		\hline
 	\end{tabular}
 	\caption{Base Model Account Detail}
 \end{table}
 
 The industry model of choice for credit scoring is logistic regression so that will be used here for building the base line model also. The two segmented models are are ran separately, and are then combined to give an overall accuracy of the predictive model. 
 
+
+\subsubsection{Previous Delinquency}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{r | c | l}
+		\hline
+		\textbf{Model} & \textbf{AUC} & \textbf{GINI} \\
+		\hline
+		Dmine Regression          & 0.663        & 0.325 \\
+		Gradient Boosting          & 0.651        & 0.302 \\
+		Regression Backstep          & 0.644        & 0.288 \\
+		Regression Forward Step          & 0.644        & 0.288 \\
+		Regression Both          & 0.644        & 0.288 \\
+		Regression          & 0.643        & 0.286 \\
+		SVM Radial Basis Function          & 0.612        & 0.283 \\
+		Regression Polynomial          & 0.612        & 0.224 \\
+		Decision Tree          & 0.611        & 0.222 \\
+		SVM Sigmoid          & 0.525        & 0.049 \\
+		\hline
+	\end{tabular}
+	\caption{Base Model Account Detail}
+\end{table}
+
+
+\begin{figure}[h!]
+	\includegraphics[width=0.9\textwidth,center]{Delinq_Model_ROC}
+	\caption{Previous Delinquency Model ROC Chart}
+	\label{fig:Delinq_Model_ROC}
+\end{figure}
+
+\begin{figure}[h!]
+	\includegraphics[width=0.9\textwidth,center]{Delinq_Model_Lift}
+	\caption{Previous Delinquency Model Lift Chart}
+	\label{fig:Delinq_Model_Lift}
+\end{figure}
 
 \section{Feature Selection}
 With respect to creating a model that could be utilised in real time, reduction of dimensionality is of key importance. Generating all of the 400 metrics used in the initial model based on on-going session activity would be very complex to implement in practice. A feature selection process was implemented at this point to reduce the complexity of the dataset. 
