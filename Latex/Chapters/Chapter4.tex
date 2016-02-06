@@ -116,8 +116,33 @@ Choosing an appropriate cut-off or threshold.
 	\caption{No Previous Delinquency Base Model Details}
 \end{table}
 
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Default_50}\caption{Default = 0.50}\label{fig:Base_Delinq_Model_CutOff_Analysis_Default_50}
+	\end{subfigure}  ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_54}
+		\caption{Min Misclassification Rate = 0.54}\label{fig:Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_54}
+	\end{subfigure} 
+	\medskip \newline
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_KS_24}
+		\caption{K-S = 0.24}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_KS_24}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_33}
+		\caption{EPER = 0.33}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_33}
+	\end{subfigure}
+	\caption{Delinquency Model Cut-off Analysis Confusion Matrix}
+	\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_33}
+\end{figure}
 
-\begin{table}[]
+\begin{table}[H]
 	\centering
 	\resizebox{\textwidth}{!}
 	{
@@ -132,7 +157,7 @@ Choosing an appropriate cut-off or threshold.
 		\hline  
 	\end{tabular}
 	}
-	\caption{My caption}
+	\caption{Delinquency Model Cut-off Results }
 	\label{my-label}
 \end{table}
 
@@ -169,6 +194,49 @@ Choosing an appropriate cut-off or threshold.
 	\caption{No Previous Delinquency Model Lift Chart}
 	\label{fig:NonDelinq_Model_Lift}
 \end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{ 0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Default_50}\caption{Grouped Features}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Default_50}
+	\end{subfigure}  ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_17}
+		\caption{Min Misclassification = 0.17}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_17}
+	\end{subfigure} 
+	\medskip \newline
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_026}
+		\caption{K-S = 0.026}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_026}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_09}
+		\caption{EPER = 0.09}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_09}
+	\end{subfigure}
+	\caption{Non Delinquency Model Cut-Off Analysis}
+	\label{fig:balanced_corr_analysis}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r}
+			\hline
+		\textbf{Cutoff} & \textbf{Method} & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} \\ \hline
+			0.50            & Default         & 0           & 0           & 196         & 7051        & 0.973             & NA                 & 0.973        & 0               & 1                    & 0.027       \\
+			0.17            & Min MR          & 0           & 15          & 196         & 7036        & 0.971             & 0                  & 0.973        & 0               & 0.998                & 0.029       \\
+			0.03            & K-S Statistic   & 103         & 1686        & 93          & 5365        & 0.755             & 0.058              & 0.983        & 0.526           & 0.761                & 0.245       \\
+			0.09            & EPER            & 18          & 159         & 178         & 6901        & 0.955             & 0.107              & 0.975        & 0.092           & 0.979                & 0.045 \\ \hline  
+		\end{tabular}
+		}
+	\caption{Non Delinquency Model Cut-off Analysis Confusion Matrix}
+	\label{my-label}
+\end{table}
 
 \section{Feature Selection}
 With respect to creating a model that could be utilised in real time, reduction of dimensionality is of key importance. Generating all of the 400 metrics used in the initial model based on on-going session activity would be very complex to implement in practice. A feature selection process was implemented at this point to reduce the complexity of the dataset. 
