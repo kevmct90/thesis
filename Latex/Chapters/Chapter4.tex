@@ -93,9 +93,44 @@ The industry model of choice for credit scoring is logistic regression so that w
 	\label{fig:Delinq_Model_Lift}
 \end{figure}
 
+
+\subsubsection{No Previous Delinquency}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{r | c | l}
+		\hline
+		\textbf{Model} & \textbf{AUC} & \textbf{GINI} \\
+		\hline
+		Dmine Regression          & 0.663        & 0.325 \\
+		Gradient Boosting          & 0.651        & 0.302 \\
+		Regression Backstep          & 0.644        & 0.288 \\
+		Regression Forward Step          & 0.644        & 0.288 \\
+		Regression Both          & 0.644        & 0.288 \\
+		Regression          & 0.643        & 0.286 \\
+		SVM Radial Basis Function          & 0.612        & 0.283 \\
+		Regression Polynomial          & 0.612        & 0.224 \\
+		Decision Tree          & 0.611        & 0.222 \\
+		SVM Sigmoid          & 0.525        & 0.049 \\
+		\hline
+	\end{tabular}
+	\caption{Base Model Account Detail}
+\end{table}
+
+\begin{figure}[h!]
+	\includegraphics[width=0.9\textwidth,center]{NonDelinq_Model_ROC}
+	\caption{No Previous Delinquency Model ROC Chart}
+	\label{fig:NonDelinq_Model_ROC}
+\end{figure}
+
+\begin{figure}[h!]
+	\includegraphics[width=0.9\textwidth,center]{NonDelinq_Model_Lift}
+	\caption{No Previous Delinquency Model Lift Chart}
+	\label{fig:NonDelinq_Model_Lift}
+\end{figure}
+
 \section{Feature Selection}
 With respect to creating a model that could be utilised in real time, reduction of dimensionality is of key importance. Generating all of the 400 metrics used in the initial model based on on-going session activity would be very complex to implement in practice. A feature selection process was implemented at this point to reduce the complexity of the dataset. 
-
 
 \subsection{Correlation Analysis}
 
