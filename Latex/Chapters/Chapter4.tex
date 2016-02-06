@@ -93,29 +93,6 @@ The industry model of choice for credit scoring is logistic regression so that w
 	\label{fig:Delinq_Model_Lift}
 \end{figure}
 
-
-Choosing an appropriate cut-off or threshold.
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{r | c | l}
-		\hline
-		\textbf{Cut-off} & \textbf{Method} & \textbf{TP} \\
-		\hline
-		Regression Backstep          & 0.694        & 0.387 \\
-		Regression Forward Step          & 0.694        & 0.387 \\
-		Regression Both          & 0.694        & 0.387 \\
-		Regression          & 0.693        & 0.387 \\
-		Gradient Boosting          & 0.667        & 0.334 \\
-		Dmine Regression          & 0.649        & 0.299 \\
-		SVM Radial Basis Function          & 0.549        & 0.099 \\
-		Decision Tree          & 0.50        & 0 \\
-		SVM Sigmoid         & 0.458        & -0.084 \\
-		\hline
-	\end{tabular}
-	\caption{No Previous Delinquency Base Model Details}
-\end{table}
-
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{0.45\textwidth}
