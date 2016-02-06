@@ -1,10 +1,10 @@
 % Chapter Template
 
-\chapter{Experiment Implementation and Evaluation} % Main chapter title
+\chapter{Experiment Implementation \& Evaluation} % Main chapter title
 
 \label{Chapter4} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-\lhead{Chapter 4. \emph{Implementation / results evaluation}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+\lhead{Chapter 4. \emph{Experiment Implementation \& Evaluation}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -81,18 +81,40 @@ The industry model of choice for credit scoring is logistic regression so that w
 \end{table}
 
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{Delinq_Model_ROC}
 	\caption{Previous Delinquency Model ROC Chart}
 	\label{fig:Delinq_Model_ROC}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{Delinq_Model_Lift}
 	\caption{Previous Delinquency Model Lift Chart}
 	\label{fig:Delinq_Model_Lift}
 \end{figure}
 
+
+Choosing an appropriate cut-off or threshold.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{r | c | l}
+		\hline
+		\textbf{Cut-off/Threshold } & \textbf{Method} & \textbf{TP} \\
+		\hline
+		Regression Backstep          & 0.694        & 0.387 \\
+		Regression Forward Step          & 0.694        & 0.387 \\
+		Regression Both          & 0.694        & 0.387 \\
+		Regression          & 0.693        & 0.387 \\
+		Gradient Boosting          & 0.667        & 0.334 \\
+		Dmine Regression          & 0.649        & 0.299 \\
+		SVM Radial Basis Function          & 0.549        & 0.099 \\
+		Decision Tree          & 0.50        & 0 \\
+		SVM Sigmoid         & 0.458        & -0.084 \\
+		\hline
+	\end{tabular}
+	\caption{No Previous Delinquency Base Model Details}
+\end{table}
 
 \subsubsection{No Previous Delinquency}
 
@@ -104,11 +126,8 @@ The industry model of choice for credit scoring is logistic regression so that w
 		\hline
 		Regression Backstep          & 0.694        & 0.387 \\
 		Regression Forward Step          & 0.694        & 0.387 \\
-		\hline
 		Regression Both          & 0.694        & 0.387 \\
-				\hline
 		Regression          & 0.693        & 0.387 \\
-				\hline
 		Gradient Boosting          & 0.667        & 0.334 \\
 		Dmine Regression          & 0.649        & 0.299 \\
 		SVM Radial Basis Function          & 0.549        & 0.099 \\
