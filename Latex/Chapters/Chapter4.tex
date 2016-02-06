@@ -77,7 +77,7 @@ The industry model of choice for credit scoring is logistic regression so that w
 		SVM Sigmoid          & 0.525        & 0.049 \\
 		\hline
 	\end{tabular}
-	\caption{Base Model Account Detail}
+	\caption{Previous Delinquency Base Model Details}
 \end{table}
 
 
@@ -102,28 +102,30 @@ The industry model of choice for credit scoring is logistic regression so that w
 		\hline
 		\textbf{Model} & \textbf{AUC} & \textbf{GINI} \\
 		\hline
-		Dmine Regression          & 0.663        & 0.325 \\
-		Gradient Boosting          & 0.651        & 0.302 \\
-		Regression Backstep          & 0.644        & 0.288 \\
-		Regression Forward Step          & 0.644        & 0.288 \\
-		Regression Both          & 0.644        & 0.288 \\
-		Regression          & 0.643        & 0.286 \\
-		SVM Radial Basis Function          & 0.612        & 0.283 \\
-		Regression Polynomial          & 0.612        & 0.224 \\
-		Decision Tree          & 0.611        & 0.222 \\
-		SVM Sigmoid          & 0.525        & 0.049 \\
+		Regression Backstep          & 0.694        & 0.387 \\
+		Regression Forward Step          & 0.694        & 0.387 \\
+		\hline
+		Regression Both          & 0.694        & 0.387 \\
+				\hline
+		Regression          & 0.693        & 0.387 \\
+				\hline
+		Gradient Boosting          & 0.667        & 0.334 \\
+		Dmine Regression          & 0.649        & 0.299 \\
+		SVM Radial Basis Function          & 0.549        & 0.099 \\
+		Decision Tree          & 0.50        & 0 \\
+		SVM Sigmoid         & 0.458        & -0.084 \\
 		\hline
 	\end{tabular}
-	\caption{Base Model Account Detail}
+	\caption{No Previous Delinquency Base Model Details}
 \end{table}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{NonDelinq_Model_ROC}
 	\caption{No Previous Delinquency Model ROC Chart}
 	\label{fig:NonDelinq_Model_ROC}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{NonDelinq_Model_Lift}
 	\caption{No Previous Delinquency Model Lift Chart}
 	\label{fig:NonDelinq_Model_Lift}
