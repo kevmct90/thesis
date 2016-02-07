@@ -40,8 +40,10 @@ As mentioned before at the observation point, June 2014 SME accounts were select
 
 
 \begin{table}[H]
-	\centering
-	\begin{tabular}{l| p{5cm}| r}
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+	\begin{tabular}{l| l| r}
 		\hline
 		\textbf{Model} & \textbf{Status After Outcome Window June 2015} & \textbf{\# SME Accounts} \\
 		\hline
@@ -52,6 +54,7 @@ As mentioned before at the observation point, June 2014 SME accounts were select
 		\hline
 		\textbf{Total}         &         & \textbf{27,082} \\ \hline
 	\end{tabular}
+	}
 	\caption{Base Model Account Detail}
 \end{table}
 
@@ -62,22 +65,25 @@ The industry model of choice for credit scoring is logistic regression so that w
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{r | c | l}
+	\resizebox{\textwidth}{!}
+	{
+	\begin{tabular}{l | r | r| r |r| r|r}
 		\hline
-		\textbf{Model} & \textbf{AUC} & \textbf{GINI} \\
+		\textbf{Model} & \textbf{Train AUC} & \textbf{Train GINI} & \textbf{Valid AUC} & \textbf{Valid GINI}& \textbf{Test AUC} & \textbf{Test GINI}\\
 		\hline
-		Dmine Regression          & 0.663        & 0.325 \\
-		Gradient Boosting          & 0.651        & 0.302 \\
-		Regression Backstep          & 0.644        & 0.288 \\
-		Regression Forward Step          & 0.644        & 0.288 \\
-		Regression Both          & 0.644        & 0.288 \\
-		Regression          & 0.643        & 0.286 \\
-		SVM Radial Basis Function          & 0.612        & 0.283 \\
-		Regression Polynomial          & 0.612        & 0.224 \\
-		Decision Tree          & 0.611        & 0.222 \\
-		SVM Sigmoid          & 0.525        & 0.049 \\
+		\cellcolor{green!25}Gradient Boosting & \cellcolor{green!25}0.655 & \cellcolor{green!25}0.331 & \cellcolor{green!25}0.681 & \cellcolor{green!25}0.362 & \cellcolor{green!25}0.62 & \cellcolor{green!25}0.239 \\
+		Dmine Regression & 0.678 & 0.356 & 0.674 & 0.349 & 0.61 & 0.22 \\
+		Regression & 0.65 & 0.301 & 0.672 & 0.344 & 0.597 & 0.195 \\
+		Regression Backstep & 0.643 & 0.287 & 0.661 & 0.323 & 0.6 & 0.2 \\
+		Regression Forward Step & 0.643 & 0.287 & 0.661 & 0.323 & 0.6 & 0.2 \\
+		Regression Both & 0.643 & 0.287 & 0.661 & 0.323 & 0.6 & 0.2 \\
+		SVM Polynomial & 0.654 & 0.308 & 0.62 & 0.241 & 0.593 & 0.186 \\
+		SVM Radial Basis Fn & 0.812 & 0.624 & 0.6 & 0.2 & 0.619 & 0.238 \\
+		Decision Tree & 0.626 & 0.252 & 0.588 & 0.176 & 0.55 & 0.1 \\
+		SVM Sigmoid & 0.492 & -0.016 & 0.511 & 0.241 & 0.023 & -0.018 \\
 		\hline
 	\end{tabular}
+	}
 	\caption{Previous Delinquency Base Model Details}
 \end{table}
 
@@ -131,10 +137,10 @@ The industry model of choice for credit scoring is logistic regression so that w
 		0.5              & Default (Valid)       & 8           & 1           & 138         & 439         & 0.763             & 0.889              & 0.761        & 0.055           & 0.998                & 0.237       \\
 		0.5              & Default (Test)        & 9           & 1           & 137         & 439         & 0.765             & 0.900              & 0.762        & 0.062           & 0.998                & 0.235       \\ \hline
 		0.48             & Min MR (Train)        & 34          & 13          & 402         & 1305        & 0.763             & 0.723              & 0.764        & 0.078           & 0.990                & 0.237       \\
-		0.48             & Min MR (Valid)        & 9           & 5           & 137         & 435         & 0.758             & 0.643              & 0.760        & 0.062           & 0.989                & 0.242       \\
+		0.48             & Min MR (Valid)        & 9           & 5           & 137         & 435         & \cellcolor{yellow!25}0.758             & \cellcolor{yellow!25}0.643              & 0.760        & 0.062           & \cellcolor{yellow!25}0.989                & \cellcolor{yellow!25}0.242       \\
 		0.48             & Min MR (Test)         & 10          & 2           & 136         & 438         & 0.765             & 0.833              & 0.763        & 0.068           & 0.995                & 0.235       \\ \hline
 		0.25             & K-S (Train) & 244         & 405         & 192         & 913         & 0.660             & 0.376              & 0.826        & 0.560           & 0.693                & 0.340       \\
-		0.25             & K-S (Valid) & 80          & 130         & 66          & 310         & 0.666             & 0.381              & 0.824        & 0.548           & 0.705                & 0.334       \\
+		0.25             & K-S (Valid) & 80          & 130         & 66          & 310         & 0.666             & 0.381              & \cellcolor{yellow!25}0.824        & \cellcolor{yellow!25}0.548           & 0.705                & 0.334       \\
 		0.25             & K-S (Test)  & 74          & 145         & 72          & 295         & 0.630             & 0.338              & 0.804        & 0.507           & 0.670                & 0.370       \\ \hline
 		0.29             & EPER (Train)          & 178         & 246         & 258         & 1072        & 0.713             & 0.420              & 0.806        & 0.408           & 0.813                & 0.287       \\
 		0.29             & EPER (Valid)          & 54          & 81          & 92          & 359         & 0.705             & 0.400              & 0.796        & 0.370           & 0.816                & 0.295       \\
@@ -149,23 +155,28 @@ The industry model of choice for credit scoring is logistic regression so that w
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{r | c | l}
-		\hline
-		\textbf{Model} & \textbf{AUC} & \textbf{GINI} \\
-		\hline
-		Regression Backstep          & 0.694        & 0.387 \\
-		Regression Forward Step          & 0.694        & 0.387 \\
-		Regression Both          & 0.694        & 0.387 \\
-		Regression          & 0.693        & 0.387 \\
-		Gradient Boosting          & 0.667        & 0.334 \\
-		Dmine Regression          & 0.649        & 0.299 \\
-		SVM Radial Basis Function          & 0.549        & 0.099 \\
-		Decision Tree          & 0.50        & 0 \\
-		SVM Sigmoid         & 0.458        & -0.084 \\
-		\hline
-	\end{tabular}
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r| r |r| r|r}
+			\hline
+			\textbf{Model} & \textbf{Train AUC} & \textbf{Train GINI} & \textbf{Valid AUC} & \textbf{Valid GINI}& \textbf{Test AUC} & \textbf{Test GINI}\\
+			\hline
+			 \cellcolor{green!25}Regression & \cellcolor{green!25}0.695 & \cellcolor{green!25}0.389 & \cellcolor{green!25}0.71 & \cellcolor{green!25}0.419 & \cellcolor{green!25}0.677 & \cellcolor{green!25}0.354 \\
+			Regression Backstep & 0.691 & 0.381 & 0.706 & 0.413 & 0.678 & 0.357 \\
+			Regression Forward Step & 0.691 & 0.381 & 0.706 & 0.413 & 0.678 & 0.357 \\
+			Regression Both & 0.691 & 0.381 & 0.706 & 0.413 & 0.678 & 0.357 \\
+			Gradient Boosting & 0.653 & 0.305 & 0.683 & 0.366 & 0.688 & 0.336 \\
+			Dmine Regression & 0.649 & 0.297 & 0.67 & 0.34 & 0.628 & 0.255 \\
+			SVM Radial Fn & 0.591 & 0.182 & 0.558 & 0.116 & 0.512 & 0.025 \\
+			SVM Sigmoid & 0.605 & 0.21 & 0.549 & 0.099 & 0.588 & 0.176 \\
+			Decision Tree & 0.5 & 0 & 0.5 & 0 & 0.5 & 0 \\
+			SVM Polynomial & 0.477 & -0.046 & 0.497 & -0.007 & 0.487 & -0.026 \\
+			\hline
+		\end{tabular}
+	}
 	\caption{No Previous Delinquency Base Model Details}
 \end{table}
+
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{Base_NonDelinq_Model_ROC}
@@ -209,23 +220,6 @@ The industry model of choice for credit scoring is logistic regression so that w
 	\centering
 	\resizebox{\textwidth}{!}
 	{
-		\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r}
-			\hline
-		\textbf{Cutoff} & \textbf{Method} & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} \\ \hline
-			0.50            & Default         & 0           & 0           & 196         & 7051        & 0.973             & NA                 & 0.973        & 0               & 1                    & 0.027       \\
-			0.17            & Min MR          & 0           & 15          & 196         & 7036        & 0.971             & 0                  & 0.973        & 0               & 0.998                & 0.029       \\
-			0.03            & K-S Statistic   & 103         & 1686        & 93          & 5365        & 0.755             & 0.058              & 0.983        & 0.526           & 0.761                & 0.245       \\
-			0.09            & EPER            & 18          & 159         & 178         & 6901        & 0.955             & 0.107              & 0.975        & 0.092           & 0.979                & 0.045 \\ \hline  
-		\end{tabular}
-		}
-	\caption{Non Delinquency Model Cut-off Analysis Confusion Matrix}
-	\label{my-label}
-\end{table}
-
-\begin{table}[]
-	\centering
-	\resizebox{\textwidth}{!}
-	{
 	\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r}
 		\hline
 		\textbf{Cut-off} & \textbf{Method} & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} \\ \hline
@@ -233,13 +227,13 @@ The industry model of choice for credit scoring is logistic regression so that w
 		0.5             & Default (Valid) & 0           & 0           & 130         & 4701        & 0.973             & NA                 & 0.973        & 0.000           & 1.000                & 0.027       \\
 		0.5             & Default (Test)  & 0           & 0           & 130         & 4701        & 0.973             & NA          & 0.973        & 0.000           & 1.000                & 0.027       \\ \hline
 		0.21            & Min MR (Train)  & 1           & 17          & 390         & 14086       & 0.972             & 0.056              & 0.973        & 0.003           & 0.999                & 0.028       \\
-		0.21            & Min MR (Valid)  & 0           & 6           & 130         & 4695        & 0.972             & 0.000              & 0.973        & 0.000           & 0.999                & 0.028       \\
+		0.21            & Min MR (Valid)  & 0           & 6           & 130         & 4695        & \cellcolor{yellow!25}0.972             & 0.000              & 0.973        & 0.000           & \cellcolor{yellow!25}0.999                & \cellcolor{yellow!25}0.028       \\
 		0.21            & Min MR (Test)   & 1           & 4           & 129         & 4697        & 0.972             & 0.200              & 0.973        & 0.008           & 0.999                & 0.028       \\ \hline
 		0.03            & K-S (Train)     & 208         & 3583        & 183         & 10520       & 0.740             & 0.055              & 0.983        & 0.532           & 0.746                & 0.260       \\
-		0.03            & K-S (Test)      & 70          & 1182        & 60          & 3519        & 0.743             & 0.056              & 0.983        & 0.538           & 0.749                & 0.257       \\
-		0.03            & K-S (Valid)     & 67          & 1199        & 63          & 3502        & 0.739             & 0.053              & 0.982        & 0.515           & 0.745                & 0.261       \\ \hline
+		0.03            & K-S (Valid)      & 70          & 1182        & 60          & 3519        & 0.743             & 0.056              & \cellcolor{yellow!25}0.983        & \cellcolor{yellow!25}0.538           & 0.749                & 0.257       \\
+		0.03            & K-S (Test)     & 67          & 1199        & 63          & 3502        & 0.739             & 0.053              & 0.982        & 0.515           & 0.745                & 0.261       \\ \hline
 		0.08            & EPER (Train)    & 65          & 464         & 326         & 13639       & 0.945             & 0.123              & 0.977        & 0.166           & 0.967                & 0.055       \\
-		0.08            & EPER (Valid)    & 19          & 167         & 111         & 4534        & 0.942             & 0.102              & 0.976        & 0.146           & 0.964                & 0.058       \\
+		0.08            & EPER (Valid)    & 19          & 167         & 111         & 4534        & 0.942             & \cellcolor{yellow!25}0.102              & 0.976        & 0.146           & 0.964                & 0.058       \\
 		0.08            & EPER (Test)     & 21          & 173         & 109         & 4528        & 0.942             & 0.108              & 0.976        & 0.162           & 0.963                & 0.058     \\ \hline
 	\end{tabular}
 	}
