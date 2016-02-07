@@ -43,13 +43,14 @@ As mentioned before at the observation point, June 2014 SME accounts were select
 	\centering
 	\begin{tabular}{l| p{5cm}| r}
 		\hline
-		\textbf{Scorecard} & \textbf{Status After Outcome Window June 2015} & \textbf{\# SME Accounts} \\
+		\textbf{Model} & \textbf{Status After Outcome Window June 2015} & \textbf{\# SME Accounts} \\
 		\hline
 		Previous Delinquency          & In Default        & 728 \\
-		Previous Delinquency          & Not in Default        & 2,198 \\ 
+		Previous Delinquency          & Not in Default        & 2,198 \\ \hline
 		No Previous Delinquency          & In Default        & 651 \\ 
 		No Previous Delinquency          & Not In Default        & 23,505 \\
 		\hline
+		\textbf{Total}         &         & \textbf{27,082} \\ \hline
 	\end{tabular}
 	\caption{Base Model Account Detail}
 \end{table}
@@ -82,13 +83,13 @@ The industry model of choice for credit scoring is logistic regression so that w
 
 
 \begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{Delinq_Model_ROC}
+	\includegraphics[width=0.9\textwidth,center]{Base_Delinq_Model_ROC}
 	\caption{Previous Delinquency Model ROC Chart}
 	\label{fig:Delinq_Model_ROC}
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{Delinq_Model_Lift}
+	\includegraphics[width=0.9\textwidth,center]{Base_Delinq_Model_Lift}
 	\caption{Previous Delinquency Model Lift Chart}
 	\label{fig:Delinq_Model_Lift}
 \end{figure}
@@ -97,23 +98,23 @@ The industry model of choice for credit scoring is logistic regression so that w
 	\centering
 	\begin{subfigure}[b]{0.45\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Default_50}\caption{Default = 0.50}\label{fig:Base_Delinq_Model_CutOff_Analysis_Default_50}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Default_50}\caption{Default Cut-Off = 0.50}\label{fig:Base_Delinq_Model_CutOff_Analysis_Default_50}
 	\end{subfigure}  ~\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_54}
-		\caption{Min Misclassification Rate = 0.54}\label{fig:Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_54}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_48}
+		\caption{Min Misclassification Rate Cut-Off = 0.48}\label{fig:Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_54}
 	\end{subfigure} 
 	\medskip \newline
 	\begin{subfigure}[b]{0.45\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_KS_24}
-		\caption{K-S = 0.24}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_KS_24}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_KS_25}
+		\caption{K-S Cut-Off = 0.25}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_KS_25}
 	\end{subfigure} ~\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_33}
-		\caption{EPER = 0.33}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_33}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_29}
+		\caption{EPER Cut-Off = 0.29}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_29}
 	\end{subfigure}
 	\caption{Delinquency Model Cut-off Analysis Confusion Matrix}
 	\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_33}
@@ -125,13 +126,19 @@ The industry model of choice for credit scoring is logistic regression so that w
 	{
 	\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r}
 		\hline
-		\textbf{Cut-off} & \textbf{Method}                                                         & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR}
-		 \\ \hline
-		0.50            & Default                                                                 & 33          & 25          & 185         & 635         & 0.760             & 0.568              & 0.774        & 0.151           & 0.962                & 0.239       \\
-		0.54            & Min MR                                                                  & 27          & 18          & 191         & 645         & 0.763             & 0.600              & 0.772        & 0.124           & 0.974                & 0.237       \\
-		0.24            & K-S Statistic                                                           & 133         & 242         & 85          & 418         & 0.628             & 0.355              & 0.831        & 0.610           & 0.633                & 0.372       \\
-		0.33            & EPER & 78          & 133         & 140         & 527         & 0.689             & 0.370              & 0.790        & 0.358           & 0.798                & 0.310    \\
-		\hline  
+		\textbf{Cut-off} & \textbf{Method}       & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} \\ \hline
+		0.5              & Default (Train)       & 23          & 6           & 413         & 1312        & 0.761             & 0.793              & 0.761        & 0.053           & 0.995                & 0.239       \\
+		0.5              & Default (Valid)       & 8           & 1           & 138         & 439         & 0.763             & 0.889              & 0.761        & 0.055           & 0.998                & 0.237       \\
+		0.5              & Default (Test)        & 9           & 1           & 137         & 439         & 0.765             & 0.900              & 0.762        & 0.062           & 0.998                & 0.235       \\ \hline
+		0.48             & Min MR (Train)        & 34          & 13          & 402         & 1305        & 0.763             & 0.723              & 0.764        & 0.078           & 0.990                & 0.237       \\
+		0.48             & Min MR (Valid)        & 9           & 5           & 137         & 435         & 0.758             & 0.643              & 0.760        & 0.062           & 0.989                & 0.242       \\
+		0.48             & Min MR (Test)         & 10          & 2           & 136         & 438         & 0.765             & 0.833              & 0.763        & 0.068           & 0.995                & 0.235       \\ \hline
+		0.25             & K-S (Train) & 244         & 405         & 192         & 913         & 0.660             & 0.376              & 0.826        & 0.560           & 0.693                & 0.340       \\
+		0.25             & K-S (Valid) & 80          & 130         & 66          & 310         & 0.666             & 0.381              & 0.824        & 0.548           & 0.705                & 0.334       \\
+		0.25             & K-S (Test)  & 74          & 145         & 72          & 295         & 0.630             & 0.338              & 0.804        & 0.507           & 0.670                & 0.370       \\ \hline
+		0.29             & EPER (Train)          & 178         & 246         & 258         & 1072        & 0.713             & 0.420              & 0.806        & 0.408           & 0.813                & 0.287       \\
+		0.29             & EPER (Valid)          & 54          & 81          & 92          & 359         & 0.705             & 0.400              & 0.796        & 0.370           & 0.816                & 0.295       \\
+		0.29             & EPER (Test)           & 50          & 87          & 96          & 353         & 0.688             & 0.365              & 0.786        & 0.342           & 0.802                & 0.312      \\ \hline
 	\end{tabular}
 	}
 	\caption{Delinquency Model Cut-off Results }
@@ -161,13 +168,13 @@ The industry model of choice for credit scoring is logistic regression so that w
 \end{table}
 
 \begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{NonDelinq_Model_ROC}
+	\includegraphics[width=0.9\textwidth,center]{Base_NonDelinq_Model_ROC}
 	\caption{No Previous Delinquency Model ROC Chart}
 	\label{fig:NonDelinq_Model_ROC}
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{NonDelinq_Model_Lift}
+	\includegraphics[width=0.9\textwidth,center]{Base_NonDelinq_Model_Lift}
 	\caption{No Previous Delinquency Model Lift Chart}
 	\label{fig:NonDelinq_Model_Lift}
 \end{figure}
@@ -176,23 +183,23 @@ The industry model of choice for credit scoring is logistic regression so that w
 	\centering
 	\begin{subfigure}[b]{ 0.45\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Default_50}\caption{Grouped Features}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Default_50}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Default_50}\caption{Default Cut-Off = 0.50}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Default_50}
 	\end{subfigure}  ~\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_17}
-		\caption{Min Misclassification = 0.17}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_17}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_21}
+		\caption{Min Misclassification Cut-Off= 0.21}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_17}
 	\end{subfigure} 
 	\medskip \newline
 	\begin{subfigure}[b]{0.45\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_026}
-		\caption{K-S = 0.026}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_026}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_0269}
+		\caption{K-S Cut-Off = 0.026}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_026}
 	\end{subfigure} ~\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_09}
-		\caption{EPER = 0.09}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_09}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_08}
+		\caption{EPER Cut-Off = 0.08}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_09}
 	\end{subfigure}
 	\caption{Non Delinquency Model Cut-Off Analysis}
 	\label{fig:balanced_corr_analysis}
@@ -212,6 +219,31 @@ The industry model of choice for credit scoring is logistic regression so that w
 		\end{tabular}
 		}
 	\caption{Non Delinquency Model Cut-off Analysis Confusion Matrix}
+	\label{my-label}
+\end{table}
+
+\begin{table}[]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+	\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r}
+		\hline
+		\textbf{Cut-off} & \textbf{Method} & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} \\ \hline
+		0.5             & Default (Train) & 0           & 0           & 391         & 14103       & 0.973             & NA                 & 0.973        & 0.000           & 1.000                & 0.027       \\
+		0.5             & Default (Valid) & 0           & 0           & 130         & 4701        & 0.973             & NA                 & 0.973        & 0.000           & 1.000                & 0.027       \\
+		0.5             & Default (Test)  & 0           & 0           & 130         & 4701        & 0.973             & NA          & 0.973        & 0.000           & 1.000                & 0.027       \\ \hline
+		0.21            & Min MR (Train)  & 1           & 17          & 390         & 14086       & 0.972             & 0.056              & 0.973        & 0.003           & 0.999                & 0.028       \\
+		0.21            & Min MR (Valid)  & 0           & 6           & 130         & 4695        & 0.972             & 0.000              & 0.973        & 0.000           & 0.999                & 0.028       \\
+		0.21            & Min MR (Test)   & 1           & 4           & 129         & 4697        & 0.972             & 0.200              & 0.973        & 0.008           & 0.999                & 0.028       \\ \hline
+		0.03            & K-S (Train)     & 208         & 3583        & 183         & 10520       & 0.740             & 0.055              & 0.983        & 0.532           & 0.746                & 0.260       \\
+		0.03            & K-S (Test)      & 70          & 1182        & 60          & 3519        & 0.743             & 0.056              & 0.983        & 0.538           & 0.749                & 0.257       \\
+		0.03            & K-S (Valid)     & 67          & 1199        & 63          & 3502        & 0.739             & 0.053              & 0.982        & 0.515           & 0.745                & 0.261       \\ \hline
+		0.08            & EPER (Train)    & 65          & 464         & 326         & 13639       & 0.945             & 0.123              & 0.977        & 0.166           & 0.967                & 0.055       \\
+		0.08            & EPER (Valid)    & 19          & 167         & 111         & 4534        & 0.942             & 0.102              & 0.976        & 0.146           & 0.964                & 0.058       \\
+		0.08            & EPER (Test)     & 21          & 173         & 109         & 4528        & 0.942             & 0.108              & 0.976        & 0.162           & 0.963                & 0.058     \\ \hline
+	\end{tabular}
+	}
+	\caption{My caption}
 	\label{my-label}
 \end{table}
 
