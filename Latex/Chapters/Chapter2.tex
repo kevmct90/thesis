@@ -43,7 +43,7 @@ For customer to be defined as defaulted is dependant on what the objective of th
 	\item The obligor is past due more than 90 days on any material credit obligation to the banking group. Overdrafts will be considered as being past due once the customer has breached an advised limit or been advised of a limit smaller than current outstandings.
 \end{itemize} 
 
-There are two well known approaches to class label definition that financial institutions can choose according to \cite{anderson_credit_2007}: (\textit{i}) a \textit{current status} label definition which classifies a customer to have defaulted or not at the end of the outcome window; or option (\textit{ii}) a \textit{worst status} label definition which classifies whether the customer has defaulted or not throughout the outcome window. It is \subjectname\'s industry standard to use the \textit{worst status} option. This agrees with Basel II \citep{basel_international_2006}, that customers 90 days worst status covering a one-year period is considered the standard definition for customers that have defaulted. 
+There are two well known approaches to class label definition that financial institutions can choose according to \cite{anderson_credit_2007}: (\textit{i}) a \textit{current status} label definition which classifies a customer to have defaulted or not at the end of the outcome window; or option (\textit{ii}) a \textit{worst status} label definition which classifies whether the customer has defaulted or not throughout the outcome window. It is \subjectname's industry standard to use the \textit{worst status} option. This agrees with Basel II \citep{basel_international_2006}, that customers 90 days worst status covering a one-year period is considered the standard definition for customers that have defaulted. 
 
 
 %----------------------------------------------------------------------------------------
@@ -164,6 +164,9 @@ A popular automatic cutoff selection method is to use the Event Precision Equal 
 }
 
 \textit{ You will have to decide on the cutoff based on the basis of your business objective, level of impact and the tradeoff between sensitivity, specificity and false positivity values. · You should select cutoff value such that you can improve sensitivity of the model by restricting the false positive rate to the lowest minimum value · You need to be very careful in selecting cut-off value because selecting a very low cut-off may give you a high True positive rate but that will increase the false positive rate as well, badly impacting your model performance. · You may even use table instead of graph to get better insight on the effect of the various probability cutoff.}
+
+
+\textit{Accuracy and No Information Rate comment on this here model evaluation}
 
 \subsubsection{Gain \& Lift}
 "Robbed" The

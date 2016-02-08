@@ -10,7 +10,7 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 \section{Introduction}
-This chapter describes the experiment set-up and methodology for this project to predict if SME customers will go into arrears. The predictive capability of many macro location-based features will be discussed, examined and evaluated.
+This chapter describes the experiment set-up and methodology for this project to predict if SME customers will go into arrears. The main theory being examined is that macro location based features/metrics can be indicative of SME's in the future going into arrears.  
 
 There is relatively limited literature to support the location-based features chosen in this thesis, decisions are largely made due to anecdotal evidence and subject matter experts knowledge. To address this issue, empirical analysis of these features will be completed where one set of results will cascade new results and inspire further analysis. 
 
@@ -20,7 +20,7 @@ To understand if the location-based features in this analysis are useful, an ini
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 \section{Experiment Set-up}
-This section will detail high level experimental information. In Fig. \ref{fig:experiment_setup} below SME accounts/customers are selected at the \textit{observation point}, June 2014. These accounts are not in default at the point. Information prior to the observation point will be used for modelling to predict if someone is likely to go into default, this can be termed the \textit{performance window}.
+This section will detail high level experimental information. In Fig. \ref{fig:experiment_setup} below SME accounts/customers are selected at the \textit{observation point}, June 2014. These accounts are not in default at this point in time. Information prior to the observation point will be used for modelling to predict if someone is likely to go into default, this can be termed the \textit{performance window}.
 
 Data from each individual customers/accounts performance will be taken from data in the performance window time period, which will be combined with macro location-based data prior to the observation point also. This data will be aggregated and structured into features for an ABT. The aim will be that these features will be able to distinguish what customers/accounts are likely to default on there repayment in the next 12 months. 
 
@@ -31,10 +31,14 @@ Data from each individual customers/accounts performance will be taken from data
 	\label{fig:experiment_setup}
 \end{figure}
 
-Previous, Section \ref{classLabelDef} described that there were two methods used to define if a customer was in default or not: (i) the \textit{worst status} label definition method; and (ii) the \textit{current status} label method approach. As mentioned previously, for the purpose of this experiment we will be using the industry standard worst status method
+Previous, Section \ref{classLabelDef} described that there were two methods used to define if a customer was in default or not: (i) the \textit{worst status} label definition method; and (ii) the \textit{current status} label method approach. As mentioned previously, for the purpose of this experiment we will be using the industry standard worst status method, this means if the customers is in 90+ days arrears at any stage in the outcome window they will be labelled as a bad customer or as one that has defaulted on their financial obligation. 
 
 \section{Baseline Benchmark in \subjectname\ }
-A model will be built as a baseline benchmark to compare the results of the models run in the experiments. The baseline model will actually be two models, based on a historic scorecards in \subjectname. One model will be based of features from a scorecard for customers who have been delinquent in the past and the other for customers who have not been in delinquent in the past. The customers will be modelled with these features first and results will be recorded. As part of the experiment Geo-location features will be added to be modelled, with the aim that these features will statistically significant for predicting SME arrears. 
+When building a predictive model, the first thing you are trying to do is build a model which results/predictions are better than the \textit{no information rate}. This means the accuracy of the model must be better than the no information rate, which is taken to be the biggest class percentage in the data to be modelled.
+
+For this research it would be redundant work/research to try and build a model that is better than the information rate as there are already models that exist in \subjectname\ for predicting arrears which can be leveraged. For this research the Risk team in \subjectname\ provided two feature sets that have used historically for predicting arrears \subjectname. They have segmented the data into two groups, \textit{Previous Delinquency} \& \textit{No Previous Delinquency}. After speaking with BE in the Risk function this was done because if a customer had been history of been delinquent this would become too dominant a feature in the model.
+
+So two models will be built as baseline benchmarks which will be compared to the results of the experiment. One model will be based on a feature set for customers who have been delinquent in the past and the other feature set for customers who have not been in delinquent in the past. The customers will be modelled with these features first and results will be recorded. As part of the experiment location based features will be added to be modelled, with the aim that these features will statistically significant for predicting SME arrears. 
 
 As mentioned before at the observation point, June 2014 SME accounts were selected that were not in default. These accounts are the basis for this experiment with a total a population size of is 27,082. 
 
@@ -45,24 +49,24 @@ As mentioned before at the observation point, June 2014 SME accounts were select
 	{
 	\begin{tabular}{l| l| r}
 		\hline
-		\textbf{Model} & \textbf{Status After Outcome Window June 2015} & \textbf{\# SME Accounts} \\
+		\textbf{Model} & \textbf{Status After Outcome Window June 2015} & \textbf{\# SME Customers} \\
 		\hline
 		Previous Delinquency          & In Default        & 728 \\
 		Previous Delinquency          & Not in Default        & 2,198 \\ \hline
 		No Previous Delinquency          & In Default        & 651 \\ 
 		No Previous Delinquency          & Not In Default        & 23,505 \\
 		\hline
-		\textbf{Total}         &         & \textbf{27,082} \\ \hline
+		\textbf{Total Customers}         &         & \textbf{27,082} \\ \hline
 	\end{tabular}
 	}
 	\caption{Base Model Account Detail}
 \end{table}
 
-The industry model of choice for credit scoring is logistic regression so that will be used here for building the base line model also. The two segmented models are are ran separately, and are then combined to give an overall accuracy of the predictive model. 
-
+As mentioned before the baseline model does not just need to be better than the no information rate but must to be representative of a model that could be deployed in \subjectname\ or any Financial Institution currently. As discussed in previous sections the financial institution model of choice is logistic regression, but for this research we will generate a baseline benchmark for other predictive models. These will all be generated using the exact same training, validation and test partitions in order to make a fair and valid comparison. 
 
 \subsubsection{Previous Delinquency}
 
+There are 11 features in the dataset to model customers who have been in default in the past. For security reasons the names and descriptions of these features could not be disclosed. The results for the baseline benchmarks models are as follows.
 \begin{table}[H]
 	\centering
 	\resizebox{\textwidth}{!}
@@ -84,21 +88,27 @@ The industry model of choice for credit scoring is logistic regression so that w
 		\hline
 	\end{tabular}
 	}
-	\caption{Previous Delinquency Base Model Details}
+	\caption{Previous Delinquency Base Benchmark Results}
+	\label{table:prevdelinqbase}
 \end{table}
 
+The model that outputted the best result as seen table \ref{table:prevdelinqbase} highlighted in green above  was the Gradient Boosting Model, this is based on the highest validation AUC = 0.681. We can see above table \ref{table:prevdelinqbase} and Fig. \ref{fig:Delinq_Model_ROC} below that the \textit{Gradient Boosting Model} generalises quite well across the training, validation and testing partitions.
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{Base_Delinq_Model_ROC}
-	\caption{Previous Delinquency Model ROC Chart}
+	\caption{Previous Delinquency Base Benchmark Model ROC Charts}
 	\label{fig:Delinq_Model_ROC}
 \end{figure}
 
+It can be observed that this is not the case for the \textit{SVM Radial Basis Fn} model where it appears to have completely \textit{over-fitted} the training partition with an AUC training = 0.812 which drops to 0.60 and 0.619 for the validation and testing partitions datasets respectively. Overall most of the models appears to be predictive and have generalised quite well, however there may be case for investigating and removing the \textit{SVM Radial Basis Fn, Decision Tree and SVM Sigmoid} as these appear to not be predictive, not generalised well or to have over-fitted the training data partition. 
+
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{Base_Delinq_Model_Lift}
-	\caption{Previous Delinquency Model Lift Chart}
+	\caption{Previous Delinquency Base Benchmark Model Lift Charts}
 	\label{fig:Delinq_Model_Lift}
 \end{figure}
+
+We can see above in Fig. \ref{fig:Delinq_Model_Lift} that the majority of the models are returning positive results in the unseen test chart. This is very encouraging, for example if we were to contact 10\% of customers that these models decided were going to go into default, you would contact over twice as many customers that would go into default than if you used no model at all. This is very important when deciding on a business strategy and is where BE becomes extremely important. 
 
 \begin{figure}[H]
 	\centering
@@ -126,6 +136,10 @@ The industry model of choice for credit scoring is logistic regression so that w
 	\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_33}
 \end{figure}
 
+As mentioned before knowing the business goal and aim can be very useful when trying to decide how you want to evaluate you model. The over usefulness and predictiveness of model can be got by combing the AUC with the ROC chart but sometimes this will not suffice. 
+
+In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_33} and Table \ref{table:DelinquencyModelCutoff} you can see the cut-off analysis for the best benchmark model \textit{Gradient Boosting}. As discussed in \ref{Chapter2} this analysis demonstrates that depending on your business goal you may want to maximise or minimise some performance measure over another.
+
 \begin{table}[H]
 	\centering
 	\resizebox{\textwidth}{!}
@@ -148,7 +162,7 @@ The industry model of choice for credit scoring is logistic regression so that w
 	\end{tabular}
 	}
 	\caption{Delinquency Model Cut-off Results }
-	\label{my-label}
+	\label{table:DelinquencyModelCutoff}
 \end{table}
 
 \subsubsection{No Previous Delinquency}
