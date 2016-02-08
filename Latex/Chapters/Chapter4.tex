@@ -409,16 +409,72 @@ A base model has been built using SAS, however for the feature selection process
 		Regression (Previous Delinq) Top 5 Features & 0.658 & 0.613 & 0.681  \\
 		Regression (Previous Delinq) Top 10 Features & 0.659 & 0.609 & 0.686  \\
 		 \cellcolor{green!25}Regression (Previous Delinq) Top 15 Features &  \cellcolor{green!25}0.665 &  \cellcolor{green!25}0.62 &  \cellcolor{green!25}0.690  \\
-		Regression (Previous Delinq) Top 20 Features & 0.679 & 0.611 & 0.688  \\
-		
+		Regression (Previous Delinq) Top 20 Features & 0.679 & 0.611 & 0.688  \\	
 		\hline
 	\end{tabular}
 	}
-	\caption{Feature Selection Baseline Benchmark Results}
+	\caption{Results based on features output from correlation analysis}
+	\label{table:featureselection_base_model}
+\end{table}
+
+\subsection{Information Gain, Gain Ratio \& Symmetrical Uncertainty}
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression (No Previous Delinq) Top 5 Features & 0.707 & 0.661 & 0.693  \\
+			\hline
+			
+			Regression (Previous Delinq) Top 5 Features &  0.664 &  0.597 &  0.678  \\
+			Regression (Previous Delinq) Top 10 Features &  0.664 &  0.596 &  0.675  \\
+			Regression (Previous Delinq) Top 15 Features &  0.670 &  0.597 &  0.692  \\
+			Regression (Previous Delinq) Top 20 Features &  0.675 &  0.593 &  0.681  \\		
+			\hline
+		\end{tabular}
+	}
+	\caption{Results based on features output from correlation analysis}
 	\label{table:featureselection_base_model}
 \end{table}
 
 \subsection{Stepwise Analysis}
+        \begin{table}[H]
+        	\footnotesize
+        	\begin{tabular}[t]{|p{3.2cm}|c|}
+        		\hline
+        		bla&1\\ \hline
+        		blubb&2 \\ \hline
+        		bla&1\\ \hline
+        		blubb&2 \\ \hline   
+        		bla&1\\ \hline
+        		blubb&2 \\ \hline   
+        	\end{tabular}
+        	\hfill
+        	\begin{tabular}[t]{|p{3.2cm}|c|}
+        		\hline
+        		bla&1\\ \hline
+        		blubb&2 \\ \hline
+        		bla&1\\ \hline
+        		blubb&2 \\ \hline   
+        		bla&1\\ \hline
+        		blubb&2 \\ \hline   
+        	\end{tabular}
+        	\hfill
+        	\begin{tabular}[t]{|p{3.2cm}|c|}
+        		\hline
+        		bla&1\\ \hline
+        		blubb&2 \\ \hline
+        		bla&1\\ \hline
+        		blubb&2 \\ \hline   
+        		bla&1\\ \hline
+        		blubb&2 \\ \hline   
+        	\end{tabular}
+        	\caption{99 most frequent hashtags in the data set.}
+        \end{table}
+
 
 \section{Binning / Coarse Classification}
 
