@@ -66,7 +66,7 @@ As mentioned before the baseline model does not just need to be better than the 
 
 \subsubsection{Previous Delinquency}
 
-There are 11 features in the dataset to model customers who have been in default in the past. For security reasons the names and descriptions of these features could not be disclosed. The results for the baseline benchmarks models are as follows.
+There are 11 features in the dataset to model customers who have been in default in the past. For security reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total customers to be be modelled in the Previous Delinquency model approximately 25\% of customers are in default at the end of outcome window. This default rate is just based on SME customers for this analysis and is not reflective of the enterprise default rate. The results for the baseline benchmarks models are as follows.
 \begin{table}[H]
 	\centering
 	\resizebox{\textwidth}{!}
@@ -78,6 +78,7 @@ There are 11 features in the dataset to model customers who have been in default
 		\cellcolor{green!25}Gradient Boosting & \cellcolor{green!25}0.655 & \cellcolor{green!25}0.331 & \cellcolor{green!25}0.681 & \cellcolor{green!25}0.362 & \cellcolor{green!25}0.62 & \cellcolor{green!25}0.239 \\
 		Dmine Regression & 0.678 & 0.356 & 0.674 & 0.349 & 0.61 & 0.22 \\
 		Regression & 0.65 & 0.301 & 0.672 & 0.344 & 0.597 & 0.195 \\
+		AutoNeural Network & 0.65 & 0.301 & 0.672 & 0.344 & 0.597 & 0.195 \\
 		Regression Backstep & 0.643 & 0.287 & 0.661 & 0.323 & 0.6 & 0.2 \\
 		Regression Forward Step & 0.643 & 0.287 & 0.661 & 0.323 & 0.6 & 0.2 \\
 		Regression Both & 0.643 & 0.287 & 0.661 & 0.323 & 0.6 & 0.2 \\
@@ -133,39 +134,43 @@ We can see above in Fig. \ref{fig:Delinq_Model_Lift} that the majority of the mo
 		\caption{EPER Cut-Off = 0.29}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_29}
 	\end{subfigure}
 	\caption{Delinquency Model Cut-off Analysis Confusion Matrix}
-	\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_33}
+	\label{fig:Base_Delinq_Model_CutOff_Analysis}
 \end{figure}
 
 As mentioned before knowing the business goal and aim can be very useful when trying to decide how you want to evaluate you model. The over usefulness and predictiveness of model can be got by combing the AUC with the ROC chart but sometimes this will not suffice. 
 
-In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_33} and Table \ref{table:DelinquencyModelCutoff} you can see the cut-off analysis for the best benchmark model \textit{Gradient Boosting}. As discussed in \ref{Chapter2} this analysis demonstrates that depending on your business goal you may want to maximise or minimise some performance measure over another.
+In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:DelinquencyModelCutoff} you can see the cut-off analysis for the best benchmark model \textit{Gradient Boosting}. As discussed in Chapter \ref{Chapter2} this analysis demonstrates that your business goal and objectives will dictate which performance metric you may want to maximise or minimise over another. 
 
 \begin{table}[H]
 	\centering
 	\resizebox{\textwidth}{!}
 	{
-	\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r}
+	\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r|r}
 		\hline
-		\textbf{Cut-off} & \textbf{Method}       & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} \\ \hline
-		0.5              & Default (Train)       & 23          & 6           & 413         & 1312        & 0.761             & 0.793              & 0.761        & 0.053           & 0.995                & 0.239       \\
-		0.5              & Default (Valid)       & 8           & 1           & 138         & 439         & 0.763             & 0.889              & 0.761        & 0.055           & 0.998                & 0.237       \\
-		0.5              & Default (Test)        & 9           & 1           & 137         & 439         & 0.765             & 0.900              & 0.762        & 0.062           & 0.998                & 0.235       \\ \hline
-		0.48             & Min MR (Train)        & 34          & 13          & 402         & 1305        & 0.763             & 0.723              & 0.764        & 0.078           & 0.990                & 0.237       \\
-		0.48             & Min MR (Valid)        & 9           & 5           & 137         & 435         & \cellcolor{yellow!25}0.758             & \cellcolor{yellow!25}0.643              & 0.760        & 0.062           & \cellcolor{yellow!25}0.989                & \cellcolor{yellow!25}0.242       \\
-		0.48             & Min MR (Test)         & 10          & 2           & 136         & 438         & 0.765             & 0.833              & 0.763        & 0.068           & 0.995                & 0.235       \\ \hline
-		0.25             & K-S (Train) & 244         & 405         & 192         & 913         & 0.660             & 0.376              & 0.826        & 0.560           & 0.693                & 0.340       \\
-		0.25             & K-S (Valid) & 80          & 130         & 66          & 310         & 0.666             & 0.381              & \cellcolor{yellow!25}0.824        & \cellcolor{yellow!25}0.548           & 0.705                & 0.334       \\
-		0.25             & K-S (Test)  & 74          & 145         & 72          & 295         & 0.630             & 0.338              & 0.804        & 0.507           & 0.670                & 0.370       \\ \hline
-		0.29             & EPER (Train)          & 178         & 246         & 258         & 1072        & 0.713             & 0.420              & 0.806        & 0.408           & 0.813                & 0.287       \\
-		0.29             & EPER (Valid)          & 54          & 81          & 92          & 359         & 0.705             & 0.400              & 0.796        & 0.370           & 0.816                & 0.295       \\
-		0.29             & EPER (Test)           & 50          & 87          & 96          & 353         & 0.688             & 0.365              & 0.786        & 0.342           & 0.802                & 0.312      \\ \hline
+		\textbf{Cut-off} & \textbf{Method}       & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} & \textbf{BA} \\ \hline
+		0.5              & Default (Train)       & 23          & 6           & 413         & 1312        & 0.761             & 0.793              & 0.761        & 0.053           & 0.995                & 0.239  & 0.524      \\
+		0.5              & Default (Valid)       & 8           & 1           & 138         & 439         & 0.763             & 0.889              & 0.761        & 0.055           & 0.998                & 0.237   & 0.526    \\
+		0.5              & Default (Test)        & 9           & 1           & 137         & 439         & 0.765             & 0.900              & 0.762        & 0.062           & 0.998                & 0.235      & 0.53  \\ \hline
+		0.48             & Min MR (Train)        & 34          & 13          & 402         & 1305        & 0.763             & 0.723              & 0.764        & 0.078           & 0.990                & 0.237     & 0.534  \\
+		0.48             & Min MR (Valid)        & 9           & 5           & 137         & 435         & \cellcolor{yellow!25}0.758             & \cellcolor{yellow!25}0.643              & 0.760        & 0.062           & \cellcolor{yellow!25}0.989                & \cellcolor{yellow!25}0.242       & 0.526 \\
+		0.48             & Min MR (Test)         & 10          & 2           & 136         & 438         & 0.765             & 0.833              & 0.763        & 0.068           & 0.995                & 0.235    & 0.532   \\ \hline
+		0.25             & K-S (Train) & 244         & 405         & 192         & 913         & 0.660             & 0.376              & 0.826        & 0.560           & 0.693                & 0.340  & 0.627     \\
+		0.25             & K-S (Valid) & 80          & 130         & 66          & 310         & 0.666             & 0.381              & \cellcolor{yellow!25}0.824        & \cellcolor{yellow!25}0.548           & 0.705                & 0.334     & \cellcolor{yellow!25}0.627  \\
+		0.25             & K-S (Test)  & 74          & 145         & 72          & 295         & 0.630             & 0.338              & 0.804        & 0.507           & 0.670                & 0.370  & 0.586     \\ \hline
+		0.29             & EPER (Train)          & 178         & 246         & 258         & 1072        & 0.713             & 0.420              & 0.806        & 0.408           & 0.813                & 0.287  & 0.611     \\
+		0.29             & EPER (Valid)          & 54          & 81          & 92          & 359         & 0.705             & 0.400              & 0.796        & 0.370           & 0.816                & 0.295    & 0.593   \\
+		0.29             & EPER (Test)           & 50          & 87          & 96          & 353         & 0.688             & 0.365              & 0.786        & 0.342           & 0.802                & 0.312  & 0.572    \\ \hline
 	\end{tabular}
 	}
 	\caption{Delinquency Model Cut-off Results }
 	\label{table:DelinquencyModelCutoff}
 \end{table}
 
+Table \ref{table:DelinquencyModelCutoff} above illustrates which cut-off threshold are best for results you are trying to maximise for the previous delinquency model.
+
 \subsubsection{No Previous Delinquency}
+
+There are 9 features in the dataset to model customers who have been in default in the past. For security reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total customers to be be modelled in the No Previous Delinquency model approximately 2.7\% of customers are in default at the end of outcome window. This default rate is just based on SME customers for this analysis and is not reflective of the enterprise default rate. The results for the baseline benchmarks models are as follows.
 
 \begin{table}[H]
 	\centering
@@ -183,14 +188,17 @@ In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_
 			Dmine Regression & 0.649 & 0.297 & 0.67 & 0.34 & 0.628 & 0.255 \\
 			SVM Radial Fn & 0.591 & 0.182 & 0.558 & 0.116 & 0.512 & 0.025 \\
 			SVM Sigmoid & 0.605 & 0.21 & 0.549 & 0.099 & 0.588 & 0.176 \\
+			AutoNeural Network & 0.5 & 0 & 0.5 & 0 & 0.5 & 0 \\
 			Decision Tree & 0.5 & 0 & 0.5 & 0 & 0.5 & 0 \\
 			SVM Polynomial & 0.477 & -0.046 & 0.497 & -0.007 & 0.487 & -0.026 \\
 			\hline
 		\end{tabular}
 	}
 	\caption{No Previous Delinquency Base Model Details}
+	\label{table:NoPreviousDelinquencyBaseModelDetails}
 \end{table}
 
+The model that outputted the best result as seen table \ref{table:NoPreviousDelinquencyBaseModelDetails} highlighted in green above  was the \textit{Logistic Regression Model}, this is based on the highest validation AUC = 0.71. We can see above table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} below that the \textit{Logistic Regression Model} generalises quite well across the training, validation and testing partitions.
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{Base_NonDelinq_Model_ROC}
@@ -198,11 +206,15 @@ In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_
 	\label{fig:NonDelinq_Model_ROC}
 \end{figure}
 
+It can be observed that most the majority of the models generalise quite well and are predictive. However as can seen in Table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} the \textit{AutoNeural Network, Decision Tree and SVM Polynomial Models} are not predictive. There be a case in investigate this further and the huge class imbalance may be causing an issue or to remove the models completely for further investigation.
+
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{Base_NonDelinq_Model_Lift}
 	\caption{No Previous Delinquency Model Lift Chart}
 	\label{fig:NonDelinq_Model_Lift}
 \end{figure}
+
+As with the lift chart in the Previous Delinquency model we can see in Fig. \ref{fig:NonDelinq_Model_Lift} the majority of the models are returning positive results most notably in the the regression validation and test result as you would expect. We are seeing a larger lift than in the Previous Delinquency model also. We can see for the regression model if we were to contact 10\% of the customers that this model decided were to going to go into default we would contact three times as many customers than you if you didn't use a model at all and choose them at random. 
 
 \begin{figure}[H]
 	\centering
@@ -227,28 +239,33 @@ In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_
 		\caption{EPER Cut-Off = 0.08}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_09}
 	\end{subfigure}
 	\caption{Non Delinquency Model Cut-Off Analysis}
-	\label{fig:balanced_corr_analysis}
+	\label{fig:NonDelinquencyModelCutOffAnalysis}
 \end{figure}
+
+The imbalance problem in the No Previous Delinquency model becomes very evident in Fig.  \ref{fig:NonDelinquencyModelCutOffAnalysis} when compared to Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis}. This issue of imbalance will be investigated further in this Chapter.
 
 \begin{table}[H]
 	\centering
 	\resizebox{\textwidth}{!}
 	{
-	\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r}
+	\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r|r}
 		\hline
-		\textbf{Cut-off} & \textbf{Method} & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} \\ \hline
-		0.5             & Default (Train) & 0           & 0           & 391         & 14103       & 0.973             & NA                 & 0.973        & 0.000           & 1.000                & 0.027       \\
-		0.5             & Default (Valid) & 0           & 0           & 130         & 4701        & 0.973             & NA                 & 0.973        & 0.000           & 1.000                & 0.027       \\
-		0.5             & Default (Test)  & 0           & 0           & 130         & 4701        & 0.973             & NA          & 0.973        & 0.000           & 1.000                & 0.027       \\ \hline
-		0.21            & Min MR (Train)  & 1           & 17          & 390         & 14086       & 0.972             & 0.056              & 0.973        & 0.003           & 0.999                & 0.028       \\
-		0.21            & Min MR (Valid)  & 0           & 6           & 130         & 4695        & \cellcolor{yellow!25}0.972             & 0.000              & 0.973        & 0.000           & \cellcolor{yellow!25}0.999                & \cellcolor{yellow!25}0.028       \\
-		0.21            & Min MR (Test)   & 1           & 4           & 129         & 4697        & 0.972             & 0.200              & 0.973        & 0.008           & 0.999                & 0.028       \\ \hline
-		0.03            & K-S (Train)     & 208         & 3583        & 183         & 10520       & 0.740             & 0.055              & 0.983        & 0.532           & 0.746                & 0.260       \\
-		0.03            & K-S (Valid)      & 70          & 1182        & 60          & 3519        & 0.743             & 0.056              & \cellcolor{yellow!25}0.983        & \cellcolor{yellow!25}0.538           & 0.749                & 0.257       \\
-		0.03            & K-S (Test)     & 67          & 1199        & 63          & 3502        & 0.739             & 0.053              & 0.982        & 0.515           & 0.745                & 0.261       \\ \hline
-		0.08            & EPER (Train)    & 65          & 464         & 326         & 13639       & 0.945             & 0.123              & 0.977        & 0.166           & 0.967                & 0.055       \\
-		0.08            & EPER (Valid)    & 19          & 167         & 111         & 4534        & 0.942             & \cellcolor{yellow!25}0.102              & 0.976        & 0.146           & 0.964                & 0.058       \\
-		0.08            & EPER (Test)     & 21          & 173         & 109         & 4528        & 0.942             & 0.108              & 0.976        & 0.162           & 0.963                & 0.058     \\ \hline
+		\textbf{Cut-off} & \textbf{Method} & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} & \textbf{BA}  \\ \hline
+		0.5             & Default (Train) & 0           & 0           & 391         & 14103       & 0.973             & NA                 & 0.973        & 0.000           & 1.000                & 0.027   & 0.5    \\
+		0.5             & Default (Valid) & 0           & 0           & 130         & 4701        & 0.973             & NA                 & 0.973        & 0.000           & 1.000                & 0.027  & 0.5     \\
+		0.5             & Default (Test)  & 0           & 0           & 130         & 4701        & 0.973             & NA          & 0.973        & 0.000           & 1.000                & 0.027  & 0.5     \\ \hline
+		
+		0.21            & Min MR (Train)  & 1           & 17          & 390         & 14086       & 0.972             & 0.056              & 0.973        & 0.003           & 0.999                & 0.028    & 0.497   \\
+		0.21            & Min MR (Valid)  & 0           & 6           & 130         & 4695        & \cellcolor{yellow!25}0.972             & 0.000              & 0.973        & 0.000           & \cellcolor{yellow!25}0.999                & \cellcolor{yellow!25}0.028    & 0.495   \\
+		0.21            & Min MR (Test)   & 1           & 4           & 129         & 4697        & 0.972             & 0.200              & 0.973        & 0.008           & 0.999                & 0.028  & 0.499     \\ \hline
+		
+		0.03            & K-S (Train)     & 208         & 3583        & 183         & 10520       & 0.740             & 0.055              & 0.983        & 0.532           & 0.746                & 0.260    &  0.639  \\
+		0.03            & K-S (Valid)      & 70          & 1182        & 60          & 3519        & 0.743             & 0.056              & \cellcolor{yellow!25}0.983        & \cellcolor{yellow!25}0.538           & 0.749                & 0.257  & \cellcolor{yellow!25}0.644     \\
+		0.03            & K-S (Test)     & 67          & 1199        & 63          & 3502        & 0.739             & 0.053              & 0.982        & 0.515           & 0.745                & 0.261  & 0.63     \\ \hline
+		
+		0.08            & EPER (Train)    & 65          & 464         & 326         & 13639       & 0.945             & 0.123              & 0.977        & 0.166           & 0.967                & 0.055  & 0.567     \\
+		0.08            & EPER (Valid)    & 19          & 167         & 111         & 4534        & 0.942             & \cellcolor{yellow!25}0.102              & 0.976        & 0.146           & 0.964                & 0.058    & 0.556   \\
+		0.08            & EPER (Test)     & 21          & 173         & 109         & 4528        & 0.942             & 0.108              & 0.976        & 0.162           & 0.963                & 0.058 & 0.563     \\ \hline
 	\end{tabular}
 	}
 	\caption{My caption}
@@ -256,7 +273,25 @@ In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_
 \end{table}
 
 \section{Feature Selection}
-With respect to creating a model that could be utilised in real time, reduction of dimensionality is of key importance. Generating all of the 400 metrics used in the initial model based on on-going session activity would be very complex to implement in practice. A feature selection process was implemented at this point to reduce the complexity of the dataset. 
+There has been 116 features created as part of this experiment along with the features that already exist in the base models, it is necessary where possible to reduce this as reducing the dimensionality of a model is very important. Feature selection will be carried out to reduce this dimensionality of the model and reducing the complexity of the dataset. The feature selection process that will be used will encompass Correlation Analysis, entropy based calculating the information gain, gain ratio and symmetrical uncertainty, and random forest method for feature selection. 
+
+
+\subsection{Base Model}
+A base model has been built using SAS, however for the feature selection process there is of manipulation and over head in the process. Another model will be built in R to to base the selection of the experimental features. The logistic regression model performed strongly in both the previous delinquency and no previous delinquency model so it will be used again here as base for the feature selection process. The result of the feature selection baseline benchmark models are as follows 
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{l | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression (Previous Delinq) & 0.653 & 0.615 & 0.683  \\
+			Regression (No Previous Delinq) & 0.704 & 0.656 & 0.691  \\
+			\hline
+		\end{tabular}
+	\caption{Feature Selection Baseline Benchmark Results}
+	\label{table:featureselection_base_model}
+\end{table}
 
 \subsection{Correlation Analysis}
 
@@ -322,6 +357,22 @@ With respect to creating a model that could be utilised in real time, reduction 
 	\label{fig:balanced_corr_analysis}
 \end{figure}
 
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l | r | r| r}
+		\hline
+		\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+		\hline
+		Regression (No Previous Delinq) Top 5 Features & 0.707 & 0.661 & 0.693  \\
+		Regression (No Previous Delinq) Top 10 Features & 0.715 & 0.660 & 0.701  \\
+		Regression (No Previous Delinq) Top 15 Features & 0.719 & 0.662 & 0.699  \\
+		Regression (No Previous Delinq) Top 20 Features & 0.729 & 0.652 & 0.695  \\
+		\hline
+	\end{tabular}
+	\caption{Feature Selection Baseline Benchmark Results}
+	\label{table:featureselection_base_model}
+\end{table}
 
 \subsection{Stepwise Analysis}
 
