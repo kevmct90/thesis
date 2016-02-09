@@ -33,6 +33,27 @@ Data from each individual customers/accounts performance will be taken from data
 
 Previous, Section \ref{classLabelDef} described that there were two methods used to define if a customer was in default or not: (i) the \textit{worst status} label definition method; and (ii) the \textit{current status} label method approach. As mentioned previously, for the purpose of this experiment we will be using the industry standard worst status method, this means if the customers is in 90+ days arrears at any stage in the outcome window they will be labelled as a bad customer or as one that has defaulted on their financial obligation. 
 
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l| l|r|r|r}
+			\hline
+			\textbf{Model} &  \textbf{Dataset} & \textbf{Default} & \textbf{Not-Default} & \textbf{Total} \\
+			\hline
+			Previous Delinquency          & Training       & 00 & 00 & 00 \\
+			Previous Delinquency          & Validation       & 00 & 00 & 00 \\
+			Previous Delinquency          & Test & 00 & 00 & 00 \\ \hline
+			No Previous Delinquency          & Training & 00 & 00 & 00 \\ 
+			No Previous Delinquency          & Validation & 00 & 00 & 00 \\
+			No Previous Delinquency          & Test & 00 & 00 & 00 \\
+			\hline
+		       &      	\textbf{Total }     & \textbf{00} & \textbf{00} & \textbf{00} \\ \hline
+		\end{tabular}
+	}
+	\caption{Breakdown of Training/Validation/Test Partitions for Experiment}
+\end{table}
+
 \section{Baseline Benchmark in \subjectname\ }
 When building a predictive model, the first thing you are trying to do is build a model which results/predictions are better than the \textit{no information rate}. This means the accuracy of the model must be better than the no information rate, which is taken to be the biggest class percentage in the data to be modelled.
 
@@ -357,41 +378,11 @@ A base model has been built using SAS, however for the feature selection process
 	\label{fig:balanced_corr_analysis}
 \end{figure}
 
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}
-	{
-	\begin{tabular}{l | r | r}
-		\hline
-		\textbf{Feature} & \textbf{Rank} & \textbf{Attribute Importance} \\
-		\hline
-		WEIGHT\_OF\_EVIDENCE\_ED\_ID\_SME\_ARREARS & 1 & 0.0307  \\
-		ED\_PERCENT\_30\_06\_2014 & 2 & 0.0284 \\
-		GROUPED\_ED\_ID\_SME\_ARREARS & 3 & 	0.0233 \\
-		WEIGHT\_OF\_EVIDENCE\_LA\_ID\_SME\_ARREARS &  4 & 0.023 \\
-		LA\_PERCENT\_30\_06\_2014 & 5 &	0.0226 \\
-		LA\_LIVE\_LST\_3MTH\_MED\_VS\_6MTH\_MED\_LIVE\_MEDIAN & 6 & 0.0183 \\
-		ED\_CNT\_1\_30\_06\_2014 & 7 & 0.0182 \\
-		GROUPED\_LA\_ID\_SME\_ARREARS & 8 &	0.0178 \\
-		DIFF\_PERCENT\_06\_2012\_LA	 & 9 & 0.0174 \\
-		DIFF\_12\_2013\_LA & 10 & 0.0171 \\
-		LA\_DISC\_LST\_6MTH\_AVG\_VS\_PRV\_6MTH\_AVG\_SPEND\_MEAN & 11 & 0.017 \\
-		LA\_DISC\_LST\_6MTH\_AVG\_VS\_12MTH\_AVG\_SPEND\_MEAN & 12 & 0.0165 \\
-		DIFF\_PERCENT\_06\_2012\_ED	& 13 & 0.0159 \\
-		LA\_DISC\_LST\_6MTH\_MED\_VS\_12MTH\_MED\_SPEND\_MEDIAN	& 14 & 0.0153 \\
-		ED\_LIVE\_LST\_MTH\_VS\_PRV\_MTH\_LIVE\_MEAN & 15 & 0.0147 \\
-		LA\_DISC\_LST\_3MTH\_AVG\_VS\_PRV\_3MTH\_AVG\_SPEND\_MEAN & 16 & 0.0144 \\
-		LA\_DISC\_LST\_3MTH\_AVG\_VS\_6MTH\_AVG\_SPEND\_MEAN & 17 & 0.0144 \\
-		LA\_DISC\_LST\_6MTH\_MED\_VS\_PRV\_6MTH\_MED\_SPEND\_MEDIAN	& 18 & 0.0142 \\
-		DIFF\_06\_2013\_LA	& 19 & 0.0142 \\
-		DIFF\_PERCENT\_06\_2013\_ED & 20 &	0.0143 \\
-		\hline
-	\end{tabular}
-	}
-	\caption{Top 20 Features returned from Correlation Feature Selection}
-	\label{table:top_20_features_based_on_correlation}
-\end{table}
-
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{CorrelationChart}
+	\caption{Correlation Analysis}
+	\label{fig:Correlation Analysis}
+\end{figure}
 
 \begin{table}[H]
 	\centering
@@ -418,6 +409,15 @@ A base model has been built using SAS, however for the feature selection process
 \end{table}
 
 \subsection{Information Gain, Gain Ratio \& Symmetrical Uncertainty}
+
+\subsubsection{Experiment Features}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{InformationGain_Experiment_Features}
+	\caption{Information Gain Experiment Features}
+	\label{fig:Information Gain Experiment Features}
+\end{figure}
+
 \begin{table}[H]
 	\centering
 	\resizebox{\textwidth}{!}
@@ -440,6 +440,59 @@ A base model has been built using SAS, however for the feature selection process
 		\end{tabular}
 	}
 	\caption{Results based on features output from Information Gain Analysis}
+	\label{table:featureselection_base_model}
+\end{table}
+
+\subsubsection{Delinquency Model Existing \& Experimental Features}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{InformationGainAllFeaturesDelinq}
+	\caption{Information Gain Delinquency Model Features}
+	\label{fig:Information Gain Delinquency Model Features}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression (Previous Delinq) Top 10 Features &  0.65 &  0.6048 &  0.643  \\
+			Regression (Previous Delinq) Top 15 Features &  0.652 &  0.609 &  0.637  \\
+			Regression (Previous Delinq) Top 20 Features &  0.656 &  0.607 &  0.64  \\			
+			\hline
+		\end{tabular}
+	}
+	\caption{Results based on features output from Information Gain Analysis Delinq Features }
+	\label{table:featureselection_base_model}
+\end{table}
+
+\subsubsection{No Delinquency Model Existing \& Experimental Features}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{InformationGainAllFeaturesNonDelinq}
+	\caption{Information Gain No Previous Delinquency Model Features}
+	\label{fig:Information Gain No Previous Delinquency Model Features}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression (No Previous Delinq) Top 5 Features &  0.542 &  0.537 &  0.5206  \\
+			Regression (No Previous Delinq) Top 10 Features &  0.565 &  0.540 &  0.552  \\			
+			Regression (No Previous Delinq) Top 15 Features &  0.571 &  0.551 &  0.540  \\	
+			Regression (No Previous Delinq) Top 20 Features &  0.586 &  0.526 &  0.540  \\		
+						\hline
+		\end{tabular}
+	}
+	\caption{Results based on features output from Information Gain Analysis No Previous Delinquency Features }
 	\label{table:featureselection_base_model}
 \end{table}
 
