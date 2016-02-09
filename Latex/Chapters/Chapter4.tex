@@ -426,7 +426,10 @@ A base model has been built using SAS, however for the feature selection process
 			\hline
 			\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
 			\hline
-			Regression (No Previous Delinq) Top 5 Features & 0.707 & 0.661 & 0.693  \\
+			Regression (No Previous Delinq) Top 5 Features & 0.706 & 0.657 & 0.694  \\
+			Regression (No Previous Delinq) Top 10 Features & 0.709 & 0.657 & 0.693  \\
+			Regression (No Previous Delinq) Top 15 Features & 0.72 & 0.646 & 0.694  \\
+			Regression (No Previous Delinq) Top 20 Features & 0.725 & 0.655 & 0.689  \\
 			\hline
 			
 			Regression (Previous Delinq) Top 5 Features &  0.664 &  0.597 &  0.678  \\
@@ -436,7 +439,7 @@ A base model has been built using SAS, however for the feature selection process
 			\hline
 		\end{tabular}
 	}
-	\caption{Results based on features output from correlation analysis}
+	\caption{Results based on features output from Information Gain Analysis}
 	\label{table:featureselection_base_model}
 \end{table}
 
