@@ -103,23 +103,35 @@ Compared using k-NN versus association rules as an approach to personalising rec
 \section{Class Imbalance Problem/Low Default Problem}
 
 
+
+%----------------------------------------------------------------------------------------
+%	SECTION 8
+%----------------------------------------------------------------------------------------
+\section{Holdout set or cross validation}
+When calculating a measure of model accuracy there are some considerations to be made to increase the likelihood of the model making accurate predictions on unseen data. If we build a model using the full historical dataset available and subsequently test the accuracy of the model against the same dataset then we are in danger of generating a model that is over-fitted to the training set and the accuracy observed from the subsequent test may be biased (i.e. optimistic of the accuracy of the model).
+
 %----------------------------------------------------------------------------------------
 %	SECTION 9
 %----------------------------------------------------------------------------------------
-\section{Model Evaluation Methods}\label{modelEval}
+\section{Model Evaluation Measures}\label{modelEvalMeasure}
+
+This section details some of the metrics that can be used to assess the accuracy of a classifier. The result of the classification algorithm maps the modelled data into a category, in this thesis it a binary classifier that is output: 1 is output for identifying customers who will default (bad) or 0 is output for customers who will be not-default (good). The majority of classification algorithms will produce a ranked numeric value which can be converted to a binary representation by some threshold or cut-off decision depending on the business decision that is trying to be optimised. This section will begin with a confusion matrix, details how this is leveraged to build other performance measures and details how charts and metrics can be leveraged together to decide on the performance measure to maximise the intended objective.
 
 \url{http://www.saedsayad.com/model_evaluation_c.htm}
 
-
-When calculating a measure of model accuracy there are some considerations to be made to increase the likelihood of the model making accurate predictions on unseen data. If we build a model using the full historical dataset available and subsequently test the accuracy of the model against the same dataset then we are in danger of generating a model that is over-fitted to the training set and the accuracy observed from the subsequent test may be biased (i.e. optimistic of the accuracy of the model).
-
 \subsubsection{Confusion Matrix}
 
-Confusion Matrix is used to evaluating a model where you have divided the output into distinct or discrete categories. A confusion matrix can be reconstructed for any point on the ROC curve. The confusion matrix illustrate how many correct and incorrect predictions are made by the predictive model compared to the target value. 
+The results that made by the classification algorithm can be represented by a contingency table known as a confusion matrix. In this thesis the classification algorithm will output a binary classification, so the confusion matrix will be made from a $2 \times 2$ matrix that has two classes, known as the \textit{positive} and \textit{negative} class. For this thesis, the positive class will be the customers that default and negative class will be the customers that do not default. The confusion matrix can be broken down into the following categories for this thesis:
 
-"ROBBED" \textit{The matrix can be a $N \times N$, where $N$ is the number of target classes/groups. Performance of such models is commonly evaluated using the data in the matrix.}
+\begin{itemize}
+	\item \textit{true positive} (TP), cases that are predicted to default, and are {\color{green}{correctly}} classified as \textit{positive}
+	\item \textit{false positive} (FP), cases that are predicted to default, and are {\color{red}{incorrectly}} classified as \textit{positive}, also known as \textit{Type I error}.
+	\item \textit{false negative} (FN), cases that are predicted to not-default, and are {\color{red}{incorrectly}} classified as \textit{negative}, also known as \textit{Type II error}.
+	\item  \textit{true negative} (TN), cases that are predicted to not default, and are {\color{green}{correctly}} classified \textit{negative}
+	
+\end{itemize}
 
-\textit{In binary classification, often a quality of a model is calculated by the term Accuracy. Before the accuracy can be measured, one need to calculate the true positive (TP) and true negative rate(TN). True positive calculate the number of positive prediction provided that the actual value is positive. True negative calculate the number of negative prediction provided that the actual value is negative.}
+Fig \ref{fig:ConfusionMatrix} illustrates how information from a confusion matrix can be presented and read.
 
 \begin{figure}[H]
 	\includegraphics[width=0.8\textwidth,center]{Confusion_Matrix}
@@ -127,6 +139,43 @@ Confusion Matrix is used to evaluating a model where you have divided the output
 	{Confusion Matrix}
 	\label{fig:ConfusionMatrix}
 \end{figure}
+
+Using the numbers outputted from the confusion matrix, model evaluation measures can calculated and evaluated for the required objective.
+
+\begin{equation} \label{eq:Sensitivity}
+\text{Sensitivity} = \text{Recall} = \frac{TP}{TP + FN}
+\end{equation}
+
+\begin{equation} \label{eq:Specificity}
+\text{Specificity} = \frac{TN}{FP + TN}
+\end{equation}
+
+\begin{equation} \label{eq:precision}
+\text{True Positive Value} = \text{Precision} = \frac{TP}{TP + FP}
+\end{equation}
+
+\begin{equation} \label{eq:Accuracy}
+\text{Accuracy} = \frac{TP + TN}{TP + FP + FN + TN}
+\end{equation}
+
+\begin{equation} \label{eq:Balanaced Accuracy}
+\text{Average Accuracy} = \text{Balanaced Accuracy} = \frac{Sensitivity + Specificity}{2}
+\end{equation}
+
+\begin{equation} \label{eq:Misclassification Rate}
+\text{Misclassification Rate} = 1 - \text{Accuracy}
+\end{equation}
+
+
+
+
+Confusion Matrix is used to evaluating a model where you have divided the output into distinct or discrete categories. A confusion matrix can be reconstructed for any point on the ROC curve. The confusion matrix illustrate how many correct and incorrect predictions are made by the predictive model compared to the target value. 
+
+"ROBBED" \textit{The matrix can be a $N \times N$, where $N$ is the number of target classes/groups. Performance of such models is commonly evaluated using the data in the matrix.}
+
+\textit{In binary classification, often a quality of a model is calculated by the term Accuracy. Before the accuracy can be measured, one need to calculate the true positive (TP) and true negative rate(TN). True positive calculate the number of positive prediction provided that the actual value is positive. True negative calculate the number of negative prediction provided that the actual value is negative.}
+
+
 
 \textit{The term of positive and negative in above paragraph is a common term for binary classification (2 class prediction). The value 1 and 0 also can be used. For example, in email, some email can be cateorized as not a spam and some others can be categorized as a spam. Not a spam is clasified as True or 1, while a spam is classified as 0 or negative.}
 
