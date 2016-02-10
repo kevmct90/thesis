@@ -140,7 +140,9 @@ Fig \ref{fig:ConfusionMatrix} illustrates how information from a confusion matri
 	\label{fig:ConfusionMatrix}
 \end{figure}
 
-Using the numbers outputted from the confusion matrix, model evaluation measures can calculated and evaluated for the required objective.
+Using the numbers outputted from the confusion matrix, model evaluation measures can calculated and evaluated for the required objective, measures such as \textit{accuracy} (Equation \ref{eq:Accuracy}) which measures proportion of the number of predictions that were correct, the \textit{misclassification rate} (Equation \ref{eq:Misclassification Rate}) what proportion of predictions were wrong, the \textit{sensitivity} (Equation \ref{eq:Sensitivity}), otherwise known as \textit{recall} or the \textit{true positive rate} (TPR), measures the proportion of the positive instances that are correctly identified i.e. proportion default cases that have been predicted correctly. \textit{Specificity} (Equation \ref{eq:Specificity}) measures the proportion of negative cases that are predicted correctly i.e. proportion of non-default cases that have been predicted correctly, \textit{precision} (Equation \ref{eq:precision}) measures when the classifier predict positive outcomes what proportion are correct, \textit{negative predictive value} (NPV) (Equation \ref{eq:npv}) measures the proportion of negative predictions that were correct i.e. if the classifier predicted the outcome would be non-default what proportion were correct. One measure can be leveraged during cases where there is imbalance in the dataset is \textit{balance accuracy} (Equation \ref{eq:Balanaced Accuracy})
+
+\citep{brodersen_balanced_2010} add in details
 
 \begin{equation} \label{eq:Sensitivity}
 \text{Sensitivity} = \text{Recall} = \frac{TP}{TP + FN}
@@ -151,7 +153,11 @@ Using the numbers outputted from the confusion matrix, model evaluation measures
 \end{equation}
 
 \begin{equation} \label{eq:precision}
-\text{True Positive Value} = \text{Precision} = \frac{TP}{TP + FP}
+\text{Precision} = \frac{TP}{TP + FP}
+\end{equation}
+
+\begin{equation} \label{eq:npv}
+\text{Negative Predictive Value} = \frac{TN}{TN + FN}
 \end{equation}
 
 \begin{equation} \label{eq:Accuracy}
@@ -163,7 +169,7 @@ Using the numbers outputted from the confusion matrix, model evaluation measures
 \end{equation}
 
 \begin{equation} \label{eq:Misclassification Rate}
-\text{Misclassification Rate} = 1 - \text{Accuracy}
+\text{Misclassification Rate} =  \frac{FP + FN}{TP + FP + FN + TN} = 1 - \text{Accuracy}
 \end{equation}
 
 
