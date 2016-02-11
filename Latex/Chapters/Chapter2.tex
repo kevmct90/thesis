@@ -107,13 +107,52 @@ Compared using k-NN versus association rules as an approach to personalising rec
 %----------------------------------------------------------------------------------------
 %	SECTION 8
 %----------------------------------------------------------------------------------------
-\section{Holdout set or cross validation}
+\section{Model Validation Methods}
+\url{http://blog.dato.com/how-to-evaluate-ml-models-part-3-validation-and-offline-testing}
+
+\begin{itemize}
+	\item Validation
+	\item Offline Testing
+	\item Online Testing
+\end{itemize}
+
+\subsubsection{Model Validation}
+During model validation during testing/prototyping to fins tune classifier and analyse goodness of fit.
+
+\subsubsection{Offline Testing}
+Offline testing happens on a static past events, where the data is labelled dataset collected from past events. This is done to test deployed model is working correctly, it needs to be tested periodically.
+
+\subsubsection{Offline testing vs. validation}
+Model validation and offline testing both test the model’s performance, but they happen at different stages of the model’s life time. Validation is done to evaluate the goodness of fit of a learned model, which is a measurement of the quality of hyperparameters used during model training. (More on this in the next post on hyperparameter tuning.) Validation happens prior to real testing or deployment. Once the model is trained and deployed, we can continue to monitor its performance offline on a test dataset. This kind of offline batch testing does not require retraining the model. One can use a hold-out dataset for validation and another for offline testing, as long as the test set does not contain the validation set, this is fine. Cross validation, bootstrap and jackknife are resampling techniques that generate multiple random samples from the same dataset; they can be employed for validation or computing confidence intervals.
+
+\subsubsection{Hold-out datasets}
+Hold-out testing or validation is simple. Assuming that all data points are i.i.d. (independently and identically distributed), hold-out testing means one randomly holds out part of the data for testing. One trains the model on the larger portion of the data and evaluates test metrics on the smaller hold-out set. 
+
+\subsubsection{Online Testing}
+Online testing happens live in production, one example of this is known as A/B testing. Online testing is beyond the scope of this thesis so it will not be discussed further. 
+
+\subsubsection{Cross validation}
+Cross validation can be used when tuning the hyperparameters of the model. A lot of people seem to consider the two to be synonymous. But they are not. Cross validation is simply a way of generating training and validation sets for the process of hyperparameter tuning. Hold-out sets are also valid for hyperparameter tuning, and in fact they are computationally much cheaper.
+
+There are many variants of cross validation. The most commonly known is k-fold cross validation. In this procedure, first one divides the training dataset into K folds. For a given a hyperparameter setting, one treats each of the k folds like a hold-out set, trains a model on the rest of the k-1 folds, and measures the quality of the model on the held-out fold. The overall performance is taken to be the average of the performance on all k folds. Repeat this procedure for all of the hyperparameter settings one wish to evaluate, then pick the hyperparameters that resulted in the highest k-fold average. Lastly, retrain the model on all k-folds (the entire training set).
+
+Cross validation is useful when the training dataset is so small that one can’t afford to hold out part of the data just for validation purposes. With the size of modern datasets, this is rarely necessary. Hold-out validation is much faster and provides good estimates of model. This is what is currently implemented in GraphLab Create.
+
+If one needs a variance on the validation score, then hold-out set may not suffice. Use cross validation, or bootstrap.
+
+\subsubsection{some subsection}
 When calculating a measure of model accuracy there are some considerations to be made to increase the likelihood of the model making accurate predictions on unseen data. If we build a model using the full historical dataset available and subsequently test the accuracy of the model against the same dataset then we are in danger of generating a model that is over-fitted to the training set and the accuracy observed from the subsequent test may be biased (i.e. optimistic of the accuracy of the model).
+
+\subsubsection{Cross validation}
+
+\subsubsection{Hold-out Datasets}
+
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 9
 %----------------------------------------------------------------------------------------
-\section{Model Evaluation Measures}\label{modelEvalMeasure}
+\section{Model Performance Measures}\label{modelPerformMeasure}
 
 This section details some of the metrics that can be used to assess the accuracy of a classifier. The result of the classification algorithm maps the modelled data into a category, in this thesis it a binary classifier that is output: 1 is output for identifying customers who will default (bad) or 0 is output for customers who will be not-default (good). The majority of classification algorithms will produce a ranked numeric value which can be converted to a binary representation by some threshold or cut-off decision depending on the business decision that is trying to be optimised. This section will begin with a confusion matrix, details how this is leveraged to build other performance measures and details how charts and metrics can be leveraged together to decide on the performance measure to maximise the intended objective.
 
