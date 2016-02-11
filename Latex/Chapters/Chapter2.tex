@@ -103,12 +103,34 @@ Compared using k-NN versus association rules as an approach to personalising rec
 \section{Class Imbalance Problem/Low Default Problem}
 
 
+One possible approach to addressing the low-default portfolio problem is the use
+of one-class classification (OCC) algorithms such as the ones described in Section
+2.4. As outlined above, OCC (also known as outlier detection) has attracted much
+attention in the data mining community (Chawla et al., 2004). It is a recognitionbased
+methodology that draws from a single class of examples to identify the normal
+or expected behaviour of a concept. This is in contrast to standard supervised
+classification techniques that use a discrimination-based methodology to distinguish
+between examples of different classes.
+In Chapter 5 we compare OCC methods with more common two-class classification
+approaches on a number of credit scoring datasets, over a range of class
+imbalance ratios. As a means for handling imbalanced data we oversample the
+minority class along with adjusting the threshold value on classifier output. The
+purpose of this evaluation is to determine whether or not the performance of OCC
+methods warrants their inclusion as an approach to addressing the LDP problem.
+To the best of our knowledge, no attempt has been made to examine OCC as a
+solution to the LDP problem before.
+
+\begin{itemize}
+	\item Random Undersampling
+	\item Random Oversampling
+	\item Synthetic Oversampling 
+\end{itemize}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 8
 %----------------------------------------------------------------------------------------
 \section{Model Validation Methods}
-\url{http://blog.dato.com/how-to-evaluate-ml-models-part-3-validation-and-offline-testing}
+\url{"http://blog.dato.com/how-to-evaluate-ml-models-part-3-validation-and-offline-testing"}
 
 \begin{itemize}
 	\item Validation
