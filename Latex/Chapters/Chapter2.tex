@@ -121,7 +121,7 @@ This section details some of the metrics that can be used to assess the accuracy
 
 \subsubsection{Confusion Matrix}
 
-The results that made by the classification algorithm can be represented by a contingency table known as a confusion matrix. In this thesis the classification algorithm will output a binary classification, so the confusion matrix will be made from a $2 \times 2$ matrix that has two classes, known as the \textit{positive} and \textit{negative} class. For this thesis, the positive class will be the customers that default and negative class will be the customers that do not default. The confusion matrix can be broken down into the following categories for this thesis:
+The results that made by the classification algorithm can be represented by a contingency table known as a confusion matrix. In this thesis the classification algorithm will output a binary classification, so the confusion matrix will be made from a $2 \times 2$ matrix that has two classes, known as the \textit{positive} and \textit{negative} class. For this thesis, the positive class will be the customers that default and negative class will be the customers that do not default. It will illustrate what proportion of correct and incorrect predictions were made with respect to the target.The confusion matrix can be broken down into the following categories for this thesis:
 
 \begin{itemize}
 	\item \textit{true positive} (TP), cases that are predicted to default, and are {\color{green}{correctly}} classified as \textit{positive}
@@ -140,9 +140,7 @@ Fig \ref{fig:ConfusionMatrix} illustrates how information from a confusion matri
 	\label{fig:ConfusionMatrix}
 \end{figure}
 
-Using the numbers outputted from the confusion matrix, model evaluation measures can calculated and evaluated for the required objective, measures such as \textit{accuracy} (Equation \ref{eq:Accuracy}) which measures proportion of the number of predictions that were correct, the \textit{misclassification rate} (Equation \ref{eq:Misclassification Rate}) what proportion of predictions were wrong, the \textit{sensitivity} (Equation \ref{eq:Sensitivity}), otherwise known as \textit{recall} or the \textit{true positive rate} (TPR), measures the proportion of the positive instances that are correctly identified i.e. proportion default cases that have been predicted correctly. \textit{Specificity} (Equation \ref{eq:Specificity}) measures the proportion of negative cases that are predicted correctly i.e. proportion of non-default cases that have been predicted correctly, \textit{precision} (Equation \ref{eq:precision}) measures when the classifier predict positive outcomes what proportion are correct, \textit{negative predictive value} (NPV) (Equation \ref{eq:npv}) measures the proportion of negative predictions that were correct i.e. if the classifier predicted the outcome would be non-default what proportion were correct. One measure can be leveraged during cases where there is imbalance in the dataset is \textit{balance accuracy} (Equation \ref{eq:Balanaced Accuracy})
-
-\citep{brodersen_balanced_2010} add in details
+Using the numbers outputted from the confusion matrix, model evaluation measures can calculated and evaluated for the required objective, measures such as \textit{accuracy} (Equation \ref{eq:Accuracy}) which measures proportion of the number of predictions that were correct, the \textit{misclassification rate} (Equation \ref{eq:Misclassification Rate}) what proportion of predictions were wrong, the \textit{sensitivity} (Equation \ref{eq:Sensitivity}), otherwise known as \textit{recall} or the \textit{true positive rate} (TPR), measures the proportion of the positive instances that are correctly identified i.e. proportion default cases that have been predicted correctly. \textit{Specificity} (Equation \ref{eq:Specificity}) measures the proportion of negative cases that are predicted correctly i.e. proportion of non-default cases that have been predicted correctly, \textit{precision} (Equation \ref{eq:precision}) measures when the classifier predict positive outcomes what proportion are correct, \textit{negative predictive value} (NPV) (Equation \ref{eq:npv}) measures the proportion of negative predictions that were correct i.e. if the classifier predicted the outcome would be non-default what proportion were correct. One measure that can be very useful when the where there is class imbalance is \textit{balance accuracy} (Equation \ref{eq:Balanaced Accuracy}), \citep{brodersen_balanced_2010} discusses how using this negates the impact of bias or skewness from the more frequent class
 
 \begin{equation} \label{eq:Sensitivity}
 \text{Sensitivity} = \text{Recall} = \frac{TP}{TP + FN}
@@ -172,30 +170,6 @@ Using the numbers outputted from the confusion matrix, model evaluation measures
 \text{Misclassification Rate} =  \frac{FP + FN}{TP + FP + FN + TN} = 1 - \text{Accuracy}
 \end{equation}
 
-
-
-
-Confusion Matrix is used to evaluating a model where you have divided the output into distinct or discrete categories. A confusion matrix can be reconstructed for any point on the ROC curve. The confusion matrix illustrate how many correct and incorrect predictions are made by the predictive model compared to the target value. 
-
-"ROBBED" \textit{The matrix can be a $N \times N$, where $N$ is the number of target classes/groups. Performance of such models is commonly evaluated using the data in the matrix.}
-
-\textit{In binary classification, often a quality of a model is calculated by the term Accuracy. Before the accuracy can be measured, one need to calculate the true positive (TP) and true negative rate(TN). True positive calculate the number of positive prediction provided that the actual value is positive. True negative calculate the number of negative prediction provided that the actual value is negative.}
-
-
-
-\textit{The term of positive and negative in above paragraph is a common term for binary classification (2 class prediction). The value 1 and 0 also can be used. For example, in email, some email can be cateorized as not a spam and some others can be categorized as a spam. Not a spam is clasified as True or 1, while a spam is classified as 0 or negative.}
-
-\begin{itemize}
-	\item \textbf{Accuracy:} the proportion  of the total number of predictions that were correct.
-	\item \textbf{Precision} or \textbf{Positive Predictive Value:} the proportion of positive cases that were correctly identified.
-	\item \textbf{Negative Predictive Value:} the proportion of negative cases that were correctly identified.
-	\item \textbf{Sensitivity} or \textbf{Recall:} the proportion of actual positive cases which are correctly identified.
-	\item \textbf{Specificity:} the proportion of actual negative cases which are correctly identified.
-\end{itemize}
-
-
-\textit{Balanced accuracy is generally a more reliable measure as imbalances in the prediction class don't have such an e ect (Brodersen et al., 2010). tommy}
-
 \begin{figure}[H]
 	\includegraphics[width=0.8\textwidth,center]{Confusion_Matrix_Example}
 	\caption[Confusion Matrix Example]
@@ -203,28 +177,77 @@ Confusion Matrix is used to evaluating a model where you have divided the output
 	\label{fig:ConfusionMatrixExample}
 \end{figure}
 
-\textit{if u r talking about cut point for probability value, u can decide it by 2 ways .
-	1. Calculate the misclassification cost for different probability values, and choose the one which will have least misclassification cost. .
-	2 . Draw lift chart for probability values, number of accurately classified events per decile (In precise Results of KS test). Point where u get highest distance is the cut of point for your probability	
-}
+Fig. \ref{fig:ConfusionMatrixExample} illustrates how the TP, FP, FN, TN can be used to create performance metrics for classification algorithm. As discussed already confusion matrix based performance measures are built on the threshold that is selected for converting the predicted numeric score into a binary outcome. Anecdotally you might believe that the cut-off or threshold of 0.50 is acceptable but this rule may not always especially if there is an imbalance between the positive and negative class in the dataset. The cut-off should should ideally be based on you business objective where you look to minimise, maximise and analyse the trade off as you alter the cut-off. 
 
-\begin{equation}
-	Misclassification\ Rate = \frac{FP + FN}{TN + FP + FN + TP} = 1 - Accuracy
+The confusion matrix is not the only way to evaluate the performance of the classification algorithm and is not always advocated in the literature or by industry. In studies completed by \citep{lessmann_benchmarking_2008} choose not to select a classification cut-off arguing that studies comparing the same dataset and classifier could come to the different conclusions.
+
+As mentioned in this section the confusion matrix measures the performance of classifier at a specific threshold, this can be leveraged to create graphical representations of the overall fitness of the model at any threshold. One such method that will be discussed in the next section is the \textit{receiver operating characteristic} (ROC). 
+
+
+Confusion Matrix is used to evaluating a model where you have divided the output into distinct or discrete categories. A confusion matrix can be reconstructed for any point on the ROC curve. ROC is also is directly related to two other performance methods \textit{area under the curve} and \textit{gini} which will also be discussed.  
+
+\subsubsection{ROC Chart, AUC and Gini Coefficient}
+%\url{https://staesthetic.wordpress.com/2014/04/14/gini-roc-auc-and-accuracy/}
+The ROC chart is used to evaluate and illustrate how well the evaluate the model fit, this can be a quick test to see if the model generalises well from the test data, to validation and test data. Fig. \ref{fig:ROC} illustrates on the \textit{x-axis} the false positive rate, and on the \textit{y-axis} the true positive rate is represented. As mentioned previously the points on the ROC chart are generated from confusion matrix built from many cut-off or threshold value between $\theta \in [0,1]$. Fig. \ref{fig:ROC} conceptually illustrates how the ROC chart is generated for varying thresholds. 
+
+\begin{figure}[H]
+	\includegraphics[width=0.8\textwidth,center]{ROC}
+	\caption[ROC]
+	{ROC Chart Example with thresholds 0.65 \& 0.50}
+	\label{fig:ROC}
+\end{figure}
+
+Fig. \ref{fig:ROC} also illustrate how point (0,1) represents \textit{perfect classification}, that is the classifier correctly predicts all outcomes. 
+
+The ROC chart is basically a combination of confusion matrices over many cut-off values of a classifier. As you can see above finite number of observations in the dataset dictates the number of thresholds that can be used to generate a ROC chart.
+
+To compare ROC chart results of different classifiers the \textit{area under the ROC curve} (AUC) \citep{bradley_use_1997} \& \citep{hanley_meaning_1982}. In Fig. \ref{fig:ROC} the area under the blue ROC line represents the AUC, which is intuitively the area under the curve. In the case of perfect classification this value will be 1, for a random classifier the AUC would be 0.5. 
+
+It is worth noting that AUC does not give total probability of the classifier, and also its usefulness when combined with the ROC to evaluate your classifier across training, validation and test datasets. For example if the ROC curve shifts significantly or is not similar from training to validation/test it suggests that there is possible over-fitting and the model does not generalise well. Also it is worth looking out for a drastic change in the AUC from training to validation/test another sign the classifier does not generalise well may not be useful for predictions. Because of this it is a very strong measure for classifier selection, ROC don't tend to cross over, therefore when comparing two classifiers the one which AUC is higher will be the better classifier independent of the threshold or cut-off.
+
+It is illustrated in Fig. \ref{fig:matric_compare} how the performance measures for confusion matrices vary for different thresholds, but again to keep in mind that it there be just one measure for the AUC of the this ROC Chart.   
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth]{Confusion_Matrix_threshold_065}
+		\caption{Threshold $=.65$}\label{fig:Threshold65}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.025cm]{Confusion_Matrix_threshold_050}
+		\caption{Threshold $=.50$}\label{fig:Threshold50}
+	\end{subfigure}
+	\caption{Confusion Matrix Threshold comparison}
+	\label{fig:matric_compare}
+\end{figure}
+
+A metric that is commonly used for in \subjectname, industry credit scoring is the \textit{gini coefficient} this is discussed in \citep{hand_good_2005}, this is equates to twice the area in between the diagonal of a random classifier and the ROC curve. The equation for this can be seen below in Equation \ref{eq:gini}
+
+\begin{equation} \label{eq:gini}
+\text{Gini} = 2*\text{AUC} - 1
 \end{equation}
 
+Just like using a threshold there are limitations to using the AUC and Gini to measure classifier performance, although extremely useful for analysing the performance of wide range of thresholds but not as useful when trying to maximise the performance over a narrow range of thresholds. It cannot tell us the optimal threshold for classifier for  other statistical needs.
 
-\textit{You will have to decide on the cutoff based on the basis of your business objective, level of impact and the tradeoff between sensitivity, specificity and false positivity values. · You should select cutoff value such that you can improve sensitivity of the model by restricting the false positive rate to the lowest minimum value · You need to be very careful in selecting cut-off value because selecting a very low cut-off may give you a high True positive rate but that will increase the false positive rate as well, badly impacting your model performance. · You may even use table instead of graph to get better insight on the effect of the various probability cutoff. Click view àtable in the result window}
+One statistic that is commonly used in credit scoring in \subjectname\, industry and in the literature is the \textit{kolmogorov-smirnov} (KS) statistic, this will be discussed in the next subsection.
+	
 
-\textit{SAS: A cut-off value of 0.5 is not always acceptable because the observed proportion of a primary outcome in a given population may not be always 50\%. SAS® Enterprise Miner™ provides Cutoff node to adjust probability cut-off point based on model’s ability to predict true positive, false positive \& true negative}
+\subsubsection{K-S Chart}\label{subsub:ks}
+%\url{http://www.saedsayad.com/model_evaluation_c.htm}
+The KS chart and more specifically the KS statistic is one value between 0 and 1. It can be used by measuring the performance of the classifier, by measuring the maximum distance between the cumulative positive and negative distributions of the predicted positive and negative class \citep{seliya_study_2009}. In other words K-S is a measure that illustrates the maximum seperation between the positive and negative distributions, this can illustrated more clearly in Fig. \ref{fig:ks}.
 
-\textit{
-A popular automatic cutoff selection method is to use the Event Precision Equal Recall. This method selects a cutoff where the event precision rate and the true positive rate intersect.
-}
+Fig. \ref{fig:ks} how the KS statistic and chart is generated, probabilities from the classifier are ordered, grouped and aggregated, but importantly they are separated by the positive and negative class, creating a distribution for each. These two distributions are then plotted separately, you can see in Fig. \ref{fig:ks} that the KS statistic is 47.4\%
 
-\textit{ You will have to decide on the cutoff based on the basis of your business objective, level of impact and the tradeoff between sensitivity, specificity and false positivity values. · You should select cutoff value such that you can improve sensitivity of the model by restricting the false positive rate to the lowest minimum value · You need to be very careful in selecting cut-off value because selecting a very low cut-off may give you a high True positive rate but that will increase the false positive rate as well, badly impacting your model performance. · You may even use table instead of graph to get better insight on the effect of the various probability cutoff.}
+\textit{K-S or Kolmogorov-Smirnov chart measures performance of classification models. More accurately, K-S is a measure of the degree of separation between the positive and negative distributions. The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models the K-S will fall between 0 and 100, and that the higher the value the better the model is at separating the positive from negative cases.}
 
-
-\textit{Accuracy and No Information Rate comment on this here model evaluation}
+\begin{figure}[H]
+	\includegraphics[width=0.8\textwidth,center]{ks}
+	\caption[Kolmogorov-Smirnov chart ]
+	{Kolmogorov-Smirnov chart }
+	\label{fig:ks}
+\end{figure}
 
 \subsubsection{Gain \& Lift}
 "Robbed" The
@@ -254,74 +277,6 @@ A popular automatic cutoff selection method is to use the Event Precision Equal 
 
 \textit{The lift chart shows how much more likely we are to receive positive responses than if we contact a random sample of customers. For example, by contacting only 10\% of customers based on the predictive model we will reach 3 times as many respondents, as if we use no model.}
 
-\subsubsection{K-S Chart}
-\url{http://www.saedsayad.com/model_evaluation_c.htm}
-\textit{K-S or Kolmogorov-Smirnov chart measures performance of classification models. More accurately, K-S is a measure of the degree of separation between the positive and negative distributions. The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models the K-S will fall between 0 and 100, and that the higher the value the better the model is at separating the positive from negative cases.}
-
-\begin{figure}[H]
-	\includegraphics[width=0.8\textwidth,center]{ks}
-	\caption[Kolmogorov-Smirnov chart ]
-	{Kolmogorov-Smirnov chart }
-	\label{fig:ks}
-\end{figure}
-
-
-
-\subsubsection{ROC Chart, AUC and Gini Coefficient}
-\url{https://staesthetic.wordpress.com/2014/04/14/gini-roc-auc-and-accuracy/}
-
-(1) AUC doesn't give total probability 
-(2) AUC is used to compare the performance of your model on the training and test datasets. if there is significant drop from the AUC on training to that on test, it shows it doesn't generalise well.
-
-\textit{ROC curves are used to evaluate and compare the performance of diagnostic tests; they can also be used to evaluate model fit. An ROC curve is just a plot of the proportion of true positives (events predicted to be events) versus the proportion of false positives (nonevents predicted to be events).}
-
-\textit{ROC is a graphical plot which illustrates the performance of a binary classifier system as its discrimination threshold is varied (from wikipedia), while AUC is the Area Under ROC Curve. The last term, gini, is calculated by 1-2*AUC, in another source, it was calculated by 2*AUC-1.}
-
-\textit{Another method to measure the performance in binary classification beside accurary is the ROC method. Different from accuracy, ROC analysis uses the true positive rate (TPR) and false positive rate (FPR). TPR is the proportion positive correctly classified (TP/P) and  False positive rate (FPR) is calculated by 1-TNR (TN/N). The ROC region plot TPR against FPR.}
-
-\textit{Above is the example of ROC plot for classification model. Please remember that the ROC is used to evaluate the performance of a classifier model. The first thing to do before creating the ROC plot is of course creating the model. The iterative method of ROC development can be summarized into three step. Step 1 is developing the model that can produce a score for each individual data with based on all its variable. The score usually is the probability that this data will be postitive. Step 2 involves the data and its subsequent score is then ordered, usually in descending order (score). The last step is plot the ROC.}
-
-\textit{When observing the plot, if the plot follow the straight line from lower left to upper right, then the classifier cannot differentiate between negative and postive data. If the curve tend to bend to the upper left, then the model can differentiate the actual positive and negative data. On the contrary, if the curve tend to bend to lower right, then it just completely wrong prediction model.
-To performance of a classifier model is then calculated by calculating the Area Under Curve (AUC). The AUC score will be between 0 and 1. The higher the value of AUC, usually the better the model is.}
-
-\begin{figure}[H]
-	\includegraphics[width=0.8\textwidth,center]{ROC}
-	\caption[ROC]
-	{ROC}
-	\label{fig:ROC}
-\end{figure}
-
-\textit{Area under ROC curve is often used as a measure of quality of the classification models. A random classifier has an area under the curve of 0.5, while AUC for a perfect classifier is equal to 1. In practice, most of the classification models have an AUC between 0.5 and 1.}
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}[b]{0.45\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth]{Confusion_Matrix_threshold_065}
-		\caption{Threshold $=.65$}\label{fig:Threshold65}
-	\end{subfigure} ~\quad
-	\begin{subfigure}[b]{0.45\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.025cm]{Confusion_Matrix_threshold_050}
-		\caption{Threshold $=.50$}\label{fig:Threshold50}
-	\end{subfigure}
-	\caption{Confusion Matrix Threshold comparison}
-	\label{fig:matric_compare}
-\end{figure}
-
-\textit{An area under the ROC curve of 0.8, for example, means that a randomly selected case from the group with the target equals 1 has a score larger than that for a randomly chosen case from the group with the target equals 0 in 80\% of the time. When a classifier cannot distinguish between the two groups, the area will be equal to 0.5 (the ROC curve will coincide with the diagonal). When there is a perfect separation of the two groups, i.e., no overlapping of the distributions, the area under the ROC curve reaches to 1 (the ROC curve will reach the upper left corner of the plot).}
-
-\textit{AUC
-AUC stands for “area under curve”, and as it's name implies, it refers to the amount of area under the ROC curve, which theoretically is a value between 0 and 1. As I explained, the worst possible curve in practice is a diagonal line, hence the AUC should never be lower than 0.5 (for large data sets) .
-Using the AUC metric you can quickly compare multiple learning models. Remember that the ROC curves of two models usually don’t cross each other, hence when comparing two models, the one with a higher AUC will be the better one regardless of the threshold setting. Compared to the statistical measures of accuracy, precision, recall and F1 score, AUC’s independence of threshold makes it uniquely qualified for model selection.
-On the other hand, unlike accuracy, precision, recall and F1 score, AUC does not tell us what performance to expect from the model for a given threshold setting, nor can it be used to determine the optimal value for threshold. In that regard it doesn't take away the need for the other statistical measures.
-Putting it together
-The ROC plot and the AUC are very useful for comparing and selecting the best machine learning model for a given data set. A model with an AUC score near 1, and where the ROC curve comes close to the upper left corner, has a very good performance. A model with a score near 0.5 will have a curve near to the diagonal and its performance is hardly better than a random predictor.
-After selecting the best model, the next step will be to configure the threshold and the other model configuration settings. The Precision/Recall plot can be helpful for understanding the trade-off between false positives and false negatives. In the third article we’ll look closer at the threshold value and learn now to calculate the optimal value for it.
-}
-
-Gini Coefficient is also known as Gini index or gini ratio. It is very closely related to the calculation of AUC and can be computed by\\
-$Gini = 2 \times AUC - 1$
 
 
 %----------------------------------------------------------------------------------------

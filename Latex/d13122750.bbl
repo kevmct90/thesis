@@ -21,6 +21,12 @@ BCBS  \harvardyearleft 2005\harvardyearright , `International {Convergence} of
   - {Comprehensive} {Version}, {June} 2006 - bcbs128.pdf'.
 \newline\harvardurl{http://www.bis.org/publ/bcbs128.pdf}
 
+\harvarditem{Bradley}{1997}{bradley_use_1997}
+Bradley, A.~P.  \harvardyearleft 1997\harvardyearright , `The use of the area
+  under the {ROC} curve in the evaluation of machine learning algorithms', {\em
+  Pattern recognition} {\bf 30}(7),~1145--1159.
+\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S0031320396001422}
+
 \harvarditem[Brodersen et~al.]{Brodersen, Ong, Stephan \harvardand\
   Buhmann}{2010}{brodersen_balanced_2010}
 Brodersen, K.~H., Ong, C.~S., Stephan, K.~E. \harvardand\ Buhmann, J.~M.
@@ -29,6 +35,12 @@ Brodersen, K.~H., Ong, C.~S., Stephan, K.~E. \harvardand\ Buhmann, J.~M.
   international conference on', IEEE, pp.~3121--3124.
 \newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5597285}}
 
+\harvarditem{Hand}{2005}{hand_good_2005}
+Hand, D.~J.  \harvardyearleft 2005\harvardyearright , `Good practice in retail
+  credit scorecard assessment', {\em Journal of the Operational Research
+  Society} {\bf 56}(9),~1109--1117.
+\newline\harvardurl{http://www.palgrave-journals.com/jors/journal/v56/n9/abs/2601932a.html}
+
 \harvarditem{Hand \harvardand\ Henley}{1997}{hand_statistical_1997}
 Hand, D.~J. \harvardand\ Henley, W.~E.  \harvardyearleft 1997\harvardyearright
   , `Statistical classification methods in consumer credit scoring: a review',
@@ -36,11 +48,26 @@ Hand, D.~J. \harvardand\ Henley, W.~E.  \harvardyearleft 1997\harvardyearright
   Society)} pp.~523--541.
 \newline\harvardurl{http://www.jstor.org/stable/2983268}
 
+\harvarditem{Hanley \harvardand\ McNeil}{1982}{hanley_meaning_1982}
+Hanley, J.~A. \harvardand\ McNeil, B.~J.  \harvardyearleft
+  1982\harvardyearright , `The meaning and use of the area under a receiver
+  operating characteristic ({ROC}) curve.', {\em Radiology} {\bf
+  143}(1),~29--36.
+\newline\harvardurl{http://pubs.rsna.org/doi/abs/10.1148/radiology.143.1.7063747}
+
 \harvarditem{Japkowicz}{2000}{japkowicz_class_2000}
 Japkowicz, N.  \harvardyearleft 2000\harvardyearright , The class imbalance
   problem: {Significance} and strategies, {\em in} `Proc. of the {Int}’l
   {Conf}. on {Artificial} {Intelligence}', Citeseer.
 \newline\harvardurl{\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1693&rep=rep1&type=pdf}}
+
+\harvarditem[Lessmann et~al.]{Lessmann, Baesens, Mues \harvardand\
+  Pietsch}{2008}{lessmann_benchmarking_2008}
+Lessmann, S., Baesens, B., Mues, C. \harvardand\ Pietsch, S.  \harvardyearleft
+  2008\harvardyearright , `Benchmarking classification models for software
+  defect prediction: {A} proposed framework and novel findings', {\em Software
+  Engineering, IEEE Transactions on} {\bf 34}(4),~485--496.
+\newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4527256}}
 
 \harvarditem[Martens et~al.]{Martens, Van~Gestel, De~Backer, Haesen, Vanthienen
   \harvardand\ Baesens}{2010}{martens_credit_2010}
@@ -53,6 +80,14 @@ Martens, D., Van~Gestel, T., De~Backer, M., Haesen, R., Vanthienen, J.
 \harvarditem{McNab \harvardand\ Wynn}{2000}{mcnab_principles_2000}
 McNab, H. \harvardand\ Wynn, A.  \harvardyearleft 2000\harvardyearright , {\em
   Principles and practice of consumer credit risk management}, CIB Publishing.
+
+\harvarditem[Seliya et~al.]{Seliya, Khoshgoftaar \harvardand\
+  Van~Hulse}{2009}{seliya_study_2009}
+Seliya, N., Khoshgoftaar, T.~M. \harvardand\ Van~Hulse, J.  \harvardyearleft
+  2009\harvardyearright , A study on the relationships of classifier
+  performance metrics, {\em in} `Tools with {Artificial} {Intelligence}, 2009.
+  {ICTAI}'09. 21st {International} {Conference} on', IEEE, pp.~59--66.
+\newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5364367}}
 
 \harvarditem{Van~Gestel \harvardand\ Baesens}{2009}{van_gestel_credit_2009}
 Van~Gestel, T. \harvardand\ Baesens, B.  \harvardyearleft 2009\harvardyearright
