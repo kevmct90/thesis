@@ -219,7 +219,7 @@ It is illustrated in Fig. \ref{fig:matric_compare} how the performance measures 
 		\includegraphics[width=\textwidth,height=2.025cm]{Confusion_Matrix_threshold_050}
 		\caption{Threshold $=.50$}\label{fig:Threshold50}
 	\end{subfigure}
-	\caption{Confusion Matrix Threshold comparison}
+	\caption{Confusion Matrix: Multiple Threshold Comparison}
 	\label{fig:matric_compare}
 \end{figure}
 
@@ -238,20 +238,21 @@ One statistic that is commonly used in credit scoring in \subjectname\, industry
 %\url{http://www.saedsayad.com/model_evaluation_c.htm}
 The KS chart and more specifically the KS statistic is one value between 0 and 1. It can be used by measuring the performance of the classifier, by measuring the maximum distance between the cumulative positive and negative distributions of the predicted positive and negative class \citep{seliya_study_2009}. In other words K-S is a measure that illustrates the maximum seperation between the positive and negative distributions, this can illustrated more clearly in Fig. \ref{fig:ks}.
 
-Fig. \ref{fig:ks} how the KS statistic and chart is generated, probabilities from the classifier are ordered, grouped and aggregated, but importantly they are separated by the positive and negative class, creating a distribution for each. These two distributions are then plotted separately, you can see in Fig. \ref{fig:ks} that the KS statistic is 47.4\%
-
-\textit{K-S or Kolmogorov-Smirnov chart measures performance of classification models. More accurately, K-S is a measure of the degree of separation between the positive and negative distributions. The K-S is 100 if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives. On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models the K-S will fall between 0 and 100, and that the higher the value the better the model is at separating the positive from negative cases.}
+Fig. \ref{fig:ks} how the KS statistic and chart is generated, probabilities from the classifier are ordered, grouped and aggregated, but importantly they are separated by the positive and negative class, creating a distribution for each. These two distributions are then plotted separately, you can see in Fig. \ref{fig:ks} that the KS statistic is 47.4\%. This is calculated by taking maximum difference between the two distributions at each group. At group 400-500, if you were to classify all the score are positive below or in this group you would be identifying 81.7\% of the positive instance and only 34.3\% of the negative class, if this was a balanced dataset this could be a very valuable result and measure. 
 
 \begin{figure}[H]
 	\includegraphics[width=0.8\textwidth,center]{ks}
 	\caption[Kolmogorov-Smirnov chart ]
-	{Kolmogorov-Smirnov chart }
+	{Kolmogorov-Smirnov Table \& Chart }
 	\label{fig:ks}
 \end{figure}
 
+There are extreme cases of the KS statistic that are worth noting, on is where the KS statistic is equal to 100, this means the scores for each distribution (positive/negative) are but into two separate groups, where one group would just have positive cases and the other just negative case. Alternatively if the model is not very useful and cannot tell the positives from the negatives, it will be like the model is selecting cases randomly and will return a KS statistic of 0.
+
+We will see Chapter \ref{Chapter4} how this statistic can be utilised and leveraged to create a useful threshold value. 
+
 \subsubsection{Gain \& Lift}
-"Robbed" The
-\textit{Gain or lift is a measure of the effectiveness of a classification model calculated as the ratio between the results obtained with and without the model. Gain and lift charts are visual aids for evaluating performance of classification models. However, in contrast to the confusion matrix that evaluates models on the whole population gain or lift chart evaluates model performance in a portion of the population. }
+The \textit{gain} \& \textit{lift} measure the performance of the classifier. One example where these measure as charts are extremely useful is when communicating in industry with management, they are easy to explain and intuitive where the business can derive and understand value immediately. Fig. \ref{fig:GainLiftWorkflowCharts} below illustrates how the gain and lift charts are generated. 
 
 \begin{figure}[H]
 	\centering
@@ -271,13 +272,13 @@ Fig. \ref{fig:ks} how the KS statistic and chart is generated, probabilities fro
 		\includegraphics[width=\textwidth]{lift}
 		\caption{Lift Chart}\label{fig:lift}
 	\end{subfigure}
-	\caption{Gain \& Lift Work-flow}
-	\label{fig:unbal_corr_analysis}
+	\caption{Gain \& Lift Work-flow \& Charts}
+	\label{fig:GainLiftWorkflowCharts}
 \end{figure}
 
-\textit{The lift chart shows how much more likely we are to receive positive responses than if we contact a random sample of customers. For example, by contacting only 10\% of customers based on the predictive model we will reach 3 times as many respondents, as if we use no model.}
+The charts above illustrate how much likely it is we receive positive responses using the classifier compared to use a random model. The population in the dataset are broken into deciles, which can be seen in \ref{fig:gains} \& \ref{fig:lift}. An example of how they can be used is if we were to evaluate the first 10\% of the population identified by the classifier it would outperform a random selection of customers that would turn out to positive by 3.6.
 
-
+Essentially these charts are visual aids which can be leveraged for evaluating the performance of the classifier. 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 5
