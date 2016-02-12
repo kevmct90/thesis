@@ -63,8 +63,26 @@ There are two well known approaches to class label definition that financial ins
 %----------------------------------------------------------------------------------------
 %	SECTION 7
 %----------------------------------------------------------------------------------------
-\section{Supervised Classification Algorithms}
-The research question can be qualified as a sequential data analysis problem but in other respects, it is akin to standard two-class classification; will the user complete the process or not?
+\section{Classification Algorithms}
+This sections we give discuss and compare classification algorithms that are useful when modelling a binary classification problem, in the thesis this is did the customer default or not-default. The algorithms discussed in this section is not an exhausted list but contains are suitable to be used in the financial industry. Classifiers discussed include Linear \& Logistic Regression, k-nearest neighbour (KNN), support vector machines (SVM), neural networks. 
+
+Logistic regression is one of the most widely used classifier used by industry based on research and experience working in industry, therefore this classifier will be discussed in detail while the other classifiers will be discussed briefly.
+
+\subsection{Regression} \label{logicReg}
+Regression models are used to model the linear relationship between features in a feature space or between the features and the target variable. 
+
+A very simple form of linear regression is where there is one independent and one dependent variable, which is the target we are attempting to predict. The model is often represented by the following function  $Y = f(x)$, where we're trying to predict $Y$ based using the value of $x$.
+
+Fig. \ref{fig:simpleLinearRegression} illustrates very simply and intuitively using a real life example you can relate to. It demonstrates the linear relationship between a persons heights and a persons weight.
+
+\begin{figure}[H]
+	\includegraphics[center]{simpleLinearRegression}
+	\caption[Confusion Matrix]
+	{Simple Linear Regression}
+	\label{fig:simpleLinearRegression}
+\end{figure}
+
+We can see from above the $Y$ in this example is weight (wgt) and $f(x)$ is $80 + 2*Height(hgt)$. This is a very basic example but demonstrates how this can be leveraged for more complex feature sets.
 
 \subsection{Nearest Neighbours \& Distance Measures} \label{kNN}
 When the \textit{k} nearest classifications are considered, 
@@ -78,8 +96,7 @@ Decision Tree algorithms seek to split records into classes based on the inheren
 In 1907, statistician Sir Francis Galton attended a fair in which there was a competition to judge the weight of an Ox. Upon reviewing the 787 predictions made by the competing public, he observed that while there was a 
 
 
-\subsection{Regression} \label{logicReg}
-Regression models involve the modelling of linear relationships between features in a feature space. In it's simplest form we can think of a basic linear regression model where there is one independent variable and one 
+
 
 
 \subsection{Neural Networks} \label{neuralNets}
@@ -89,42 +106,59 @@ Neural Networks in broad terms are a class of model that attempt to learn patter
 \subsection{Support Vector Machines} \label{SVM}
 Support Vector Machines (SVM) were developed from Statistical Learning Theory 
 
-\iffalse
 \subsection{Sequential Association Rules, N-grams \& Markov Chains} \label{assosRules}
 In their paper, introduce the concept of association rules for discovering statistically significant relationships between frequently occurring items in large datasets. The algorithm.
 \subsection{Applications of Techniques in 2-Class Classification \& Path Prediction}\label{applic}
 Compared using k-NN versus association rules as an approach to personalising recommendations on websites based on presenting users with pages that they are likely to visit next based on a history of page requests. The results showed that using association rules provided better coverage and precision than k-NN when they used a window of 4 previous page requests.
-\fi
-
 
 %----------------------------------------------------------------------------------------
 %	SECTION 8
 %----------------------------------------------------------------------------------------
-\section{Class Imbalance Problem/Low Default Problem}
+\section{Class Imbalance Problem}
+One of the biggest assumptions that needs to be understood when using classification algorithms is that most assume there is a balanced distribution of the target class \citep{japkowicz_class_2000}. Target class imbalance is described by  \citep{chawla_smote:_2002} where the number of number of records in each class are not relatively equal. In a balanced dataset ratio between the a binary target class would be close to 50/50. The issue with this imbalance arises where algorithms assume there is a balance between the classes, and they attempt to maximise the accuracy by predicting the most common class \citep{drummond_severe_2005}. The algorithms attempt to minimise the classification errors, but do not accounts for the incorrectly classifying cases \citep{seiffert_improving_2009}. While these classification overall might be very accurate they are not very useful in real world problems, this is because in the majority of cases the algorithm will focus on the majority class, because of how heavily it is weighted in the training dataset ignoring the minority class. This is major problem because in the majority of cases you will trying to predict the minority class, in this thesis customers going into default is the minority e.g. there are more customers that do not default at the end of the outcome window than customers that do defaulters.
 
+As mentioned previously, very often in the real world problems imbalance exists in the dataset, thus there has been researched completed that have identified methods of mitigating against this risk. \citep{chawla_editorial:_2004} proposes solutions fine tuning the algorithm and manipulating the data. 
 
-One possible approach to addressing the low-default portfolio problem is the use
-of one-class classification (OCC) algorithms such as the ones described in Section
-2.4. As outlined above, OCC (also known as outlier detection) has attracted much
-attention in the data mining community (Chawla et al., 2004). It is a recognitionbased
-methodology that draws from a single class of examples to identify the normal
-or expected behaviour of a concept. This is in contrast to standard supervised
-classification techniques that use a discrimination-based methodology to distinguish
-between examples of different classes.
-In Chapter 5 we compare OCC methods with more common two-class classification
-approaches on a number of credit scoring datasets, over a range of class
-imbalance ratios. As a means for handling imbalanced data we oversample the
-minority class along with adjusting the threshold value on classifier output. The
-purpose of this evaluation is to determine whether or not the performance of OCC
-methods warrants their inclusion as an approach to addressing the LDP problem.
-To the best of our knowledge, no attempt has been made to examine OCC as a
-solution to the LDP problem before.
+\subsection{Manipulating the data}
+
+A method of manipulating the data is to resample to data with the aim of balancing the distribution of the target class. Solutions proposed,
 
 \begin{itemize}
-	\item Random Undersampling
-	\item Random Oversampling
-	\item Synthetic Oversampling 
+	\item Random undersampling the majority class
+	\item Random oversampling the minority Class
+	\item Synthetic of the minority Class 
 \end{itemize}
+
+A very common method used is to randomly oversample the minority class in your training set, one of the biggest issues with this is that you are increasing your chances of over-fitting the algorithm the training model as it been training on multiple copies of the same data which are not adding any new information. However over-fitting can be issue with this approach as the algorithm becomes biased and skewed on the training data, thus ends up performing poorly on the validation and test data \cite[see][]{hawkins_problem_2004}
+
+Random undersampling of the minority class is where random samples of the training dataset that are part of the majority class are removed. This means number of minority classes remains unchanged but the majority class is reduced, thus the overall class balance becomes more even. The issue that arises from undersampling is that there is possibility that you removes the important information from the training dataset that is used for predicting that class. 
+
+Synthetic sampling  is alternative method to randomly oversampling the minority class. New data items are added to the training set but unlike oversampling which adds duplicate records the records added are dummy or made up in a way to look similar and taking characteristics of the already existing records, thus they are not duplicates but synthetic. One method for creating synthetic data was proposed by \citep{chawla_smote:_2002} where data was generated by creating data items using K-NN where the item would sit between minority classes. 
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth]{SMOTE_Before}\caption{}
+		\label{fig:SMOTE_Before}
+	\end{subfigure}  ~\quad
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth]{SMOTE_After}
+		\caption{}
+		\label{fig:SMOTE_After}
+	\end{subfigure}
+\caption{Fig. \ref{fig:SMOTE_Before}: Example of the K-NN for $x_i$ using $k = 6$. \ref{fig:SMOTE_After}: Data created using SMOTE based on the euclidean distance.\\
+	\cite[Source:][]{he_learning_2009}}
+\label{fig:smoteExample}
+\end{figure}
+
+Above in Fig. \ref{fig:smoteExample} it is illustrated how synthetic data using the SMOTE methodology can be generated. For the purposes of this thesis this will not be discussed further.
+
+\subsection{Fine tuning the algorithm}
+There are ways to also cater for the target class imbalance of the dataset by fine tuning the algorithm. One method which is illustrated in Chapter \ref{Chapter4} of this thesis is to adjust the cut-off or threshold parameter value for the model, \cite{provost_machine_2000} warns that it would \textit{``critical mistake"}. In Section \ref{modelPerformMeasure} model performance measures, it is  worth noting that \cite{chawla_editorial:_2004} suggests using evaluation measures such as accuracy which rely on a specific threshold could lead to misleading results when the target class is imbalanced, they instead recommend using ROC and AUC to get a more accurate predictions, this similar to industry standards in terms of handling the imbalance.
+
+This section has detailed some of the concern that imbalance can cause when building predictive models, we have outlined some the solutions and methods to mitigate this by manipulating the data and fine tuning the classification algorithm.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 8

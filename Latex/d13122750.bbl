@@ -35,6 +35,27 @@ Brodersen, K.~H., Ong, C.~S., Stephan, K.~E. \harvardand\ Buhmann, J.~M.
   international conference on', IEEE, pp.~3121--3124.
 \newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5597285}}
 
+\harvarditem[Chawla et~al.]{Chawla, Bowyer, Hall \harvardand\
+  Kegelmeyer}{2002}{chawla_smote:_2002}
+Chawla, N.~V., Bowyer, K.~W., Hall, L.~O. \harvardand\ Kegelmeyer, W.~P.
+  \harvardyearleft 2002\harvardyearright , `{SMOTE}: synthetic minority
+  over-sampling technique', {\em Journal of artificial intelligence research}
+  pp.~321--357.
+\newline\harvardurl{\url{http://www.jair.org/papers/paper953.html}}
+
+\harvarditem[Chawla et~al.]{Chawla, Japkowicz \harvardand\
+  Kotcz}{2004}{chawla_editorial:_2004}
+Chawla, N.~V., Japkowicz, N. \harvardand\ Kotcz, A.  \harvardyearleft
+  2004\harvardyearright , `Editorial: special issue on learning from imbalanced
+  data sets', {\em ACM Sigkdd Explorations Newsletter} {\bf 6}(1),~1--6.
+\newline\harvardurl{http://dl.acm.org/citation.cfm?id=1007733}
+
+\harvarditem{Drummond \harvardand\ Holte}{2005}{drummond_severe_2005}
+Drummond, C. \harvardand\ Holte, R.~C.  \harvardyearleft 2005\harvardyearright
+  , Severe class imbalance: {Why} better algorithms aren’t the answer, {\em
+  in} `Machine {Learning}: {ECML} 2005', Springer, pp.~539--546.
+\newline\harvardurl{\url{http://link.springer.com/chapter/10.1007/11564096_52}}
+
 \harvarditem{Hand}{2005}{hand_good_2005}
 Hand, D.~J.  \harvardyearleft 2005\harvardyearright , `Good practice in retail
   credit scorecard assessment', {\em Journal of the Operational Research
@@ -54,6 +75,18 @@ Hanley, J.~A. \harvardand\ McNeil, B.~J.  \harvardyearleft
   operating characteristic ({ROC}) curve.', {\em Radiology} {\bf
   143}(1),~29--36.
 \newline\harvardurl{http://pubs.rsna.org/doi/abs/10.1148/radiology.143.1.7063747}
+
+\harvarditem{Hawkins}{2004}{hawkins_problem_2004}
+Hawkins, D.~M.  \harvardyearleft 2004\harvardyearright , `The problem of
+  overfitting', {\em Journal of chemical information and computer sciences}
+  {\bf 44}(1),~1--12.
+\newline\harvardurl{http://pubs.acs.org/doi/pdf/10.1021/ci0342472}
+
+\harvarditem{He \harvardand\ Garcia}{2009}{he_learning_2009}
+He, H. \harvardand\ Garcia, E.~A.  \harvardyearleft 2009\harvardyearright ,
+  `Learning from imbalanced data', {\em Knowledge and Data Engineering, IEEE
+  Transactions on} {\bf 21}(9),~1263--1284.
+\newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5128907}}
 
 \harvarditem{Japkowicz}{2000}{japkowicz_class_2000}
 Japkowicz, N.  \harvardyearleft 2000\harvardyearright , The class imbalance
@@ -80,6 +113,20 @@ Martens, D., Van~Gestel, T., De~Backer, M., Haesen, R., Vanthienen, J.
 \harvarditem{McNab \harvardand\ Wynn}{2000}{mcnab_principles_2000}
 McNab, H. \harvardand\ Wynn, A.  \harvardyearleft 2000\harvardyearright , {\em
   Principles and practice of consumer credit risk management}, CIB Publishing.
+
+\harvarditem{Provost}{2000}{provost_machine_2000}
+Provost, F.  \harvardyearleft 2000\harvardyearright , Machine learning from
+  imbalanced data sets 101, {\em in} `Proceedings of the {AAAI}’2000 workshop
+  on imbalanced data sets', pp.~1--3.
+\newline\harvardurl{http://www.aaai.org/Papers/Workshops/2000/WS-00-05/WS00-05-001.pdf}
+
+\harvarditem[Seiffert et~al.]{Seiffert, Khoshgoftaar \harvardand\
+  Van~Hulse}{2009}{seiffert_improving_2009}
+Seiffert, C., Khoshgoftaar, T.~M. \harvardand\ Van~Hulse, J.  \harvardyearleft
+  2009\harvardyearright , `Improving software-quality predictions with data
+  sampling and boosting', {\em Systems, Man and Cybernetics, Part A: Systems
+  and Humans, IEEE Transactions on} {\bf 39}(6),~1283--1294.
+\newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5233804}}
 
 \harvarditem[Seliya et~al.]{Seliya, Khoshgoftaar \harvardand\
   Van~Hulse}{2009}{seliya_study_2009}
