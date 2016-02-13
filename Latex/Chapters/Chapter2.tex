@@ -51,15 +51,8 @@ There are two well known approaches to class label definition that financial ins
 %----------------------------------------------------------------------------------------
 \section{Feature Selection}
 \subsection{Correlation-based Feature Selection}
-\subsection{Stepwise Procedures}
-
-
-%----------------------------------------------------------------------------------------
-%	SECTION 6
-%----------------------------------------------------------------------------------------
-
-
-\section{Coarse Classification/ Binning}
+\subsection{Information Gain}
+\subsection{Coarse Classification/ Binning}
 %----------------------------------------------------------------------------------------
 %	SECTION 7
 %----------------------------------------------------------------------------------------
@@ -164,6 +157,26 @@ This section has detailed some of the concern that imbalance can cause when buil
 %	SECTION 8
 %----------------------------------------------------------------------------------------
 \section{Model Validation Methods}
+In machine learning historic data is used to build a model to make future predictions based on past information. Classification algorithms like the ones already discussed in this section need to validatated and tested. This section details some methods and approaches to tackling this problem so the predictions from the model are useful
+
+\subsubsection{Resubstitution Validation}
+In this scena
+\citep{refaeilzadeh_cross-validation_2009}
+\subsubsection{Holdout Validation}
+
+\subsubsection{K-Fold Validation}
+
+\subsubsection{Leave-One-Out Cross-Validation}
+
+\subsubsection{Repeated K-Fold Cross Validation}
+
+
+
+Once the dataset has been constructed i.e. the experiment features are built and targets class has been labelled for each observation. The next part is deciding on how the data will be used to evaluate and test the machine learning models. 
+
+
+The data needs to be broken into many partitions. This will usually include a training and testing sample datasets. Testing/Validation is done so we can evaluate of the trained model generalises well on the unseen testing/validation dataset. This is because there is a risk of over-fitting the training set.
+
 \url{"http://blog.dato.com/how-to-evaluate-ml-models-part-3-validation-and-offline-testing"}
 
 \begin{itemize}
@@ -188,7 +201,14 @@ Hold-out testing or validation is simple. Assuming that all data points are i.i.
 Online testing happens live in production, one example of this is known as A/B testing. Online testing is beyond the scope of this thesis so it will not be discussed further. 
 
 \subsubsection{Cross validation}
-Cross validation can be used when tuning the hyperparameters of the model. A lot of people seem to consider the two to be synonymous. But they are not. Cross validation is simply a way of generating training and validation sets for the process of hyperparameter tuning. Hold-out sets are also valid for hyperparameter tuning, and in fact they are computationally much cheaper.
+
+\begin{figure}[H]
+	\includegraphics[width=0.7\textwidth,center]{5-fold-cv}
+	\caption{5 Fold Cross Validation}
+	\label{fig:5-fold-cv}
+\end{figure}
+
+Cross validation can be used when tuning the hyperparameters of the model. A lot of people seem to consider the two to be synonymous. But they are not. 
 
 There are many variants of cross validation. The most commonly known is k-fold cross validation. In this procedure, first one divides the training dataset into K folds. For a given a hyperparameter setting, one treats each of the k folds like a hold-out set, trains a model on the rest of the k-1 folds, and measures the quality of the model on the held-out fold. The overall performance is taken to be the average of the performance on all k folds. Repeat this procedure for all of the hyperparameter settings one wish to evaluate, then pick the hyperparameters that resulted in the highest k-fold average. Lastly, retrain the model on all k-folds (the entire training set).
 
@@ -196,13 +216,20 @@ Cross validation is useful when the training dataset is so small that one can’
 
 If one needs a variance on the validation score, then hold-out set may not suffice. Use cross validation, or bootstrap.
 
+Cross validation is simply a way of generating training and validation sets for the process of hyperparameter tuning. Hold-out sets are also valid for hyperparameter tuning, and in fact they are computationally much cheaper.
+
 \subsubsection{some subsection}
 When calculating a measure of model accuracy there are some considerations to be made to increase the likelihood of the model making accurate predictions on unseen data. If we build a model using the full historical dataset available and subsequently test the accuracy of the model against the same dataset then we are in danger of generating a model that is over-fitted to the training set and the accuracy observed from the subsequent test may be biased (i.e. optimistic of the accuracy of the model).
 
-\subsubsection{Cross validation}
-
 \subsubsection{Hold-out Datasets}
 
+\subsubsection{Summary}
+
+Holdout and cross validation methods are both used extensively for evaluating how measuring the performance of the models. In the majority of cases if there is a large enough dataset you might choose to just use holdout method, but in some situations of you may want to use cross validation.
+
+One way which you combine both approaches would be if you want to fine tune some parameter or do some feature selection on you model (evaluating several models), for the final evaluation/test you might holdout dataset for validation but to choose the optimal parameter input for your model or best features this could be estimated on the training set by using cross validation.
+
+For example if you are fine tuning your model because you are looking optimise which model to use or want to maximise or minimise a performance measure cross validation may be a good choice of evaluation.
 
 
 %----------------------------------------------------------------------------------------
