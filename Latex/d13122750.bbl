@@ -94,6 +94,12 @@ Japkowicz, N.  \harvardyearleft 2000\harvardyearright , The class imbalance
   {Conf}. on {Artificial} {Intelligence}', Citeseer.
 \newline\harvardurl{\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1693&rep=rep1&type=pdf}}
 
+\harvarditem{Kohavi \harvardand\ {others}}{1995}{kohavi_study_1995}
+Kohavi, R. \harvardand\ {others}  \harvardyearleft 1995\harvardyearright , A
+  study of cross-validation and bootstrap for accuracy estimation and model
+  selection, {\em in} `Ijcai', Vol.~14, pp.~1137--1145.
+\newline\harvardurl{https://www.researchgate.net/profile/Ron\_Kohavi/publication/2352264\_A\_Study\_of\_Cross-Validation\_and\_Bootstrap\_for\_Accuracy\_Estimation\_and\_Model\_Selection/links/02e7e51bcc14c5e91c000000.pdf}
+
 \harvarditem[Lessmann et~al.]{Lessmann, Baesens, Mues \harvardand\
   Pietsch}{2008}{lessmann_benchmarking_2008}
 Lessmann, S., Baesens, B., Mues, C. \harvardand\ Pietsch, S.  \harvardyearleft
@@ -126,6 +132,12 @@ Refaeilzadeh, P., Tang, L. \harvardand\ Liu, H.  \harvardyearleft
   2009\harvardyearright , Cross-validation, {\em in} `Encyclopedia of database
   systems', Springer, pp.~532--538.
 \newline\harvardurl{\url{http://link.springer.com/10.1007/978-0-387-39940-9_565}}
+
+\harvarditem{Salzberg}{1997}{salzberg_comparing_1997}
+Salzberg, S.~L.  \harvardyearleft 1997\harvardyearright , `On comparing
+  classifiers: {Pitfalls} to avoid and a recommended approach', {\em Data
+  mining and knowledge discovery} {\bf 1}(3),~317--328.
+\newline\harvardurl{http://link.springer.com/article/10.1023/A:1009752403260}
 
 \harvarditem[Seiffert et~al.]{Seiffert, Khoshgoftaar \harvardand\
   Van~Hulse}{2009}{seiffert_improving_2009}

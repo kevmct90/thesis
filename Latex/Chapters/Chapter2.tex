@@ -171,11 +171,10 @@ The \textit{holdout validation} method is used to avoid the over-fitting issue d
 	\label{fig:holdout}
 \end{figure}
 
-Fig. \ref{fig:holdout} illustrates how the complete dataset is partitioned into a training and test sets. 
+Fig. \ref{fig:holdout} illustrates how the complete dataset is partitioned into a training and test sets. To address the biasses is Holdout you could re-run multiple tests and average the results, or more commonly you could look at using \textit{k-fold cross-validation} discussed in the next subsection.
 
 \subsubsection{K-Fold Cross Validation}
-The \textit{k-fold cross validation} can be used to deal with the bias issues discussed above. The first step of this method is to split the data into $k$ equally sized partitions called folds. A model is then trained using $k$ iterations, where for each iteration a different fold of data is used for testing and training the model. This can be illustrated well below in Fig. \ref{fig:5-fold-cv} where there are 5 fold 
-
+The \textit{k-fold cross validation} can be used to deal with the bias issues discussed above. The first step of this method is to split the data into $k$ equally sized partitions called folds. A model is then trained using $k$ iterations, where for each iteration a different fold of data is used for testing and training the model. This can be illustrated well below in Fig. \ref{fig:5-fold-cv} where there are 5-folds, and for each iteration you can see different fold is being used for testing.  
 
 \begin{figure}[H]
 	\includegraphics[width=0.7\textwidth,center]{5-fold-cv}
@@ -183,67 +182,22 @@ The \textit{k-fold cross validation} can be used to deal with the bias issues di
 	\label{fig:5-fold-cv}
 \end{figure}
 
+It is important and usually common practice that each fold is representative of the the whole dataset, for each example that the target class ratio split is the same for each fold as for the entire dataset. 
+
 \subsubsection{Leave-One-Out Cross-Validation}
+The \textit{leave-one-out cross-validation} (LOOCV) method is a specialised version of $k$-fold cross-validation, where $k$ is equal to the number of observations in the dataset. In layman's term this means all the data bar one observation is utilized training the model, and testing is done on one observation. This is completed for each observation in the dataset. Although it is worth noting that accuracy estimate gathered using this method produces unbiased results, it also high variance which can lead to misleading results \citep{refaeilzadeh_cross-validation_2009}.
+ 
 
 \subsubsection{Repeated K-Fold Cross Validation}
-
-
-
-Once the dataset has been constructed i.e. the experiment features are built and targets class has been labelled for each observation. The next part is deciding on how the data will be used to evaluate and test the machine learning models. 
-
-
-The data needs to be broken into many partitions. This will usually include a training and testing sample datasets. Testing/Validation is done so we can evaluate of the trained model generalises well on the unseen testing/validation dataset. This is because there is a risk of over-fitting the training set.
-
-\url{"http://blog.dato.com/how-to-evaluate-ml-models-part-3-validation-and-offline-testing"}
-
-\begin{itemize}
-	\item Validation
-	\item Offline Testing
-	\item Online Testing
-\end{itemize}
-
-\subsubsection{Model Validation}
-During model validation during testing/prototyping to fins tune classifier and analyse goodness of fit.
-
-\subsubsection{Offline Testing}
-Offline testing happens on a static past events, where the data is labelled dataset collected from past events. This is done to test deployed model is working correctly, it needs to be tested periodically.
-
-\subsubsection{Offline testing vs. validation}
-Model validation and offline testing both test the model’s performance, but they happen at different stages of the model’s life time. Validation is done to evaluate the goodness of fit of a learned model, which is a measurement of the quality of hyperparameters used during model training. (More on this in the next post on hyperparameter tuning.) Validation happens prior to real testing or deployment. Once the model is trained and deployed, we can continue to monitor its performance offline on a test dataset. This kind of offline batch testing does not require retraining the model. One can use a hold-out dataset for validation and another for offline testing, as long as the test set does not contain the validation set, this is fine. Cross validation, bootstrap and jackknife are resampling techniques that generate multiple random samples from the same dataset; they can be employed for validation or computing confidence intervals.
-
-\subsubsection{Hold-out datasets}
-Hold-out testing or validation is simple. Assuming that all data points are i.i.d. (independently and identically distributed), hold-out testing means one randomly holds out part of the data for testing. One trains the model on the larger portion of the data and evaluates test metrics on the smaller hold-out set. 
-
-\subsubsection{Online Testing}
-Online testing happens live in production, one example of this is known as A/B testing. Online testing is beyond the scope of this thesis so it will not be discussed further. 
-
-\subsubsection{Cross validation}
-
-
-
-Cross validation can be used when tuning the hyperparameters of the model. A lot of people seem to consider the two to be synonymous. But they are not. 
-
-There are many variants of cross validation. The most commonly known is k-fold cross validation. In this procedure, first one divides the training dataset into K folds. For a given a hyperparameter setting, one treats each of the k folds like a hold-out set, trains a model on the rest of the k-1 folds, and measures the quality of the model on the held-out fold. The overall performance is taken to be the average of the performance on all k folds. Repeat this procedure for all of the hyperparameter settings one wish to evaluate, then pick the hyperparameters that resulted in the highest k-fold average. Lastly, retrain the model on all k-folds (the entire training set).
-
-Cross validation is useful when the training dataset is so small that one can’t afford to hold out part of the data just for validation purposes. With the size of modern datasets, this is rarely necessary. Hold-out validation is much faster and provides good estimates of model. This is what is currently implemented in GraphLab Create.
-
-If one needs a variance on the validation score, then hold-out set may not suffice. Use cross validation, or bootstrap.
-
-Cross validation is simply a way of generating training and validation sets for the process of hyperparameter tuning. Hold-out sets are also valid for hyperparameter tuning, and in fact they are computationally much cheaper.
-
-\subsubsection{some subsection}
-When calculating a measure of model accuracy there are some considerations to be made to increase the likelihood of the model making accurate predictions on unseen data. If we build a model using the full historical dataset available and subsequently test the accuracy of the model against the same dataset then we are in danger of generating a model that is over-fitted to the training set and the accuracy observed from the subsequent test may be biased (i.e. optimistic of the accuracy of the model).
-
-\subsubsection{Hold-out Datasets}
+The \textit{repeated k-fold cross validation} method is another specialised version of $k$-fold cross-validation. In an attempt to improve the performance of the model using this method $k$-fold cross-validation is rerun multiples times. Each time it is rerun the data is shuffled so data will appear in different folds for each repeat run. 
 
 \subsubsection{Summary}
 
 Holdout and cross validation methods are both used extensively for evaluating how measuring the performance of the models. In the majority of cases if there is a large enough dataset you might choose to just use holdout method, but in some situations of you may want to use cross validation.
 
-One way which you combine both approaches would be if you want to fine tune some parameter or do some feature selection on you model (evaluating several models), for the final evaluation/test you might holdout dataset for validation but to choose the optimal parameter input for your model or best features this could be estimated on the training set by using cross validation.
+There are considerations that need to be thought about before using either, hold-out is simple can be implemented easily and quickly and can be rerun multiple times to get a more unbiased result. K-fold is again theoretically simple but may not be a simple to implement as the code may be tedious and time consuming where the gains may not be worth the investment in industry. 
 
-For example if you are fine tuning your model because you are looking optimise which model to use or want to maximise or minimise a performance measure cross validation may be a good choice of evaluation.
-
+\citep{kohavi_study_1995} and \citep{salzberg_comparing_1997} both performed research on approaches to choosing the correct validation method. \cite{kohavi_study_1995} analysed many cross validation methods, regular, leave-one-out, stratified. They came to the conclusion that 10-fold cross-validation produced the most accurate and unbiased results. \cite{salzberg_comparing_1997} also studies the issues of comparing model performance and proposes a solution that combines k-fold cross validation combined appropriate hypothesis tests opposed to evaluating the average accuracy.   
 
 %----------------------------------------------------------------------------------------
 %	SECTION 9
