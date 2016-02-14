@@ -498,15 +498,6 @@ A base model has been built using SAS, however for the feature selection process
 
 \section{Interactive Grouping}
 
-\subsubsection{No Previous Delinquency}
-
-\begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinq_InformationGain_InteractiveGrouping}
-	\caption{Information Value using SAS No Previous Delinquency Features}
-	\label{fig:Information Value using SAS No Previous Delinquency Features}
-\end{figure}
-
-
 \subsubsection{Previous Delinquency}
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{PreviousDelinq_InformationGain_InteractiveGrouping}
@@ -519,6 +510,58 @@ A base model has been built using SAS, however for the feature selection process
 	\caption{Interactive Grouping Diff Percent 06 2012 ED}
 	\label{fig:Interactive Grouping Diff Percent 06 2012 ED}
 \end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Information Value Cut-off}& \textbf{No. Grouped Features Used} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression  & 0.100 & 4 &  0.649 &  0.673 &  0.639  \\
+			Regression &  0.063 & 15 & 0.699 &  0.669 &  0.603  \\			
+			Regression &  0.042 & 20 & 0.711 &  0.668 &  0.611  \\	
+			Regression & 0.0385 & 5 &  0.657 &  0.662 &  0.616  \\	
+			Regression & 0.036 & 10 &  0.685 &  0.654 &  0.590  \\		
+			\hline
+		\end{tabular}
+	}
+	\caption{Results from Interactive Grouping for Previous Delinquency Model}
+	\label{table:InteractiveGroupingPreviousDelinquency}
+\end{table}
+
+See Appendix \ref{Previous Delinquency Interactive Grouping Information Gain Analysis} for the result of the information gain for each feature
+
+\subsubsection{No Previous Delinquency}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinq_InformationGain_InteractiveGrouping}
+	\caption{Information Value using SAS No Previous Delinquency Features}
+	\label{fig:Information Value using SAS No Previous Delinquency Features}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Information Value Cut-off}& \textbf{No. Grouped Features Used} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression12  & 0.08 & 5 &  0.691 &  0.715 &  0.681  \\
+			Regression2 &  0.052 & 6 & 0.70 &  0.714 &  0.681  \\			
+			Regression25 &  0.045 & 10 & 0.720 &  0.70 &  0.686  \\	
+			Regression20 & 0.041 & 15 &  0.728 &  0.699 &  0.675  \\	
+			Regression24 & 0.0379 & 20 &  0.729 &  0.698 &  0.673 \\		
+			\hline
+		\end{tabular}
+	}
+	\caption{Results from Interactive Grouping for No Previous Delinquency Model}
+	\label{table:NoInteractiveGroupingPreviousDelinquency}
+\end{table}
+
+See Appendix \ref{No Previous Delinquency Interactive Grouping Information Gain Analysis} for the result of the information gain for each feature
 
 \section{K-NN Approach}
 
@@ -715,7 +758,8 @@ The final value used for the model was k = 51.
 
 
 \section{Addressing Imbalance}
-\subsection{Undersampling}
+
+As discussed is Chapter 2, undersampling is not a good fit for absolute rarity so will perform oversampling of the minority class. This will be done by oversampling in the training data only, the validation and test will remain unchanged. 
 \subsection{Oversampling}
 
 \section{Comparing Results of Various Experiments}

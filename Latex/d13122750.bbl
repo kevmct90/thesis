@@ -69,6 +69,12 @@ Hand, D.~J. \harvardand\ Henley, W.~E.  \harvardyearleft 1997\harvardyearright
   Society)} pp.~523--541.
 \newline\harvardurl{http://www.jstor.org/stable/2983268}
 
+\harvarditem{Hand \harvardand\ Zhou}{2010}{hand_evaluating_2010}
+Hand, D.~J. \harvardand\ Zhou, F.  \harvardyearleft 2010\harvardyearright ,
+  `Evaluating models for classifying customers in retail banking collections',
+  {\em Journal of the Operational Research Society} {\bf 61}(10),~1540--1547.
+\newline\harvardurl{http://www.palgrave-journals.com/jors/journal/v61/n10/abs/jors2009129a.html}
+
 \harvarditem{Hanley \harvardand\ McNeil}{1982}{hanley_meaning_1982}
 Hanley, J.~A. \harvardand\ McNeil, B.~J.  \harvardyearleft
   1982\harvardyearright , `The meaning and use of the area under a receiver
@@ -88,11 +94,21 @@ He, H. \harvardand\ Garcia, E.~A.  \harvardyearleft 2009\harvardyearright ,
   Transactions on} {\bf 21}(9),~1263--1284.
 \newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5128907}}
 
+\harvarditem{Hosmer \harvardand\ Lemeshow}{2000}{hosmer_applied_2000}
+Hosmer, D.~W. \harvardand\ Lemeshow, S.  \harvardyearleft 2000\harvardyearright
+  , `Applied {Logistic} {Regression}. {John} {Wiley} \& {Sons}, {Inc}', {\em
+  New York} .
+
 \harvarditem{Japkowicz}{2000}{japkowicz_class_2000}
 Japkowicz, N.  \harvardyearleft 2000\harvardyearright , The class imbalance
   problem: {Significance} and strategies, {\em in} `Proc. of the {Int}’l
   {Conf}. on {Artificial} {Intelligence}', Citeseer.
 \newline\harvardurl{\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1693&rep=rep1&type=pdf}}
+
+\harvarditem{Kennedy}{2013}{kennedy_credit_2013}
+Kennedy, K.  \harvardyearleft 2013\harvardyearright , `Credit {Scoring} {Using}
+  {Machine} {Learning}'.
+\newline\harvardurl{http://arrow.dit.ie/sciendoc/137/}
 
 \harvarditem{Kohavi \harvardand\ {others}}{1995}{kohavi_study_1995}
 Kohavi, R. \harvardand\ {others}  \harvardyearleft 1995\harvardyearright , A
@@ -161,5 +177,11 @@ Van~Gestel, T. \harvardand\ Baesens, B.  \harvardyearleft 2009\harvardyearright
   rating analysis, models, economic and regulatory capital}, Oxford University
   Press.
 \newline\harvardurl{\url{http://is.muni.cz/do/econ/soubory/aktivity/fai/17809295/FAI_issue2010_01_valova.pdf?so=ed;pocnep=1}}
+
+\harvarditem{Weiss}{2004}{weiss_mining_2004}
+Weiss, G.~M.  \harvardyearleft 2004\harvardyearright , `Mining with rarity: a
+  unifying framework', {\em ACM SIGKDD Explorations Newsletter} {\bf
+  6}(1),~7--19.
+\newline\harvardurl{http://dl.acm.org/citation.cfm?id=1007734}
 
 \end{thebibliography}
