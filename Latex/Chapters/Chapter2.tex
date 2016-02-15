@@ -81,11 +81,18 @@ Fig. \ref{fig:simpleLinearRegression} illustrates very simply and intuitively us
 	\label{fig:simpleLinearRegression}
 \end{figure}
 
-We can see from above the $Y$ in this example is weight (wgt) and $f(x)$ is $80 + 2*Height(hgt)$. This is a very basic example but demonstrates how this can be leveraged for more complex feature sets.
+We can see from above the $Y$ in this example is weight (wgt) and $f(x)$ is $80 + 2*Height(hgt)$. This is a very basic example but demonstrates how this can be leveraged for more complex feature sets. Predicting arrears is a dichotomous problem meaning the outcome of the experiment can only have two possible values. 
 
 \subsection{Logistic Regression} \label{LogReg}
-\textit{Logistic Regression} \cite[For more information See:][]{hosmer_applied_2000} within the credit scoring industry is one of the most used algorithms \citep{hand_evaluating_2010}. As seen above in Fig. \ref{fig:simpleLinearRegression} a simple regression model outputs a continuous response, in that example body weight. Credit scoring or predicting arrears is a problem where there can only be two possibly values default or not-default, to simplify this we will reduce this to a binary problem where the outcome will be 1 or 0. To transform the output of a regression model from $[-\infty, +\infty]$ to a probability between 0 and 1 a logistic transformation is applied.  
+\textit{Logistic Regression} \cite[See:][]{hosmer_applied_2000} within the credit scoring industry is one of the most used algorithms \citep{hand_evaluating_2010}. As seen above in Fig. \ref{fig:simpleLinearRegression} a simple regression model outputs a continuous response, in that example body weight. Credit scoring or predicting arrears is a problem where there can only be two possibly values default or not-default, to simplify this we will reduce this to a binary problem where the outcome will be 1 or 0. To transform the output of a regression model from $[-\infty, +\infty]$ to a probability between 0 and 1 a logistic transformation is applied. The logistic function can be used to take any value between $+\infty$ and $-\infty$ and output a value between $0$ and $1$. Fig. \ref{fig:logistic_function} below illustrates what a logistic function looks like.
 
+
+\begin{figure}[H]
+	\includegraphics[width=0.6\textwidth, center]{logistic_function}
+	\caption[Standard Logistic Regression]
+	{Standard Logistic Regression}
+	\label{fig:logistic_function}
+\end{figure}
 
 
 
@@ -110,11 +117,6 @@ Neural Networks in broad terms are a class of model that attempt to learn patter
 
 \subsection{Support Vector Machines} \label{SVM}
 Support Vector Machines (SVM) were developed from Statistical Learning Theory 
-
-\subsection{Sequential Association Rules, N-grams \& Markov Chains} \label{assosRules}
-In their paper, introduce the concept of association rules for discovering statistically significant relationships between frequently occurring items in large datasets. The algorithm.
-\subsection{Applications of Techniques in 2-Class Classification \& Path Prediction}\label{applic}
-Compared using k-NN versus association rules as an approach to personalising recommendations on websites based on presenting users with pages that they are likely to visit next based on a history of page requests. The results showed that using association rules provided better coverage and precision than k-NN when they used a window of 4 previous page requests.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 8
