@@ -70,7 +70,13 @@ Logistic regression is one of the most widely used classifier used by industry b
 \subsection{Regression} \label{Reg}
 Regression models are used to model the linear relationship between features in a feature space or between the features and the target variable. 
 
-A very simple form of linear regression is where there is one independent and one dependent variable, which is the target we are attempting to predict. The model is often represented by the following function  $Y = f(x)$, where we're trying to predict $Y$ based using the value of $x$.
+A very simple form of linear regression is where there is one independent and one dependent variable, which is the target we are attempting to predict. The model is often represented by the following model
+
+\begin{equation} \label{eq:reg}
+\text{Linear Model} = y = b_0 + b_1x
+\end{equation}
+
+where we're trying to predict $y$ based using the value of $x$.
 
 Fig. \ref{fig:simpleLinearRegression} illustrates very simply and intuitively using a real life example you can relate to. It demonstrates the linear relationship between a persons heights and a persons weight.
 
@@ -81,7 +87,7 @@ Fig. \ref{fig:simpleLinearRegression} illustrates very simply and intuitively us
 	\label{fig:simpleLinearRegression}
 \end{figure}
 
-We can see from above the $Y$ in this example is weight (wgt) and $f(x)$ is $80 + 2*Height(hgt)$. This is a very basic example but demonstrates how this can be leveraged for more complex feature sets. Predicting arrears is a dichotomous problem meaning the outcome of the experiment can only have two possible values. 
+We can see from above the $y$ in this example is weight (wgt) and $b_0 + b_1x$ is $80 + 2*Height(hgt)$. This is a very basic example but demonstrates how this can be leveraged for more complex feature sets. Predicting arrears is a dichotomous problem meaning the outcome of the experiment can only have two possible values. 
 
 \subsection{Logistic Regression} \label{LogReg}
 \textit{Logistic Regression} \cite[See:][]{hosmer_applied_2000} within the credit scoring industry is one of the most used algorithms \citep{hand_evaluating_2010}. As seen above in Fig. \ref{fig:simpleLinearRegression} a simple regression model outputs a continuous response, in that example body weight. Credit scoring or predicting arrears is a problem where there can only be two possibly values default or not-default, to simplify this we will reduce this to a binary problem where the outcome will be 1 or 0 \citep{zou_modified_2004}. To transform the output of a regression model from $[-\infty, +\infty]$ to a probability between 0 and 1 a logistic transformation is applied. The logistic function can be used to take any value between $+\infty$ and $-\infty$ and output a value between $0$ and $1$. Fig. \ref{fig:logistic_function} below illustrates what a logistic function looks like.
@@ -94,8 +100,34 @@ We can see from above the $Y$ in this example is weight (wgt) and $f(x)$ is $80 
 	\label{fig:logistic_function}
 \end{figure}
 
-The logistic function can be defined 
+The logistic function is defined in Equation \ref{eq:logitReg} as the following: 
 
+\begin{equation} \label{eq:logitReg}
+\text{Logistic Model}  =  p  =  \frac{1}{1 + e^{-(b_0 + b_1x)}}
+\end{equation}
+
+As discussed already linear regression is an unsuitable classifier for making dichotomous predictions as linear regression produces predictions for a range beyond 0 to 1. Logistic regression also produces a curved line that is bounded by values between 0 and 1. Fig. \ref{fig:LogRegVsLineReg}
+
+\begin{figure}[H]
+	\includegraphics[width=0.6\textwidth, center]{LogRegVsLineReg}
+	\caption{Comparison between Linear and Logistic Regression Models}
+	\label{fig:LogRegVsLineReg}
+\end{figure}
+
+In \ref{fig:LogRegVsLineReg} the constant, $b_0$ dictates the position of the curve which can be moved left and right depending on its value, $b_1$ will be the slope of the curve. 
+
+If you 
+
+The logistic regression model can be extended to include any number of interval and nominal variables which is illustrated in Equation \ref{eq:logitRegExtended}
+
+\begin{equation} \label{eq:logitRegExtended}
+p  =  \frac{1}{1 + e^{-(b_0 + b_1x_1 + b_2x_2 +\cdot\cdot\cdot+ b_px_p )}}
+\end{equation}
+
+Logistic Regression can also be used in cases where there are more than two outcome groups. For example it could be used in predicting what stage a customer is in the customer lifecycle e.g. Awareness, Interest/Consideration, Evaluation/Purchase, this is referred to \textit{multinomial logistic regression}
+
+
+One of the main major attractions of logistic regressions it allows you to use discrete, continuous features or a combination of both \citep{lee_application_2005}.
 
 \subsection{Nearest Neighbours \& Distance Measures} \label{kNN}
 When the \textit{k} nearest classifications are considered, 

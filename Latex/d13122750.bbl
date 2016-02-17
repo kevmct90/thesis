@@ -116,6 +116,13 @@ Kohavi, R. \harvardand\ {others}  \harvardyearleft 1995\harvardyearright , A
   selection, {\em in} `Ijcai', Vol.~14, pp.~1137--1145.
 \newline\harvardurl{https://www.researchgate.net/profile/Ron\_Kohavi/publication/2352264\_A\_Study\_of\_Cross-Validation\_and\_Bootstrap\_for\_Accuracy\_Estimation\_and\_Model\_Selection/links/02e7e51bcc14c5e91c000000.pdf}
 
+\harvarditem{Lee}{2005}{lee_application_2005}
+Lee, S.  \harvardyearleft 2005\harvardyearright , `Application of logistic
+  regression model and its validation for landslide susceptibility mapping
+  using {GIS} and remote sensing data', {\em International Journal of Remote
+  Sensing} {\bf 26}(7),~1477--1491.
+\newline\harvardurl{http://www.tandfonline.com/doi/abs/10.1080/01431160412331331012}
+
 \harvarditem[Lessmann et~al.]{Lessmann, Baesens, Mues \harvardand\
   Pietsch}{2008}{lessmann_benchmarking_2008}
 Lessmann, S., Baesens, B., Mues, C. \harvardand\ Pietsch, S.  \harvardyearleft
