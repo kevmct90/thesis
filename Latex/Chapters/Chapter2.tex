@@ -129,9 +129,27 @@ Logistic Regression can also be used in cases where there are more than two outc
 
 One of the main major attractions of logistic regressions it allows you to use discrete, continuous features or a combination of both \citep{lee_application_2005}.
 
-\subsection{Nearest Neighbours \& Distance Measures} \label{kNN}
-When the \textit{k} nearest classifications are considered, 
+\subsection{K-Nearest Neighbours} \label{kNN}
+The \textit{k-nearest neighbour} or {k-NN} for short, is an algorithm that classifies observations based on the how its nearest neighbours are classified. It can be known as the nearest neighbour but in the majority of cases it is useful to use more than one neighbour \citep{henley_k-nearest-neighbour_1996}. The intuition behind this algorithm is that instances which are close by each other will more likely be classified the same way \citep{cover_nearest_1967}.\\ %added space for small gap in picture 
 
+
+\begin{figure}[H]
+	\includegraphics[width=0.6\textwidth, center]{KNN_Example}
+	\caption{Comparison between Linear and Logistic Regression Models}
+	\label{fig:KNN_Example}
+\end{figure}
+
+\begin{equation} \label{eq:Euclidean}
+\text{Euclidean Distance}   = \sqrt{\sum_{i=1}^k (x_i-y_i)^2}
+\end{equation}
+
+\begin{equation} \label{eq:Manhatten}
+\text{Manhatten Distance}   = \sum_{i=1}^k \abs{x_i-y_i}
+\end{equation}
+
+\begin{equation} \label{eq:Minkowski}
+\text{Minkowski Distance}   = \Big(\sum_{i=1}^k (\abs{x_i-y_i})^p\Big)^\frac{1}{p}
+\end{equation}
 
 \subsection{Decision Trees} \label{decTrees}
 Decision Tree algorithms seek to split records into classes based on the inherent characteristics of the variables in the dataset and their relationship with the target variable(class).\\Prior to splitting the data, if we were to randomly pick a record from the dataset, the degree of uncertainty as to what class we would expect it to be would be relative to the distribution of the classes in the original dataset.

@@ -50,6 +50,12 @@ Chawla, N.~V., Japkowicz, N. \harvardand\ Kotcz, A.  \harvardyearleft
   data sets', {\em ACM Sigkdd Explorations Newsletter} {\bf 6}(1),~1--6.
 \newline\harvardurl{http://dl.acm.org/citation.cfm?id=1007733}
 
+\harvarditem{Cover \harvardand\ Hart}{1967}{cover_nearest_1967}
+Cover, T.~M. \harvardand\ Hart, P.~E.  \harvardyearleft 1967\harvardyearright ,
+  `Nearest neighbor pattern classification', {\em Information Theory, IEEE
+  Transactions on} {\bf 13}(1),~21--27.
+\newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1053964}
+
 \harvarditem{Drummond \harvardand\ Holte}{2005}{drummond_severe_2005}
 Drummond, C. \harvardand\ Holte, R.~C.  \harvardyearleft 2005\harvardyearright
   , Severe class imbalance: {Why} better algorithms aren’t the answer, {\em
@@ -93,6 +99,12 @@ He, H. \harvardand\ Garcia, E.~A.  \harvardyearleft 2009\harvardyearright ,
   `Learning from imbalanced data', {\em Knowledge and Data Engineering, IEEE
   Transactions on} {\bf 21}(9),~1263--1284.
 \newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5128907}}
+
+\harvarditem{Henley \harvardand\ Hand}{1996}{henley_k-nearest-neighbour_1996}
+Henley, W.~E. \harvardand\ Hand, D.~J.  \harvardyearleft 1996\harvardyearright
+  , `A k-nearest-neighbour classifier for assessing consumer credit risk', {\em
+  The Statistician} pp.~77--95.
+\newline\harvardurl{http://www.jstor.org/stable/2348414}
 
 \harvarditem{Hosmer \harvardand\ Lemeshow}{2000}{hosmer_applied_2000}
 Hosmer, D.~W. \harvardand\ Lemeshow, S.  \harvardyearleft 2000\harvardyearright
