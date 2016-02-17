@@ -761,8 +761,118 @@ The final value used for the model was k = 51.
 
 \section{Addressing Imbalance}
 
+
 As discussed is Chapter 2, undersampling is not a good fit for absolute rarity so will perform oversampling of the minority class. This will be done by oversampling in the training data only, the validation and test will remain unchanged. 
 \subsection{Oversampling}
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l| l|r|r|r}
+			\hline
+			\textbf{Model} &  \textbf{Dataset} & \textbf{Default} & \textbf{Not-Default} & \textbf{Total} \\
+			\hline
+			Previous Delinquency          & Training       & 435 & 1,320 & 1,755 \\
+			Previous Delinquency          & Training(OverSample) & 1,304 & 1,320 & 2,624 \\
+			Previous Delinquency          & Validation       & 151 & 436 & 585 \\
+			Previous Delinquency          & Test & 142 & 444 & 586 \\ \hline
+			No Previous Delinquency          & Training & 379 & 14,114 & 14,493 \\ 
+			No Previous Delinquency          & Training(OverSample) & 13,959 & 14,113 & 28,072 \\ 
+			No Previous Delinquency          & Validation & 120 & 4,711 & 4,831 \\
+			No Previous Delinquency          & Test & 152 & 4,680 & 4,832 \\
+			\hline
+		\end{tabular}
+	}
+	\caption{Breakdown of Training/Validation/Test Partitions for Experiment}
+\end{table}
+
+
+\footnote{{\url{https://cran.r-project.org/web/packages/ROSE/index.html}}}. 
+
+
+\begin{table}[H]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{llll}
+		\textbf{Model}                 & \textbf{Training} & \textbf{Validation} & \textbf{Testing} \\
+		DelinquencyBase                & 0.663             & 0.659               & 0.606            \\
+		DelinquencyBaseOverSample      & 0.664             & 0.649               & 0.609            \\
+		DelinquencyExperBase           & 0.667             & 0.655               & 0.655            \\
+		DelinquencyExperBaseOverSample & 0.672             & 0.647               & 0.606           
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{llll}
+		\textbf{Model}                    & \textbf{Training} & \textbf{Validation} & \textbf{Testing} \\
+		NonDelinquencyBase                & 0.676             & 0.704               & 0.716            \\
+		NonDelinquencyBaseOverSample      & 0.677             & 0.708               & 0.719            \\
+		NonDelinquencyExperBase           & 0.678             & 0.709               & 0.72             \\
+		NonDelinquencyExperBaseOverSample & 0.68              & 0.713               & 0.722           
+	\end{tabular}
+\end{table}
+
+
+
+\subsection{Synthetic Sampling}
+
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l| l|r|r|r}
+			\hline
+			\textbf{Model} &  \textbf{Dataset} & \textbf{Default} & \textbf{Not-Default} & \textbf{Total} \\
+			\hline
+			Previous Delinquency          & Training       & 435 & 1,320 & 1,755 \\
+			Previous Delinquency          & Training(Synthetic KNN51) & 1,305 & 1,740 & 3,045 \\
+			Previous Delinquency          & Validation       & 151 & 436 & 585 \\
+			Previous Delinquency          & Test & 142 & 444 & 586 \\ \hline
+			No Previous Delinquency          & Training & 379 & 14,114 & 14,493 \\ 
+			No Previous Delinquency          & Training(Synthetic KNN75) & 7,580 & 14,402 & 21,982 \\ 
+			No Previous Delinquency          & Validation & 120 & 4,711 & 4,831 \\
+			No Previous Delinquency          & Test & 152 & 4,680 & 4,832 \\
+			\hline
+		\end{tabular}
+	}
+	\caption{Breakdown of Training/Validation/Test Partitions for Experiment}
+\end{table}
+
+\footnote{{\url{https://cran.r-project.org/web/packages/DMwR/index.html}}}. 
+
+
+
+\begin{table}[H]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{llll}
+		\textbf{Model}                             & \textbf{Training} & \textbf{Validation} & \textbf{Testing} \\
+		DelinquencyBase                            & 0.663             & 0.659               & 0.606            \\
+		DelinquencyBaseSyntheticSample\_KNN51      & 0.659             & 0.659               & 0.6              \\
+		DelinquencyExperBase                       & 0.657             & 0.655               & 0.606            \\
+		DelinquencyExperBaseSyntheticSample\_KNN51 & 0.673             & 0.655               & 0.6             
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{llll}
+		Model                                       & Training & Validation & Testing \\
+		NonDelinquencyBase                          & 0.676    & 0.704      & 0.716   \\
+		NonDelinquencyBaseSyntheticSampleKNN75      & 0.669    & 0.699      & 0.718   \\
+		NonDelinquencyExperBase                     & 0.68     & 0.709      & 0.72    \\
+		NonDelinquencyExperBaseSyntheticSampleKNN75 & 0.673    & 0.689      & 0.706  
+	\end{tabular}
+\end{table}
 
 \section{Comparing Results of Various Experiments}
 
