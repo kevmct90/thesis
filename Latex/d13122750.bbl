@@ -117,6 +117,13 @@ Japkowicz, N.  \harvardyearleft 2000\harvardyearright , The class imbalance
   {Conf}. on {Artificial} {Intelligence}', Citeseer.
 \newline\harvardurl{\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1693&rep=rep1&type=pdf}}
 
+\harvarditem[Keller et~al.]{Keller, Gray \harvardand\
+  Givens}{1985}{keller_fuzzy_1985}
+Keller, J.~M., Gray, M.~R. \harvardand\ Givens, J.~A.  \harvardyearleft
+  1985\harvardyearright , `A fuzzy k-nearest neighbor algorithm', {\em Systems,
+  Man and Cybernetics, IEEE Transactions on} (4),~580--585.
+\newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=6313426}
+
 \harvarditem{Kennedy}{2013}{kennedy_credit_2013}
 Kennedy, K.  \harvardyearleft 2013\harvardyearright , `Credit {Scoring} {Using}
   {Machine} {Learning}'.
@@ -173,6 +180,14 @@ Salzberg, S.~L.  \harvardyearleft 1997\harvardyearright , `On comparing
   classifiers: {Pitfalls} to avoid and a recommended approach', {\em Data
   mining and knowledge discovery} {\bf 1}(3),~317--328.
 \newline\harvardurl{http://link.springer.com/article/10.1023/A:1009752403260}
+
+\harvarditem[Sarwar et~al.]{Sarwar, Karypis, Konstan \harvardand\
+  Riedl}{2001}{sarwar_item-based_2001}
+Sarwar, B., Karypis, G., Konstan, J. \harvardand\ Riedl, J.  \harvardyearleft
+  2001\harvardyearright , Item-based collaborative filtering recommendation
+  algorithms, {\em in} `Proceedings of the 10th international conference on
+  {World} {Wide} {Web}', ACM, pp.~285--295.
+\newline\harvardurl{http://dl.acm.org/citation.cfm?id=372071}
 
 \harvarditem[Seiffert et~al.]{Seiffert, Khoshgoftaar \harvardand\
   Van~Hulse}{2009}{seiffert_improving_2009}

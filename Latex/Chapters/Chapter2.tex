@@ -114,9 +114,7 @@ As discussed already linear regression is an unsuitable classifier for making di
 	\label{fig:LogRegVsLineReg}
 \end{figure}
 
-In \ref{fig:LogRegVsLineReg} the constant, $b_0$ dictates the position of the curve which can be moved left and right depending on its value, $b_1$ will be the slope of the curve. 
-
-If you 
+in \ref{fig:LogRegVsLineReg} the constant, $b_0$ dictates the position of the curve which can be moved left and right depending on its value, $b_1$ will be the slope of the curve. 
 
 The logistic regression model can be extended to include any number of interval and nominal variables which is illustrated in Equation \ref{eq:logitRegExtended}
 
@@ -130,26 +128,34 @@ Logistic Regression can also be used in cases where there are more than two outc
 One of the main major attractions of logistic regressions it allows you to use discrete, continuous features or a combination of both \citep{lee_application_2005}.
 
 \subsection{K-Nearest Neighbours} \label{kNN}
-The \textit{k-nearest neighbour} or {k-NN} for short, is an algorithm that classifies observations based on the how its nearest neighbours are classified. It can be known as the nearest neighbour but in the majority of cases it is useful to use more than one neighbour \citep{henley_k-nearest-neighbour_1996}. The intuition behind this algorithm is that instances which are close by each other will more likely be classified the same way \citep{cover_nearest_1967}.\\ %added space for small gap in picture 
+The \textit{k-nearest neighbour} or {k-NN} for short, is an algorithm that classifies observations based on the how its nearest neighbours are classified. It can be known as the nearest neighbour but in the majority of cases it is useful to use more than one neighbour \citep{henley_k-nearest-neighbour_1996}. The intuition behind this algorithm is that instances which are close by each other will more likely be classified the same way \citep{cover_nearest_1967}. We can see in Fig. \ref{fig:KNN_Example}\\ %added space for small gap in picture 
 
 
 \begin{figure}[H]
 	\includegraphics[width=0.6\textwidth, center]{KNN_Example}
-	\caption{Comparison between Linear and Logistic Regression Models}
+	\caption{Example k-NN, contrasting results for \textit{k}=3 and \textit{k}=5 }
 	\label{fig:KNN_Example}
 \end{figure}
 
-\begin{equation} \label{eq:Euclidean}
-\text{Euclidean Distance}   = \sqrt{\sum_{i=1}^k (x_i-y_i)^2}
+that results of the algorithm can vary with the choice of \textit{k}. It should also be noted that when applying this algorithm to binary experiment it is good practice to only choose odd values of \textit{k}, this will eliminate the risk of ties from the decision process \citep{keller_fuzzy_1985} 
+
+While adopting the k-NN algorithm you can choose which method and validate what the best distance measure to decide what are your nearest neighbours. There are some common distance measures for continuous features only, Equation \ref{eq:Minkowski} is the \textit{minkowski distance} is one of the most common, where \textit{p=1} this becomes the Equation \ref{eq:Manhatten} the \textit{manhatten distance} and where \textit{p=2} this becomes the Equation \ref{eq:Euclidean} the \textit{euclidean distance}
+
+\begin{equation} \label{eq:Minkowski}
+\text{Minkowski Distance}   = \Big(\sum_{i=1}^k (\abs{x_i-y_i})^p\Big)^\frac{1}{p}
 \end{equation}
 
 \begin{equation} \label{eq:Manhatten}
 \text{Manhatten Distance}   = \sum_{i=1}^k \abs{x_i-y_i}
 \end{equation}
 
-\begin{equation} \label{eq:Minkowski}
-\text{Minkowski Distance}   = \Big(\sum_{i=1}^k (\abs{x_i-y_i})^p\Big)^\frac{1}{p}
+\begin{equation} \label{eq:Euclidean}
+\text{Euclidean Distance}   = \sqrt{\sum_{i=1}^k (x_i-y_i)^2}
 \end{equation}
+
+The results from k-NN will vary depending on your choice of distance measurement, but there more distance metrics for continuous features such as \textit{Correlation Similarity}, \textit{Cosine Similarity} \citep{sarwar_item-based_2001}
+
+Analysis can be completed to evaluate what the optimal value for \textit{k} is based on inspecting the results and creating benchmarks. Anecdotally the larger the value of \textit{k} the more precise the algorithm can be but as with most things in machine learning there are no guarantees. You can leverage methods such as cross validation discussed in Section \ref{subsec:k_fold} and utilised in Chapter \ref{Chapter4} to evaluate what the good choice of \textit{k} would be.
 
 \subsection{Decision Trees} \label{decTrees}
 Decision Tree algorithms seek to split records into classes based on the inherent characteristics of the variables in the dataset and their relationship with the target variable(class).\\Prior to splitting the data, if we were to randomly pick a record from the dataset, the degree of uncertainty as to what class we would expect it to be would be relative to the distribution of the classes in the original dataset.
@@ -252,7 +258,7 @@ The \textit{holdout validation} method is used to avoid the over-fitting issue d
 
 Fig. \ref{fig:holdout} illustrates how the complete dataset is partitioned into a training and test sets. To address the biasses is Holdout you could re-run multiple tests and average the results, or more commonly you could look at using \textit{k-fold cross-validation} discussed in the next subsection.
 
-\subsubsection{K-Fold Cross Validation}
+\subsubsection{K-Fold Cross Validation}\label{subsec:k_fold}
 The \textit{k-fold cross validation} can be used to deal with the bias issues discussed above. The first step of this method is to split the data into $k$ equally sized partitions called folds. A model is then trained using $k$ iterations, where for each iteration a different fold of data is used for testing and training the model. This can be illustrated well below in Fig. \ref{fig:5-fold-cv} where there are 5-folds, and for each iteration you can see different fold is being used for testing.  
 
 \begin{figure}[H]
