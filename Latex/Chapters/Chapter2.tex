@@ -158,8 +158,13 @@ The results from k-NN will vary depending on your choice of distance measurement
 Analysis can be completed to evaluate what the optimal value for \textit{k} is based on inspecting the results and creating benchmarks. Anecdotally the larger the value of \textit{k} the more precise the algorithm can be but as with most things in machine learning there are no guarantees. You can leverage methods such as cross validation discussed in Section \ref{subsec:k_fold} and utilised in Chapter \ref{Chapter4} to evaluate what the good choice of \textit{k} would be.
 
 \subsection{Decision Trees} \label{decTrees}
-Decision Tree algorithms seek to split records into classes based on the inherent characteristics of the variables in the dataset and their relationship with the target variable(class).\\Prior to splitting the data, if we were to randomly pick a record from the dataset, the degree of uncertainty as to what class we would expect it to be would be relative to the distribution of the classes in the original dataset.
+The \textit{decision tree} algorithm classifies observations into classes in the form of tree like structure, hence the name. The algorithm seeks to partition the dataset into smaller subsets, using the relationship between the feature set and target variable to do so. 
 
+\citep{quinlan_induction_1986}
+
+
+
+It breaks down a dataset into smaller and smaller subsets while at the same time an associated decision tree is incrementally developed. The final result is a tree with decision nodes and leaf nodes. A decision node (e.g., Outlook) has two or more branches (e.g., Sunny, Overcast and Rainy). Leaf node (e.g., Play) represents a classification or decision. The topmost decision node in a tree which corresponds to the best predictor called root node. Decision trees can handle both categorical and numerical data. 
 
 \subsection{Ensemble models \& Boosting} \label{boosting}
 In 1907, statistician Sir Francis Galton attended a fair in which there was a competition to judge the weight of an Ox. Upon reviewing the 787 predictions made by the competing public, he observed that while there was a 
