@@ -174,7 +174,40 @@ The output of the algorithm splits the data into smaller subsets of data, which 
 	\label{fig:decisionTreeExplained}
 \end{figure}
 
-The \textit{root node} will have have two or more branches in this case three \textit{Rainy, Overcast} and \textit{Sunny}. Below these branches you have \textit{internal or split node} \textit{Windy} or \textit{Humidity} which output more branches. The bottom nodes of each decision or branch is the prediction or classification, this is called the \textit{leaf node}. In this example the leaf node will decision will be whether or not it will rain represented by Yes/No in Fig. \ref{fig:decisionTreeExplained}
+The \textit{root node} will have have two or more branches in this case three \textit{Rainy, Overcast} and \textit{Sunny}. Below these branches you have \textit{internal or split node} \textit{Windy} or \textit{Humidity} which output more branches. The bottom nodes of each decision or branch is the prediction or classification, this is called the \textit{leaf node}. In this example the leaf node decision will be whether or not it will rain represented by Yes/No in Fig. \ref{fig:decisionTreeExplained}
+
+The algorithm that builds decision trees is called the \textit{iterative dichotomiser 3} more commonly known as ID3 by \cite{quinlan_induction_1986}. The algorithm applies a top down approach to choosing its root and internal nodes. The algorithm only evaluates one step ahead from where it is in the decision process at any time and does not allow for any backtracking. This decision making process is known as a greedy approach as it just makes the optimal solution at that stage of the process. Thus because of these limitations the optimal solution is not guaranteed taking this approach \citep{friedman_lazy_1996}.
+
+The ID3 algorithm works by calculating the \textit{entropy} and \textit{information gain} at each step or decision node, where you use the feature with the smallest entropy or feature that maximises information gain.
+
+Entropy $H(S)$ seen in Equation \ref{eq:entropy} measures how much uncertainty there is in the data \citep{shannon_mathematical_2001}
+
+\begin{equation} \label{eq:entropy}
+H(S) = - \sum_{x \in X} p(x) \log_{2} p(x)
+\end{equation}
+Where:
+\begin{itemize}[label=]
+	\item $S$: The current dataset entropy is being calculated for, this will change each time entropy is being calculated
+	\item $X$: The set of classes in $S$
+	\item $p(x)$: Proportion of observation in class $x$ compared to total number in set $S$
+\end{itemize}
+If $H(S) = 0$ then the observations in $S$ are all of the same class. Entropy is calculated for each feature, the feature with the smallest entropy is used to split at that step.
+
+Information gain is used to measure the decrease in entropy after the dataset is split on a feature. The aim is to find features that return the highest information gain. The equation for the information is 
+
+\begin{equation} \label{eq:infoGain}
+IG = H(S) -  H(T)
+\end{equation}
+Where:
+\begin{itemize}[label=]
+	\item $H(S)$ is the the entropy of S
+	\item $H(T)$ is the entropy of subset T based on splitting data on some feature
+\end{itemize}
+
+
+Small tree preferred to large to avoid overfit
+
+
 
 \textit{
 It breaks down a dataset into smaller and smaller subsets while at the same time an associated decision tree is incrementally developed. The final result is a tree with decision nodes and leaf nodes. A decision node (e.g., Outlook) has two or more branches (e.g., Sunny, Overcast and Rainy). Leaf node (e.g., Play) represents a classification or decision. The topmost decision node in a tree which corresponds to the best predictor called root node. Decision trees can handle both categorical and numerical data. }
