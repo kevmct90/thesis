@@ -158,7 +158,7 @@ The results from k-NN will vary depending on your choice of distance measurement
 Analysis can be completed to evaluate what the optimal value for \textit{k} is based on inspecting the results and creating benchmarks. Anecdotally the larger the value of \textit{k} the more precise the algorithm can be but as with most things in machine learning there are no guarantees. You can leverage methods such as cross validation discussed in Section \ref{subsec:k_fold} and utilised in Chapter \ref{Chapter4} to evaluate what the good choice of \textit{k} would be.
 
 \subsection{Decision Trees} \label{decTrees}
-The \textit{decision tree} algorithm classifies observations into classes in the form of tree like structure, hence the name. The algorithm seeks to partition the dataset into smaller subsets, using the relationship between the feature set and target variable to do so. 
+The \textit{decision tree} algorithm classifies observations into classes in the form of tree like structure, hence the name. The algorithm seeks to partition the dataset into smaller subsets, using the relationship between the feature set and target variable to do so. Fig. \ref{fig:decisionTree}
 
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth, center]{decisionTree}
@@ -166,11 +166,18 @@ The \textit{decision tree} algorithm classifies observations into classes in the
 	\label{fig:decisionTree}
 \end{figure}
 
-\citep{quinlan_induction_1986}
+The output of the algorithm splits the data into smaller subsets of data, which output is a tree with root, internal and leaf nodes. As can be seen in Fig. \ref{fig:decisionTreeExplained}, the root node in this example \textit{Outlook} is the first node in the tree which means it is the most predictive feature. 
 
+\begin{figure}[H]
+	\includegraphics[width=.6\textwidth, center]{decisionTreeExplained}
+	\caption{Decision Tree with Nodes and Leafs labelled}
+	\label{fig:decisionTreeExplained}
+\end{figure}
 
+The \textit{root node} will have have two or more branches in this case three \textit{Rainy, Overcast} and \textit{Sunny}. Below these branches you have \textit{internal or split node} \textit{Windy} or \textit{Humidity} which output more branches. The bottom nodes of each decision or branch is the prediction or classification, this is called the \textit{leaf node}. In this example the leaf node will decision will be whether or not it will rain represented by Yes/No in Fig. \ref{fig:decisionTreeExplained}
 
-It breaks down a dataset into smaller and smaller subsets while at the same time an associated decision tree is incrementally developed. The final result is a tree with decision nodes and leaf nodes. A decision node (e.g., Outlook) has two or more branches (e.g., Sunny, Overcast and Rainy). Leaf node (e.g., Play) represents a classification or decision. The topmost decision node in a tree which corresponds to the best predictor called root node. Decision trees can handle both categorical and numerical data. 
+\textit{
+It breaks down a dataset into smaller and smaller subsets while at the same time an associated decision tree is incrementally developed. The final result is a tree with decision nodes and leaf nodes. A decision node (e.g., Outlook) has two or more branches (e.g., Sunny, Overcast and Rainy). Leaf node (e.g., Play) represents a classification or decision. The topmost decision node in a tree which corresponds to the best predictor called root node. Decision trees can handle both categorical and numerical data. }
 
 \subsection{Ensemble models \& Boosting} \label{boosting}
 In 1907, statistician Sir Francis Galton attended a fair in which there was a competition to judge the weight of an Ox. Upon reviewing the 787 predictions made by the competing public, he observed that while there was a 
