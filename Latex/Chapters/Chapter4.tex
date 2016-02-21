@@ -16,37 +16,6 @@ There is relatively limited literature to support the location-based features ch
 
 To understand if the location-based features in this analysis are useful, an initial model will be used as a baseline model from which we will look to improve iteratively. The features from this model will be derived from a historic scorecard used in \subjectname.  
 
-
-\begin{figure}[H]
-	\includegraphics[width=0.85\textwidth,height=6cm, center]{percentageArrears}
-	\caption{Percentage of Customers in arrears}
-	\label{fig:percentageArrears}
-\end{figure}
-
-\begin{figure}[H]
-	\includegraphics[width=0.85\textwidth,height=6cm, center]{SME_Status}
-	\caption{SME Customers Performance}
-	\label{fig:SME_Status}
-\end{figure}
-
-\begin{figure}[H]
-	\includegraphics[width=0.85\textwidth,height=6cm, center]{ChangesInArrears}
-	\caption{Monthly Changes Customers Leaving and going into arrears}
-	\label{fig:ChangesInArrears}
-\end{figure}
-
-\begin{figure}[H]
-	\includegraphics[width=0.6\textwidth,center]{NewArrearsByLA}
-	\caption{New Arrears by County}
-	\label{fig:NewArrearsByLA}
-\end{figure}
-
-\begin{figure}[H]
-	\includegraphics[width=0.6\textwidth,center]{NewArrearsByED}
-	\caption{New Arrears by Electoral Division}
-	\label{fig:NewArrearsByED}
-\end{figure}
-
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
@@ -84,6 +53,56 @@ Previous, Section \ref{classLabelDef} described that there were two methods used
 	}
 	\caption{Breakdown of Training/Validation/Test Partitions for Experiment}
 \end{table}
+
+
+\section{Exploration of  Data}
+\begin{figure}[H]
+	\includegraphics[width=0.85\textwidth,height=6cm, center]{percentageArrears}
+	\caption{Percentage of Customers in arrears for each month 
+		\\ June 2012 - June 2015}
+	\label{fig:percentageArrears}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=0.85\textwidth,height=6cm, center]{SME_Status}
+	\caption{SME Customers Status\\ June 2012 - June 2015}
+	\label{fig:SME_Status}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=0.85\textwidth,height=6cm, center]{ChangesInArrears}
+	\caption{Monthly Changes Customers Leaving and going into arrears\\June 2012 - June 2015}
+	\label{fig:ChangesInArrears}
+\end{figure}
+
+
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height = 10cm]{June2014ArrearsByLA}
+		\caption{Arrears by County June 2014}\label{fig:June2014ArrearsByLA}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height = 10cm]{NewArrearsByLA}
+		\caption{New Arrears June 2015 by County}\label{fig:NewArrearsByLA}
+	\end{subfigure}
+	\medskip \newline
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth, height = 10cm]{June2014ArrearsByED}
+		\caption{Arrears by Electoral Division June 2014}
+		\label{fig:June2014ArrearsByED}
+	\end{subfigure}  ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth, height = 10cm]{NewArrearsByED}
+		\caption{New Arrears June 2015 by Electoral Division}
+		\label{fig:NewArrearsByED}
+	\end{subfigure}
+	\caption{SME Arrears by County and Electoral Division}
+	\label{fig:SMEArrearsLAED}
+\end{figure}
 
 \section{Baseline Benchmark in \subjectname\ }
 When building a predictive model, the first thing you are trying to do is build a model which results/predictions are better than the \textit{no information rate}. This means the accuracy of the model must be better than the no information rate, which is taken to be the biggest class percentage in the data to be modelled.

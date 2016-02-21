@@ -7,7 +7,7 @@
 \lhead{Chapter 1. \emph{Introduction}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
 % INTRO
-This chapter introduces my research topic, the predictiveness of location-based features in SME credit scoring, and how it can potentially can be used to improve credit scoring in financial institutions. The motivation for the research question are discussed with details of its significance. The aims of the thesis along with the research objectives and analytical approach are then stated. The scope and limitation of this research are then described. The chapter concludes with a summary and outlines of this thesis.
+This chapter introduces the research topic, the predictiveness of location-based features in \textit{Small Medium Enterprises} SME credit scoring, and how it can potentially can be used to improve credit scoring in financial institutions. The motivation for the research question are discussed with details of its significance. The aims of the thesis along with the research objectives and analytical approach are then stated. The scope and limitation of this research are then described. The chapter concludes with a summary and outlines of this thesis.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -26,10 +26,10 @@ We begin with a high-level overview of SME credit scoring and location data in m
 
 \subsection{SME Credit Scoring}
 
-Credit scoring, in layman's language is the name given to describe the process of assessing how risky customers and applicants are to default on their financial obligation \citep{hand_statistical_1997}. The goal is to split customers into two classes, 'good' and 'bad'. Customers in the good class are considered likely to repay on their financial obligation while customers in the bad class are likely to default on theirs. In order to make this decision about its customers, financial institutions use information known about the customer and other relevant metrics to identify the customers riskiness. 
+Credit scoring, in layman's language is the name given to describe the process of assessing how risky customers and applicants are to default on their financial obligation \citep{hand_statistical_1997}. The goal is to split customers into two classes, 'good' and 'bad'. Customers in the good class are considered likely to repay on their financial obligation while customers in the bad class are likely to default on theirs. In order to make this decision about its customers, financial institutions use information known about the customer and other relevant metrics to identify how risky a customer is. 
 
 
-Since the financial crisis of 2007-2008 there has been a a much greater emphasis on credit scoring in the consumer lending process in banking. One of the most common methods of building scorecards is by using data mining \citep{baesens_50_2009}. One of the benefits to improving the scoring accuracy of a credit model is obviously the significant future savings \citep{west 2000} but also financial institutions are under increasing pressures from global (Bank for International Settlements) e.g. The European Central Bank and national bank e.g. Central bank of Ireland. Since the crisis these regulators police that financial institutions keep better care of their credit scoring systems. Poor performing credit systems can have massive adverse affects financially, reputation and supporting the economy.
+Since the financial crisis of 2007-2008 there has been a  much greater emphasis on credit scoring in the consumer lending process in banking. One of the most common methods of building scorecards is by using data mining \citep{baesens_50_2009}. One of the benefits to improving the scoring accuracy of a credit model is obviously the significant future savings \citep{west_neural_2000} but also financial institutions are under increasing pressures from global (Bank for International Settlements) e.g. The European Central Bank and national bank e.g. Central bank of Ireland. Since the crisis these regulators police that financial institutions keep better care of their credit scoring systems. Poor performing credit systems can have massive adverse effect on that financial institutions profits, reputation and  ability to support the economy.
 \\\\
 There are three main stages of a typical credit scorecard development \cite{van_gestel_credit_2009}
 
@@ -39,16 +39,15 @@ There are three main stages of a typical credit scorecard development \cite{van_
 	\item Documentation 
 \end{itemize}
 
-This can dispalyed using this archtectural diagram. Insert find diagram.
+This can displayed using this architectural diagram. Insert find diagram.
 \\\\
-Each stage of this process cannot be left out when completing a industry credit scorecard, however for this research I will be focus particularly on the data contruction and modelling stages. The documentation stage is critcal for deployment of an industry scorecard but will not be investigated further in this thesis. 
+Each stage of this process cannot be left out when completing a industry credit scorecard, however for this research will be focusing particularly on the data construction and modelling stages. The documentation stage is critical for deployment of an industry scorecard but will not be investigated further in this thesis. 
 
 %----------------------------------------------------------------------------------------
 %	
 %----------------------------------------------------------------------------------------
 
 \section{Motivation}
-The banking crisis of 2007-2008 
 Since the financial of 2007-2008 there is an even greater emphasis on quality credit scoring. In Ireland it was the property bubble that collapsed causing the banking crisis. 
 
 "Many believe that focusing on lending on the SME sector could play an important role in restoring faith in the banking system and supporting economic growth, according to leading experts"
@@ -89,12 +88,12 @@ The objectives of this research are:
 \begin{itemize}
 	\item To study the relevant state-of-the-art literature and industry best practices on building credit scorecards.
 	\item Create a search address engine and for mapping customer addresses to locations in an address database.
-	\item Create location based metrics using internal data from \subjectname\ such transactional, arrears ratio, post code and open data from the CSO.
+	\item Build location based metrics using internal data from \subjectname\ such as transactional, arrears ratio, post code and open data from the CSO.
 	\item Identify most predictable features using feature reduction techniques.
 	\item Build base model/scorecard to compare my research and experiment with.
 	\item Build scorecard including location based metrics and evaluate results
 	\item Assess is it possible to deploy the scorecard in \subjectname\ on out of time data.
-	\item Assess whether the experiment was a success or failure.
+	\item Assess whether using location based features have returns improved predictions compared to the existing models in \subjectname.
 	\item Determine what future research could be undertaken in the area to expand on the project.
 \end{itemize}
 	
@@ -103,7 +102,7 @@ The objectives of this research are:
 %	SECTION 5
 %----------------------------------------------------------------------------------------
 \section{Research Methodology \& Analytical Approach}
-The research methodology to be utilised here is empirical evaluation which will involve performing experimentation on a recorded history of user interactions on AIB's website. Appropriate evaluation methodologies will be used to determine the success of these experiments. Suitable techniques will also be used to measure, compare and analyse the performance by means of statistical methods, but also practical considerations related to the complexity of the technique being evaluated.
+\textit{Suitable techniques will also be used to measure, compare and analyse the performance by means of statistical methods, but also practical considerations related to the complexity of the technique being evaluated.}
 
 
 %----------------------------------------------------------------------------------------

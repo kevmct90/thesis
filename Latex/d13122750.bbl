@@ -236,6 +236,12 @@ Weiss, G.~M.  \harvardyearleft 2004\harvardyearright , `Mining with rarity: a
   6}(1),~7--19.
 \newline\harvardurl{http://dl.acm.org/citation.cfm?id=1007734}
 
+\harvarditem{West}{2000}{west_neural_2000}
+West, D.  \harvardyearleft 2000\harvardyearright , `Neural network credit
+  scoring models', {\em Computers \& Operations Research} {\bf
+  27}(11),~1131--1152.
+\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S0305054899001495}
+
 \harvarditem{Zou}{2004}{zou_modified_2004}
 Zou, G.  \harvardyearleft 2004\harvardyearright , `A modified poisson
   regression approach to prospective studies with binary data', {\em American
