@@ -193,7 +193,7 @@ Where:
 \end{itemize}
 If $H(S) = 0$ then the observations in $S$ are all of the same class. Entropy is calculated for each feature, the feature with the smallest entropy is used to split at that step.
 
-Information gain is used to measure the decrease in entropy after the dataset is split on a feature. The aim is to find features that return the highest information gain. The equation for the information is 
+Information gain is used to measure the decrease in entropy after the dataset is split on a feature. The equation for the information is 
 
 \begin{equation} \label{eq:infoGain}
 IG = H(S) -  H(T)
@@ -204,20 +204,37 @@ Where:
 	\item $H(T)$ is the entropy of subset T based on splitting data on some feature
 \end{itemize}
 
+Information gain is calculated and the feature with the highest gain is chosen to split the dataset. The algorithm then runs recursively until all the data is classified and predictions have been made. 
 
-Small tree preferred to large to avoid overfit
+Multiple decision trees may output the same results. This can be seen in Fig. \ref{fig:simpleComplex} where two different decision trees classify the dataset correctly. \cite{quinlan_induction_1986} suggests that that in scenarios like this the simpler decision tree would be chosen Fig. \ref{fig:simple}
 
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth, height=5cm]{decisionTreeSimple}
+		\caption{Simple Decision Tree}\label{fig:decisionTreeSimple}
+		\label{fig:simple}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=5cm]{decisionTreeComplex}
+		\caption{Complex Decision Tree}\label{fig:decisionTreeComplex}
+		\label{fig:complex}
+	\end{subfigure}
+	\caption{Simple and Complex Decision Tree Comparison\\\cite[Source:][]{quinlan_induction_1986}}
+	\label{fig:simpleComplex}
+\end{figure}
 
+This is done because the simpler the rules of the tree the more likely the tree is to generalise well on unseen data. In other words if the tree is too complex it is more than likely over-fitting the training dataset. There is also a computational cost to classifying complex trees. 
 
-\textit{
-It breaks down a dataset into smaller and smaller subsets while at the same time an associated decision tree is incrementally developed. The final result is a tree with decision nodes and leaf nodes. A decision node (e.g., Outlook) has two or more branches (e.g., Sunny, Overcast and Rainy). Leaf node (e.g., Play) represents a classification or decision. The topmost decision node in a tree which corresponds to the best predictor called root node. Decision trees can handle both categorical and numerical data. }
+There are also other issues to be aware of when building a classifier using a decision tree. Information gain can be biased to features that have a large number of values. These features will result in a root node that produces a very broad or wide tree that classifies the training data well or perfectly but performs very poorly in unseen cases. One scenario where this could happen would be if you used the unique identifier of each record in as a training input, this model would perform very well in training but would not perform well on unseen data. There are methods to mitigate the the risk of over-fitting against these features \textit{gain ratio}, \textit{symmetric uncertainty} and the \textit{gini index}. \cite{quinlan_induction_1986} noted that using these methods for node decision often found favourable results compared with information gain. It should be noted also that these metrics can be using in the feature selection process where not related to building decision trees
 
 \subsection{Ensemble models \& Boosting} \label{boosting}
+\begin{comment}
+
 In 1907, statistician Sir Francis Galton attended a fair in which there was a competition to judge the weight of an Ox. Upon reviewing the 787 predictions made by the competing public, he observed that while there was a 
-
-
-
-
+\end{comment}
 
 \subsection{Neural Networks} \label{neuralNets}
 Neural Networks in broad terms are a class of model that attempt to learn patterns in data by simulating the activity in a human brain.
