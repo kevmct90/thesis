@@ -21,6 +21,10 @@ BCBS  \harvardyearleft 2005\harvardyearright , `International {Convergence} of
   - {Comprehensive} {Version}, {June} 2006 - bcbs128.pdf'.
 \newline\harvardurl{http://www.bis.org/publ/bcbs128.pdf}
 
+\harvarditem{Bishop}{1995}{bishop_neural_1995}
+Bishop, C.~M.  \harvardyearleft 1995\harvardyearright , {\em Neural networks
+  for pattern recognition}, Oxford university press.
+
 \harvarditem{Bradley}{1997}{bradley_use_1997}
 Bradley, A.~P.  \harvardyearleft 1997\harvardyearright , `The use of the area
   under the {ROC} curve in the evaluation of machine learning algorithms', {\em
@@ -101,6 +105,11 @@ Hawkins, D.~M.  \harvardyearleft 2004\harvardyearright , `The problem of
   {\bf 44}(1),~1--12.
 \newline\harvardurl{http://pubs.acs.org/doi/pdf/10.1021/ci0342472}
 
+\harvarditem{Haykin}{1998}{haykin_neural_1998}
+Haykin, S.  \harvardyearleft 1998\harvardyearright , {\em Neural {Networks}:
+  {A} {Comprehensive} {Foundation}}, 2nd edn, Prentice Hall PTR, Upper Saddle
+  River, NJ, USA.
+
 \harvarditem{He \harvardand\ Garcia}{2009}{he_learning_2009}
 He, H. \harvardand\ Garcia, E.~A.  \harvardyearleft 2009\harvardyearright ,
   `Learning from imbalanced data', {\em Knowledge and Data Engineering, IEEE
@@ -123,6 +132,12 @@ Japkowicz, N.  \harvardyearleft 2000\harvardyearright , The class imbalance
   problem: {Significance} and strategies, {\em in} `Proc. of the {Int}’l
   {Conf}. on {Artificial} {Intelligence}', Citeseer.
 \newline\harvardurl{\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1693&rep=rep1&type=pdf}}
+
+\harvarditem{Kaastra \harvardand\ Boyd}{1995}{kaastra_forecasting_1995}
+Kaastra, I. \harvardand\ Boyd, M.~S.  \harvardyearleft 1995\harvardyearright ,
+  `Forecasting futures trading volume using neural networks', {\em Journal of
+  Futures Markets} {\bf 15}(8),~953--970.
+\newline\harvardurl{http://onlinelibrary.wiley.com/doi/10.1002/fut.3990150806/abstract}
 
 \harvarditem[Keller et~al.]{Keller, Gray \harvardand\
   Givens}{1985}{keller_fuzzy_1985}
@@ -241,6 +256,12 @@ West, D.  \harvardyearleft 2000\harvardyearright , `Neural network credit
   scoring models', {\em Computers \& Operations Research} {\bf
   27}(11),~1131--1152.
 \newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S0305054899001495}
+
+\harvarditem{White}{1989}{white_learning_1989}
+White, H.  \harvardyearleft 1989\harvardyearright , `Learning in artificial
+  neural networks: {A} statistical perspective', {\em Neural computation} {\bf
+  1}(4),~425--464.
+\newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=6796856}
 
 \harvarditem{Zou}{2004}{zou_modified_2004}
 Zou, G.  \harvardyearleft 2004\harvardyearright , `A modified poisson

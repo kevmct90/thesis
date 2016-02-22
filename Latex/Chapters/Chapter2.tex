@@ -17,7 +17,7 @@ This chapter will review research literature in the field of machine learning an
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\section{Modelling Credit Risk and Performance of SMEs in Financial Institution}
+\section{Modelling Credit Risk and Performance of SMEs in Financial Institutions}
 How and why sme modelling is usually done completed in a financial institution
 
 
@@ -231,19 +231,32 @@ This is done because the simpler the rules of the tree the more likely the tree 
 
 There are also other issues to be aware of when building a classifier using a decision tree. Information gain can be biased to features that have a large number of values. These features will result in a root node that produces a very broad or wide tree that classifies the training data well or perfectly but performs very poorly in unseen cases. One scenario where this could happen would be if you used the unique identifier of each record in as a training input, this model would perform very well in training but would not perform well on unseen data. There are methods to mitigate the the risk of over-fitting against these features \textit{gain ratio}, \textit{symmetric uncertainty} and the \textit{gini index}. \cite{quinlan_induction_1986} noted that using these methods for node decision often found favourable results compared with information gain. It should be noted also that these metrics can be using in the feature selection process where not related to building decision trees
 
+
+\subsection{Artificial Neural Networks} \label{neuralNets}
+The \textit{artificial neural network} (ANN) is learning algorithm that is based on an understanding of how neural networks, such as our brain learns. Motivation to study how ANN comes from the success of how the human brain was faster than the worlds fastest computers at certain applications such as object recognition, speech recognition and general perception \citep{haykin_neural_1998}.
+
+As a human grows their brain develops, learns and creates a set rules based on the experiences it has had. These rules and experiences are stored in approximately 100 billion neurons or nerve cell in the brain. These neurons are connected in a network and use this as a method of communication sending electrical and chemical signals back and forth between neurons. On their own each neuron is not very useful but combined and with communication has allowed humans to learn and grow so successfully. 
+
+An ANN seeks to replicate the neural network of the human brain, albeit on a much smaller scale. It does this by taking advantage of powerful computers which carry out a lot of simple tasks very quickly. ANN have proven their value from their ability to map out any non-linear function \citep{white_learning_1989} and their prowess in applications such as pattern and speech recognition and forecasting \citep{kaastra_forecasting_1995}.
+
+
+\citep{bishop_neural_1995}
+Neural Networks in broad terms are a class of model that attempt to learn patterns in data by simulating the activity in a human brain.
+
+
+
+ANN suffer because of their black box nature where users do not know what the inputs are to the outputs.
+It is also recommended that a large number of training parameters should be used when trying to generate a good forecast including data scaling, learning rate, training tolerance, number of iterations, number of hidden neurons and layers plus more \citep{kaastra_forecasting_1995} 
+
+\subsection{Support Vector Machines} \label{SVM}
+Support Vector Machines (SVM) were developed from Statistical Learning Theory 
+
+
 \subsection{Ensemble models \& Boosting} \label{boosting}
 \begin{comment}
 
 In 1907, statistician Sir Francis Galton attended a fair in which there was a competition to judge the weight of an Ox. Upon reviewing the 787 predictions made by the competing public, he observed that while there was a 
 \end{comment}
-
-\subsection{Neural Networks} \label{neuralNets}
-Neural Networks in broad terms are a class of model that attempt to learn patterns in data by simulating the activity in a human brain.
-
-
-\subsection{Support Vector Machines} \label{SVM}
-Support Vector Machines (SVM) were developed from Statistical Learning Theory 
-
 
 
 %----------------------------------------------------------------------------------------
