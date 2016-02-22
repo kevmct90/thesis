@@ -239,14 +239,19 @@ As a human grows their brain develops, learns and creates a set rules based on t
 
 An ANN seeks to replicate the neural network of the human brain, albeit on a much smaller scale. It does this by taking advantage of powerful computers which carry out a lot of simple tasks very quickly. ANN have proven their value from their ability to map out any non-linear function \citep{white_learning_1989} and their prowess in applications such as pattern and speech recognition and forecasting \citep{kaastra_forecasting_1995}.
 
+Fig. \ref{fig:annFotwardFeeding} shows a common layout of an ANN. Like in the brain the ANN is comprised of processing neurons usually known as nodes which are organised into three layers, input, hidden and output. Between layers nodes are connected and as seen in Fig. \ref{fig:annFotwardFeeding} each connection may carry a different weight.
 
-\citep{bishop_neural_1995}
-Neural Networks in broad terms are a class of model that attempt to learn patterns in data by simulating the activity in a human brain.
+\begin{figure}[H]
+	\includegraphics[width=.6\textwidth, center]{annFotwardFeeding}
+	\caption{Three-layered feed-forward artificial neural network configuration \\
+				\cite[Source:][]{raju_development_2011}
+			}
+	\label{fig:annFotwardFeeding}
+\end{figure}
 
+Data comes in through the input layers nodes and is fed through the network, from the input to the hidden and then onto the output layer. In the hidden layer each node calculates a sum based on the input node and the weight of the connection, these hidden nodes then pass on values to the nodes in the outer layer where another calculation which converts the value to a value between 0 and 1 by passing it through the sigmoid function seen in Fig. \ref{fig:logistic_function}. Throughout the training process the connection weights are changed and tested against in order for the ANN to learn and improve its predictions \citep{haykin_neural_1998}
 
-
-ANN suffer because of their black box nature where users do not know what the inputs are to the outputs.
-It is also recommended that a large number of training parameters should be used when trying to generate a good forecast including data scaling, learning rate, training tolerance, number of iterations, number of hidden neurons and layers plus more \citep{kaastra_forecasting_1995} 
+Although ANN have become increasingly popular in recent years due to improvements in the algorithms, the the increase in computer power and success in application such as object and speech recognition,  some are still sceptical because of the "black box" nature of their results, where users do not know what the internal workings of the algorithm are \citep{kaastra_forecasting_1995}. 
 
 \subsection{Support Vector Machines} \label{SVM}
 Support Vector Machines (SVM) were developed from Statistical Learning Theory 

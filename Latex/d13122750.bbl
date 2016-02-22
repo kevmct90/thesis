@@ -21,10 +21,6 @@ BCBS  \harvardyearleft 2005\harvardyearright , `International {Convergence} of
   - {Comprehensive} {Version}, {June} 2006 - bcbs128.pdf'.
 \newline\harvardurl{http://www.bis.org/publ/bcbs128.pdf}
 
-\harvarditem{Bishop}{1995}{bishop_neural_1995}
-Bishop, C.~M.  \harvardyearleft 1995\harvardyearright , {\em Neural networks
-  for pattern recognition}, Oxford university press.
-
 \harvarditem{Bradley}{1997}{bradley_use_1997}
 Bradley, A.~P.  \harvardyearleft 1997\harvardyearright , `The use of the area
   under the {ROC} curve in the evaluation of machine learning algorithms', {\em
@@ -194,6 +190,19 @@ Provost, F.  \harvardyearleft 2000\harvardyearright , Machine learning from
 Quinlan, J.~R.  \harvardyearleft 1986\harvardyearright , `Induction of decision
   trees', {\em Machine learning} {\bf 1}(1),~81--106.
 \newline\harvardurl{http://link.springer.com/article/10.1023/A:1022643204877}
+
+\harvarditem[Raju et~al.]{Raju, Srivastava, Bisht, Sharma, Kumar, Raju,
+  Srivastava, Bisht, Sharma \harvardand\ Kumar}{2011}{raju_development_2011}
+Raju, M.~M., Srivastava, R.~K., Bisht, D. C.~S., Sharma, H.~C., Kumar, A.,
+  Raju, M.~M., Srivastava, R.~K., Bisht, D. C.~S., Sharma, H.~C. \harvardand\
+  Kumar, A.  \harvardyearleft 2011\harvardyearright , `Development of
+  {Artificial} {Neural}-{Network}-{Based} {Models} for the {Simulation} of
+  {Spring} {Discharge}, {Development} of {Artificial}
+  {Neural}-{Network}-{Based} {Models} for the {Simulation} of {Spring}
+  {Discharge}', {\em Advances in Artificial Intelligence, Advances in
+  Artificial Intelligence} {\bf 2011, 2011},~e686258.
+\newline\harvardurl{http://www.hindawi.com/journals/aai/2011/686258/abs/,
+  http://www.hindawi.com/journals/aai/2011/686258/abs/}
 
 \harvarditem[Refaeilzadeh et~al.]{Refaeilzadeh, Tang \harvardand\
   Liu}{2009}{refaeilzadeh_cross-validation_2009}
