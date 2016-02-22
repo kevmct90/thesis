@@ -35,6 +35,12 @@ Brodersen, K.~H., Ong, C.~S., Stephan, K.~E. \harvardand\ Buhmann, J.~M.
   international conference on', IEEE, pp.~3121--3124.
 \newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5597285}}
 
+\harvarditem{Burges}{1998}{burges_tutorial_1998}
+Burges, C.~J.  \harvardyearleft 1998\harvardyearright , `A tutorial on support
+  vector machines for pattern recognition', {\em Data mining and knowledge
+  discovery} {\bf 2}(2),~121--167.
+\newline\harvardurl{http://link.springer.com/article/10.1023/A:1009715923555}
+
 \harvarditem[Chawla et~al.]{Chawla, Bowyer, Hall \harvardand\
   Kegelmeyer}{2002}{chawla_smote:_2002}
 Chawla, N.~V., Bowyer, K.~W., Hall, L.~O. \harvardand\ Kegelmeyer, W.~P.
@@ -168,6 +174,14 @@ Lessmann, S., Baesens, B., Mues, C. \harvardand\ Pietsch, S.  \harvardyearleft
   Engineering, IEEE Transactions on} {\bf 34}(4),~485--496.
 \newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4527256}}
 
+\harvarditem[Li et~al.]{Li, Zhang, Chen, Gao \harvardand\
+  Peng}{2011}{li_adaptive_2011}
+Li, S., Zhang, B., Chen, D., Gao, L. \harvardand\ Peng, M.  \harvardyearleft
+  2011\harvardyearright , `Adaptive support vector machine and {Markov} random
+  field model for classifying hyperspectral imagery', {\em Journal of Applied
+  Remote Sensing} {\bf 5}(1),~053538--053538.
+\newline\harvardurl{http://remotesensing.spiedigitallibrary.org/article.aspx?articleid=1182402}
+
 \harvarditem[Martens et~al.]{Martens, Van~Gestel, De~Backer, Haesen, Vanthienen
   \harvardand\ Baesens}{2010}{martens_credit_2010}
 Martens, D., Van~Gestel, T., De~Backer, M., Haesen, R., Vanthienen, J.
@@ -247,12 +261,25 @@ Shannon, C.~E.  \harvardyearleft 2001\harvardyearright , `A mathematical theory
   Review} {\bf 5}(1),~3--55.
 \newline\harvardurl{http://dl.acm.org/citation.cfm?id=584093}
 
+\harvarditem[Shin et~al.]{Shin, Lee \harvardand\
+  Kim}{2005}{shin_application_2005}
+Shin, K.-S., Lee, T.~S. \harvardand\ Kim, H.-j.  \harvardyearleft
+  2005\harvardyearright , `An application of support vector machines in
+  bankruptcy prediction model', {\em Expert Systems with Applications} {\bf
+  28}(1),~127--135.
+\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S095741740400096X}
+
 \harvarditem{Van~Gestel \harvardand\ Baesens}{2009}{van_gestel_credit_2009}
 Van~Gestel, T. \harvardand\ Baesens, B.  \harvardyearleft 2009\harvardyearright
   , {\em Credit risk management: basic concepts: financial risk components,
   rating analysis, models, economic and regulatory capital}, Oxford University
   Press.
 \newline\harvardurl{\url{http://is.muni.cz/do/econ/soubory/aktivity/fai/17809295/FAI_issue2010_01_valova.pdf?so=ed;pocnep=1}}
+
+\harvarditem{Vapnik}{1995}{vapnik_nature_1995}
+Vapnik, V.~N.  \harvardyearleft 1995\harvardyearright , {\em The {Nature} of
+  {Statistical} {Learning} {Theory}}, Springer-Verlag New York, Inc., New York,
+  NY, USA.
 
 \harvarditem{Weiss}{2004}{weiss_mining_2004}
 Weiss, G.~M.  \harvardyearleft 2004\harvardyearright , `Mining with rarity: a

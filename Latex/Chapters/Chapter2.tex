@@ -251,15 +251,46 @@ Fig. \ref{fig:annFotwardFeeding} shows a common layout of an ANN. Like in the br
 
 Data comes in through the input layers nodes and is fed through the network, from the input to the hidden and then onto the output layer. In the hidden layer each node calculates a sum based on the input node and the weight of the connection, these hidden nodes then pass on values to the nodes in the outer layer where another calculation which converts the value to a value between 0 and 1 by passing it through the sigmoid function seen in Fig. \ref{fig:logistic_function}. Throughout the training process the connection weights are changed and tested against in order for the ANN to learn and improve its predictions \citep{haykin_neural_1998}
 
-Although ANN have become increasingly popular in recent years due to improvements in the algorithms, the the increase in computer power and success in application such as object and speech recognition,  some are still sceptical because of the "black box" nature of their results, where users do not know what the internal workings of the algorithm are \citep{kaastra_forecasting_1995}. 
+Although ANN have become increasingly popular in recent years due to improvements in the algorithms, the the increase in computer power and success in application such as object and speech recognition,  some are still sceptical because of the "black box" nature of their results, where users do not know what the internal workings of the algorithm are  \citep{kaastra_forecasting_1995}. 
+
+
 
 \subsection{Support Vector Machines} \label{SVM}
-Support Vector Machines (SVM) were developed from Statistical Learning Theory 
+A Support Vector Machines (SVMs) learning was developed first by \cite{vapnik_nature_1995}. The algorithm performs classifications via hyperplane in a higher dimensional feature space that  aims to maximise the margin or distance separating the two classes. It can be seen in Fig. \ref{fig:svmExample} that the two class are linearly separable using the hyperplane. 
+
+\begin{figure}[H]
+	\includegraphics[width=.5\textwidth, center]{svmExample}
+	\caption{Optimal separating hyperplane in SVMs of feature space \\
+		\cite[Source:][]{li_adaptive_2011}
+	}
+	\label{fig:svmExample}
+\end{figure}
+
+by finding the hyperplane that maximizes the margin between the two classes. The vectors (cases) that define the hyperplane are the support vectors.
+
+
+\begin{figure}[H]
+	\includegraphics[width=.5\textwidth, center]{svm_nonLinearlySeperable}
+	\caption{SVM classifying non-linearly classes \\
+		\cite[Source:][]{burges_tutorial_1998}
+	}
+	\label{fig:svm_nonLinearlySeperable}
+\end{figure}
+
+\cite{vapnik_nature_1995}
+
+
+\cite{shin_application_2005}
+
+\cite{van_gestel_credit_2009}
+
+We describe how support vector training can
+be practically implemented, and discuss in detail the kernel mapping technique which is used to construct
+SVM solutions which are nonlinear in the data.
 
 
 \subsection{Ensemble models \& Boosting} \label{boosting}
 \begin{comment}
-
 In 1907, statistician Sir Francis Galton attended a fair in which there was a competition to judge the weight of an Ox. Upon reviewing the 787 predictions made by the competing public, he observed that while there was a 
 \end{comment}
 
