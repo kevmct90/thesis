@@ -13,35 +13,42 @@
 This chapter will review research literature in the field of machine learning and credit scoring. We 
 
 
+
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\section{Location/Geospatial Data in Predictive Modelling}
-This will include details on location metrics and there use in predictive modelling. I will also be including details on what electoral divisions/local authorities are.
+\section{Modelling Credit Risk and Performance of SMEs in Financial Institution}
+How and why sme modelling is usually done completed in a financial institution
 
 
-\begin{comment}
-The geography of the data  Provinces  Ireland is divided into four provinces: Leinster, Ulster, Munster and Connacht. Although at present they do not have any  administrative functions, they are relevant for a number of historical, cultural and sporting reasons. The borders of the  provinces coincide exactly with the boundaries of the administrative counties. Three of the nine counties in Ulster are  within the jurisdiction of the State.  NUTS boundaries  The Nomenclature of Territorial Units for Statistics (NUTS) were drawn up by Eurostat in order to define territorial  units for the production of regional statistics across the European Union. The NUTS classification has been used in EU  legislation since 1988, but it was only in 2003 that the EU Member States, the European Parliament and the  Commission established the NUTS regions within a legal framework.  The Irish NUTS 3 regions comprise the eight Regional Authorities established under the Local Government Act, 1991  (Regional Authorities) (Establishment) Order, 1993 which came into operation on January 1st 1994. The NUTS 2  regions, which were proposed by Government and agreed to by Eurostat in 1999, are groupings of the Regional  Authorities.  Administrative counties  In census reports the country is divided into 29 counties/administrative counties and the five Cities which represent the  local authority areas. Outside Dublin there are 26 administrative counties (North Tipperary and South Tipperary each  ranks as a separate county for administrative purposes) and four Cities, i.e. Cork, Limerick, Waterford and Galway. In  Dublin the four local authority areas are identified separately, i.e. Dublin City and the three administrative counties of  Dún Laoghaire-Rathdown, Fingal and South Dublin.  Electoral Divisions  There are 3,440 Electoral Divisions (EDs) which are the smallest legally defined administrative areas in the State. One  ED, St. Mary's, straddles the Louth-Meath county border, and is presented in two parts in the SAPS1 tables, with one  part in Louth and the other in Meath. There are 32 EDs with low population, which for reasons of confidentiality have  been amalgamated into neighbouring EDs giving a total of 3,409 EDs which appear in the SAPS tables.  Small Areas  Small Areas are areas of population comprising between 50 and 200 dwellings created by The National Institute of  Regional and Spatial Analysis(NIRSA) on behalf of the Ordnance Survey Ireland(OSi) in consultation with CSO. Small  Areas were designed as the lowest level of geography for the compilation of statistics in line with data protection and  generally comprise either complete or part of townlands or neighbourhoods. There is a constraint on Small Areas that  they must nest within Electoral Division boundaries.  Small areas were used as the basis for the Enumeration in Census 2011. Enumerators were assigned a number of  adjacent Small Areas constituting around 400 dwelling in which they had to visit every dwelling and deliver and collect  a completed census form and record the dwelling status of unoccupied dwellings.  The small area boundaries have been amended in line with population data from Census 2011  2007 Constituency boundaries  For the purpose of elections to Dáil Éireann the country is divided into Constituencies which, under Article 16.4 of the  Constitution of Ireland, have to be revised at least once every twelve years with due regard to changes in the distribution  of the population. The Constituencies were revised in 2007.  Gaeltacht Areas  The Gaeltacht Areas Orders, 1956, 1967, 1974 and 1982 defined the Gaeltacht as comprising 155 Electoral Divisions or  parts of Electoral Divisions in the counties of Cork, Donegal, Galway, Kerry, Mayo, Meath and Waterford.  2008 Local Electoral Areas  For the purposes of County Council and Corporation elections each county and city is divided into Local Electoral  Areas (LEAs) which are constituted on the basis of Orders made under the Local Government Act, 1941. In general,  LEAs are formed by aggregating Electoral Divisions. However, in a number of cases Electoral Divisions are divided  between LEAs to facilitate electors.  Legal Towns and Cities  Urban areas with legally defined boundaries consist of the five Cities (Cork, Dublin, Galway, Limerick and Waterford),  five Boroughs (Clonmel, Drogheda, Kilkenny, Sligo and Wexford) and 75 Towns as established under the Local  Government Act, 2001 (S.I. 591 of 2001). Extensions to the boundaries can also occur, subject to legislation passed  under the instruction of the Department of Environment, Community and Local Government.  Settlements (Census towns, legal towns and environs, cities and suburbs)  In order to distinguish between the urban and rural population for census analysis, the boundaries of distinct settlements  need to be defined. This requires the creation of suburbs and extensions to existing cities and legal towns as well as  delineating boundaries for settlements which are not legally defined (called Census towns).  From 1971 to 2006, Census towns were defined as a cluster of fifty or more occupied dwellings where, within a radius  of 800 metres there was a nucleus of thirty occupied dwellings (on both sides of a road, or twenty on one side of a  road), along with a clearly defined urban centre e.g. a shop, a school, a place of worship or a community centre. Census  town boundaries where extended over time where there was an occupied dwelling within 200 metres of the existing  boundary.  To avoid the agglomeration of adjacent towns caused by the inclusion of low density one off dwellings on the approach  routes to towns, the 2011 criteria were tightened, in line with UN criteria.  In Census 2011 a new Census town was defined as being a cluster with a minimum of 50 occupied dwellings, with a  maximum distance between any dwelling and the building closest to it of 100 metres, and where there was evidence of  an urban centre (shop, school etc). The proximity criteria for extending existing 2006 Census town boundaries was also  amended to include all occupied dwellings within 100 metres of an existing building. Other information based on OSi  mapping and orthogonal photography was taken into account when extending boundaries. Boundary extensions were  generally made to include the land parcel on which a dwelling was built or using other physical features such as roads,  paths etc.  Extensions to the environs and suburbs of legal towns and cities were also constructed using the 100 metre proximity  rule applied to Census towns.  1 SAPS – Small Area Population Statistics  For census reports, urban settlements are towns with a population of 1,500 or more, while settlements with a population  of less than 1,500 are classified as rural.
-
-\end{comment}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
-\section{SME Lending Arrears}
+\section{Macro Area Features affecting SME Performance}
+Details examples where features have been used to predict arrears
+
+
+\subsubsection{Location/Geospatial Data in Predictive Modelling}
+This will include details on location metrics and there use in predictive modelling. I will also be including details on what electoral divisions/local authorities are.
+
+\begin{comment}
+The geography of the data  Provinces  Ireland is divided into four provinces: Leinster, Ulster, Munster and Connacht. Although at present they do not have any  administrative functions, they are relevant for a number of historical, cultural and sporting reasons. The borders of the  provinces coincide exactly with the boundaries of the administrative counties. Three of the nine counties in Ulster are  within the jurisdiction of the State.  NUTS boundaries  The Nomenclature of Territorial Units for Statistics (NUTS) were drawn up by Eurostat in order to define territorial  units for the production of regional statistics across the European Union. The NUTS classification has been used in EU  legislation since 1988, but it was only in 2003 that the EU Member States, the European Parliament and the  Commission established the NUTS regions within a legal framework.  The Irish NUTS 3 regions comprise the eight Regional Authorities established under the Local Government Act, 1991  (Regional Authorities) (Establishment) Order, 1993 which came into operation on January 1st 1994. The NUTS 2  regions, which were proposed by Government and agreed to by Eurostat in 1999, are groupings of the Regional  Authorities.  Administrative counties  In census reports the country is divided into 29 counties/administrative counties and the five Cities which represent the  local authority areas. Outside Dublin there are 26 administrative counties (North Tipperary and South Tipperary each  ranks as a separate county for administrative purposes) and four Cities, i.e. Cork, Limerick, Waterford and Galway. In  Dublin the four local authority areas are identified separately, i.e. Dublin City and the three administrative counties of  Dún Laoghaire-Rathdown, Fingal and South Dublin.  Electoral Divisions  There are 3,440 Electoral Divisions (EDs) which are the smallest legally defined administrative areas in the State. One  ED, St. Mary's, straddles the Louth-Meath county border, and is presented in two parts in the SAPS1 tables, with one  part in Louth and the other in Meath. There are 32 EDs with low population, which for reasons of confidentiality have  been amalgamated into neighbouring EDs giving a total of 3,409 EDs which appear in the SAPS tables.  Small Areas  Small Areas are areas of population comprising between 50 and 200 dwellings created by The National Institute of  Regional and Spatial Analysis(NIRSA) on behalf of the Ordnance Survey Ireland(OSi) in consultation with CSO. Small  Areas were designed as the lowest level of geography for the compilation of statistics in line with data protection and  generally comprise either complete or part of townlands or neighbourhoods. There is a constraint on Small Areas that  they must nest within Electoral Division boundaries.  Small areas were used as the basis for the Enumeration in Census 2011. Enumerators were assigned a number of  adjacent Small Areas constituting around 400 dwelling in which they had to visit every dwelling and deliver and collect  a completed census form and record the dwelling status of unoccupied dwellings.  The small area boundaries have been amended in line with population data from Census 2011  2007 Constituency boundaries  For the purpose of elections to Dáil Éireann the country is divided into Constituencies which, under Article 16.4 of the  Constitution of Ireland, have to be revised at least once every twelve years with due regard to changes in the distribution  of the population. The Constituencies were revised in 2007.  Gaeltacht Areas  The Gaeltacht Areas Orders, 1956, 1967, 1974 and 1982 defined the Gaeltacht as comprising 155 Electoral Divisions or  parts of Electoral Divisions in the counties of Cork, Donegal, Galway, Kerry, Mayo, Meath and Waterford.  2008 Local Electoral Areas  For the purposes of County Council and Corporation elections each county and city is divided into Local Electoral  Areas (LEAs) which are constituted on the basis of Orders made under the Local Government Act, 1941. In general,  LEAs are formed by aggregating Electoral Divisions. However, in a number of cases Electoral Divisions are divided  between LEAs to facilitate electors.  Legal Towns and Cities  Urban areas with legally defined boundaries consist of the five Cities (Cork, Dublin, Galway, Limerick and Waterford),  five Boroughs (Clonmel, Drogheda, Kilkenny, Sligo and Wexford) and 75 Towns as established under the Local  Government Act, 2001 (S.I. 591 of 2001). Extensions to the boundaries can also occur, subject to legislation passed  under the instruction of the Department of Environment, Community and Local Government.  Settlements (Census towns, legal towns and environs, cities and suburbs)  In order to distinguish between the urban and rural population for census analysis, the boundaries of distinct settlements  need to be defined. This requires the creation of suburbs and extensions to existing cities and legal towns as well as  delineating boundaries for settlements which are not legally defined (called Census towns).  From 1971 to 2006, Census towns were defined as a cluster of fifty or more occupied dwellings where, within a radius  of 800 metres there was a nucleus of thirty occupied dwellings (on both sides of a road, or twenty on one side of a  road), along with a clearly defined urban centre e.g. a shop, a school, a place of worship or a community centre. Census  town boundaries where extended over time where there was an occupied dwelling within 200 metres of the existing  boundary.  To avoid the agglomeration of adjacent towns caused by the inclusion of low density one off dwellings on the approach  routes to towns, the 2011 criteria were tightened, in line with UN criteria.  In Census 2011 a new Census town was defined as being a cluster with a minimum of 50 occupied dwellings, with a  maximum distance between any dwelling and the building closest to it of 100 metres, and where there was evidence of  an urban centre (shop, school etc). The proximity criteria for extending existing 2006 Census town boundaries was also  amended to include all occupied dwellings within 100 metres of an existing building. Other information based on OSi  mapping and orthogonal photography was taken into account when extending boundaries. Boundary extensions were  generally made to include the land parcel on which a dwelling was built or using other physical features such as roads,  paths etc.  Extensions to the environs and suburbs of legal towns and cities were also constructed using the 100 metre proximity  rule applied to Census towns.  1 SAPS – Small Area Population Statistics  For census reports, urban settlements are towns with a population of 1,500 or more, while settlements with a population  of less than 1,500 are classified as rural.
+\end{comment}
+
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4
 %----------------------------------------------------------------------------------------
-\section{Sampling Period}
+\section{Dataset Construction}
+
+\subsection{Sampling Period}
 As already stated in the thesis, predictive models are built using historical data. It must be stated that past performance can be useful predictor of default it does not guarantee that future predictions of the model will be accurate or reliable. A training dataset is built to build a predictive model, customers are observed at two different points in time \citep{martens_credit_2010}, these are called the \textit{observation point and prediction point/"default observation point"} (cite). The time period between these two points is referred to the \textit{outcome window}. This can vary based on business objectives and requirements, industry standard in \subjectname\ dictates that this usually 12 months. \\\\
 
 Reason/Arguments for shorter/longer periods may need to be added here \\
 
-%----------------------------------------------------------------------------------------
-%	SECTION 5
-%----------------------------------------------------------------------------------------
-\section{Class Label Definition ABT} \label{classLabelDef}
+\subsection{Class Label Definition} \label{classLabelDef}
 For customer to be defined as defaulted is dependant on what the objective of that predictive model is and the requirements of the financial institution \citep{mcnab_principles_2000}. The Basel II definition (paragraph 452) which is widely used by financial institutions and \subjectname\ considers a default to have taken place when either or both of the following criteria are met:
 \vspace{-3mm} 
 \begin{itemize}
@@ -52,17 +59,11 @@ For customer to be defined as defaulted is dependant on what the objective of th
 There are two well known approaches to class label definition that financial institutions can choose according to \cite{anderson_credit_2007}: (\textit{i}) a \textit{current status} label definition which classifies a customer to have defaulted or not at the end of the outcome window; or option (\textit{ii}) a \textit{worst status} label definition which classifies whether the customer has defaulted or not throughout the outcome window. It is \subjectname's industry standard to use the \textit{worst status} option. This agrees with Basel II \citep{basel_international_2006}, that customers 90 days worst status covering a one-year period is considered the standard definition for customers that have defaulted. 
 
 
+
 %----------------------------------------------------------------------------------------
-%	SECTION 6
+%	SECTION 5
 %----------------------------------------------------------------------------------------
-\section{Feature Selection}
-\subsection{Correlation-based Feature Selection}
-\subsection{Information Gain}
-\subsection{Coarse Classification/ Binning}
-%----------------------------------------------------------------------------------------
-%	SECTION 7
-%----------------------------------------------------------------------------------------
-\section{Classification Algorithms}
+\section{Predictive Models}
 This sections we give discuss and compare classification algorithms that are useful when modelling a binary classification problem, in the thesis this is did the customer default or not-default. The algorithms discussed in this section is not an exhausted list but contains are suitable to be used in the financial industry. Classifiers discussed include Linear \& Logistic Regression, k-nearest neighbour (KNN), support vector machines (SVM), neural networks. 
 
 Logistic regression is one of the most widely used classifier used by industry based on research and experience working in industry, therefore this classifier will be discussed in detail while the other classifiers will be discussed briefly.
@@ -73,7 +74,7 @@ Regression models are used to model the linear relationship between features in 
 A very simple form of linear regression is where there is one independent and one dependent variable, which is the target we are attempting to predict. The model is often represented by the following model
 
 \begin{equation} \label{eq:reg}
-\text{Linear Model} = y = b_0 + b_1x
+	\text{Linear Model} = y = b_0 + b_1x
 \end{equation}
 
 where we're trying to predict $y$ based using the value of $x$.
@@ -103,7 +104,7 @@ We can see from above the $y$ in this example is weight (wgt) and $b_0 + b_1x$ i
 The logistic function is defined in Equation \ref{eq:logitReg} as the following: 
 
 \begin{equation} \label{eq:logitReg}
-\text{Logistic Model}  =  p  =  \frac{1}{1 + e^{-(b_0 + b_1x)}}
+	\text{Logistic Model}  =  p  =  \frac{1}{1 + e^{-(b_0 + b_1x)}}
 \end{equation}
 
 As discussed already linear regression is an unsuitable classifier for making dichotomous predictions as linear regression produces predictions for a range beyond 0 to 1. Logistic regression also produces a curved line that is bounded by values between 0 and 1. Fig. \ref{fig:LogRegVsLineReg}
@@ -119,7 +120,7 @@ in \ref{fig:LogRegVsLineReg} the constant, $b_0$ dictates the position of the cu
 The logistic regression model can be extended to include any number of interval and nominal variables which is illustrated in Equation \ref{eq:logitRegExtended}
 
 \begin{equation} \label{eq:logitRegExtended}
-p  =  \frac{1}{1 + e^{-(b_0 + b_1x_1 + b_2x_2 +\cdot\cdot\cdot+ b_px_p )}}
+	p  =  \frac{1}{1 + e^{-(b_0 + b_1x_1 + b_2x_2 +\cdot\cdot\cdot+ b_px_p )}}
 \end{equation}
 
 Logistic Regression can also be used in cases where there are more than two outcome groups. For example it could be used in predicting what stage a customer is in the customer lifecycle e.g. Awareness, Interest/Consideration, Evaluation/Purchase, this is referred to \textit{multinomial logistic regression}
@@ -142,15 +143,15 @@ that results of the algorithm can vary with the choice of \textit{k}. It should 
 While adopting the k-NN algorithm you can choose which method and validate what the best distance measure to decide what are your nearest neighbours. There are some common distance measures for continuous features only, Equation \ref{eq:Minkowski} is the \textit{minkowski distance} is one of the most common, where \textit{p=1} this becomes the Equation \ref{eq:Manhatten} the \textit{manhatten distance} and where \textit{p=2} this becomes the Equation \ref{eq:Euclidean} the \textit{euclidean distance}
 
 \begin{equation} \label{eq:Minkowski}
-\text{Minkowski Distance}   = \Big(\sum_{i=1}^k (\abs{x_i-y_i})^p\Big)^\frac{1}{p}
+	\text{Minkowski Distance}   = \Big(\sum_{i=1}^k (\abs{x_i-y_i})^p\Big)^\frac{1}{p}
 \end{equation}
 
 \begin{equation} \label{eq:Manhatten}
-\text{Manhatten Distance}   = \sum_{i=1}^k \abs{x_i-y_i}
+	\text{Manhatten Distance}   = \sum_{i=1}^k \abs{x_i-y_i}
 \end{equation}
 
 \begin{equation} \label{eq:Euclidean}
-\text{Euclidean Distance}   = \sqrt{\sum_{i=1}^k (x_i-y_i)^2}
+	\text{Euclidean Distance}   = \sqrt{\sum_{i=1}^k (x_i-y_i)^2}
 \end{equation}
 
 The results from k-NN will vary depending on your choice of distance measurement, but there more distance metrics for continuous features such as \textit{Correlation Similarity}, \textit{Cosine Similarity} \citep{sarwar_item-based_2001}
@@ -183,7 +184,7 @@ The ID3 algorithm works by calculating the \textit{entropy} and \textit{informat
 Entropy $H(S)$ seen in Equation \ref{eq:entropy} measures how much uncertainty there is in the data \citep{shannon_mathematical_2001}
 
 \begin{equation} \label{eq:entropy}
-H(S) = - \sum_{x \in X} p(x) \log_{2} p(x)
+	H(S) = - \sum_{x \in X} p(x) \log_{2} p(x)
 \end{equation}
 Where:
 \begin{itemize}[label=]
@@ -196,7 +197,7 @@ If $H(S) = 0$ then the observations in $S$ are all of the same class. Entropy is
 Information gain is used to measure the decrease in entropy after the dataset is split on a feature. The equation for the information is 
 
 \begin{equation} \label{eq:infoGain}
-IG = H(S) -  H(T)
+	IG = H(S) -  H(T)
 \end{equation}
 Where:
 \begin{itemize}[label=]
@@ -243,10 +244,14 @@ Neural Networks in broad terms are a class of model that attempt to learn patter
 \subsection{Support Vector Machines} \label{SVM}
 Support Vector Machines (SVM) were developed from Statistical Learning Theory 
 
+
+
 %----------------------------------------------------------------------------------------
-%	SECTION 8
+%	SECTION 6
 %----------------------------------------------------------------------------------------
-\section{Class Imbalance Problem}
+\section{Model Building and Training}
+sasasas
+\subsection{Class Imbalance Problem}
 One of the biggest assumptions that needs to be understood when using classification algorithms is that most assume there is a balanced distribution of the target class \citep{japkowicz_class_2000}. Target class imbalance is described by  \citep{chawla_smote:_2002} where the number of number of records in each class are not relatively equal. In a balanced dataset ratio between the a binary target class would be close to 50/50. The issue with this imbalance arises where algorithms assume there is a balance between the classes, and they attempt to maximise the accuracy by predicting the most common class \citep{drummond_severe_2005}. The algorithms attempt to minimise the classification errors, but do not accounts for the incorrectly classifying cases \citep{seiffert_improving_2009}. While these classification overall might be very accurate they are not very useful in real world problems, this is because in the majority of cases the algorithm will focus on the majority class, because of how heavily it is weighted in the training dataset ignoring the minority class. This is major problem because in the majority of cases you will trying to predict the minority class, in this thesis customers going into default is the minority e.g. there are more customers that do not default at the end of the outcome window than customers that do defaulters.
 
 The study of class imbalance has started to receive more and more attention in relation to data mining and machine learning in recent times. \cite{weiss_mining_2004} discusses what the role and issue that rare class instances can play in data mining. \cite{weiss_mining_2004} makes the distinction that there are two types of class imbalance which depend on the type of rarity in the data, these are called \textit{absolute rarity} and \textit{relative rarity} which are discussed next.
@@ -256,8 +261,8 @@ The major issue with rarity is there is a simply a lack of data in real world pr
 \begin{figure}[H]
 	\includegraphics[width=0.6\textwidth,center]{absoluteRarity}
 	\caption{
-				Impact of Absolute Rarity in Data Mining \\ \cite[Source:][]{weiss_mining_2004}
-			}
+		Impact of Absolute Rarity in Data Mining \\ \cite[Source:][]{weiss_mining_2004}
+	}
 	\label{fig:absoluteRarity}
 \end{figure}
 
@@ -265,7 +270,7 @@ It can be seen on the left side of Fig. \ref{fig:absoluteRarity} that there is o
 
 As mentioned previously, very often in the real world problems imbalance exists in the dataset, thus there has been researched completed that have identified methods of mitigating against this risk. \citep{chawla_editorial:_2004} proposes solutions fine tuning the algorithm and manipulating the data. 
 
-\subsection{Manipulating the data}
+\subsubsection{Manipulating the data}
 
 A method of manipulating the data is to resample to data with the aim of balancing the distribution of the target class. Solutions proposed,
 
@@ -294,20 +299,28 @@ Synthetic sampling  is alternative method to randomly oversampling the minority 
 		\caption{}
 		\label{fig:SMOTE_After}
 	\end{subfigure}
-\caption{Fig. \ref{fig:SMOTE_Before}: Example of the K-NN for $x_i$ using $k = 6$. \ref{fig:SMOTE_After}: Data created using SMOTE based on the euclidean distance.\\
-	\cite[Source:][]{he_learning_2009}}
-\label{fig:smoteExample}
+	\caption{Fig. \ref{fig:SMOTE_Before}: Example of the K-NN for $x_i$ using $k = 6$. \ref{fig:SMOTE_After}: Data created using SMOTE based on the euclidean distance.\\
+		\cite[Source:][]{he_learning_2009}}
+	\label{fig:smoteExample}
 \end{figure}
 
 Above in Fig. \ref{fig:smoteExample} it is illustrated how synthetic data using the SMOTE methodology can be generated. For the purposes of this thesis this will not be discussed further.
 
-\subsection{Fine tuning the algorithm}
+\subsubsection{Fine tuning the algorithm}
 There are ways to also cater for the target class imbalance of the dataset by fine tuning the algorithm. One method which is illustrated in Chapter \ref{Chapter4} of this thesis is to adjust the cut-off or threshold parameter value for the model, \cite{provost_machine_2000} warns that it would \textit{``critical mistake"}. In Section \ref{modelPerformMeasure} model performance measures, it is  worth noting that \cite{chawla_editorial:_2004} suggests using evaluation measures such as accuracy which rely on a specific threshold could lead to misleading results when the target class is imbalanced, they instead recommend using ROC and AUC to get a more accurate predictions, this similar to industry standards in terms of handling the imbalance.
 
 This section has detailed some of the concern that imbalance can cause when building predictive models, we have outlined some the solutions and methods to mitigate this by manipulating the data and fine tuning the classification algorithm.
 
+
+\subsection{Feature Selection}
+\subsubsection{Correlation-based Feature Selection}
+\subsubsection{Information Gain}
+\subsubsection{Coarse Classification/ Binning}
+
+
+
 %----------------------------------------------------------------------------------------
-%	SECTION 8
+%	SECTION 7
 %----------------------------------------------------------------------------------------
 \section{Model Validation Methods}
 In machine learning historic data is used to build a model to make future predictions based on past information. Classification algorithms like the ones already discussed in this section need to validated and tested. This section details some methods and approaches to tackling this problem so the predictions from the model are useful which has been discussed extensively in \citep{refaeilzadeh_cross-validation_2009}
@@ -352,8 +365,10 @@ There are considerations that need to be thought about before using either, hold
 
 \citep{kohavi_study_1995} and \citep{salzberg_comparing_1997} both performed research on approaches to choosing the correct validation method. \cite{kohavi_study_1995} analysed many cross validation methods, regular, leave-one-out, stratified. They came to the conclusion that 10-fold cross-validation produced the most accurate and unbiased results. \cite{salzberg_comparing_1997} also studies the issues of comparing model performance and proposes a solution that combines k-fold cross validation combined appropriate hypothesis tests opposed to evaluating the average accuracy.   
 
+
+
 %----------------------------------------------------------------------------------------
-%	SECTION 9
+%	SECTION 8
 %----------------------------------------------------------------------------------------
 \section{Model Performance Measures}\label{modelPerformMeasure}
 
@@ -522,8 +537,10 @@ The charts above illustrate how much likely it is we receive positive responses 
 
 Essentially these charts are visual aids which can be leveraged for evaluating the performance of the classifier. 
 
+
+
 %----------------------------------------------------------------------------------------
-%	SECTION 5
+%	SECTION 9
 %----------------------------------------------------------------------------------------
 \section{Conclusion}\label{sotaConc}
 This chapter has summarised the relevant literature available for ...
