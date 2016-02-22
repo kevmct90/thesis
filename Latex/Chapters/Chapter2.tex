@@ -256,7 +256,7 @@ Although ANN have become increasingly popular in recent years due to improvement
 
 
 \subsection{Support Vector Machines} \label{SVM}
-A Support Vector Machines (SVMs) learning was developed first by \cite{vapnik_nature_1995}. The algorithm performs classifications via hyperplane in a higher dimensional feature space that  aims to maximise the margin or distance separating the two classes. It can be seen in Fig. \ref{fig:svmExample} that the two class are linearly separable using the hyperplane. 
+A Support Vector Machines (SVMs) learning was developed first by \cite{vapnik_nature_1995}. The algorithm performs classifications via a hyperplane in a higher dimensional feature space that maximises the margin or distance separating the two classes. It can be seen in Fig. \ref{fig:svmExample} that the two class are linearly separable using the hyperplane in the higher dimensional feature space. 
 
 \begin{figure}[H]
 	\includegraphics[width=.5\textwidth, center]{svmExample}
@@ -266,8 +266,7 @@ A Support Vector Machines (SVMs) learning was developed first by \cite{vapnik_na
 	\label{fig:svmExample}
 \end{figure}
 
-by finding the hyperplane that maximizes the margin between the two classes. The vectors (cases) that define the hyperplane are the support vectors.
-
+SVM handles situations non-linear data by using kernel function (non linear) to transform the data into a higher dimensional feature space. This allows it to become linearly separable via a hyperplane, this is known as the \textit{kernel trick}. It can illustrated in Fig. \ref{fig:svm_nonLinearlySeperable} by transforming non linearly seperable data into a higher dimensional feature space where it can be linearly separated using a hyperplane. This is ability is what differentiates SVM from logistic regression.
 
 \begin{figure}[H]
 	\includegraphics[width=.5\textwidth, center]{svm_nonLinearlySeperable}
@@ -277,17 +276,7 @@ by finding the hyperplane that maximizes the margin between the two classes. The
 	\label{fig:svm_nonLinearlySeperable}
 \end{figure}
 
-\cite{vapnik_nature_1995}
-
-
-\cite{shin_application_2005}
-
-\cite{van_gestel_credit_2009}
-
-We describe how support vector training can
-be practically implemented, and discuss in detail the kernel mapping technique which is used to construct
-SVM solutions which are nonlinear in the data.
-
+It has been documented across a range of domains where SVMs are performing well such as credit risk evaluation \cite{van_gestel_credit_2009} and text categorisation, cancer diagnosis and pattern recognition \citep{shin_application_2005}
 
 \subsection{Ensemble models \& Boosting} \label{boosting}
 \begin{comment}
