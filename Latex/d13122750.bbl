@@ -41,6 +41,12 @@ Burges, C.~J.  \harvardyearleft 1998\harvardyearright , `A tutorial on support
   discovery} {\bf 2}(2),~121--167.
 \newline\harvardurl{http://link.springer.com/article/10.1023/A:1009715923555}
 
+\harvarditem[Caouette et~al.]{Caouette, Altman \harvardand\
+  Narayanan}{1998}{caouette_managing_1998}
+Caouette, J.~B., Altman, E.~I. \harvardand\ Narayanan, P.  \harvardyearleft
+  1998\harvardyearright , {\em Managing credit risk: the next great financial
+  challenge}, Vol.~2, John Wiley \& Sons.
+
 \harvarditem[Chawla et~al.]{Chawla, Bowyer, Hall \harvardand\
   Kegelmeyer}{2002}{chawla_smote:_2002}
 Chawla, N.~V., Bowyer, K.~W., Hall, L.~O. \harvardand\ Kegelmeyer, W.~P.
@@ -62,11 +68,36 @@ Cover, T.~M. \harvardand\ Hart, P.~E.  \harvardyearleft 1967\harvardyearright ,
   Transactions on} {\bf 13}(1),~21--27.
 \newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=1053964}
 
+\harvarditem[Craig et~al.]{Craig, Jackson \harvardand\
+  Thomson}{2004}{craig_sba-guaranteed_2004}
+Craig, B.~R., Jackson, W.~E. \harvardand\ Thomson, J.~B.  \harvardyearleft
+  2004\harvardyearright , `On {SBA}-guaranteed lending and economic growth'.
+\newline\harvardurl{http://papers.ssrn.com/sol3/papers.cfm?abstract\_id=712624}
+
+\harvarditem{{Derivatives Policy
+  Group}}{1995}{derivatives_policy_group_framework_1995}
+{Derivatives Policy Group}  \harvardyearleft 1995\harvardyearright , {\em
+  Framework for voluntary oversight: a framework for voluntary oversight of the
+  {OTC} derivatives activities of securities firm affiliates to promote
+  confidence and stability in financial markets}, [publisher not identified],
+  [New York?].
+
 \harvarditem{Drummond \harvardand\ Holte}{2005}{drummond_severe_2005}
 Drummond, C. \harvardand\ Holte, R.~C.  \harvardyearleft 2005\harvardyearright
   , Severe class imbalance: {Why} better algorithms aren’t the answer, {\em
   in} `Machine {Learning}: {ECML} 2005', Springer, pp.~539--546.
 \newline\harvardurl{\url{http://link.springer.com/chapter/10.1007/11564096_52}}
+
+\harvarditem{Duffie \harvardand\ Singleton}{2012}{duffie_credit_2012}
+Duffie, D. \harvardand\ Singleton, K.~J.  \harvardyearleft
+  2012\harvardyearright , {\em Credit risk: pricing, measurement, and
+  management}, Princeton University Press.
+
+\harvarditem{Fama}{1986}{fama_term_1986}
+Fama, E.~F.  \harvardyearleft 1986\harvardyearright , `Term premiums and
+  default premiums in money markets', {\em Journal of Financial Economics} {\bf
+  17}(1),~175--196.
+\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/0304405X86900103}
 
 \harvarditem[Friedman et~al.]{Friedman, Kohavi \harvardand\
   Yun}{1996}{friedman_lazy_1996}
@@ -74,6 +105,13 @@ Friedman, J.~H., Kohavi, R. \harvardand\ Yun, Y.  \harvardyearleft
   1996\harvardyearright , Lazy decision trees, {\em in} `{AAAI}/{IAAI}, {Vol}.
   1', pp.~717--724.
 \newline\harvardurl{http://www.aaai.org/Papers/AAAI/1996/AAAI96-107.pdf}
+
+\harvarditem[Hackbarth et~al.]{Hackbarth, Miao \harvardand\
+  Morellec}{2006}{hackbarth_capital_2006}
+Hackbarth, D., Miao, J. \harvardand\ Morellec, E.  \harvardyearleft
+  2006\harvardyearright , `Capital structure, credit risk, and macroeconomic
+  conditions', {\em Journal of Financial Economics} {\bf 82}(3),~519--550.
+\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S0304405X06001115}
 
 \harvarditem{Hand}{2005}{hand_good_2005}
 Hand, D.~J.  \harvardyearleft 2005\harvardyearright , `Good practice in retail
@@ -194,14 +232,6 @@ Martens, D., Van~Gestel, T., De~Backer, M., Haesen, R., Vanthienen, J.
 McNab, H. \harvardand\ Wynn, A.  \harvardyearleft 2000\harvardyearright , {\em
   Principles and practice of consumer credit risk management}, CIB Publishing.
 
-\harvarditem{Mercer}{1909}{mercer_functions_1909}
-Mercer, J.  \harvardyearleft 1909\harvardyearright , `Functions of positive and
-  negative type, and their connection with the theory of integral equations',
-  {\em Philosophical transactions of the royal society of London. Series A,
-  containing papers of a mathematical or physical character} {\bf
-  209},~415--446.
-\newline\harvardurl{http://www.jstor.org/stable/91043}
-
 \harvarditem{Provost}{2000}{provost_machine_2000}
 Provost, F.  \harvardyearleft 2000\harvardyearright , Machine learning from
   imbalanced data sets 101, {\em in} `Proceedings of the {AAAI}’2000 workshop
@@ -276,6 +306,14 @@ Shin, K.-S., Lee, T.~S. \harvardand\ Kim, H.-j.  \harvardyearleft
   bankruptcy prediction model', {\em Expert Systems with Applications} {\bf
   28}(1),~127--135.
 \newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S095741740400096X}
+
+\harvarditem{Sirirattanaphonkun \harvardand\
+  Pattarathammas}{2012}{sirirattanaphonkun_default_2012}
+Sirirattanaphonkun, W. \harvardand\ Pattarathammas, S.  \harvardyearleft
+  2012\harvardyearright , `Default prediction for small-medium enterprises in
+  emerging market: evidence from {Thailand}', {\em Seoul Journal of Business}
+  {\bf 18}(2),~25.
+\newline\harvardurl{http://search.proquest.com/openview/4b8a79d5e186d57bfe9536b9afb8ed3d/1?pq-origsite=gscholar}
 
 \harvarditem{Van~Gestel \harvardand\ Baesens}{2009}{van_gestel_credit_2009}
 Van~Gestel, T. \harvardand\ Baesens, B.  \harvardyearleft 2009\harvardyearright
