@@ -25,23 +25,28 @@ How and why sme modelling is usually done completed in a financial institution
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
-\section{Macro Area Features affecting SME Credit Risk}
+\section{Macro Area Features affecting SME and Economic Credit Risk}
 Details examples where features have been used to predict arrears
 
-\cite{hackbarth_capital_2006} note that even though there has been a substantial amount of time  understanding and developing the credit risk literature, there not been much time spent researching how macroeconomic factors affect credit risk.  \cite{hackbarth_capital_2006} finds this strange based on anecdotal suggestions from institutions that economic business cycle is an important feature when calculating the probability of default of a customer. One example of this is during a recession we know consumers are less likely to spend money on discretionary goods or luxuries thus as a result businesses in a sector that offer these goods credit risk will most likely rise.
+\cite{hackbarth_capital_2006} note that even though there has been a substantial amount of time  understanding and developing the credit risk literature, there not been much time spent researching how macroeconomic factors affect credit risk.  \cite{hackbarth_capital_2006} finds this strange based on anecdotal suggestions from institutions that economic business cycle is an important feature when calculating the probability of default of a customer. One example of this is during a recession we know consumers are less likely to spend money on discretionary goods or luxuries thus as a result businesses in a sector that offer these goods credit risk will most likely rise. In their research they found that macroeconomic conditions do have an impact on credit risk.
 
 \cite{fama_term_1986} notes how over the counter derivatives broker-dealers measure risk using individual counter-parties details but also geographic data and performance indicators of other industry groups. The \cite{derivatives_policy_group_framework_1995} \footnote{The Derivatives Policy Group was made up of representatives of CS First Boston, Goldman Sachs, Morgan Stanley, Merrill Lynch, Salomon Brothers, and Lehman Brothers} also made recommendations that credit exposure was measured by geography and industry exposure when calculating credit risk.
 
 Banks can also suffer from a risk known as the \textit{winners curse}. In banking this is a scenario where other banks credit risk models score a customer too risky to lend to. That party then arrives at "our bank" where "our model" scores them as a good or likely to repay customer and decide to lend to them. As a result "our bank" will take on an excessive amount of risk that where other banks expected loses \citep{duffie_credit_2012}. \cite{duffie_credit_2012} also discuss how banks can mitigate their risk to the winners curse by including metrics such as borrowing rates and credit risk concentration limits by area or location.
 
-\citep{di_pietro_regional}
+Based on the Italian market, \citep{di_pietro_regional} investigated if SMEs experienced different levels of default rate based on their regional location. They investigated the business cycles of these areas and looked at identifying which macroeconomic features were the most influential in predicting default. In their experiment they divided Italy into five areas, center, north-east, north-west, south, and the islands. They found in their analysis confirmed that there statistically a significant difference between default rates in the areas which can be seen in Fig. \ref{fig:evolutionOfItalianDefaultRate}
 
-\textit{The analysis shows that, when the value of the aggregate shock shifts between different
-	states (boom or recession), the shareholders’ default policy is characterized by a different
-	default threshold for each state. \cite{hackbarth_capital_2006}}
+\begin{figure}[H]
+	\includegraphics[width=0.8\textwidth, center]{evolutionOfItalianDefaultRate}
+	\caption{Evolution of the Italian SME Default Rate by Area (1985-2005) \\
+	\cite[Source:][]{di_pietro_regional}		
+			}
+	\label{fig:evolutionOfItalianDefaultRate}
+\end{figure}
 
+It is  illustrated clearly in Fig. \ref{fig:evolutionOfItalianDefaultRate} that the average default rate in South of the country and islands is quite significantly higher than in the North-West and North-East. They use the Kruskal-Walls test to confirm that the differences between them are significantly significant.
 
-
+In \cite{antunes_estimating_2005} research based in Portugal, macroeconomic factors such as the employment rate, short term interest rate and gross domestic product were included in the predictive models to estimate the probability of default. Using these factors allowed them to develop stress tests where they could run macroeconomic scenarios that would have a negative affect on the economy. This is a method that is widely adopted by the International Monetary Fund (IMF) in their Financial Stability Assessment Program (FSAP) which is used to assess a countries financial sector resilience and capacity to manage financial crisis. They produce tailored recommendations of a micro and macro nature based on each countries circumstances \citep{marston_financial_2001} 
 
 \subsubsection{Location/Geospatial Data in Predictive Modelling}
 This will include details on location metrics and there use in predictive modelling. I will also be including details on what electoral divisions/local authorities are.
