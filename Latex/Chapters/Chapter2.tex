@@ -10,30 +10,18 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 \section{Introduction}
-This chapter will review research literature in the field of machine learning and credit scoring. We 
+This chapter will cover off research literature in the field of credit risk and predicting default in of SME customers in Financial institutions. The first couple of sections will cover off the field of SME, detailing SME definitions, credit risk and how macro economic features are used to in SME and economic credit risk. It will discuss challenges in the past in the field such as lack of common definitions and common statistics that could be used to straighten the sector. The literature for macro-economic factors is reviewed and it is noted that there has not much time spent researching how macro-economic factors affect SME credit and credit risk as a whole. It finishes detailing how there has been success using macro-economic factors in Italy, Portugal in predicting credit risk utilising features based on default rate and unemployment by location or area.   
 
+The chapter will also review research literature in the field of knowledge discovery, data mining and with a focus on predictive modelling. Knowledge discovery and data mining will be explained and illustrated with frameworks and methodologies about how to approach tasks in each. The literature is reviewed to understand the processes, prediction algorithms, feature selection methods,  validation methods and performance measures to understand how to build a predictive model to predict SME customers that are likely to default. One key observation in building a model to how predict what customers will default is that there tends to a very large class imbalance in the dataset e.g. there will be a much larger proportion of good/well behaving than bad/poorly performing customers. There are many ways of addressing this class imbalance by either manipulating the data set through sampling techniques or through fine tuning the algorithm by alternating input parameters tailored to the imbalance in the dataset.
 
-\section{SME Definitions}
-The most common definition for an SME is a registered business that with less than 250 employees \citep{ifc_sme_2009}, however this definition is not always consistent and can vary from country to country, financial institution to financial institution. In 2004 at an OECD conference on SMEs there were two key recommendations made economies of member and non-member states\footnote{Second OECD Conference of Ministers Responsible for Small and Medium-Sized Enterprises (SMEs), Istanbul,2004. \url{http://www.oecd.org/cfe/smes/31919278.pdf}}: (i)develop SME statistics that can be compared internationally, and (ii) establish a common definition and set rules for what an SME is. Without these statistics and definitions in place it would be more difficult to deploy programs that aim to expand and strengthen the SME sector\citep{ardic_small_2011}
+\section{SME Definition}
+The most common definition for an SME is a registered business that with less than 250 employees \citep{ifc_sme_2009}, however this definition is not always consistent and can vary from country to country, financial institution to financial institution. 
 
+At a European level an SME, business is categorised as SME if they have two hundred and fifty people or less employed and if the annual turnover not surpassing 50 million euro , and/or an annual balance sheet not surpassing 43 million euro\footnote{\url{http://isme.ie/advice/sme-facts-faq}}\footnote{\url{https://www.enterprise-ireland.com/en/About-Us/Our-Clients/SME-Definition.html}}.cSMEs can also be broken down further into smaller subcategories, micro enterprises are defined as businesses that employ fewer than ten people, have annual turnover below 2 million and annual balance sheet total not surpassing 2 million. Small enterprises are defined as businesses that have employed between ten and fifty people, have annual turnover below 10 million and annual balance sheet total below 10 million. Medium enterprises are defined as businesses that have employed between fifty and two hundred and fifty people employed have an annual turnover less than 50 million and an annual balance sheet total below 43 million.\footnote{\url{http://www.cgap.org/financialindicators}}
 
-\subsection{EU DEFn}
-\textit{\url{http://isme.ie/advice/sme-facts-faq}
-An SME is a micro, small or medium sized enterprise. Under the standard EU definition of an SME, businesses are classed as an SME if they employ fewer than 250 persons and have an annual turnover not exceeding 50 million euro, and/or an annual balance sheet total not exceeding 43 million euro. Micro Enterprises employ less than ten persons, have an annual turnover of less than 2m and an annual balance sheet total of less than 2m. Small Enterprises employ between ten and fifty persons, have an annual turnover of less than 10m and an annual balance sheet total of less than 10m.  Medium Enterprises employ between fifty and two hundred and fifty persons, have an annual turnover of less than 50m and an annual balance sheet total of less than 43m. 
-}
+Worldwide the most common method by regulators for defining businesses as SME are based the number of people they have employed, sales/turnover or/and loan size \cite{ardic_small_2011}.
 
-\subsection{Irish DEFn}
-\textit{\url{https://www.enterprise-ireland.com/en/About-Us/Our-Clients/SME-Definition.html}
-	A Small Enterprise is defined as :
-	an enterprise that has fewer than 50 employees and has either an annual turnover and/or an annual Balance Sheet total not exceeding 10m. A Medium Sized Enterprise is defined as: an enterprise that has between 50 employees and 249 employees and has either an annual turnover not exceeding 50m or an annual Balance Sheet total not exceeding 43m.}
-
-\subsection{world definition}
- \textit{add in as foot note
- The complete 
- Financial Access
- database is available online at \url{http://www.cgap.org/financialindicators}
- } 
-
+In 2004 at an OECD conference on SMEs there were two key recommendations made economies of member and non-member states\footnote{Second OECD Conference of Ministers Responsible for Small and Medium-Sized Enterprises (SMEs), Istanbul,2004. \url{http://www.oecd.org/cfe/smes/31919278.pdf}}: (i) develop SME statistics that can be compared internationally, and (ii) establish a common definition and set rules for what an SME is. Without these statistics and definitions in place it would be more difficult to deploy programs that aim to expand and strengthen the SME sector\citep{ardic_small_2011}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
@@ -127,6 +115,13 @@ Predictive models are built by using interval/numerical or/and categorical/nomin
 %	SECTION 4
 %----------------------------------------------------------------------------------------
 \section{Dataset Construction}
+
+Experts often detail how steps performed in the data construction and preparation stage can turn out to some of the most time consuming  when building predictive models\footnote{For example see \url{http://www.kdnuggets.com/polls/2003/data_preparation.htm}}. There are many steps that need to be considered during the data preparation stage for building a predictive model of SME credit risk, two that will be discussed in this section are the Sampling Period and Class Label Definition. 
+
+Practitioners often cite the steps performed during this stage as the most time-consuming
+activities performed during the construction of credit scorecards1. The
+main steps performed when creating a dataset with which to construct a scorecard
+are described hereafter.
 
 \subsection{Sampling Period}
 As already stated in the thesis, predictive models are built using historical data. It must be stated that past performance can be useful predictor of default it does not guarantee that future predictions of the model will be accurate or reliable. A training dataset is built to build a predictive model, customers are observed at two different points in time \citep{martens_credit_2010}, these are called the \textit{observation point and prediction point/"default observation point"} (cite). The time period between these two points is referred to the \textit{outcome window}. This can vary based on business objectives and requirements, industry standard in \subjectname\ dictates that this usually 12 months. \\\\
@@ -369,11 +364,12 @@ In 1907, statistician Sir Francis Galton attended a fair in which there was a co
 \end{comment}
 
 
-%----------------------------------------------------------------------------------------
-%	SECTION 6
-%----------------------------------------------------------------------------------------
-\section{Model Building and Training}
-sasasas
+\section{Feature Selection}
+\subsection{Correlation-based Feature Selection}
+\subsection{Information Gain}
+\subsection{Coarse Classification/ Binning}
+
+
 \subsection{Class Imbalance Problem}
 One of the biggest assumptions that needs to be understood when using classification algorithms is that most assume there is a balanced distribution of the target class \citep{japkowicz_class_2000}. Target class imbalance is described by  \citep{chawla_smote:_2002} where the number of number of records in each class are not relatively equal. In a balanced dataset ratio between the a binary target class would be close to 50/50. The issue with this imbalance arises where algorithms assume there is a balance between the classes, and they attempt to maximise the accuracy by predicting the most common class \citep{drummond_severe_2005}. The algorithms attempt to minimise the classification errors, but do not accounts for the incorrectly classifying cases \citep{seiffert_improving_2009}. While these classification overall might be very accurate they are not very useful in real world problems, this is because in the majority of cases the algorithm will focus on the majority class, because of how heavily it is weighted in the training dataset ignoring the minority class. This is major problem because in the majority of cases you will trying to predict the minority class, in this thesis customers going into default is the minority e.g. there are more customers that do not default at the end of the outcome window than customers that do defaulters.
 
@@ -435,13 +431,6 @@ There are ways to also cater for the target class imbalance of the dataset by fi
 This section has detailed some of the concern that imbalance can cause when building predictive models, we have outlined some the solutions and methods to mitigate this by manipulating the data and fine tuning the classification algorithm.
 
 
-\subsection{Feature Selection}
-\subsubsection{Correlation-based Feature Selection}
-\subsubsection{Information Gain}
-\subsubsection{Coarse Classification/ Binning}
-
-
-
 %----------------------------------------------------------------------------------------
 %	SECTION 7
 %----------------------------------------------------------------------------------------
@@ -496,8 +485,6 @@ There are considerations that need to be thought about before using either, hold
 \section{Model Performance Measures}\label{modelPerformMeasure}
 
 This section details some of the metrics that can be used to assess the accuracy of a classifier. The result of the classification algorithm maps the modelled data into a category, in this thesis it a binary classifier that is output: 1 is output for identifying customers who will default (bad) or 0 is output for customers who will be not-default (good). The majority of classification algorithms will produce a ranked numeric value which can be converted to a binary representation by some threshold or cut-off decision driven from  the business objective that is trying to be optimised. This section will begin with a confusion matrix, details how this is leveraged to build other performance measures and details how charts and metrics can be leveraged together to decide on the performance measure to maximise the intended objective.
-
-\url{http://www.saedsayad.com/model_evaluation_c.htm}
 
 \subsubsection{Confusion Matrix}
 
