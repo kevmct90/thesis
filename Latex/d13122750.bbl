@@ -91,6 +91,12 @@ Chawla, N.~V., Japkowicz, N. \harvardand\ Kotcz, A.  \harvardyearleft
   data sets', {\em ACM Sigkdd Explorations Newsletter} {\bf 6}(1),~1--6.
 \newline\harvardurl{http://dl.acm.org/citation.cfm?id=1007733}
 
+\harvarditem{Coenen}{2011}{coenen_data_2011}
+Coenen, F.  \harvardyearleft 2011\harvardyearright , `Data mining: past,
+  present and future', {\em The Knowledge Engineering Review} {\bf
+  26}(01),~25--29.
+\newline\harvardurl{http://journals.cambridge.org/abstract\_S0269888910000378}
+
 \harvarditem{Cover \harvardand\ Hart}{1967}{cover_nearest_1967}
 Cover, T.~M. \harvardand\ Hart, P.~E.  \harvardyearleft 1967\harvardyearright ,
   `Nearest neighbor pattern classification', {\em Information Theory, IEEE
@@ -102,6 +108,14 @@ Cover, T.~M. \harvardand\ Hart, P.~E.  \harvardyearleft 1967\harvardyearright ,
 Craig, B.~R., Jackson, W.~E. \harvardand\ Thomson, J.~B.  \harvardyearleft
   2004\harvardyearright , `On {SBA}-guaranteed lending and economic growth'.
 \newline\harvardurl{http://papers.ssrn.com/sol3/papers.cfm?abstract\_id=712624}
+
+\harvarditem[Delen et~al.]{Delen, Walker \harvardand\
+  Kadam}{2005}{delen_predicting_2005}
+Delen, D., Walker, G. \harvardand\ Kadam, A.  \harvardyearleft
+  2005\harvardyearright , `Predicting breast cancer survivability: a comparison
+  of three data mining methods', {\em Artificial intelligence in medicine} {\bf
+  34}(2),~113--127.
+\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S0933365704001010}
 
 \harvarditem{{Derivatives Policy
   Group}}{1995}{derivatives_policy_group_framework_1995}
@@ -273,6 +287,10 @@ Lessmann, S., Baesens, B., Mues, C. \harvardand\ Pietsch, S.  \harvardyearleft
   Engineering, IEEE Transactions on} {\bf 34}(4),~485--496.
 \newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4527256}}
 
+\harvarditem{Lewis}{2004}{lewis_moneyball_2004}
+Lewis, M.  \harvardyearleft 2004\harvardyearright , {\em Moneyball: {The} art
+  of winning an unfair game}, WW Norton \& Company.
+
 \harvarditem[Li et~al.]{Li, Zhang, Chen, Gao \harvardand\
   Peng}{2011}{li_adaptive_2011}
 Li, S., Zhang, B., Chen, D., Gao, L. \harvardand\ Peng, M.  \harvardyearleft
@@ -281,11 +299,12 @@ Li, S., Zhang, B., Chen, D., Gao, L. \harvardand\ Peng, M.  \harvardyearleft
   Remote Sensing} {\bf 5}(1),~053538--053538.
 \newline\harvardurl{http://remotesensing.spiedigitallibrary.org/article.aspx?articleid=1182402}
 
-\harvarditem{{\em Looking backwards, looking forwards: {SAS}, data mining, and
-  machine learning}}{n.d.}{sas_venn_diagram}
-{\em Looking backwards, looking forwards: {SAS}, data mining, and machine
-  learning}  \harvardyearleft n.d.\harvardyearright .
-\newline\harvardurl{http://blogs.sas.com/content/subconsciousmusings/2014/08/22/looking-backwards-looking-forwards-sas-data-mining-and-machine-learning/}
+\harvarditem[Liu et~al.]{Liu, Weisberg, Hu \harvardand\
+  Zheng}{2011}{liu_tracking_2011}
+Liu, Y., Weisberg, R.~H., Hu, C. \harvardand\ Zheng, L.  \harvardyearleft
+  2011\harvardyearright , `Tracking the {Deepwater} {Horizon} oil spill: {A}
+  modeling perspective', {\em Eos Trans. AGU} {\bf 92}(6),~45--52.
+\newline\harvardurl{http://works.bepress.com/yliu/12/}
 
 \harvarditem{Marston}{2001}{marston_financial_2001}
 Marston, D.  \harvardyearleft 2001\harvardyearright , `Financial system
@@ -394,6 +413,16 @@ Shin, K.-S., Lee, T.~S. \harvardand\ Kim, H.-j.  \harvardyearleft
   28}(1),~127--135.
 \newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S095741740400096X}
 
+\harvarditem{Silver}{2012}{silver_signal_2012}
+Silver, N.  \harvardyearleft 2012\harvardyearright , {\em The signal and the
+  noise: {Why} so many predictions fail-but some don't}, Penguin.
+
+\harvarditem{Silverman \harvardand\ Suchard}{2013}{silverman_predicting_2013}
+Silverman, N. \harvardand\ Suchard, M.~A.  \harvardyearleft
+  2013\harvardyearright , `{PREDICTING} {HORSE} {RACE} {WINNERS} {THROUGH}
+  {REGULARIZED} {CONDITIONAL} {LOGISTIC} {REGRESSION} {WITH} {FRAILTY}.', {\em
+  Journal of Prediction Markets} {\bf 7}(1).
+
 \harvarditem{Sirirattanaphonkun \harvardand\
   Pattarathammas}{2012}{sirirattanaphonkun_default_2012}
 Sirirattanaphonkun, W. \harvardand\ Pattarathammas, S.  \harvardyearleft
@@ -401,6 +430,21 @@ Sirirattanaphonkun, W. \harvardand\ Pattarathammas, S.  \harvardyearleft
   emerging market: evidence from {Thailand}', {\em Seoul Journal of Business}
   {\bf 18}(2),~25.
 \newline\harvardurl{http://search.proquest.com/openview/4b8a79d5e186d57bfe9536b9afb8ed3d/1?pq-origsite=gscholar}
+
+\harvarditem[Stekler et~al.]{Stekler, Klein \harvardand\
+  {others}}{2012}{stekler_predicting_2012}
+Stekler, H.~O., Klein, A. \harvardand\ {others}  \harvardyearleft
+  2012\harvardyearright , `Predicting the outcomes of {NCAA} basketball
+  championship games', {\em Journal of Quantitative Analysis in Sports} {\bf
+  8}(1),~3.
+
+\harvarditem[Tumasjan et~al.]{Tumasjan, Sprenger, Sandner \harvardand\
+  Welpe}{2010}{tumasjan_predicting_2010}
+Tumasjan, A., Sprenger, T.~O., Sandner, P.~G. \harvardand\ Welpe, I.~M.
+  \harvardyearleft 2010\harvardyearright , `Predicting elections with twitter:
+  {What} 140 characters reveal about political sentiment.', {\em ICWSM} {\bf
+  10},~178--185.
+\newline\harvardurl{http://www.aaai.org/ocs/index.php/ICWSM/ICWSM10/paper/viewFile/1441/1852Predicting}
 
 \harvarditem{Van~Gestel \harvardand\ Baesens}{2009}{van_gestel_credit_2009}
 Van~Gestel, T. \harvardand\ Baesens, B.  \harvardyearleft 2009\harvardyearright
