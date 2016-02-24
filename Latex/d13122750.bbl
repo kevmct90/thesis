@@ -136,6 +136,21 @@ Fama, E.~F.  \harvardyearleft 1986\harvardyearright , `Term premiums and
   17}(1),~175--196.
 \newline\harvardurl{http://www.sciencedirect.com/science/article/pii/0304405X86900103}
 
+\harvarditem[Fayyad et~al.]{Fayyad, Piatetsky-Shapiro, Smyth \harvardand\
+  {others}}{1996}{fayyad_knowledge_1996}
+Fayyad, U.~M., Piatetsky-Shapiro, G., Smyth, P. \harvardand\ {others}
+  \harvardyearleft 1996\harvardyearright , Knowledge {Discovery} and {Data}
+  {Mining}: {Towards} a {Unifying} {Framework}., {\em in} `{KDD}', Vol.~96,
+  pp.~82--88.
+\newline\harvardurl{http://www.aaai.org/Papers/KDD/1996/KDD96-014}
+
+\harvarditem[Frawley et~al.]{Frawley, Piatetsky-Shapiro \harvardand\
+  Matheus}{1992}{frawley_knowledge_1992}
+Frawley, W.~J., Piatetsky-Shapiro, G. \harvardand\ Matheus, C.~J.
+  \harvardyearleft 1992\harvardyearright , `Knowledge discovery in databases:
+  {An} overview', {\em AI magazine} {\bf 13}(3),~57.
+\newline\harvardurl{http://www.aaai.org/ojs/index.php/aimagazine/article/viewArticle/1011}
+
 \harvarditem[Friedman et~al.]{Friedman, Kohavi \harvardand\
   Yun}{1996}{friedman_lazy_1996}
 Friedman, J.~H., Kohavi, R. \harvardand\ Yun, Y.  \harvardyearleft
@@ -260,6 +275,12 @@ Li, S., Zhang, B., Chen, D., Gao, L. \harvardand\ Peng, M.  \harvardyearleft
   field model for classifying hyperspectral imagery', {\em Journal of Applied
   Remote Sensing} {\bf 5}(1),~053538--053538.
 \newline\harvardurl{http://remotesensing.spiedigitallibrary.org/article.aspx?articleid=1182402}
+
+\harvarditem{{\em Looking backwards, looking forwards: {SAS}, data mining, and
+  machine learning}}{n.d.}{sas_venn_diagram}
+{\em Looking backwards, looking forwards: {SAS}, data mining, and machine
+  learning}  \harvardyearleft n.d.\harvardyearright .
+\newline\harvardurl{http://blogs.sas.com/content/subconsciousmusings/2014/08/22/looking-backwards-looking-forwards-sas-data-mining-and-machine-learning/}
 
 \harvarditem{Marston}{2001}{marston_financial_2001}
 Marston, D.  \harvardyearleft 2001\harvardyearright , `Financial system

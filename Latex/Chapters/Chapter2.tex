@@ -38,7 +38,7 @@ An SME is a micro, small or medium sized enterprise. Under the standard EU defin
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\section{Modelling Credit Risk SMEs}
+\section{SME Credit Risk}
 How and why sme modelling is usually done completed in a financial institution
 
 
@@ -71,15 +71,47 @@ In \cite{antunes_estimating_2005} research based in Portugal, macroeconomic fact
 
 \cite{ardic_small_2011} discusses how competition in developed countries and instability in developing countries provide some the biggest challenges to SME credit. This view of developing counties is supported by research done by \cite{rocha_status_2011} which provides evidence from financial institution in the North Africa and the Middle East, detailing the immaturity of their financial systems and SME transparency to be some of the main obstacles. 
 
-
+\begin{comment}
 \subsubsection{Location/Geospatial Data in Predictive Modelling}
 This will include details on location metrics and there use in predictive modelling. I will also be including details on what electoral divisions/local authorities are.
+\end{comment}
 
 \begin{comment}
 The geography of the data  Provinces  Ireland is divided into four provinces: Leinster, Ulster, Munster and Connacht. Although at present they do not have any  administrative functions, they are relevant for a number of historical, cultural and sporting reasons. The borders of the  provinces coincide exactly with the boundaries of the administrative counties. Three of the nine counties in Ulster are  within the jurisdiction of the State.  NUTS boundaries  The Nomenclature of Territorial Units for Statistics (NUTS) were drawn up by Eurostat in order to define territorial  units for the production of regional statistics across the European Union. The NUTS classification has been used in EU  legislation since 1988, but it was only in 2003 that the EU Member States, the European Parliament and the  Commission established the NUTS regions within a legal framework.  The Irish NUTS 3 regions comprise the eight Regional Authorities established under the Local Government Act, 1991  (Regional Authorities) (Establishment) Order, 1993 which came into operation on January 1st 1994. The NUTS 2  regions, which were proposed by Government and agreed to by Eurostat in 1999, are groupings of the Regional  Authorities.  Administrative counties  In census reports the country is divided into 29 counties/administrative counties and the five Cities which represent the  local authority areas. Outside Dublin there are 26 administrative counties (North Tipperary and South Tipperary each  ranks as a separate county for administrative purposes) and four Cities, i.e. Cork, Limerick, Waterford and Galway. In  Dublin the four local authority areas are identified separately, i.e. Dublin City and the three administrative counties of  Dún Laoghaire-Rathdown, Fingal and South Dublin.  Electoral Divisions  There are 3,440 Electoral Divisions (EDs) which are the smallest legally defined administrative areas in the State. One  ED, St. Mary's, straddles the Louth-Meath county border, and is presented in two parts in the SAPS1 tables, with one  part in Louth and the other in Meath. There are 32 EDs with low population, which for reasons of confidentiality have  been amalgamated into neighbouring EDs giving a total of 3,409 EDs which appear in the SAPS tables.  Small Areas  Small Areas are areas of population comprising between 50 and 200 dwellings created by The National Institute of  Regional and Spatial Analysis(NIRSA) on behalf of the Ordnance Survey Ireland(OSi) in consultation with CSO. Small  Areas were designed as the lowest level of geography for the compilation of statistics in line with data protection and  generally comprise either complete or part of townlands or neighbourhoods. There is a constraint on Small Areas that  they must nest within Electoral Division boundaries.  Small areas were used as the basis for the Enumeration in Census 2011. Enumerators were assigned a number of  adjacent Small Areas constituting around 400 dwelling in which they had to visit every dwelling and deliver and collect  a completed census form and record the dwelling status of unoccupied dwellings.  The small area boundaries have been amended in line with population data from Census 2011  2007 Constituency boundaries  For the purpose of elections to Dáil Éireann the country is divided into Constituencies which, under Article 16.4 of the  Constitution of Ireland, have to be revised at least once every twelve years with due regard to changes in the distribution  of the population. The Constituencies were revised in 2007.  Gaeltacht Areas  The Gaeltacht Areas Orders, 1956, 1967, 1974 and 1982 defined the Gaeltacht as comprising 155 Electoral Divisions or  parts of Electoral Divisions in the counties of Cork, Donegal, Galway, Kerry, Mayo, Meath and Waterford.  2008 Local Electoral Areas  For the purposes of County Council and Corporation elections each county and city is divided into Local Electoral  Areas (LEAs) which are constituted on the basis of Orders made under the Local Government Act, 1941. In general,  LEAs are formed by aggregating Electoral Divisions. However, in a number of cases Electoral Divisions are divided  between LEAs to facilitate electors.  Legal Towns and Cities  Urban areas with legally defined boundaries consist of the five Cities (Cork, Dublin, Galway, Limerick and Waterford),  five Boroughs (Clonmel, Drogheda, Kilkenny, Sligo and Wexford) and 75 Towns as established under the Local  Government Act, 2001 (S.I. 591 of 2001). Extensions to the boundaries can also occur, subject to legislation passed  under the instruction of the Department of Environment, Community and Local Government.  Settlements (Census towns, legal towns and environs, cities and suburbs)  In order to distinguish between the urban and rural population for census analysis, the boundaries of distinct settlements  need to be defined. This requires the creation of suburbs and extensions to existing cities and legal towns as well as  delineating boundaries for settlements which are not legally defined (called Census towns).  From 1971 to 2006, Census towns were defined as a cluster of fifty or more occupied dwellings where, within a radius  of 800 metres there was a nucleus of thirty occupied dwellings (on both sides of a road, or twenty on one side of a  road), along with a clearly defined urban centre e.g. a shop, a school, a place of worship or a community centre. Census  town boundaries where extended over time where there was an occupied dwelling within 200 metres of the existing  boundary.  To avoid the agglomeration of adjacent towns caused by the inclusion of low density one off dwellings on the approach  routes to towns, the 2011 criteria were tightened, in line with UN criteria.  In Census 2011 a new Census town was defined as being a cluster with a minimum of 50 occupied dwellings, with a  maximum distance between any dwelling and the building closest to it of 100 metres, and where there was evidence of  an urban centre (shop, school etc). The proximity criteria for extending existing 2006 Census town boundaries was also  amended to include all occupied dwellings within 100 metres of an existing building. Other information based on OSi  mapping and orthogonal photography was taken into account when extending boundaries. Boundary extensions were  generally made to include the land parcel on which a dwelling was built or using other physical features such as roads,  paths etc.  Extensions to the environs and suburbs of legal towns and cities were also constructed using the 100 metre proximity  rule applied to Census towns.  1 SAPS – Small Area Population Statistics  For census reports, urban settlements are towns with a population of 1,500 or more, while settlements with a population  of less than 1,500 are classified as rural.
 \end{comment}
 
 
+\section{Data Mining \& Predictive Modelling}
+Knowledge discovery is defined by \cite{frawley_knowledge_1992} as the \textit{``Knowledge Discovery in Databases as the non-trivial process of identifying valid, novel, potentially useful, and ultimately understandable patterns in data''}. Knowledge discovery can be thought of extracting some piece insight or value from data that could not have been using a simple query. \cite{fayyad_knowledge_1996} outlined an approach to extracting these useful patterns from data stored in large databases called the \textit{Knowledge Discovery in Databases} (KDD).
+
+\begin{figure}[H]
+	\includegraphics[width=0.8\textwidth, center]{kdd}
+	\caption{Overview of the KDD process  \\
+		\cite[Source:][]{fayyad_knowledge_1996}		
+	}
+	\label{fig:kdd}
+\end{figure}
+
+The goal at the end of the KDD process is to realise some value or extract some piece is insight. This is typically done through the data mining step of the process, but Fig. \ref{fig:kdd} above illustrates it is only one step in the overall framework. Steps such as data selection, preprocessing, transformation or data modelling must be completed prior to the data mining step. 
+
+
+\begin{figure}[H]
+	\includegraphics[width=0.4\textwidth, center]{crisp_dm}
+	\caption{CRISP-DM Data Mining Process Model}
+	\label{fig:crisp_dm}
+\end{figure}
+
+
+\begin{figure}[H]
+	\includegraphics[width=0.6\textwidth, center]{data_mining_venn_diagram}
+	\caption{Data Mining Venn Diagram  \\
+		\cite[Source:][]{sas_venn_diagram}
+	}
+	\label{fig:data_mining_venn_diagram}
+\end{figure}
+
+\footnote{\url{http://www.kdnuggets.com/polls/2014/analytics-data-mining-data-science-methodology.html}}
+\footnote{\url{http://blogs.sas.com/content/subconsciousmusings/2014/08/22/looking-backwards-looking-forwards-sas-data-mining-and-machine-learning/}}
 %----------------------------------------------------------------------------------------
 %	SECTION 4
 %----------------------------------------------------------------------------------------
