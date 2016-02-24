@@ -23,6 +23,11 @@ Ardic, O.~P., Mylenko, N. \harvardand\ Saltane, V.  \harvardyearleft
   Series, Vol} .
 \newline\harvardurl{http://papers.ssrn.com/sol3/papers.cfm?abstract\_id=1747441}
 
+\harvarditem{Azevedo}{2008}{azevedo_kdd_2008}
+Azevedo, A. I. R.~L.  \harvardyearleft 2008\harvardyearright , `{KDD}, {SEMMA}
+  and {CRISP}-{DM}: a parallel overview', {\em IADS-DM} .
+\newline\harvardurl{http://recipp.ipp.pt/handle/10400.22/136}
+
 \harvarditem[Baesens et~al.]{Baesens, Mues, Martens \harvardand\
   Vanthienen}{2009}{baesens_50_2009}
 Baesens, B., Mues, C., Martens, D. \harvardand\ Vanthienen, J.
@@ -375,6 +380,11 @@ Shannon, C.~E.  \harvardyearleft 2001\harvardyearright , `A mathematical theory
   of communication', {\em ACM SIGMOBILE Mobile Computing and Communications
   Review} {\bf 5}(1),~3--55.
 \newline\harvardurl{http://dl.acm.org/citation.cfm?id=584093}
+
+\harvarditem{Shearer}{2000}{shearer_crisp-dm_2000}
+Shearer, C.  \harvardyearleft 2000\harvardyearright , `The {CRISP}-{DM} model:
+  the new blueprint for data mining', {\em Journal of data warehousing} {\bf
+  5}(4),~13--22.
 
 \harvarditem[Shin et~al.]{Shin, Lee \harvardand\
   Kim}{2005}{shin_application_2005}
