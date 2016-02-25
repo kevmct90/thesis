@@ -1,52 +1,979 @@
 % Chapter Template
-\chapter{Conclusion} % Main chapter title
+
+\chapter{Experiment Implementation \& Evaluation} % Main chapter title
 
 \label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-\lhead{Chapter 5. \emph{Conclusion}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
+\lhead{Chapter 5. \emph{Experiment Implementation \& Evaluation}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-
 \section{Introduction}
-This chapter concludes the dissertation, and will summarise the key findings from the research. A reminder of the research questions and objectives is given along with discussion on the contributions to the body of knowledge.
-An evaluation of the experiment along with an evaluation of the overall research will be presented along with observed limitations. Ideas and areas of interest for future work and research will be highlighted followed by the concluding remarks.
+This chapter describes the experiment set-up and methodology for this project to predict if SME customers will go into arrears. The main theory being examined is that macro location based features/metrics can be indicative of SME's in the future going into arrears.  
 
+There is relatively limited literature to support the location-based features chosen in this thesis, decisions are largely made due to anecdotal evidence and subject matter experts knowledge. To address this issue, empirical analysis of these features will be completed where one set of results will cascade new results and inspire further analysis. 
 
-
+To understand if the location-based features in this analysis are useful, an initial model will be used as a baseline model from which we will look to improve iteratively. The features from this model will be derived from a historic scorecard used in \subjectname.  
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\section{Research Definition \& Research Overview}
-The research carried out as part of this dissertation involved reviewing state of the art analytical practices in the field of web data mining and two-class classification with a view to understanding the potential in clicksteam data for predicting users likely to drop out of an application process. This research was used to design and implement experiments and build models capable of detecting users in difficulty. 
+\section{Experiment Set-up}
+This section will detail high level experimental information. In Fig. \ref{fig:experiment_setup} below SME accounts/customers are selected at the \textit{observation point}, June 2014. These accounts are not in default at this point in time. Information prior to the observation point will be used for modelling to predict if someone is likely to go into default, this can be termed the \textit{performance window}.
+
+Data from each individual customers/accounts performance will be taken from data in the performance window time period, which will be combined with macro location-based data prior to the observation point also. This data will be aggregated and structured into features for an ABT. The aim will be that these features will be able to distinguish what customers/accounts are likely to default on there repayment in the next 12 months. 
+
+\begin{figure}[H]
+	\includegraphics[width=0.8\textwidth,center]{experiment_setup}
+	\caption[Experiment Performance Window and Outcome Window]
+	{Experiment Performance Window and Outcome Window}
+	\label{fig:experiment_setup}
+\end{figure}
+
+Previous, Section \ref{classLabelDef} described that there were two methods used to define if a customer was in default or not: (i) the \textit{worst status} label definition method; and (ii) the \textit{current status} label method approach. As mentioned previously, for the purpose of this experiment we will be using the industry standard worst status method, this means if the customers is in 90+ days arrears at any stage in the outcome window they will be labelled as a bad customer or as one that has defaulted on their financial obligation. 
+
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l| l|r|r|r}
+			\hline
+			\textbf{Model} &  \textbf{Dataset} & \textbf{Default} & \textbf{Not-Default} & \textbf{Total} \\
+			\hline
+			Previous Delinquency          & Training       & 423 & 1,332 & 1,755 \\
+			Previous Delinquency          & Validation       & 156 & 429 & 585 \\
+			Previous Delinquency          & Test & 149 & 437 & 586 \\ \hline
+			No Previous Delinquency          & Training & 406 & 14,087 & 14,493 \\ 
+			No Previous Delinquency          & Validation & 121 & 4,710 & 4,831 \\
+			No Previous Delinquency          & Test & 124 & 4,708 & 4,832 \\
+			\hline
+		       &      	\textbf{Total }     & \textbf{1,379} & \textbf{25,703} & \textbf{27,082} \\ \hline
+		\end{tabular}
+	}
+	\caption{Breakdown of Training/Validation/Test Partitions for Experiment}
+\end{table}
 
 
-%----------------------------------------------------------------------------------------
-%	SECTION 3
-%----------------------------------------------------------------------------------------
-\section{Summary of Contributions to Body of Knowledge \& Achievements}
-The following constitutes the worthwhile contributions to the discipline:
+\section{Exploration of  Data}
+\begin{figure}[H]
+	\includegraphics[width=0.85\textwidth,height=6cm, center]{percentageArrears}
+	\caption{Percentage of Customers in arrears for each month 
+		\\ June 2012 - June 2015}
+	\label{fig:percentageArrears}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=0.85\textwidth,height=6cm, center]{SME_Status}
+	\caption{SME Customers Status\\ June 2012 - June 2015}
+	\label{fig:SME_Status}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=0.85\textwidth,height=6cm, center]{ChangesInArrears}
+	\caption{Monthly Changes Customers Leaving and going into arrears\\June 2012 - June 2015}
+	\label{fig:ChangesInArrears}
+\end{figure}
 
 
-%----------------------------------------------------------------------------------------
-%	SECTION 4
-%----------------------------------------------------------------------------------------
-\section{Experimentation, Evaluation, Limitations \& Open Problems}
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height = 10cm]{June2014ArrearsByLA}
+		\caption{Arrears by County June 2014}\label{fig:June2014ArrearsByLA}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height = 10cm]{NewArrearsByLA}
+		\caption{New Arrears June 2015 by County}\label{fig:NewArrearsByLA}
+	\end{subfigure}
+	\medskip \newline
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth, height = 10cm]{June2014ArrearsByED}
+		\caption{Arrears by Electoral Division June 2014}
+		\label{fig:June2014ArrearsByED}
+	\end{subfigure}  ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth, height = 10cm]{NewArrearsByED}
+		\caption{New Arrears June 2015 by Electoral Division}
+		\label{fig:NewArrearsByED}
+	\end{subfigure}
+	\caption{SME Arrears by County and Electoral Division}
+	\label{fig:SMEArrearsLAED}
+\end{figure}
+
+\section{Baseline Benchmark in \subjectname\ }
+When building a predictive model, the first thing you are trying to do is build a model which results/predictions are better than the \textit{no information rate}. This means the accuracy of the model must be better than the no information rate, which is taken to be the biggest class percentage in the data to be modelled.
+
+For this research it would be redundant work/research to try and build a model that is better than the information rate as there are already models that exist in \subjectname\ for predicting arrears which can be leveraged. For this research the Risk team in \subjectname\ provided two feature sets that have used historically for predicting arrears \subjectname. They have segmented the data into two groups, \textit{Previous Delinquency} \& \textit{No Previous Delinquency}. After speaking with BE in the Risk function this was done because if a customer had been history of been delinquent this would become too dominant a feature in the model.
+
+So two models will be built as baseline benchmarks which will be compared to the results of the experiment. One model will be based on a feature set for customers who have been delinquent in the past and the other feature set for customers who have not been in delinquent in the past. The customers will be modelled with these features first and results will be recorded. As part of the experiment location based features will be added to be modelled, with the aim that these features will statistically significant for predicting SME arrears. 
+
+As mentioned before at the observation point, June 2014 SME accounts were selected that were not in default. These accounts are the basis for this experiment with a total a population size of is 27,082. 
 
 
-%----------------------------------------------------------------------------------------
-%	SECTION 5
-%----------------------------------------------------------------------------------------
-\section{Future Work \& Research}
-There are many additional worthwhile experiments worth running on this data set. It would be interesting for instance
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+	\begin{tabular}{l| l| r}
+		\hline
+		\textbf{Model} & \textbf{Status After Outcome Window June 2015} & \textbf{\# SME Customers} \\
+		\hline
+		Previous Delinquency          & In Default        & 728 \\
+		Previous Delinquency          & Not in Default        & 2,198 \\ \hline
+		No Previous Delinquency          & In Default        & 651 \\ 
+		No Previous Delinquency          & Not In Default        & 23,505 \\
+		\hline
+		\textbf{Total Customers}         &         & \textbf{27,082} \\ \hline
+	\end{tabular}
+	}
+	\caption{Base Model Account Detail}
+\end{table}
+
+As mentioned before the baseline model does not just need to be better than the no information rate but must to be representative of a model that could be deployed in \subjectname\ or any Financial Institution currently. As discussed in previous sections the financial institution model of choice is logistic regression, but for this research we will generate a baseline benchmark for other predictive models. These will all be generated using the exact same training, validation and test partitions in order to make a fair and valid comparison. 
+
+\subsubsection{Previous Delinquency}
+
+There are 11 features in the dataset to model customers who have been in default in the past. For security reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total customers to be be modelled in the Previous Delinquency model approximately 25\% of customers are in default at the end of outcome window. This default rate is just based on SME customers for this analysis and is not reflective of the enterprise default rate. The results for the baseline benchmarks models are as follows.
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+	\begin{tabular}{l | r | r| r |r| r|r}
+		\hline
+		\textbf{Model} & \textbf{Train AUC} & \textbf{Train GINI} & \textbf{Valid AUC} & \textbf{Valid GINI}& \textbf{Test AUC} & \textbf{Test GINI}\\
+		\hline
+		\cellcolor{green!25}Gradient Boosting & \cellcolor{green!25}0.655 & \cellcolor{green!25}0.331 & \cellcolor{green!25}0.681 & \cellcolor{green!25}0.362 & \cellcolor{green!25}0.62 & \cellcolor{green!25}0.239 \\
+		Dmine Regression & 0.678 & 0.356 & 0.674 & 0.349 & 0.61 & 0.22 \\
+		Regression & 0.65 & 0.301 & 0.672 & 0.344 & 0.597 & 0.195 \\
+		AutoNeural Network & 0.65 & 0.301 & 0.672 & 0.344 & 0.597 & 0.195 \\
+		Regression Backstep & 0.643 & 0.287 & 0.661 & 0.323 & 0.6 & 0.2 \\
+		Regression Forward Step & 0.643 & 0.287 & 0.661 & 0.323 & 0.6 & 0.2 \\
+		Regression Both & 0.643 & 0.287 & 0.661 & 0.323 & 0.6 & 0.2 \\
+		SVM Polynomial & 0.654 & 0.308 & 0.62 & 0.241 & 0.593 & 0.186 \\
+		SVM Radial Basis Fn & 0.812 & 0.624 & 0.6 & 0.2 & 0.619 & 0.238 \\
+		Decision Tree & 0.626 & 0.252 & 0.588 & 0.176 & 0.55 & 0.1 \\
+		SVM Sigmoid & 0.492 & -0.016 & 0.511 & 0.241 & 0.023 & -0.018 \\
+		\hline
+	\end{tabular}
+	}
+	\caption{Previous Delinquency Base Benchmark Results}
+	\label{table:prevdelinqbase}
+\end{table}
+
+The model that outputted the best result as seen table \ref{table:prevdelinqbase} highlighted in green above  was the Gradient Boosting Model, this is based on the highest validation AUC = 0.681. We can see above table \ref{table:prevdelinqbase} and Fig. \ref{fig:Delinq_Model_ROC} below that the \textit{Gradient Boosting Model} generalises quite well across the training, validation and testing partitions.
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{Base_Delinq_Model_ROC}
+	\caption{Previous Delinquency Base Benchmark Model ROC Charts}
+	\label{fig:Delinq_Model_ROC}
+\end{figure}
+
+It can be observed that this is not the case for the \textit{SVM Radial Basis Fn} model where it appears to have completely \textit{over-fitted} the training partition with an AUC training = 0.812 which drops to 0.60 and 0.619 for the validation and testing partitions datasets respectively. Overall most of the models appears to be predictive and have generalised quite well, however there may be case for investigating and removing the \textit{SVM Radial Basis Fn, Decision Tree and SVM Sigmoid} as these appear to not be predictive, not generalised well or to have over-fitted the training data partition. 
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{Base_Delinq_Model_Lift}
+	\caption{Previous Delinquency Base Benchmark Model Lift Charts}
+	\label{fig:Delinq_Model_Lift}
+\end{figure}
+
+We can see above in Fig. \ref{fig:Delinq_Model_Lift} that the majority of the models are returning positive results in the unseen test chart. This is very encouraging, for example if we were to contact 10\% of customers that these models decided were going to go into default, you would contact over twice as many customers that would go into default than if you used no model at all. This is very important when deciding on a business strategy and is where BE becomes extremely important. 
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Default_50}\caption{Default Cut-Off = 0.50}\label{fig:Base_Delinq_Model_CutOff_Analysis_Default_50}
+	\end{subfigure}  ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_48}
+		\caption{Min Misclassification Rate Cut-Off = 0.48}\label{fig:Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_54}
+	\end{subfigure} 
+	\medskip \newline
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_KS_25}
+		\caption{K-S Cut-Off = 0.25}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_KS_25}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_29}
+		\caption{EPER Cut-Off = 0.29}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_29}
+	\end{subfigure}
+	\caption{Delinquency Model Cut-off Analysis Confusion Matrix}
+	\label{fig:Base_Delinq_Model_CutOff_Analysis}
+\end{figure}
+
+As mentioned before knowing the business goal and aim can be very useful when trying to decide how you want to evaluate you model. The over usefulness and predictiveness of model can be got by combing the AUC with the ROC chart but sometimes this will not suffice. 
+
+In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:DelinquencyModelCutoff} you can see the cut-off analysis for the best benchmark model \textit{Gradient Boosting}. As discussed in Chapter \ref{Chapter2} this analysis demonstrates that your business goal and objectives will dictate which performance metric you may want to maximise or minimise over another. 
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+	\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r|r}
+		\hline
+		\textbf{Cut-off} & \textbf{Method}       & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} & \textbf{BA} \\ \hline
+		0.5              & Default (Train)       & 23          & 6           & 413         & 1312        & 0.761             & 0.793              & 0.761        & 0.053           & 0.995                & 0.239  & 0.524      \\
+		0.5              & Default (Valid)       & 8           & 1           & 138         & 439         & 0.763             & 0.889              & 0.761        & 0.055           & 0.998                & 0.237   & 0.526    \\
+		0.5              & Default (Test)        & 9           & 1           & 137         & 439         & 0.765             & 0.900              & 0.762        & 0.062           & 0.998                & 0.235      & 0.53  \\ \hline
+		0.48             & Min MR (Train)        & 34          & 13          & 402         & 1305        & 0.763             & 0.723              & 0.764        & 0.078           & 0.990                & 0.237     & 0.534  \\
+		0.48             & Min MR (Valid)        & 9           & 5           & 137         & 435         & \cellcolor{yellow!25}0.758             & \cellcolor{yellow!25}0.643              & 0.760        & 0.062           & \cellcolor{yellow!25}0.989                & \cellcolor{yellow!25}0.242       & 0.526 \\
+		0.48             & Min MR (Test)         & 10          & 2           & 136         & 438         & 0.765             & 0.833              & 0.763        & 0.068           & 0.995                & 0.235    & 0.532   \\ \hline
+		0.25             & K-S (Train) & 244         & 405         & 192         & 913         & 0.660             & 0.376              & 0.826        & 0.560           & 0.693                & 0.340  & 0.627     \\
+		0.25             & K-S (Valid) & 80          & 130         & 66          & 310         & 0.666             & 0.381              & \cellcolor{yellow!25}0.824        & \cellcolor{yellow!25}0.548           & 0.705                & 0.334     & \cellcolor{yellow!25}0.627  \\
+		0.25             & K-S (Test)  & 74          & 145         & 72          & 295         & 0.630             & 0.338              & 0.804        & 0.507           & 0.670                & 0.370  & 0.586     \\ \hline
+		0.29             & EPER (Train)          & 178         & 246         & 258         & 1072        & 0.713             & 0.420              & 0.806        & 0.408           & 0.813                & 0.287  & 0.611     \\
+		0.29             & EPER (Valid)          & 54          & 81          & 92          & 359         & 0.705             & 0.400              & 0.796        & 0.370           & 0.816                & 0.295    & 0.593   \\
+		0.29             & EPER (Test)           & 50          & 87          & 96          & 353         & 0.688             & 0.365              & 0.786        & 0.342           & 0.802                & 0.312  & 0.572    \\ \hline
+	\end{tabular}
+	}
+	\caption{Delinquency Model Cut-off Results }
+	\label{table:DelinquencyModelCutoff}
+\end{table}
+
+Table \ref{table:DelinquencyModelCutoff} above illustrates which cut-off threshold are best for results you are trying to maximise for the previous delinquency model.
+
+\subsubsection{No Previous Delinquency}
+
+There are 9 features in the dataset to model customers who have been in default in the past. For security reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total customers to be be modelled in the No Previous Delinquency model approximately 2.7\% of customers are in default at the end of outcome window. This default rate is just based on SME customers for this analysis and is not reflective of the enterprise default rate. The results for the baseline benchmarks models are as follows.
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r| r |r| r|r}
+			\hline
+			\textbf{Model} & \textbf{Train AUC} & \textbf{Train GINI} & \textbf{Valid AUC} & \textbf{Valid GINI}& \textbf{Test AUC} & \textbf{Test GINI}\\
+			\hline
+			 \cellcolor{green!25}Regression & \cellcolor{green!25}0.695 & \cellcolor{green!25}0.389 & \cellcolor{green!25}0.71 & \cellcolor{green!25}0.419 & \cellcolor{green!25}0.677 & \cellcolor{green!25}0.354 \\
+			Regression Backstep & 0.691 & 0.381 & 0.706 & 0.413 & 0.678 & 0.357 \\
+			Regression Forward Step & 0.691 & 0.381 & 0.706 & 0.413 & 0.678 & 0.357 \\
+			Regression Both & 0.691 & 0.381 & 0.706 & 0.413 & 0.678 & 0.357 \\
+			Gradient Boosting & 0.653 & 0.305 & 0.683 & 0.366 & 0.688 & 0.336 \\
+			Dmine Regression & 0.649 & 0.297 & 0.67 & 0.34 & 0.628 & 0.255 \\
+			SVM Radial Fn & 0.591 & 0.182 & 0.558 & 0.116 & 0.512 & 0.025 \\
+			SVM Sigmoid & 0.605 & 0.21 & 0.549 & 0.099 & 0.588 & 0.176 \\
+			AutoNeural Network & 0.5 & 0 & 0.5 & 0 & 0.5 & 0 \\
+			Decision Tree & 0.5 & 0 & 0.5 & 0 & 0.5 & 0 \\
+			SVM Polynomial & 0.477 & -0.046 & 0.497 & -0.007 & 0.487 & -0.026 \\
+			\hline
+		\end{tabular}
+	}
+	\caption{No Previous Delinquency Base Model Details}
+	\label{table:NoPreviousDelinquencyBaseModelDetails}
+\end{table}
+
+The model that outputted the best result as seen table \ref{table:NoPreviousDelinquencyBaseModelDetails} highlighted in green above  was the \textit{Logistic Regression Model}, this is based on the highest validation AUC = 0.71. We can see above table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} below that the \textit{Logistic Regression Model} generalises quite well across the training, validation and testing partitions.
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{Base_NonDelinq_Model_ROC}
+	\caption{No Previous Delinquency Model ROC Chart}
+	\label{fig:NonDelinq_Model_ROC}
+\end{figure}
+
+It can be observed that most the majority of the models generalise quite well and are predictive. However as can seen in Table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} the \textit{AutoNeural Network, Decision Tree and SVM Polynomial Models} are not predictive. There be a case in investigate this further and the huge class imbalance may be causing an issue or to remove the models completely for further investigation.
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{Base_NonDelinq_Model_Lift}
+	\caption{No Previous Delinquency Model Lift Chart}
+	\label{fig:NonDelinq_Model_Lift}
+\end{figure}
+
+As with the lift chart in the Previous Delinquency model we can see in Fig. \ref{fig:NonDelinq_Model_Lift} the majority of the models are returning positive results most notably in the the regression validation and test result as you would expect. We are seeing a larger lift than in the Previous Delinquency model also. We can see for the regression model if we were to contact 10\% of the customers that this model decided were to going to go into default we would contact three times as many customers than you if you didn't use a model at all and choose them at random. 
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{ 0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Default_50}\caption{Default Cut-Off = 0.50}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Default_50}
+	\end{subfigure}  ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_21}
+		\caption{Min Misclassification Cut-Off= 0.21}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_17}
+	\end{subfigure} 
+	\medskip \newline
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_0269}
+		\caption{K-S Cut-Off = 0.026}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_026}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.45\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_08}
+		\caption{EPER Cut-Off = 0.08}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_09}
+	\end{subfigure}
+	\caption{Non Delinquency Model Cut-Off Analysis}
+	\label{fig:NonDelinquencyModelCutOffAnalysis}
+\end{figure}
+
+The imbalance problem in the No Previous Delinquency model becomes very evident in Fig.  \ref{fig:NonDelinquencyModelCutOffAnalysis} when compared to Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis}. This issue of imbalance will be investigated further in this Chapter.
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+	\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r|r}
+		\hline
+		\textbf{Cut-off} & \textbf{Method} & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} & \textbf{BA}  \\ \hline
+		0.5             & Default (Train) & 0           & 0           & 391         & 14103       & 0.973             & NA                 & 0.973        & 0.000           & 1.000                & 0.027   & 0.5    \\
+		0.5             & Default (Valid) & 0           & 0           & 130         & 4701        & 0.973             & NA                 & 0.973        & 0.000           & 1.000                & 0.027  & 0.5     \\
+		0.5             & Default (Test)  & 0           & 0           & 130         & 4701        & 0.973             & NA          & 0.973        & 0.000           & 1.000                & 0.027  & 0.5     \\ \hline
+		
+		0.21            & Min MR (Train)  & 1           & 17          & 390         & 14086       & 0.972             & 0.056              & 0.973        & 0.003           & 0.999                & 0.028    & 0.497   \\
+		0.21            & Min MR (Valid)  & 0           & 6           & 130         & 4695        & \cellcolor{yellow!25}0.972             & 0.000              & 0.973        & 0.000           & \cellcolor{yellow!25}0.999                & \cellcolor{yellow!25}0.028    & 0.495   \\
+		0.21            & Min MR (Test)   & 1           & 4           & 129         & 4697        & 0.972             & 0.200              & 0.973        & 0.008           & 0.999                & 0.028  & 0.499     \\ \hline
+		
+		0.03            & K-S (Train)     & 208         & 3583        & 183         & 10520       & 0.740             & 0.055              & 0.983        & 0.532           & 0.746                & 0.260    &  0.639  \\
+		0.03            & K-S (Valid)      & 70          & 1182        & 60          & 3519        & 0.743             & 0.056              & \cellcolor{yellow!25}0.983        & \cellcolor{yellow!25}0.538           & 0.749                & 0.257  & \cellcolor{yellow!25}0.644     \\
+		0.03            & K-S (Test)     & 67          & 1199        & 63          & 3502        & 0.739             & 0.053              & 0.982        & 0.515           & 0.745                & 0.261  & 0.63     \\ \hline
+		
+		0.08            & EPER (Train)    & 65          & 464         & 326         & 13639       & 0.945             & 0.123              & 0.977        & 0.166           & 0.967                & 0.055  & 0.567     \\
+		0.08            & EPER (Valid)    & 19          & 167         & 111         & 4534        & 0.942             & \cellcolor{yellow!25}0.102              & 0.976        & 0.146           & 0.964                & 0.058    & 0.556   \\
+		0.08            & EPER (Test)     & 21          & 173         & 109         & 4528        & 0.942             & 0.108              & 0.976        & 0.162           & 0.963                & 0.058 & 0.563     \\ \hline
+	\end{tabular}
+	}
+	\caption{My caption}
+	\label{my-label}
+\end{table}
+
+\section{Feature Selection}
+There has been 116 features created as part of this experiment along with the features that already exist in the base models, it is necessary where possible to reduce this as reducing the dimensionality of a model is very important. Feature selection will be carried out to reduce this dimensionality of the model and reducing the complexity of the dataset. The feature selection process that will be used will encompass Correlation Analysis, entropy based calculating the information gain, gain ratio and symmetrical uncertainty, and random forest method for feature selection. 
+
+
+\subsection{Base Model}
+A base model has been built using SAS, however for the feature selection process there is of manipulation and over head in the process. Another model will be built in R to to base the selection of the experimental features. The logistic regression model performed strongly in both the previous delinquency and no previous delinquency model so it will be used again here as base for the feature selection process. The result of the feature selection baseline benchmark models are as follows 
+
+\begin{table}[H]
+	\centering
+		\begin{tabular}{l | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression (Previous Delinq) & 0.653 & 0.615 & 0.683  \\
+			Regression (No Previous Delinq) & 0.704 & 0.656 & 0.691  \\
+			\hline
+		\end{tabular}
+	\caption{Feature Selection Baseline Benchmark Results}
+	\label{table:featureselection_base_model}
+\end{table}
+
+\subsection{Correlation Analysis}
+
+Performed correlation analysis on the imbalanced dataset and randomly took a sample of a balanced dataset.
+
+\textit{Estimation results are presented in Table 4 a
+	nd show no consistent 
+	and robust correlations 
+	between the levels of SME finan
+	ce and definition criteria. We do not find statistically significant 
+	correlations between the value of SME financi
+	ng and the maximum number of employees used 
+	as a criterion to define SME.
+	10
+	In a smaller sample the maximum sales volume criteria is 
+	positively correlated with the ratio of SME loans to GDP but not with the share of SME loans in 
+	total commercial bank loans.  Moreover, the correlation between the ratio of SME loans to GDP 
+	and sales volume is not statistically signifi
+	cant once we control for income per capita.   }
+
+\textit{A number of macroeconomic and institutional factors are associated with greater levels of SME financing.  Table 5 presents pairwise correlations of the ratio of SME loans to GDP and a number of macroeconomic and institutional factors. Consistent with earlier research on SME and enterprise financing, we find a positive correlation between the overall level of economic development measured by income per capita and financial development measured by the ratio of private credit to GDP with the level of SME financing.  Legal frameworks and the overall business environment are also important factors affecting the level of SME financing.  For example, the ability to open and close a business is found to be an important factor associated with growth.  Using information from the Doing Businessdatabase, we find a negative correlation between the number of days it takes to start and close a business and the value of SME financing}
+
+\textit{In addition, we consider a number of parameters describing financial institutions operating in a 
+	country.  We do not find a statistically significant
+	correlation between the share of foreign- or 
+	state-owned banks and levels of 
+	SME financing, which is consiste
+	nt with bank level evidence in 
+	Beck 
+	et al.
+	(2008b).  Unlike firm level analysis in Beck 
+	et al.
+	(2005b), we do not find a 
+	statistically significant level of 
+	correlation between the level of 
+	bank concentration and the ratio 
+	of SME financing to GDP. However, broader re
+	tail outlet networks meas
+	ured by the number of 
+	bank branches per 100,000 adults from the 
+	Financial Access
+	database are associated with more 
+	SME financing. Countries where banks have less 
+	efficient structures measured by a higher ratio 
+	of overhead costs to total assets, 
+	higher interest rate margin and a 
+	greater cost to income ratio,  
+	tend to have lower levels of SME financing. }
+
+\begin{figure}[H]
+	\centering
+		\begin{subfigure}[b]{0.32\textwidth}
+			\captionsetup{font=scriptsize}
+			\includegraphics[width=\textwidth,height=2.75cm]{Grouped_Features_Correlation_Analysis_Subset}\caption{Grouped Features}\label{fig:groupedFeaturesCorrelation}
+		\end{subfigure} 
+		\begin{subfigure}[b]{0.32\textwidth}
+			\captionsetup{font=scriptsize}
+			\includegraphics[width=\textwidth,height=2.75cm]{SME_Arrears_Trends_Correlation_Analysis_Subset}
+			\caption{SME Arrears Trends}\label{fig:smeArrearsCorrelation}
+		\end{subfigure} 
+		\begin{subfigure}[b]{0.32\textwidth}
+			\captionsetup{font=scriptsize}
+			\includegraphics[width=\textwidth,height=2.75cm]{Personal_Arrears_Ratio}
+			\caption{Personal Arrears}\label{fig:personalArrearsCorrelation}
+		\end{subfigure} 
+	\medskip
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Visa_Debit_Correlation_Analysis_Subset}
+		\caption{Transactions}\label{fig:transVisaCorrelation}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{CSO_Correlation_Analysis}
+		\caption{CSO}\label{fig:CSOCorrelation}
+	\end{subfigure}
+\caption{Unbalanced Correlation Analysis}
+\label{fig:unbal_corr_analysis}
+\end{figure}
+	
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Balanced_Grouped_Features_Correlation_Analysis_Subset}\caption{Grouped Features}\label{fig:groupedFeaturesCorrelation}
+	\end{subfigure} 
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Balanced_SME_Arrears_Trends_Correlation_Analysis_Subset}
+		\caption{SME Arrears Trends}\label{fig:smeArrearsCorrelation}
+	\end{subfigure} 
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Balanced_Personal_Arrears_Ratio}
+		\caption{Personal Arrears}\label{fig:personalArrearsCorrelation}
+	\end{subfigure} 
+	\medskip
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Balanced_Visa_Debit_Correlation_Analysis_Subset}
+		\caption{Transactions}\label{fig:transVisaCorrelation}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Balanced_CSO_Correlation_Analysis}
+		\caption{CSO}\label{fig:CSOCorrelation}
+	\end{subfigure}
+	\caption{Balanced Correlation Analysis}
+	\label{fig:balanced_corr_analysis}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{CorrelationChart}
+	\caption{Correlation Analysis}
+	\label{fig:Correlation Analysis}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+	\begin{tabular}{l | r | r| r}
+		\hline
+		\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+		\hline
+		Regression (No Previous Delinq) Top 5 Features & 0.707 & 0.661 & 0.693  \\
+		Regression (No Previous Delinq) Top 10 Features & 0.715 & 0.660 & 0.701  \\
+		 \cellcolor{green!25}Regression (No Previous Delinq) Top 15 Features &  \cellcolor{green!25}0.719 &  \cellcolor{green!25}0.662 &  \cellcolor{green!25}0.699  \\
+		Regression (No Previous Delinq) Top 20 Features & 0.729 & 0.652 & 0.695  \\
+		\hline
+		Regression (Previous Delinq) Top 5 Features & 0.658 & 0.613 & 0.681  \\
+		Regression (Previous Delinq) Top 10 Features & 0.659 & 0.609 & 0.686  \\
+		 \cellcolor{green!25}Regression (Previous Delinq) Top 15 Features &  \cellcolor{green!25}0.665 &  \cellcolor{green!25}0.62 &  \cellcolor{green!25}0.690  \\
+		Regression (Previous Delinq) Top 20 Features & 0.679 & 0.611 & 0.688  \\	
+		\hline
+	\end{tabular}
+	}
+	\caption{Results based on features output from correlation analysis}
+	\label{table:featureselection_base_model}
+\end{table}
+
+\subsection{Information Gain, Gain Ratio \& Symmetrical Uncertainty}
+
+\subsubsection{Experiment Features}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{InformationGain_Experiment_Features}
+	\caption{Information Gain Experiment Features}
+	\label{fig:Information Gain Experiment Features}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression (No Previous Delinq) Top 5 Features & 0.706 & 0.657 & 0.694  \\
+			Regression (No Previous Delinq) Top 10 Features & 0.709 & 0.657 & 0.693  \\
+			Regression (No Previous Delinq) Top 15 Features & 0.72 & 0.646 & 0.694  \\
+			Regression (No Previous Delinq) Top 20 Features & 0.725 & 0.655 & 0.689  \\
+			\hline
+			
+			Regression (Previous Delinq) Top 5 Features &  0.664 &  0.597 &  0.678  \\
+			Regression (Previous Delinq) Top 10 Features &  0.664 &  0.596 &  0.675  \\
+			Regression (Previous Delinq) Top 15 Features &  0.670 &  0.597 &  0.692  \\
+			Regression (Previous Delinq) Top 20 Features &  0.675 &  0.593 &  0.681  \\		
+			\hline
+		\end{tabular}
+	}
+	\caption{Results based on features output from Information Gain Analysis}
+	\label{table:featureselection_base_model}
+\end{table}
+
+\subsubsection{Delinquency Model Existing \& Experimental Features}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{InformationGainAllFeaturesDelinq}
+	\caption{Information Gain Delinquency Model Features}
+	\label{fig:Information Gain Delinquency Model Features}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression (Previous Delinq) Top 10 Features &  0.65 &  0.6048 &  0.643  \\
+			Regression (Previous Delinq) Top 15 Features &  0.652 &  0.609 &  0.637  \\
+			Regression (Previous Delinq) Top 20 Features &  0.656 &  0.607 &  0.64  \\			
+			\hline
+		\end{tabular}
+	}
+	\caption{Results based on features output from Information Gain Analysis Delinq Features }
+	\label{table:featureselection_base_model}
+\end{table}
+
+\subsubsection{No Delinquency Model Existing \& Experimental Features}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{InformationGainAllFeaturesNonDelinq}
+	\caption{Information Gain No Previous Delinquency Model Features}
+	\label{fig:Information Gain No Previous Delinquency Model Features}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression (No Previous Delinq) Top 5 Features &  0.542 &  0.537 &  0.5206  \\
+			Regression (No Previous Delinq) Top 10 Features &  0.565 &  0.540 &  0.552  \\			
+			Regression (No Previous Delinq) Top 15 Features &  0.571 &  0.551 &  0.540  \\	
+			Regression (No Previous Delinq) Top 20 Features &  0.586 &  0.526 &  0.540  \\		
+						\hline
+		\end{tabular}
+	}
+	\caption{Results based on features output from Information Gain Analysis No Previous Delinquency Features }
+	\label{table:featureselection_base_model}
+\end{table}
+
+\section{Interactive Grouping}
+
+\subsubsection{Previous Delinquency}
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{PreviousDelinq_InformationGain_InteractiveGrouping}
+	\caption{Information Value using SAS Previous Delinquency Features}
+	\label{fig:Information Value using SAS Previous Delinquency Features}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=0.5\textwidth,center]{ExampleInteractiveGrouping}
+	\caption{Interactive Grouping Diff Percent 06 2012 ED}
+	\label{fig:Interactive Grouping Diff Percent 06 2012 ED}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Information Value Cut-off}& \textbf{No. Grouped Features Used} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression  & 0.100 & 4 &  0.649 &  0.673 &  0.639  \\
+			Regression &  0.063 & 15 & 0.699 &  0.669 &  0.603  \\			
+			Regression &  0.042 & 20 & 0.711 &  0.668 &  0.611  \\	
+			Regression & 0.0385 & 5 &  0.657 &  0.662 &  0.616  \\	
+			Regression & 0.036 & 10 &  0.685 &  0.654 &  0.590  \\		
+			\hline
+		\end{tabular}
+	}
+	\caption{Results from Interactive Grouping for Previous Delinquency Model}
+	\label{table:InteractiveGroupingPreviousDelinquency}
+\end{table}
+
+See Appendix \ref{Previous Delinquency Interactive Grouping Information Gain Analysis} for the result of the information gain for each feature
+
+\subsubsection{No Previous Delinquency}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinq_InformationGain_InteractiveGrouping}
+	\caption{Information Value using SAS No Previous Delinquency Features}
+	\label{fig:Information Value using SAS No Previous Delinquency Features}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Information Value Cut-off}& \textbf{No. Grouped Features Used} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression12  & 0.08 & 5 &  0.691 &  0.715 &  0.681  \\
+			Regression2 &  0.052 & 6 & 0.70 &  0.714 &  0.681  \\			
+			Regression25 &  0.045 & 10 & 0.720 &  0.70 &  0.686  \\	
+			Regression20 & 0.041 & 15 &  0.728 &  0.699 &  0.675  \\	
+			Regression24 & 0.0379 & 20 &  0.729 &  0.698 &  0.673 \\		
+			\hline
+		\end{tabular}
+	}
+	\caption{Results from Interactive Grouping for No Previous Delinquency Model}
+	\label{table:NoInteractiveGroupingPreviousDelinquency}
+\end{table}
+
+See Appendix \ref{No Previous Delinquency Interactive Grouping Information Gain Analysis} for the result of the information gain for each feature
+
+\section{K-NN Approach}
+
+\subsubsection{No Previous Delinquency Analysis}
+
+NonDelinqknnFit
+
+k-Nearest Neighbors 
+
+
+16408 samples
+
+116 predictor
+
+2 classes: 'N', 'Y' 
+
+
+Pre-processing: centered (116), scaled (116) 
+
+Resampling: Cross-Validated (10 fold, repeated 3 times) 
+
+Summary of sample sizes: 14768, 14767, 14766, 14767, 14768, 14767, ... 
+
+Resampling results across tuning parameters:
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinquencyExperimentKNN}
+	\caption{Repeated 3 Times 10-Fold Cross-Validation Optimal No. of Neighbours for No Previous Delinquency Experiment Data}
+	\label{fig:NoPreviousDelinquencyExperimentKNN}
+\end{figure}
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l | r | r| r}
+		\hline
+		\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+		\hline
+		Regression (No Previous Delinq) & 0.771 & 0.662 & 0.628  \\
+		\hline
+	\end{tabular}
+	\caption{Model Results from optimised KNN results for No Previous Delinquency Model where K=75}
+	\label{table:knnNoPrevDelinqModel}
+\end{table}
+
+{\footnotesize
+	\begin{longtable}
+		{l | l | l | l | l | l | l}
+		\hline
+		\textbf{k} & \textbf{ROC} & \textbf{Sens} & \textbf{Spec} & \textbf{ROCSD} & \textbf{SensSD} & \textbf{SpecSD} \\ \hline
+		5          & 0.474        & 1.000         & 0.000         & 0.023          & 0.000           & 0.000           \\
+		7          & 0.469        & 1.000         & 0.000         & 0.024          & 0.000           & 0.000           \\
+		9          & 0.467        & 1.000         & 0.000         & 0.030          & 0.000           & 0.000           \\
+		11         & 0.462        & 1.000         & 0.000         & 0.030          & 0.000           & 0.000           \\
+		13         & 0.468        & 1.000         & 0.000         & 0.027          & 0.000           & 0.000           \\
+		15         & 0.471        & 1.000         & 0.000         & 0.024          & 0.000           & 0.000           \\
+		17         & 0.479        & 1.000         & 0.000         & 0.031          & 0.000           & 0.000           \\
+		19         & 0.485        & 1.000         & 0.000         & 0.042          & 0.000           & 0.000           \\
+		21         & 0.501        & 1.000         & 0.000         & 0.048          & 0.000           & 0.000           \\
+		23         & 0.520        & 1.000         & 0.000         & 0.049          & 0.000           & 0.000           \\
+		25         & 0.532        & 1.000         & 0.000         & 0.045          & 0.000           & 0.000           \\
+		27         & 0.535        & 1.000         & 0.000         & 0.041          & 0.000           & 0.000           \\
+		29         & 0.547        & 1.000         & 0.000         & 0.033          & 0.000           & 0.000           \\
+		31         & 0.548        & 1.000         & 0.000         & 0.034          & 0.000           & 0.000           \\
+		33         & 0.550        & 1.000         & 0.000         & 0.032          & 0.000           & 0.000           \\
+		35         & 0.541        & 1.000         & 0.000         & 0.043          & 0.000           & 0.000           \\
+		37         & 0.475        & 1.000         & 0.000         & 0.056          & 0.000           & 0.000           \\
+		39         & 0.452        & 1.000         & 0.000         & 0.040          & 0.000           & 0.000           \\
+		41         & 0.447        & 1.000         & 0.000         & 0.033          & 0.000           & 0.000           \\
+		43         & 0.447        & 1.000         & 0.000         & 0.035          & 0.000           & 0.000           \\
+		45         & 0.444        & 1.000         & 0.000         & 0.041          & 0.000           & 0.000           \\
+		47         & 0.454        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
+		49         & 0.476        & 1.000         & 0.000         & 0.067          & 0.000           & 0.000           \\
+		51         & 0.481        & 1.000         & 0.000         & 0.071          & 0.000           & 0.000           \\
+		53         & 0.501        & 1.000         & 0.000         & 0.073          & 0.000           & 0.000           \\
+		55         & 0.511        & 1.000         & 0.000         & 0.070          & 0.000           & 0.000           \\
+		57         & 0.509        & 1.000         & 0.000         & 0.069          & 0.000           & 0.000           \\
+		59         & 0.508        & 1.000         & 0.000         & 0.065          & 0.000           & 0.000           \\
+		61         & 0.517        & 1.000         & 0.000         & 0.066          & 0.000           & 0.000           \\
+		63         & 0.525        & 1.000         & 0.000         & 0.064          & 0.000           & 0.000           \\
+		65         & 0.536        & 1.000         & 0.000         & 0.053          & 0.000           & 0.000           \\
+		67         & 0.536        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
+		69         & 0.545        & 1.000         & 0.000         & 0.051          & 0.000           & 0.000           \\
+		71         & 0.552        & 1.000         & 0.000         & 0.047          & 0.000           & 0.000           \\
+		73         & 0.552        & 1.000         & 0.000         & 0.044          & 0.000           & 0.000           \\
+		 \cellcolor{green!25}75         &  \cellcolor{green!25}0.556        &  \cellcolor{green!25}1.000         &  \cellcolor{green!25}0.000         &  \cellcolor{green!25}0.038          &  \cellcolor{green!25}0.000           &  \cellcolor{green!25}0.000           \\
+		77         & 0.541        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
+		79         & 0.527        & 1.000         & 0.000         & 0.061          & 0.000           & 0.000           \\
+		81         & 0.476        & 1.000         & 0.000         & 0.064          & 0.000           & 0.000           \\
+		83         & 0.456        & 1.000         & 0.000         & 0.056          & 0.000           & 0.000          \\ \hline
+		\caption{No Previous Delinquency Model Analysis K-NN}
+		\label{No Previous Delinquency Model Analysis K-NN}
+	\end{longtable}
+}
+
+ROC was used to select the optimal model using  the largest value.
+
+The final value used for the model was k = 75. 
+
+
+\subsubsection{Previous Delinquency Analysis}
+
+k-Nearest Neighbors 
+
+1967 samples
+
+118 predictor
+
+2 classes: 'N', 'Y' 
+
+
+Pre-processing: centered (118), scaled (118) 
+
+Resampling: Cross-Validated (10 fold, repeated 3 times) 
+
+Summary of sample sizes: 1770, 1771, 1770, 1771, 1770, 1770, ... 
+
+Resampling results across tuning parameters:
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{DelinqencyAnalysisKNN}
+	\caption{Repeated 3 Times 10-Fold Cross-Validation Optimal No. of Neighbours for Previous Delinquency Experiment Data}
+	\label{fig:DelinqencyAnalysisKNN}
+\end{figure}
+
+\lstinputlisting[float=H,frame=tb,caption=Delinquency Model Analysis K-NN,label=zebra]{DelinqknnFit.txt}
+
+{\footnotesize
+	\begin{longtable}
+		{l|l|l|l|l|l|l}
+		\hline
+		\textbf{k} & \textbf{ROC} & \textbf{Sens} & \textbf{Spec} & \textbf{ROC SD} & \textbf{Sens SD} & \textbf{Spec SD} \\ \hline
+		5          & 0.486        & 0.886         & 0.130         & 0.053           & 0.030            & 0.043            \\
+		7          & 0.507        & 0.920         & 0.101         & 0.060           & 0.023            & 0.049            \\
+		9          & 0.509        & 0.937         & 0.086         & 0.057           & 0.019            & 0.032            \\
+		11         & 0.514        & 0.952         & 0.059         & 0.054           & 0.015            & 0.030            \\
+		13         & 0.517        & 0.961         & 0.049         & 0.052           & 0.019            & 0.024            \\
+		15         & 0.525        & 0.967         & 0.034         & 0.048           & 0.018            & 0.024            \\
+		17         & 0.521        & 0.976         & 0.020         & 0.054           & 0.014            & 0.017            \\
+		19         & 0.533        & 0.981         & 0.020         & 0.046           & 0.013            & 0.019            \\
+		21         & 0.525        & 0.988         & 0.016         & 0.050           & 0.009            & 0.014            \\
+		23         & 0.529        & 0.993         & 0.008         & 0.048           & 0.006            & 0.010            \\
+		25         & 0.516        & 0.997         & 0.006         & 0.052           & 0.006            & 0.011            \\
+		27         & 0.528        & 0.998         & 0.005         & 0.049           & 0.005            & 0.009            \\
+		29         & 0.515        & 0.998         & 0.005         & 0.052           & 0.004            & 0.009            \\
+		31         & 0.509        & 0.998         & 0.004         & 0.057           & 0.003            & 0.008            \\
+		33         & 0.528        & 0.999         & 0.004         & 0.053           & 0.002            & 0.008            \\
+		35         & 0.508        & 1.000         & 0.001         & 0.061           & 0.001            & 0.005            \\
+		37         & 0.533        & 1.000         & 0.000         & 0.054           & 0.000            & 0.000            \\
+		39         & 0.528        & 1.000         & 0.000         & 0.059           & 0.000            & 0.000            \\
+		41         & 0.536        & 1.000         & 0.000         & 0.057           & 0.000            & 0.000            \\
+		43         & 0.541        & 1.000         & 0.000         & 0.058           & 0.000            & 0.000            \\
+		45         & 0.532        & 1.000         & 0.000         & 0.062           & 0.000            & 0.000            \\
+		47         & 0.541        & 1.000         & 0.000         & 0.057           & 0.000            & 0.000            \\
+		49         & 0.541        & 1.000         & 0.000         & 0.056           & 0.000            & 0.000            \\
+		 \cellcolor{green!25}51         &  \cellcolor{green!25}0.545        &  \cellcolor{green!25}1.000         &  \cellcolor{green!25}0.000         &  \cellcolor{green!25}0.053           &  \cellcolor{green!25}0.000            &  \cellcolor{green!25}0.000            \\
+		53         & 0.539        & 1.000         & 0.000         & 0.056           & 0.000            & 0.000            \\
+		55         & 0.539        & 1.000         & 0.000         & 0.057           & 0.000            & 0.000            \\
+		57         & 0.535        & 1.000         & 0.000         & 0.056           & 0.000            & 0.000            \\
+		59         & 0.545        & 1.000         & 0.000         & 0.049           & 0.000            & 0.000            \\
+		61         & 0.539        & 1.000         & 0.000         & 0.052           & 0.000            & 0.000            \\
+		63         & 0.540        & 1.000         & 0.000         & 0.052           & 0.000            & 0.000            \\
+		65         & 0.545        & 1.000         & 0.000         & 0.045           & 0.000            & 0.000            \\
+		67         & 0.534        & 1.000         & 0.000         & 0.052           & 0.000            & 0.000            \\
+		69         & 0.540        & 1.000         & 0.000         & 0.047           & 0.000            & 0.000            \\
+		71         & 0.543        & 1.000         & 0.000         & 0.047           & 0.000            & 0.000            \\
+		73         & 0.532        & 1.000         & 0.000         & 0.053           & 0.000            & 0.000            \\
+		75         & 0.541        & 1.000         & 0.000         & 0.044           & 0.000            & 0.000            \\
+		77         & 0.541        & 1.000         & 0.000         & 0.042           & 0.000            & 0.000            \\
+		79         & 0.538        & 1.000         & 0.000         & 0.044           & 0.000            & 0.000            \\
+		81         & 0.529        & 1.000         & 0.000         & 0.050           & 0.000            & 0.000            \\
+		83         & 0.537        & 1.000         & 0.000         & 0.048           & 0.000            & 0.000           \\ \hline
+		\caption{Delinquency Model Analysis K-NN}
+		\label{Delinquency Model Analysis K-NN}
+	\end{longtable}
+}  
+
+ROC was used to select the optimal model using  the largest value.
+
+The final value used for the model was k = 51.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{l | r | r| r}
+		\hline
+		\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+		\hline
+		Regression (No Previous Delinq) & 0.771 & 0.662 & 0.628  \\
+		\hline
+	\end{tabular}
+	\caption{Model Results from optimised KNN results for No Previous Delinquency Model where K=51}
+	\label{table:knnNoPrevDelinqModel}
+\end{table}
+
+
+\section{Addressing Imbalance}
+
+
+As discussed is Chapter 2, undersampling is not a good fit for absolute rarity so will perform oversampling of the minority class. This will be done by oversampling in the training data only, the validation and test will remain unchanged. 
+\subsection{Oversampling}
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l| l|r|r|r}
+			\hline
+			\textbf{Model} &  \textbf{Dataset} & \textbf{Default} & \textbf{Not-Default} & \textbf{Total} \\
+			\hline
+			Previous Delinquency          & Training       & 435 & 1,320 & 1,755 \\
+			Previous Delinquency          & Training(OverSample) & 1,304 & 1,320 & 2,624 \\
+			Previous Delinquency          & Validation       & 151 & 436 & 585 \\
+			Previous Delinquency          & Test & 142 & 444 & 586 \\ \hline
+			No Previous Delinquency          & Training & 379 & 14,114 & 14,493 \\ 
+			No Previous Delinquency          & Training(OverSample) & 13,959 & 14,113 & 28,072 \\ 
+			No Previous Delinquency          & Validation & 120 & 4,711 & 4,831 \\
+			No Previous Delinquency          & Test & 152 & 4,680 & 4,832 \\
+			\hline
+		\end{tabular}
+	}
+	\caption{Breakdown of Training/Validation/Test Partitions for Experiment}
+\end{table}
+
+
+\footnote{{\url{https://cran.r-project.org/web/packages/ROSE/index.html}}}. 
+
+
+\begin{table}[H]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{llll}
+		\textbf{Model}                 & \textbf{Training} & \textbf{Validation} & \textbf{Testing} \\
+		DelinquencyBase                & 0.663             & 0.659               & 0.606            \\
+		DelinquencyBaseOverSample      & 0.664             & 0.649               & 0.609            \\
+		DelinquencyExperBase           & 0.667             & 0.655               & 0.655            \\
+		DelinquencyExperBaseOverSample & 0.672             & 0.647               & 0.606           
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{llll}
+		\textbf{Model}                    & \textbf{Training} & \textbf{Validation} & \textbf{Testing} \\
+		NonDelinquencyBase                & 0.676             & 0.704               & 0.716            \\
+		NonDelinquencyBaseOverSample      & 0.677             & 0.708               & 0.719            \\
+		NonDelinquencyExperBase           & 0.678             & 0.709               & 0.72             \\
+		NonDelinquencyExperBaseOverSample & 0.68              & 0.713               & 0.722           
+	\end{tabular}
+\end{table}
 
 
 
-%----------------------------------------------------------------------------------------
-%	SECTION 6
-%----------------------------------------------------------------------------------------
+\subsection{Synthetic Sampling}
+
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l| l|r|r|r}
+			\hline
+			\textbf{Model} &  \textbf{Dataset} & \textbf{Default} & \textbf{Not-Default} & \textbf{Total} \\
+			\hline
+			Previous Delinquency          & Training       & 435 & 1,320 & 1,755 \\
+			Previous Delinquency          & Training(Synthetic KNN51) & 1,305 & 1,740 & 3,045 \\
+			Previous Delinquency          & Validation       & 151 & 436 & 585 \\
+			Previous Delinquency          & Test & 142 & 444 & 586 \\ \hline
+			No Previous Delinquency          & Training & 379 & 14,114 & 14,493 \\ 
+			No Previous Delinquency          & Training(Synthetic KNN75) & 7,580 & 14,402 & 21,982 \\ 
+			No Previous Delinquency          & Validation & 120 & 4,711 & 4,831 \\
+			No Previous Delinquency          & Test & 152 & 4,680 & 4,832 \\
+			\hline
+		\end{tabular}
+	}
+	\caption{Breakdown of Training/Validation/Test Partitions for Experiment}
+\end{table}
+
+\footnote{{\url{https://cran.r-project.org/web/packages/DMwR/index.html}}}. 
+
+
+
+\begin{table}[H]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{llll}
+		\textbf{Model}                             & \textbf{Training} & \textbf{Validation} & \textbf{Testing} \\
+		DelinquencyBase                            & 0.663             & 0.659               & 0.606            \\
+		DelinquencyBaseSyntheticSample\_KNN51      & 0.659             & 0.659               & 0.6              \\
+		DelinquencyExperBase                       & 0.657             & 0.655               & 0.606            \\
+		DelinquencyExperBaseSyntheticSample\_KNN51 & 0.673             & 0.655               & 0.6             
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\caption{My caption}
+	\label{my-label}
+	\begin{tabular}{llll}
+		Model                                       & Training & Validation & Testing \\
+		NonDelinquencyBase                          & 0.676    & 0.704      & 0.716   \\
+		NonDelinquencyBaseSyntheticSampleKNN75      & 0.669    & 0.699      & 0.718   \\
+		NonDelinquencyExperBase                     & 0.68     & 0.709      & 0.72    \\
+		NonDelinquencyExperBaseSyntheticSampleKNN75 & 0.673    & 0.689      & 0.706  
+	\end{tabular}
+\end{table}
+
+\section{Comparing Results of Various Experiments}
+
+\section{Model Selection/Validation}
+
+\section{Interpretation of Results}
+
+\section{Evaluation of Experiments}
+
 \section{Conclusion}
-This chapter concludes the research and experimentation performed in order to predict drop-offs from the loan application process. 
-

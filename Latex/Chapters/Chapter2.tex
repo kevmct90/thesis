@@ -10,7 +10,7 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 \section{Introduction}
-This chapter will cover off research literature in the field of credit risk and predicting default in of SME customers in Financial institutions. The first couple of sections will cover off the field of SME, detailing SME definitions, credit risk and how macro economic features are used to in SME and economic credit risk. It will discuss challenges in the past in the field such as lack of common definitions and common statistics that could be used to straighten the sector. The literature for macro-economic factors is reviewed and it is noted that there has not much time spent researching how macro-economic factors affect SME credit and credit risk as a whole. It finishes detailing how there has been success using macro-economic factors in Italy, Portugal in predicting credit risk utilising features based on default rate and unemployment by location or area.   
+This chapter will cover off research literature in the field of credit risk and predicting default of SME customers in Financial institutions. The first couple of sections will cover off the field of SME, detailing SME definitions, credit risk and how macro economic features are used to in SME and economic credit risk. It will discuss challenges in the past in the field such as lack of common definitions and common statistics that could be used to straighten the sector. The literature for macro-economic factors is reviewed and it is noted that there has not much time spent researching how macro-economic factors affect SME credit and credit risk as a whole. It finishes detailing how there has been success using macro-economic factors in Italy, Portugal in predicting credit risk utilising features based on default rate and unemployment by location or area.   
 
 The chapter will also review research literature in the field of knowledge discovery, data mining and with a focus on predictive modelling. Knowledge discovery and data mining will be explained and illustrated with frameworks and methodologies about how to approach tasks in each. The literature is reviewed to understand the processes, prediction algorithms, feature selection methods,  validation methods and performance measures to understand how to build a predictive model to predict SME customers that are likely to default i.e. risky customers. One key observation in building a model to how predict what customers will default is that there tends to a very large class imbalance in the dataset e.g. there will be a much larger proportion of good/well behaving than bad/poorly performing customers. There are many ways of addressing this class imbalance by either manipulating the data set through sampling techniques or through fine tuning the algorithm by alternating input parameters tailored to the imbalance in the dataset.
 
@@ -365,10 +365,26 @@ In 1907, statistician Sir Francis Galton attended a fair in which there was a co
 
 
 \section{Feature Selection}
+Feature selection is a process of choosing the best subset of features from the full dataset for you scoring model by excluding features that have been to be redundant. \cite{guyon_introduction_2003} discusses that feature selection methods are usually split into one of three categories (i) filter techniques (ii) wrapper techniques (iii) embedded techniques. 
+
+\subsubsection{Filter Methods}
+Filter feature selection methods use statistics to to assign a score for each feature versus the target. The features are then ordered by which are most predictive and a decision is made what ones to keep. Filter method techniques include information gain, correlation coefficient and the chi squared test.
+
+\subsubsection{Wrapper Methods}
+Wrapper feature selection method evaluates various subsets of features together while scoring the model for each subset. The different model results are then evaluate and compared against the other results returning the result which returned the best based on the model evaluation criteria. Forward, backward and general stepwise regression are very common techniques of wrapper methods being used.
+
+\subsubsection{Embedded Methods}
+Embedded feature selection method attempts to combine the two previous methods together. That is, the method looks to learn what features are useful as the model is being created. 
+
+Feature selection is very important in the credit scoring process and there are many reasons in the literature that suggest it should be used. The \textit{curse of dimensionality} is one such issue, if you have too many features in your model it may perform well on the training dataset but when executed on unseen data it may perform poorly because the model has over-fitted too many irrelevant or noisy features \citep{loughrey_overfitting_2005}.Research from (\cite{thomas_consumer_2009}; \cite{mays_credit_2004})  advise that to build a robust scoring model you should have somewhere between 8 and 20 predictive features. There are many reason for this, there is a practical issue having to model more features and there are costs and overheads associated with each features that is redundant in the model. Referencing Fig. \ref{fig:simpleComplex} we can see that is much desirable to have simple decision tree than a complex decision tree with the same outputs, likewise if two datasets are providing the same results only one is a subset it is always better to choose the subset. This way we will reduce the risk of over-fitting that goes with including redundant features.
+
+\section{Coarse Classification/ Binning}
+
+\begin{comment}
 \subsection{Correlation-based Feature Selection}
 \subsection{Information Gain}
 \subsection{Coarse Classification/ Binning}
-
+\end{comment}
 
 \subsection{Class Imbalance Problem}
 One of the biggest assumptions that needs to be understood when using classification algorithms is that most assume there is a balanced distribution of the target class \citep{japkowicz_class_2000}. Target class imbalance is described by  \citep{chawla_smote:_2002} where the number of number of records in each class are not relatively equal. In a balanced dataset ratio between the a binary target class would be close to 50/50. The issue with this imbalance arises where algorithms assume there is a balance between the classes, and they attempt to maximise the accuracy by predicting the most common class \citep{drummond_severe_2005}. The algorithms attempt to minimise the classification errors, but do not accounts for the incorrectly classifying cases \citep{seiffert_improving_2009}. While these classification overall might be very accurate they are not very useful in real world problems, this is because in the majority of cases the algorithm will focus on the majority class, because of how heavily it is weighted in the training dataset ignoring the minority class. This is major problem because in the majority of cases you will trying to predict the minority class, in this thesis customers going into default is the minority e.g. there are more customers that do not default at the end of the outcome window than customers that do defaulters.
