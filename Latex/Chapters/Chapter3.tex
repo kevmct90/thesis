@@ -10,8 +10,19 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 \section{Introduction}
+This chapter presents the data that will be used for the experiments to be carried out in this research and will be split into two major sections. 
+
+The first section will outline where the customers for the experiment have been gathered and under what criteria they have been selected. As part of the experiment a baseline predictive model will be built, this will be done using features that were used in historic industry credit scorecard models in \subjectname.
+
+The second section will outline what data will be used as part of the research. The aim of this research is to investigate the predictive power of macro-economic features by geographic regions such as electoral divisions and local authority in Ireland. To do this addresses are stored in \subjectname's databases are queried against an search engine built for this research and mapped to \textit{Global Positioning System} (GPS) coordinates string metric algorithms.
 
 
+Data for this research will be split into two categories
+
+
+This chapter will present the design of the experiment to be carried out as part of the research project. It will cover in some detail the data available for the model, as well as any transformations or pre-processing that has been applied to the data in order to have it in the correct format for the modelling process.
+Details of what algorithms and processes are to be implemented as part of the modelling phase, as well as how the experiment is to be carried out will be discussed. As the dataset available for the model has a relatively low instance of mortgage arrears, a number of methods of trying to address the imbalance in the dataset will be considered, and these approaches will be covered in respect to this experiment.
+The evaluation methods to be used to assess the individual algorithms and models to be implemented will be discussed in detail, as these will be used to decide which model is to be chosen as the best model for the prediction engine.
 
 \section{Existing Data}
 
@@ -19,6 +30,15 @@
 \section{Data for Experiment}
 
 
+The vast majority of the data required for the experiment already exists on a Teradata warehouse within Lender A. Therefore, most of the data required for the modelling should be easily accessible. In some cases the data will need to be derived for the model, and this is certainly the case with the derived spending habits from the transactional data for each mortgage.
+The different data items required for the predictive model will be sourced from a number of different entities from within the data warehouse including the Customer, Application, Mortgage, Transaction and Account entities. Each of these entities are generally fed from separate source systems, that exist as separate entities outside of the warehouse with their own rules and integrity constraints. As a result there may be some referential integrity issues with the data, but for the purposes of this experiment only data that meets all existing referential criteria within the warehouse will be included in the data utilised. Any data for whatever reason is believed to be incorrect in terms of referential integrity will not be included in any model generation.
+59
+For the purposes of this experiment, each mortgage will be taken in its entirety. In some cases a mortgage may have multiple loan accounts associated with it, as a mortgage may be split across a number of different products or a borrower may have received a top-up loan or released equity from the property. A classic example of this is where a customer has a mortgage for \euro 350,000 with the mortgage split across two loan accounts, one on a fixed rate, with the other portion on a tracker or variable rate. For the purposes of this experiment, this will be treated as one mortgage, though in some cases this may be reported as two mortgages, especially when reporting on mortgage types. By rolling up the mortgage accounts associated with each property it will be ensured that each property will only be included once in the analysis.
+A mortgage must have at least one customer associated with it, though there can be multiple customers associated with one mortgage. The most common number of customers associated with a mortgage is two, though mortgages can exist with three or four customers associated with them. For the purposes of the data items that are at a customer level any of the numeric variables such as salary will be aggregated, so that the mortgage total will be a sum of all the constituent customers associated with the mortgage. An example of this would be the total salary for each customer. If there are multiple customers associated with a mortgage, then the mortgage level salary will be an aggregation of the individual customer salaries. For other values such as the age of the customers associated with the mortgage the minimum, maximum as well as the mean values for all associated customers will be used.
+Similarly for data items that are currently held at account level these will be rolled up to mortgage level, so that the mortgage representation will be a summation of all the values associated with the constituent accounts. Some examples of this include the balance on the mortgage as well as the outstanding arrears amount where applicable.
+
+
+\section{Old Sections}
 This chapter will detail the design of the experiments that are to be implemented as part of the research project. It will detail how customers addresses are mapped to locations and how features are generated for these locations. It will also discuss any of the pre-processing, and feature selection and statistical techniques used to create select the data for the ABT.
 
 The SME default problem would be considered imbalanced dataset for classification problem where algorithms make the assumption there is a equal number of good and bad classes/group \citep{japkowicz_class_2000}. The dataset used in this experiment has a small number of SME customer in default, because of this issue a number of approaches will taken to considered to address.
