@@ -49,15 +49,41 @@ The characteristics of the two datasets that will be used to build the baseline 
 It can be seen above in Table \ref{characteristicsDatasets} that two datasets are not very similar. There are only 2,936 customers in the \textit{previous delinquency} dataset and 24,156 in the \textit{no previous delinquency} dataset. Perhaps the the biggest difference is class imbalance difference between the datasets. 25\% of customers in the \textit{previous delinquency} dataset are bad by the end of the outcome window but there is only 3\% of the \textit{no previous delinquency} dataset that are bad at the end of the outcome window. As discussed in Section \ref{sec:imBalance} this presents significant challenges when try to build a predictive model but also a very common challenge in real world applications. 
 
 
+
+\section{Converting Addresses to GPS Coordinates}
+The experiment in this research is to investigate if macro-economic features by locations are useful for predicting if SME customers are likely to go into default. The two macro-economic regions that features will be based on are \textit{Electoral Division} (ED) and \textit{Local Authority} (LD). 
+
+
+\begin{figure}[H]
+	\begin{subfigure}[b]{0.5\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height = 10cm]{IrelandElectoralDivisions}
+		\caption{Map of the Current 3,400 Electoral Divisions}\label{fig:IrelandElectoralDivisions}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.5\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height = 10cm]{IrelandLocalAuthorities}
+		\caption{Map of the Current 3,400 Electoral Divisions}\label{fig:IrelandLocalAuthorities}
+	\end{subfigure}
+	\caption{SME Arrears by County and Electoral Division}
+	\label{fig:Ireland_ED_LA_Example}
+\end{figure}
+
+
 \section{Data for Experiment}
 
 
-The vast majority of the data required for the experiment already exists on a Teradata warehouse within Lender A. Therefore, most of the data required for the modelling should be easily accessible. In some cases the data will need to be derived for the model, and this is certainly the case with the derived spending habits from the transactional data for each mortgage.
-The different data items required for the predictive model will be sourced from a number of different entities from within the data warehouse including the Customer, Application, Mortgage, Transaction and Account entities. Each of these entities are generally fed from separate source systems, that exist as separate entities outside of the warehouse with their own rules and integrity constraints. As a result there may be some referential integrity issues with the data, but for the purposes of this experiment only data that meets all existing referential criteria within the warehouse will be included in the data utilised. Any data for whatever reason is believed to be incorrect in terms of referential integrity will not be included in any model generation.
-59
-For the purposes of this experiment, each mortgage will be taken in its entirety. In some cases a mortgage may have multiple loan accounts associated with it, as a mortgage may be split across a number of different products or a borrower may have received a top-up loan or released equity from the property. A classic example of this is where a customer has a mortgage for \euro 350,000 with the mortgage split across two loan accounts, one on a fixed rate, with the other portion on a tracker or variable rate. For the purposes of this experiment, this will be treated as one mortgage, though in some cases this may be reported as two mortgages, especially when reporting on mortgage types. By rolling up the mortgage accounts associated with each property it will be ensured that each property will only be included once in the analysis.
-A mortgage must have at least one customer associated with it, though there can be multiple customers associated with one mortgage. The most common number of customers associated with a mortgage is two, though mortgages can exist with three or four customers associated with them. For the purposes of the data items that are at a customer level any of the numeric variables such as salary will be aggregated, so that the mortgage total will be a sum of all the constituent customers associated with the mortgage. An example of this would be the total salary for each customer. If there are multiple customers associated with a mortgage, then the mortgage level salary will be an aggregation of the individual customer salaries. For other values such as the age of the customers associated with the mortgage the minimum, maximum as well as the mean values for all associated customers will be used.
-Similarly for data items that are currently held at account level these will be rolled up to mortgage level, so that the mortgage representation will be a summation of all the values associated with the constituent accounts. Some examples of this include the balance on the mortgage as well as the outstanding arrears amount where applicable.
+\subsubsection{Transaction Dataset}
+
+\subsubsection{Binned Features}
+
+Retails Customers split by Loans, Mortgages, Both. Then SME arrears features/
+Grouped / WOE 
+
+\subsubsection{SME Trends}
+
+\subsubsection{CSO Features}
+
 
 
 \section{Old Sections}
