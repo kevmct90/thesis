@@ -18,10 +18,13 @@ The second section will outline what macro-economic features will be used as par
 
 \section{Customers for Credit Scoring and Existing Features}
 
-The customer data used for prediction in these experiments was sourced from a financial institution \subjectname which is one of the two main pillar banks in Ireland. It contains details of 27,082 SME customers who were active between June 2014 and June 2015. These 27,082 customers are a subset of SME customers on the \subjectname\ book as the experiment will only be completed on one of the loan systems in the financial institution. 
+The customer data used for prediction in these experiments was sourced from a financial institution \subjectname which is one of the two main pillar banks in Ireland. It contains details of 27,082 SME customers who were active between June 2014 and June 2015. These 27,082 customers are a subset of SME customers on the \subjectname\ book as the experiment will only be completed on one of the loan systems in the financial institution. None of the 27,082 are in area in arrears at the point of selection June 2014. The baseline model for this experiment will built from features of a historic scorecard in \subjectname.
 
-As mentioned in Section \ref{sec:segment} it is very common in credit scoring to model the population into multiple groups. This is done so homogeneous customers are grouped and model together based on for example pattern, characteristic, demographic etc.
+As mentioned in Section \ref{sec:segment} it is very common in credit scoring to model the population into multiple groups. This is done so homogeneous customers are grouped and modelled together based on for example pattern, characteristic, demographic etc. This common practice in industry also, in \subjectname\ is one method of modelling the credit risk of customers by splitting the customers into two segments. The criteria for selecting which segment each customer is modelled in is if that customer has been in arrears previously or not. If they have been for this research that customer will be modelled in the \textit{Previous Delinquency} segment, if the customer has been performing well and not in arrears previously they will be modelled in the \textit{No Previous Delinquency} segment. The historic scorecards that was used in \subjectname\ used different features for prediction in each segment population. This was decided doing empirical analysis of the data where it was observed that different features contributed to the prediction of each subset of the population with a few overlapping features in each subset. Due to sensitivity of information the feature set for these models could not be documented in this thesis paper.
 
+As mentioned in Section \ref{sec:imBalance} class imbalance in datasets is a major real world problem when building a predictive model. As mentioned previous this happens the target class is is not distributed evenly in your dataset. The dataset in this example suffers from this imbalance also, however because the data is partitioned into two segments the imbalance in \textit{previous delinquency} dataset improves significantly but gets worse in the \textit{no previous delinquency} dataset.
+
+The characteristics of the two datasets that will be used to build the baseline benchmark can be illustrated in Table \ref{characteristicsDatasets} below.
 
 \begin{table}[H]
 	\centering\
@@ -40,8 +43,10 @@ As mentioned in Section \ref{sec:segment} it is very common in credit scoring to
 		 \# Numeric refers to the number of continuous features \\
 		 \# Nominal refers to the number of categorical features
 		}
+	\label{characteristicsDatasets}
 \end{table}
 
+It can be seen above in Table \ref{characteristicsDatasets} that two datasets are not very similar. There are only 2,936 customers in the \textit{previous delinquency} dataset and 24,156 in the \textit{no previous delinquency} dataset. Perhaps the the biggest difference is class imbalance difference between the datasets. 25\% of customers in the \textit{previous delinquency} dataset are bad by the end of the outcome window but there is only 3\% of the \textit{no previous delinquency} dataset that are bad at the end of the outcome window. As discussed in Section \ref{sec:imBalance} this presents significant challenges when try to build a predictive model but also a very common challenge in real world applications. 
 
 
 \section{Data for Experiment}
