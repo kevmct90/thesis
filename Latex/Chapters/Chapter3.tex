@@ -68,10 +68,28 @@ The experiment in this research is to investigate if macro-economic features by 
 	\label{fig:Ireland_ED_LA_Example}
 \end{figure}
 
-There are 34 primary local authorities in the Republic of Ireland, including 29 county councils and 5 city councils. Organisations within each area are responsible for managing issues such as housing, planning, roads, water supply and sewerage, Development Incentives and Controls, Environmental Protection, Recreation Facilities and Amenities, Agriculture, Education, Health and Welfare \footnote{\url{http://www.iro.ie/local_authorities.html}}. There are 3,440 electoral divisions in the Republic of Ireland. Electoral divisions are formed by grouping town-lands together and are the smallest legally defined administrative areas in the state \footnote{\url{http://census.cso.ie/censusasp/saps/boundaries/eds_bound.htm}}.
+There are 34 primary local authorities in the Republic of Ireland, including 29 county councils and 5 city councils. Organisations within each area are responsible for managing issues such as housing, planning, roads, water supply and sewerage, Development Incentives and Controls, Environmental Protection, Recreation Facilities and Amenities, Agriculture, Education, Health and Welfare \footnote{\url{http://www.iro.ie/local_authorities.html}}. There are 3,440 electoral divisions in the Republic of Ireland. Electoral divisions are formed by grouping town-lands together and are the smallest legally defined administrative areas in the state which small population statistics are published from in the Census \footnote{\url{http://census.cso.ie/censusasp/saps/boundaries/eds_bound.htm}}.
 
 
 \section{Converting Addresses to GPS Coordinates}
+To link macro-economic features by electoral division and local authority to an SME customer there has to be a mechanism to link to that customers address. In an ideal world this would be done through a data model 
+
+
+\begin{figure}[H]
+	\includegraphics[width=1\textwidth,center]{MasterReferenceAddressDataArchitecture}
+	\caption{Data Model for Mapping Customers to Electoral Division and Local Authorities}
+	\label{fig:MasterReferenceAddressDataArchitecture}
+\end{figure}
+
+
+
+To create macro-economic features based on internal data in \subjectname\ there needs to be a mapping from
+
+Address data is not something that is managed currently in \subjectname\. Customer, Account, Property Assets addresses are all stored across the databases in 
+
+There is not master reference table 
+
+Addresses in \subjectname\ are not recorde.
 
 
 \newpage
