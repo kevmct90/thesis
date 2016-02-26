@@ -33,6 +33,8 @@ One of the fundamentals of building a prediction models on SME lending is to loo
 
 There two approaches to credit score modelling a widely used in the literature and adopted by \subjectname\ in industry but their evidence in the literature that supports macro economic model behaving could also be used. The success of macro economic factors will be discussed in the next section.
 
+Data mining  is integral to credit scoring which will be discussed in Section \ref{sec:dataMining}, it applies many techniques and methods that are required for credit scoring.
+
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
@@ -69,7 +71,7 @@ The geography of the data  Provinces  Ireland is divided into four provinces: Le
 \end{comment}
 
 
-\section{Data Mining \& Predictive Modelling}
+\section{Data Mining \& Predictive Modelling}\label{sec:dataMining}
 Knowledge discovery is defined by \cite{frawley_knowledge_1992} as the \textit{``Knowledge Discovery in Databases as the non-trivial process of identifying valid, novel, potentially useful, and ultimately understandable patterns in data''}. Knowledge discovery can be thought of extracting some piece insight or value from data that could not have been using a simple query. \cite{fayyad_knowledge_1996} outlined an approach to extracting these useful patterns from data stored in large databases called the \textit{Knowledge Discovery in Databases} (KDD).
 
 \begin{figure}[H]
@@ -120,6 +122,17 @@ Predictive models are built by using interval/numerical or/and categorical/nomin
 \textit{In this stage the raw data is collected for preprocessing and preparation
 (i.e. data cleansing, sampling period, label definition). \citep{kennedy_credit_2013}}
 
+\textit{As per Keogh (2007), we believe that the irreproducibility
+	of results caused by, amongst other things, the refusal to share data or to give
+	parameter settings hinders the research process. To ensure reproducibility of the
+	127
+	contents of this chapter, we have provided access to all of the data and developed
+	techniques used in this chapter. Indeed, for certain scientific disciplines it is not
+	uncommon for journals and academic conferences to require public data deposition
+	prior to publication. In keeping with best practices all of the datasets used in this
+	chapter are publicly available1. \citep{kennedy_credit_2013}}
+
+
 \section{Dataset Construction}\label{sec:datasetConstruction}
 
 Experts often detail how steps performed in the data construction and preparation stage can turn out to some of the most time consuming  when building predictive models\footnote{For example see \url{http://www.kdnuggets.com/polls/2003/data_preparation.htm}}. There are many steps that need to be considered during the data preparation stage for building a predictive model of SME credit risk, two that will be discussed in this section are the Sampling Period and Class Label Definition. 
@@ -144,7 +157,42 @@ For customer to be defined as defaulted is dependant on what the objective of th
 
 There are two well known approaches to class label definition that financial institutions can choose according to \cite{anderson_credit_2007}: (\textit{i}) a \textit{current status} label definition which classifies a customer to have defaulted or not at the end of the outcome window; or option (\textit{ii}) a \textit{worst status} label definition which classifies whether the customer has defaulted or not throughout the outcome window. It is \subjectname's industry standard to use the \textit{worst status} option. This agrees with Basel II \citep{basel_international_2006}, that customers 90 days worst status covering a one-year period is considered the standard definition for customers that have defaulted. 
 
+\subsection{Dataset Completion}
+\textit{
+The final step of the dataset construction stage involves splitting the data into two
+portions: the training sample and the testing sample. The training sample is used
+to build the scorecard and the testing sample estimates how well the scorecard performs.
+There are various ways to split the training and testing datasets. Normally,
+where there is sufficient data available, scorecard builders opt for the hold-out approach
+(see Section 2.5.2) with a 70:30 split between the size of the training and
+testing samples (Siddiqi, 2005). In the hold-out approach, a portion of the training
+sample, called the validation sample, is set aside for tuning the parameters of the
+74
+underlying scorecard model.
+Where there is insufficient data available, standard statistical approaches such as
+cross-validation (see Bishop, 2006) and bootstrapping (see Japkowicz \& Shah, 2011)
+can be used to estimate model parameters without losing too much information
+(Thomas, 2009a) \citep{kennedy_credit_2013}
+}
 
+\subsection{Segmentation}\label{sec:segment}
+Data may need to be split up into multiple subset to create simpler models \citep{myatt_making_2007}. This divide will be done under certain rules or criteria and allows you to model characteristics and features that important to each subset creating a much simpler and robust model output.
+
+
+\textit{An early decision in scorecard modelling is whether or not to segment the population
+and build different scorecards for each segment. Segmentation is performed
+by dividing the population into several groups and building separate scorecards for
+each group. In marketing, Wedel \& Kamakura (2000) describe how segmentation
+is regularly used to group customers into homogeneous groups based on their purchasing
+patterns and demographic information such as, amongst others, income,
+and age (Hand et al., 2001). In credit scoring, the purpose of segmentation is to
+improve scorecard discriminability and allow greater lender flexibility with regard
+to product configurations such as interest rate, repayment structure, and other such
+requirements. The construction and maintenance of additional scorecards involves
+additional labour and requires careful consideration to limit the number of segments.
+The three considerations influencing the decision to segment the data are (Thomas,
+2009a): (i) operational; (ii) statistical; and (iii) strategic.
+\citep{kennedy_credit_2013}}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 5
