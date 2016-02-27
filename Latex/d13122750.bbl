@@ -106,6 +106,13 @@ Chawla, N.~V., Japkowicz, N. \harvardand\ Kotcz, A.  \harvardyearleft
   data sets', {\em ACM Sigkdd Explorations Newsletter} {\bf 6}(1),~1--6.
 \newline\harvardurl{http://dl.acm.org/citation.cfm?id=1007733}
 
+\harvarditem{Christen}{2006}{christen_comparison_2006}
+Christen, P.  \harvardyearleft 2006\harvardyearright , A comparison of personal
+  name matching: {Techniques} and practical issues, {\em in} `Data {Mining}
+  {Workshops}, 2006. {ICDM} {Workshops} 2006. {Sixth} {IEEE} {International}
+  {Conference} on', IEEE, pp.~290--294.
+\newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=4063641}
+
 \harvarditem{Coenen}{2011}{coenen_data_2011}
 Coenen, F.  \harvardyearleft 2011\harvardyearright , `Data mining: past,
   present and future', {\em The Knowledge Engineering Review} {\bf
@@ -322,6 +329,12 @@ Lessmann, S., Baesens, B., Mues, C. \harvardand\ Pietsch, S.  \harvardyearleft
   Engineering, IEEE Transactions on} {\bf 34}(4),~485--496.
 \newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4527256}}
 
+\harvarditem{Levenshtein}{1966}{levenshtein_binary_1966}
+Levenshtein, V.~I.  \harvardyearleft 1966\harvardyearright , `Binary {Codes}
+  {Capable} of {Correcting} {Deletions}, {Insertions} and {Reversals}', {\em
+  Soviet Physics Doklady} {\bf 10},~707.
+\newline\harvardurl{http://adsabs.harvard.edu/abs/1966SPhD...10..707L}
+
 \harvarditem{Lewis}{2004}{lewis_moneyball_2004}
 Lewis, M.  \harvardyearleft 2004\harvardyearright , {\em Moneyball: {The} art
   of winning an unfair game}, WW Norton \& Company.
@@ -514,6 +527,12 @@ Vapnik, V.~N.  \harvardyearleft 1995\harvardyearright , {\em The {Nature} of
   {Statistical} {Learning} {Theory}}, Springer-Verlag New York, Inc., New York,
   NY, USA.
 
+\harvarditem{Wagner \harvardand\ Fischer}{1974}{wagner_string--string_1974}
+Wagner, R.~A. \harvardand\ Fischer, M.~J.  \harvardyearleft
+  1974\harvardyearright , `The {String}-to-{String} {Correction} {Problem}',
+  {\em J. ACM} {\bf 21}(1),~168--173.
+\newline\harvardurl{http://doi.acm.org/10.1145/321796.321811}
+
 \harvarditem{Weiss}{2004}{weiss_mining_2004}
 Weiss, G.~M.  \harvardyearleft 2004\harvardyearright , `Mining with rarity: a
   unifying framework', {\em ACM SIGKDD Explorations Newsletter} {\bf
@@ -531,6 +550,12 @@ White, H.  \harvardyearleft 1989\harvardyearright , `Learning in artificial
   neural networks: {A} statistical perspective', {\em Neural computation} {\bf
   1}(4),~425--464.
 \newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=6796856}
+
+\harvarditem{Winkler}{1990}{winkler_string_1990}
+Winkler, W.~E.  \harvardyearleft 1990\harvardyearright , `String {Comparator}
+  {Metrics} and {Enhanced} {Decision} {Rules} in the {Fellegi}-{Sunter} {Model}
+  of {Record} {Linkage}.'.
+\newline\harvardurl{http://eric.ed.gov/?id=ED325505}
 
 \harvarditem{Zou}{2004}{zou_modified_2004}
 Zou, G.  \harvardyearleft 2004\harvardyearright , `A modified poisson
