@@ -72,25 +72,41 @@ There are 34 primary local authorities in the Republic of Ireland, including 29 
 
 
 \section{Converting Addresses to GPS Coordinates}
-To link macro-economic features by electoral division and local authority to an SME customer there has to be a mechanism to link to that customers address. In an ideal world this would be done through a data model 
-
+To link macro-economic features by electoral division and local authorities to a SME customer there has to be a mechanism to link to that customers address. In an ideal world this would be done through a data model where a customers address would be linked to the address reference database. This can be illustrated through the Entity-Relationship Model (ERD) in Fig. \ref{fig:MasterReferenceAddressDataArchitecture}.
 
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth,center]{MasterReferenceAddressDataArchitecture}
-	\caption{Data Model for Mapping Customers to Electoral Division and Local Authorities}
+	\caption{Optimal Entity Relationship Data Model for Mapping Customers, Addresses, Electoral Division and Local Authorities}
 	\label{fig:MasterReferenceAddressDataArchitecture}
 \end{figure}
 
+Unfortunately this is not the case currently in \subjectname. Currently addresses are stored in free text fields across multiple systems. This can be illustrated in Fig. \ref{fig:AIB_Situtation} where you can see unstandardised and free text addresses are stored in the Customer table instead of an address reference table like in Fig. \ref{fig:MasterReferenceAddressDataArchitecture}.
+
+\begin{figure}[H]
+	\includegraphics[width=.7\textwidth,center]{AIB_Situtation}
+	\caption{Current Entity Relationship Data Model for Mapping Customers, Addresses, Electoral Division and Local Authorities}
+	\label{fig:AIB_Situtation}
+\end{figure}
+
+With the release of Ireland's new postcode system in July 2015 Eircode\footnote{\url{http://www.eircode.ie/}} \subjectname\ was looked to position itself strongly for its deployment and how it would integrate into \subjectname's current systems. For this there and for other private reason there was an investment in the GeoDirectory database \footnote{\url{https://www.geodirectory.ie/}}. It is a product established by An Post\footnote{\url{http://www.anpost.ie/AnPost/}} and the Ordnance Survey Ireland\footnote{\url{http://www.osi.ie/}}. It provides a complete database of all the addresses in the Republic of Ireland and geolocation details including 1.8 million buildings. The Eircode database is heavily connected with GeoDirectry database as it is essentially the same database with a new address identifier called \textit{Eircode}. The database diagram for GeoDirectory is show below in Fig. \ref{fig:GeoDirectoryDatabase} which includes an Electoral Division and Local Authorities table.
+
+\begin{figure}[H]
+	\includegraphics[width=1.2\textwidth,center]{GeoDirectoryDatabase}
+	\caption{GeoDirectory database diagram}
+	\label{fig:GeoDirectoryDatabase}
+\end{figure}
+
+So to complete this research and experiment a mechanism or application for matching customer addresses to the the GeoDirectory database needed to be built. There are many vendors in Ireland and International that provide serves correct and validate services such as Address Doctor\footnote{\url{https://www.informatica.com/addressdoctor.html}}, Gamma\footnote{\url{http://www.gamma.ie/about-gamma}} and Data Ireland\footnote{\url{http://www.dataireland.ie/}} to name a few. Committing to one of these products would require a project to evaluate each service \subjectname\ to analyse the pros and cons and understanding the full requirements of the bank.
+
+In the interim as part of this research it was decided to look at in house solution that could be developed using existing resources. After some investigation and experimentation it was identified that it was possible to build a solution levering an address database GeoDirectory database, a search platform/engine Solr\footnote{\url{http://lucene.apache.org/solr/}} and a high level programming language \footnote{\url{https://www.python.org/}}.
 
 
-To create macro-economic features based on internal data in \subjectname\ there needs to be a mapping from
-
-Address data is not something that is managed currently in \subjectname\. Customer, Account, Property Assets addresses are all stored across the databases in 
-
-There is not master reference table 
-
-Addresses in \subjectname\ are not recorde.
-
+\begin{figure}[H]
+	\includegraphics[width=1.1\textwidth,,height = 10cm, center]{Solr_Example_Search}
+	\caption[Query Example and Syntax]
+	{Solr Query Example and Syntax}
+	\label{fig:Solr_Example_Search}
+\end{figure}
 
 \newpage
 
