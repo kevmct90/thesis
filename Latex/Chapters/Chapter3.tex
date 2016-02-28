@@ -142,22 +142,209 @@ The main experiments to be carried out as part of this research will aim to inve
 	\item Personal customer card spending behaviour
 	\item Feature grouping based on Home Loans, Personal Loans, SME Loans
 	\item Central Statistics Office (CSO) Features
-	\item SME Arrears trends
-	\item Personal Arrears Ratio Personal Loans, Home Loans, Both
+	\item SME default behaviour
+	\item Personal Loans \& Homeloans default behaviour
 \end{itemize}
 
 
-\subsubsection{Transaction Dataset}
+\subsubsection{Personal customer card spending behaviour}
+One experiment in this research will test to see if customer transactional spending behaviour metrics could be useful for predicting if SME customers will default. To do this transactions will be gathered from the personal customers VISA debit card transaction database in \subjectname. 192 million transactions from 1.3 million customers  will be collected for 12 month prior to the observation point in the experiment. 
+Merchants are assigned what is known a merchant category code (MCC), it is used generally for classifying the primary business of the merchant \footnote{\url{https://www.visa.com/supplierlocator/}}. These codes have been leveraged in \subjectname\ to create a Money Manager Application which rolls these MCC in MCC categories. This application allows personal customers to keep track of their spending behaviour through a combination of reports, visualisation and search functionality. These categories are broken down into parent and child categories for this application. These categories can be seen in Table \ref{table:mcc} below
 
-\subsubsection{Binned Features}
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\label{my-label}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\textbf{MCC Category} & \textbf{Parent}          & \textbf{Child}                 & \textbf{Spend / Live} \\ \hline
+			2.2                   & Bills \& Utilities       & Cable/Satellite TV \& Internet & Spend                 \\ \hline
+			2.7                   & Bills \& Utilities       & Gas/Electricity/Energy         & Live                  \\ \hline
+			3.1                   & Leisure \& Entertainment & Cinema \& Theatre              & Spend                 \\ \hline
+			4.1                   & Shopping                 & Groceries                     & Live                  \\ \hline
+			4.4                   & Shopping                 & Clothing \& Accessories        & Spend                 \\ \hline
+			5.2                   & Health \& Personal Care  & Doctor                         & Live                  \\ \hline
+			5.6                   & Health \& Personal Care  & Hair \& Beauty                 & Spend                 \\ \hline
+			6.2                   & Household/Home           & Household Maintenance          & Live                  \\ \hline
+			6.5                   & Household/Home           & Computers \& Technology        & Spend                 \\ \hline
+		\end{tabular}
+	}
+	\caption{MCC Categories and Spend/Live Categorisation Sample}
+	\label{table:mcc}
+\end{table}
 
-Retails Customers split by Loans, Mortgages, Both. Then SME arrears features/
-Grouped / WOE 
+For this research and experiment these transactions MCC categories have been assigned \textit{Spend} or \textit{Live} category. Transactions categorised as \textit{Spend} will translate to what has been derived as discretionary spend of \subjectname\ customers. This will include transactions such as social activities such as going to the cinema, going to bars and clubs and eating out in restaurants which can be seen in \ref{table:mcc}. Transactions categorised as \textit{Live} will translate to what as been derived as transactions required/associated needed for customers to live. This will include transactions such as paying bills, shopping/groceries.
 
-\subsubsection{SME Trends}
+Transactions for each customer will be aggregated to electoral division and local authority for aggregated per month for 12 months prior to the observation point. Metrics will be created calculating the difference between time periods to that's aim will be to see trends or patterns to identify default. The rates of change between transactional spend will be calculated by using the percentage change equation seen below
 
-\subsubsection{CSO Features}
+\begin{equation} \label{eqn:PercentageChange}
+\text{Percentage Change} = \frac{X^{2} - X^{1}}{X^{1}}*100  
+\end{equation}
+Where: 
+\vspace{-7mm} 
+\begin{itemize}
+	\item $X^{1} = $ the original variable
+	\item $X^{2} = $ the new variable
+\end{itemize}
 
+These features will not be normalised so feature rescaling will be applied to ensure the features range value is between 0 and 1, this is down through applying the rescaling equation found below  
+
+\begin{equation}\label{eqn:rescaling}
+\text{Feature Scaling} =  X' = \frac{X - X_{min}}{X_{max} - X_{min}}
+\end{equation}
+
+There will be 68 features created as part of this experiment. The names, data types and description for each features can be found in Appendix \ref{AppendixA}.
+
+
+\subsubsection{Feature grouping based on Home Loans, Personal Loans, SME Loans}
+
+
+\subsubsection{Central Statistics Office (CSO) Features}
+
+
+The Census gives a comprehensive picture of the social and living conditions of the population in 2011. It provides detail to the smallest area and the results are an essential tool for effective policy, planning and decision making purposes. 
+
+The data is organised around a number of themes (see below) and broken down by a range of geographic areas as
+described below.
+
+Themes of data available in the census data.
+\begin{table}[H]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Theme Number} & \textbf{Theme Description} \\ \hline
+		Theme 1    & Sex, age and marital status \\ \hline
+		Theme 2    & Migration, ethnicity and religion \\ \hline
+		Theme 3    & Irish Language \\ \hline
+		Theme 4    & Families \\ \hline
+		Theme 5    & Private Household \\ \hline
+		Theme 6    & Housing \\ \hline
+		Theme 7	   & Communal establishments \\ \hline
+		Theme 8    & Principal status \\ \hline
+		Theme 9    & Social class and socio-economic group \\ \hline
+		Theme 10   & Education \\ \hline
+		Theme 11   & Commuting \\ \hline	
+		Theme 12   & Disability, careers and general health \\ \hline		
+		Theme 13   & Occupation \\ \hline
+		Theme 14   & Industries \\ \hline
+		Theme 15   & PC and internet Access \\ \hline			
+	\end{tabular}
+	\caption{Lending Product Classification }
+\end{table}
+
+
+\url{http://www.cbs.gov.il/census/census/pnimi_sub_page_e.html?id_topic=1&id_subtopic=5}
+
+\begin{table}[H]
+	\centering
+	\label{my-label}
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Product Summary Description} & \textbf{Product Detailed Description} \\ \hline
+		Branch Advances     & Fixed Loans \\ \hline
+		Branch Advances     & Matrix Loans \\ \hline
+		Branch Advances     & Other Loans \\ \hline
+		Branch Advances     & Premium Business Rate \\ \hline
+		Branch Advances     & Prime Loans \\ \hline
+		Branch Advances     & Staff Credit Flex \\ \hline
+		Branch Advances		& Suspense Interest \\ \hline
+		Home Loan           & Buy to Let \\ \hline
+		Home Loan           & Commercial Mortgages \\ \hline
+		Home Loan           & Home Loan \\ \hline
+		Home Loan           & Staff Homeflex \\ \hline
+		Home Loan           & Standard Mortgages \\ \hline	
+		Home Loan           & Surplus Builder \\ \hline		
+		Home Loan           & Tracker Mortgages \\ \hline		
+	\end{tabular}
+	\caption{CSO Theme Breakdown}
+\end{table}
+
+\subsubsection{Principal Status/Employment}
+\subsubsection{Occupation}
+\subsubsection{Education}
+Lower than Upper Secondary Education
+A question I wanted to address was there was areas with higher concentrations of lower education by ED and LA, and if this had any correlations with SME arrears in \subjectname.
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\label{my-label}
+		\begin{tabular}{|l |l|}
+			\hline
+			\textbf{Education Levels}                                   & \textbf{Lower than Upper Secondary Education} \\ \hline
+			No Formal Education                                         & Yes                                           \\ \hline
+			Primary Education                                           & Yes                                           \\ \hline
+			Lower Secondary                                             & Yes                                           \\ \hline
+			Upper Secondary                                             & No                                            \\ \hline
+			Technical or Vocational qualification                       & No                                            \\ \hline
+			Advanced Certificate/Completed Apprenticeship               & No                                            \\ \hline
+			Higher Certificate                                          & No                                            \\ \hline
+			Ordinary Bachelor Degree or National Diploma                & No                                            \\ \hline
+			Honours Bachelor Degree, Professional Qualification or both & No                                            \\ \hline
+			Postgraduate Diploma or Degree                              & No                                            \\ \hline
+			Doctorate(Ph.D) or higher                                   & No                                            \\ \hline
+			Not Stated                                                  & NA                                            \\ \hline
+		\end{tabular}
+	}
+	\caption{My caption}
+\end{table}
+
+
+
+\subsubsection{SME Default behaviour}
+hhhsshdhdh
+
+\subsubsection{Personal Loans \& Homeloans default behaviour}
+
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\label{my-label}
+		\begin{tabular}{|l|l|l|}
+			\hline
+			\textbf{Feature} & \textbf{Data Type} & \textbf{Description}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \hline
+			ED\_Arrears\_Ratio          & Interval        & Percentage of personal customers in a ED to be in arrears.                                                                                                                                                                                                                                                                                                                                                                           \\ \hlineß
+			LA\_Arrears\_Ratio           & Interval        & Percentage of personal customers in a LA to be in arrears \\ \hline
+		\end{tabular}
+	}
+	\caption{Arrears Ratio for \subjectname\ Personal Customers }
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\label{my-label}
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\textbf{Product Summary Description} & \textbf{Product Detailed Description} \\ \hline
+			Branch Advances     & Fixed Loans \\ \hline
+			Branch Advances     & Matrix Loans \\ \hline
+			Branch Advances     & Other Loans \\ \hline
+			Branch Advances     & Premium Business Rate \\ \hline
+			Branch Advances     & Prime Loans \\ \hline
+			Branch Advances     & Staff Credit Flex \\ \hline
+			Branch Advances		& Suspense Interest \\ \hline
+			Home Loan           & Buy to Let \\ \hline
+			Home Loan           & Commercial Mortgages \\ \hline
+			Home Loan           & Home Loan \\ \hline
+			Home Loan           & Staff Homeflex \\ \hline
+			Home Loan           & Standard Mortgages \\ \hline	
+			Home Loan           & Surplus Builder \\ \hline		
+			Home Loan           & Tracker Mortgages \\ \hline		
+		\end{tabular}
+	}
+	\caption{Lending 
+		Product Classification }
+\end{table}
+
+
+\pagebreak
 
 
 \section{Old Sections}
@@ -234,200 +421,11 @@ Give example of how addresses are cleansed, standardised, searched and results a
 \subsection{Visa Debit Transactional Data}
 \subsubsection{Discretionary Non-Discretionary Categorisation}
 
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}
-	{
-	\label{my-label}
-	\begin{tabular}{|l|l|l|l|}
-		\hline
-		\textbf{MCC Category} & \textbf{Parent}          & \textbf{Child}                 & \textbf{Spend / Live} \\ \hline
-		2.2                   & Bills \& Utilities       & Cable/Satellite TV \& Internet & Spend                 \\ \hline
-		2.7                   & Bills \& Utilities       & Gas/Electricity/Energy         & Live                  \\ \hline
-		3.1                   & Leisure \& Entertainment & Cinema \& Theatre              & Spend                 \\ \hline
-		4.1                   & Shopping                 & Groceries                     & Live                  \\ \hline
-		4.4                   & Shopping                 & Clothing \& Accessories        & Spend                 \\ \hline
-		5.2                   & Health \& Personal Care  & Doctor                         & Live                  \\ \hline
-		5.6                   & Health \& Personal Care  & Hair \& Beauty                 & Spend                 \\ \hline
-		6.2                   & Household/Home           & Household Maintenance          & Live                  \\ \hline
-		6.5                   & Household/Home           & Computers \& Technology        & Spend                 \\ \hline
-	\end{tabular}
-	}
-	\caption{Spend Live Categorisation }
-\end{table}
 
 
-
-\subsubsection{Percentage Change}
-
-\begin{align}
-\text{Percentage Change} = \frac{X^{2} - X^{1}}{X^{1}}*100  
-\end{align}
-Where: 
-\vspace{-7mm} 
-\begin{itemize}
-	\item $X^{1} = $ the original variable
-	\item $X^{2} = $ the new variable
-\end{itemize}
-
-
-\subsection{Electoral Division and Local Authority}
-\textbf{Local Authorities}
-In census reports the country is divided into 29 counties/administrative counties and the five Cities which represent the
-local authority areas. Outside Dublin there are 26 administrative counties (North Tipperary and South Tipperary each
-ranks as a separate county for administrative purposes) and four Cities, i.e. Cork, Limerick, Waterford and Galway. In
-Dublin the four local authority areas are identified separately, i.e. Dublin City and the three administrative counties of
-Dún Laoghaire-Rathdown, Fingal and South Dublin.
-
-\textbf{Electoral Divisions}
-There are 3,440 Electoral Divisions (EDs) which are the smallest legally defined administrative areas in the State. One ED, St. Mary's, straddles the Louth-Meath county border, and is presented in two parts in the SAPS1 tables, with one part in Louth and the other in Meath. There are 32 EDs with low population, which for reasons of confidentiality have been amalgamated into neighbouring EDs giving a total of 3,409 EDs which appear in the SAPS tables.
-
-\begin{table}[H]
-	\centering
-	\label{my-label}
-	\begin{tabular}{|l|l|p{10cm}|}
-		\hline
-		\textbf{Feature} & \textbf{Data Type} & \textbf{Description}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \hline
-		ED\_ID           & Categorical        & There are 3,440 Electoral Divisions (EDs) which are the smallest legally defined administrative areas in Ireland.                                                                                                                                                                                                                                                                                                                                                                             \\ \hline
-		LA\_ID           & Categorical        & In census reports the country is divided into 29 counties/administrative counties and the five Cities which represent the local authority areas. Outside Dublin there are 26 administrative counties (North Tipperary and South Tipperary each ranks as a separate county for administrative purposes) and four Cities, i.e. Cork, Limerick, Waterford and Galway. In Dublin the four local authority areas are identified separately, i.e. Dublin City and the three administrative counties of Dun Laoghaire-Rathdown, Fingal and South Dublin. \\ \hline
-	\end{tabular}
-	\caption{Electoral Division and Local Authority Details }
-\end{table}
-
-
-\subsection{Census 2011 Ireland}
-The Census gives a comprehensive picture of the social and living conditions of the population in 2011. It provides detail to the smallest area and the results are an essential tool for effective policy, planning and decision making purposes. 
-
-The data is organised around a number of themes (see below) and broken down by a range of geographic areas as
-described below.
-
-Themes of data available in the census data.
-\begin{table}[H]
-	\centering
-	\label{my-label}
-	\begin{tabular}{|l|l|}
-		\hline
-		\textbf{Theme Number} & \textbf{Theme Description} \\ \hline
-		Theme 1    & Sex, age and marital status \\ \hline
-		Theme 2    & Migration, ethnicity and religion \\ \hline
-		Theme 3    & Irish Language \\ \hline
-		Theme 4    & Families \\ \hline
-		Theme 5    & Private Household \\ \hline
-		Theme 6    & Housing \\ \hline
-		Theme 7	   & Communal establishments \\ \hline
-		Theme 8    & Principal status \\ \hline
-		Theme 9    & Social class and socio-economic group \\ \hline
-		Theme 10   & Education \\ \hline
-		Theme 11   & Commuting \\ \hline	
-		Theme 12   & Disability, careers and general health \\ \hline		
-		Theme 13   & Occupation \\ \hline
-		Theme 14   & Industries \\ \hline
-		Theme 15   & PC and internet Access \\ \hline			
-	\end{tabular}
-	\caption{Lending Product Classification }
-\end{table}
-
-
-\url{http://www.cbs.gov.il/census/census/pnimi_sub_page_e.html?id_topic=1&id_subtopic=5}
-
-\begin{table}[H]
-	\centering
-	\label{my-label}
-	\begin{tabular}{|l|l|}
-		\hline
-		\textbf{Product Summary Description} & \textbf{Product Detailed Description} \\ \hline
-		Branch Advances     & Fixed Loans \\ \hline
-		Branch Advances     & Matrix Loans \\ \hline
-		Branch Advances     & Other Loans \\ \hline
-		Branch Advances     & Premium Business Rate \\ \hline
-		Branch Advances     & Prime Loans \\ \hline
-		Branch Advances     & Staff Credit Flex \\ \hline
-		Branch Advances		& Suspense Interest \\ \hline
-		Home Loan           & Buy to Let \\ \hline
-		Home Loan           & Commercial Mortgages \\ \hline
-		Home Loan           & Home Loan \\ \hline
-		Home Loan           & Staff Homeflex \\ \hline
-		Home Loan           & Standard Mortgages \\ \hline	
-		Home Loan           & Surplus Builder \\ \hline		
-		Home Loan           & Tracker Mortgages \\ \hline		
-	\end{tabular}
-	\caption{CSO Theme Breakdown}
-\end{table}
-
-\subsubsection{Principal Status/Employment}
-\subsubsection{Occupation}
-\subsubsection{Education}
-Lower than Upper Secondary Education
-A question I wanted to address was there was areas with higher concentrations of lower education by ED and LA, and if this had any correlations with SME arrears in \subjectname.
-
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}
-	{
-	\label{my-label}
-	\begin{tabular}{|l |l|}
-		\hline
-		\textbf{Education Levels}                                   & \textbf{Lower than Upper Secondary Education} \\ \hline
-		No Formal Education                                         & Yes                                           \\ \hline
-		Primary Education                                           & Yes                                           \\ \hline
-		Lower Secondary                                             & Yes                                           \\ \hline
-		Upper Secondary                                             & No                                            \\ \hline
-		Technical or Vocational qualification                       & No                                            \\ \hline
-		Advanced Certificate/Completed Apprenticeship               & No                                            \\ \hline
-		Higher Certificate                                          & No                                            \\ \hline
-		Ordinary Bachelor Degree or National Diploma                & No                                            \\ \hline
-		Honours Bachelor Degree, Professional Qualification or both & No                                            \\ \hline
-		Postgraduate Diploma or Degree                              & No                                            \\ \hline
-		Doctorate(Ph.D) or higher                                   & No                                            \\ \hline
-		Not Stated                                                  & NA                                            \\ \hline
-	\end{tabular}
-	}
-	\caption{My caption}
-\end{table}
 
 \subsection{Arrears Ratio for \subjectname\ Personal Customers}
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}
-	{
-	\label{my-label}
-	\begin{tabular}{|l|l|l|}
-		\hline
-		\textbf{Feature} & \textbf{Data Type} & \textbf{Description}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \hline
-		ED\_Arrears\_Ratio          & Interval        & Percentage of personal customers in a ED to be in arrears.                                                                                                                                                                                                                                                                                                                                                                           \\ \hlineß
-		LA\_Arrears\_Ratio           & Interval        & Percentage of personal customers in a LA to be in arrears \\ \hline
-	\end{tabular}
-	}
-	\caption{Arrears Ratio for \subjectname\ Personal Customers }
-\end{table}
 
-\begin{table}[H]
-	\centering
-	\label{my-label}
-	\resizebox{\textwidth}{!}
-	{
-	\begin{tabular}{|l|l|l|l|}
-		\hline
-		\textbf{Product Summary Description} & \textbf{Product Detailed Description} \\ \hline
-		Branch Advances     & Fixed Loans \\ \hline
-		Branch Advances     & Matrix Loans \\ \hline
-		Branch Advances     & Other Loans \\ \hline
-		Branch Advances     & Premium Business Rate \\ \hline
-		Branch Advances     & Prime Loans \\ \hline
-		Branch Advances     & Staff Credit Flex \\ \hline
-		Branch Advances		& Suspense Interest \\ \hline
-		Home Loan           & Buy to Let \\ \hline
-		Home Loan           & Commercial Mortgages \\ \hline
-		Home Loan           & Home Loan \\ \hline
-		Home Loan           & Staff Homeflex \\ \hline
-		Home Loan           & Standard Mortgages \\ \hline	
-		Home Loan           & Surplus Builder \\ \hline		
-		Home Loan           & Tracker Mortgages \\ \hline		
-	\end{tabular}
-	}
-	\caption{Lending 
-		Product Classification }
-\end{table}
 
 \subsection{Generating the ABTs}
 We now have a reference list that allows us to apply a rank to all achievable loan application events prior to completion. A method is required to join this reference list with our csv (comma seperated value) log files resulting from the MapReduce job. 
