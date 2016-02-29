@@ -1,0 +1,43 @@
+% Appendix A
+
+\chapter{Feature grouping based on Home Loans, Personal Loans, SME Loans} % Main appendix title
+
+\label{AppendixG} % For referencing this appendix elsewhere, use \ref{AppendixA}
+
+\lhead{Feature grouping based on Home Loans, Personal Loans, SME Loans} % This is for the header on each page - perhaps a shortened title
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\label{my-label}
+		\begin{tabular}{|l|l|l|}
+			\hline
+			\textbf{Feature} & \textbf{Data Type} & \textbf{Description}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              \\ \hline			
+GROUPED\_ED\_ID\_SME\_ARREARS & Ordinal/Nominal & Group/Bin feature based on information gain for electoral division default ratios for SME loans\\ \hline
+GROUPED\_LA\_ID\_SME\_ARREARS & Ordinal/Nominal & Group/Bin feature based on information gain for local authority default ratios for SME loans   \\ \hline
+WEIGHT\_OF\_EVIDENCE\_ED\_ID\_SME\_ARREARS & Interval & WoE for each bin value based on electoral division default ratios for SME loans\\ \hline
+WEIGHT\_OF\_EVIDENCE\_LA\_ID\_SME\_ARREARS & Interval & WoE for each bin value based on local authorities default ratios for SME loans \\ \hline
+
+GROUPED\_LA\_ID\_BOTH\_ARREARS & Ordinal/Nominal & Group/Bin feature based on information gain for local authority default ratios for Homeloan \& Personal loan\\ \hline
+WEIGHT\_OF\_EVIDENCE\_LA\_ID\_BOTH\_ARREARS & Interval & WoE for each bin value based on local authorities default ratios for Homeloans and Personal Loans \\ \hline
+
+GROUPED\_ED\_ID\_BOTH\_ARREARS & Ordinal/Nominal & Group/Bin feature based on information gain for electoral division default ratios for Homeloans \& Personal loans\\ \hline
+WEIGHT\_OF\_EVIDENCE\_ED\_ID\_BOTH\_ARREARS & Interval & WoE for each bin value based on electoral division default ratios for Homeloans and Personal Loans \\ \hline
+
+GROUPED\_ED\_ID\_BRANCH\_ADVANCE\_ARREARS & Ordinal/Nominal & Group/Bin feature based on information gain for electoral division default ratios for Personal loan only \\ \hline
+WEIGHT\_OF\_EVIDENCE\_ED\_ID\_BRANCH\_ADVANCE\_ARREARS & Interval & WoE for each bin value based on local authorities default ratios for Personal Loans \\ \hline
+
+GROUPED\_LA\_ID\_BRANCH\_ADVANCE\_ARREARS & Ordinal/Nominal &  Group/Bin feature based on information gain for local authorities default ratios for Personal loans only \\ \hline
+WEIGHT\_OF\_EVIDENCE\_LA\_ID\_BRANCH\_ADVANCE\_ARREARS & Interval & WoE for each bin value based on electoral division default ratios for Personal Loans \\ \hline
+
+GROUPED\_ED\_ID\_HOMELOANS\_ARREARS & Ordinal/Nominal & Something \\ \hline
+WEIGHT\_OF\_EVIDENCE\_ED\_ID\_HOMELOANS\_ARREARS & Interval & WoE for each bin value based on electoral divisions default ratios for Homeloans \\ \hline
+
+GROUPED\_LA\_ID\_HOMELOANS\_ARREARS & Ordinal/Nominal & Group/Bin feature based on information gain for local authorities default ratios for Homeloans only  \\ \hline
+WEIGHT\_OF\_EVIDENCE\_LA\_ID\_HOMELOANS\_ARREARS & Interval & WoE for each bin value based on local authorities default ratios for Homeloans \\ \hline
+			
+		\end{tabular}
+	}
+	\caption{Binned/Grouped features based on default ratios of SME, Home and Personal Loans by Electoral Division and Local Authority}
+\end{table}
