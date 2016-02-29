@@ -199,7 +199,7 @@ There will be 68 features created as part of this experiment. The names, data ty
 
 
 \subsubsection{Personal Loans \& Homeloans default behaviour}
-An experiment will be carried out as part of this research to investigate if \subjectname's personal customers default ratios of loans and homeloans could be useful in predicting if SME customers will default. The intuition for this insight is that if there is a high proportion of personal loan and homeloan defaulting in an area then there could be a relationship with SME defaulting. 
+An experiment will be carried out as part of this research to investigate if \subjectname's personal customers default ratios of loans and homeloans could be useful in predicting if SME customers will default. The intuition for this insight is that if there is a high proportion of personal loan and homeloan defaulting in an area then there could be a relationship with SME defaulting. It was also discussed in literature by \cite{di_pietro_regional} how this was useful for predicting default in Italy.
 
 At the observation point (June 2014), personal loan and homeloan products that were active on the \subjectname\ book were analysed. Table \ref{table:AIB_Products} details the products that were extracted as part of this experiment.
 
@@ -271,14 +271,25 @@ The data from the census can be organised into 11 themes which can be illustrate
 \end{table}
 
 
-Anecdotally low unemployment rates and higher education rates would be associated with areas good economic growth and prosperity. Since the financial crisis of 2008-2009 there has been huge reduction in the number of construction projects and is said to be heavily linked to higher unemployment. As a result for this experiment features have been created using data provided from the census as local authority and electoral division areas. The features that have been created are lower than secondary level of eduction ratio, manual based occupation ratio, unemployment ratio by electoral division and local authority. There was some data manipulation and business logic applied to transform the raw data into these metrics.
+Anecdotally low unemployment rates and higher education rates would be associated with areas good economic growth and prosperity. Since the financial crisis of 2008-2009 there has been huge reduction in the number of construction projects which is said to be heavily linked to higher unemployment. As a result for this experiment features have been created using data provided from the census as local authority and electoral division areas. The features that have been created are lower than secondary level of eduction ratio, manual based occupation ratio, unemployment ratio by electoral division and local authority. There was some data manipulation and business logic applied to transform the raw data into these metrics.
 
 There will be 6 features created as part of this experiment. The names, data types and description for each features can be found in Appendix \ref{AppendixE}.
 
+
+
 \subsubsection{SME Default behaviour}
-hhhsshdhdh
+An experiment will be carried out as part of this research to investigate if SME default ratios and behavioural changes could be useful in predicting future SME defaults. At an anecdotal you could think of this as domino effect where businesses near each other close in sequence due to economic hardship in that area and low consumer confidence. For example one feature could be have default rates increased or decreased for SME customers at an electoral division or local authority area. It was also discussed in literature by \cite{di_pietro_regional} how this was useful for predicting default in Italy. 
+
+The data for this experiment was extracted from the SME database in \subjectname\ from June 2012 to the June 2014(Observation Point). Each SME customers local authority and electoral division was identified, and customers were classified as in default or not in default for each month in the two year period. Features were then built with a focus of identifying local authorities and electoral division which had seen higher default rates in the two years prior to the observation point. 
+
+The majority of the features will be built using the percentage change formula seen above Equation \ref{eqn:PercentageChange} and the rescaling formula Equation \ref{eqn:rescaling}. But it will also include the ratio between default and non-default, and count of default for each local authority and electoral division.
+
+There will be 20 features created as part of this experiment. The names, data types and description for each features can be found in Appendix \ref{AppendixF}.
 
 \subsubsection{Feature grouping based on Home Loans, Personal Loans, SME Loans}
+As reviewed in the literature \ref{sec:binning} is a useful method of transforming interval based features into categorical features which have a number of benefits such as simplifying the structure of the data into nominal and ordinal based on a grouping and interval based on estimating the groups weight of evidence (WoE). This binning increases scoring models robustness by generalising model for unseen data thus reducing the chances of over-fitting. As discussed in the literature it also has the capability to incorporate missing values and other extreme outliers which cause instability in the model. 
+
+The features to be binned as part of this experiment are based on features already seen in this section. Homeloan, personal loan and SME default ratios at the observation point (June 2014) will be binned in attempt to build robust and simplified feature set. This experiment will test the nominal/ordinal outputs and WoE outputs in the predictive modelling stage to see if either are indicative of arrears. 
 
 \pagebreak
 

@@ -423,7 +423,10 @@ Embedded feature selection method attempts to combine the two previous methods t
 
 Feature selection is very important in the credit scoring process and there are many reasons in the literature that suggest it should be used. The \textit{curse of dimensionality} is one such issue, if you have too many features in your model it may perform well on the training dataset but when executed on unseen data it may perform poorly because the model has over-fitted too many irrelevant or noisy features \citep{loughrey_overfitting_2005}.Research from (\cite{thomas_consumer_2009}; \cite{mays_credit_2004})  advise that to build a robust scoring model you should have somewhere between 8 and 20 predictive features. There are many reason for this, there is a practical issue having to model more features and there are costs and overheads associated with each features that is redundant in the model. Referencing Fig. \ref{fig:simpleComplex} we can see that is much desirable to have simple decision tree than a complex decision tree with the same outputs, likewise if two datasets are providing the same results only one is a subset it is always better to choose the subset. This way we will reduce the risk of over-fitting that goes with including redundant features.
 
-\section{Coarse Classification/ Binning}
+\section{Coarse Classification/ Binning} \label{sec:binning}
+\url{http://blog.revolutionanalytics.com/2015/03/r-package-smbinning-optimal-binning-for-scoring-modeling.html}
+
+\url{http://www.saedsayad.com/supervised_binning.htm}
 
 \begin{comment}
 \subsection{Correlation-based Feature Selection}

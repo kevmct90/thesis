@@ -239,6 +239,22 @@ In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:Delinqu
 
 Table \ref{table:DelinquencyModelCutoff} above illustrates which cut-off threshold are best for results you are trying to maximise for the previous delinquency model.
 
+\textit{
+	\url{https://cran.r-project.org/doc/contrib/Sharma-CreditScoring.pdf}
+To the dismay of optimal credit scoring cut off decision literature the KS statistic is
+heavily in use of the industry. Hand has shown that KS can be misleading and the only
+metric which matters should be the conditional bad rate given the loan is approved
+(Hand, 2005).
+That said due to prevalence of KS we show how to compute it in R as it might be needed
+in work settings. The efficient frontier trade off approach although optimal seems to not appeal to executives as making explicit and forced trade offs seems to cause cognitive
+dissonance. For some reason people in the industry are entrenched on showing 1 number
+to communicate models whether it is KS or FICO etc.
+KS is the maximum difference between the cumulative true positive and cumulative false
+positive rate. The code above calculates this using the ROC curve.
+If you do not use this cut off point the KS in essence does not mean much for actual
+separation of the cut off chosen for the credit granting decision.
+}
+
 \subsubsection{No Previous Delinquency}
 
 There are 9 features in the dataset to model customers who have been in default in the past. For security reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total customers to be be modelled in the No Previous Delinquency model approximately 2.7\% of customers are in default at the end of outcome window. This default rate is just based on SME customers for this analysis and is not reflective of the enterprise default rate. The results for the baseline benchmarks models are as follows.
