@@ -19,19 +19,6 @@ To understand if the location-based features in this analysis are useful, an ini
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\section{Experiment Set-up}
-This section will detail high level experimental information. In Fig. \ref{fig:experiment_setup} below SME accounts/customers are selected at the \textit{observation point}, June 2014. These accounts are not in default at this point in time. Information prior to the observation point will be used for modelling to predict if someone is likely to go into default, this can be termed the \textit{performance window}.
-
-Data from each individual customers/accounts performance will be taken from data in the performance window time period, which will be combined with macro location-based data prior to the observation point also. This data will be aggregated and structured into features for an ABT. The aim will be that these features will be able to distinguish what customers/accounts are likely to default on there repayment in the next 12 months. 
-
-\begin{figure}[H]
-	\includegraphics[width=0.8\textwidth,center]{experiment_setup}
-	\caption[Experiment Performance Window and Outcome Window]
-	{Experiment Performance Window and Outcome Window}
-	\label{fig:experiment_setup}
-\end{figure}
-
-Previous, Section \ref{classLabelDef} described that there were two methods used to define if a customer was in default or not: (i) the \textit{worst status} label definition method; and (ii) the \textit{current status} label method approach. As mentioned previously, for the purpose of this experiment we will be using the industry standard worst status method, this means if the customers is in 90+ days arrears at any stage in the outcome window they will be labelled as a bad customer or as one that has defaulted on their financial obligation. 
 
 \begin{table}[H]
 	\centering\

@@ -16,6 +16,21 @@ The first section will outline where the customers for the experiment have been 
 
 The second section will outline what macro-economic features will be built as part of the experiment in this research. The aim of this research is to investigate the predictive power of macro-economic features by geographic regions such as electoral divisions and local authority in Ireland. To do this the addresses that are stored in \subjectname's databases are queried against an search engine and string metric algorithm application built for this research map addresses to \textit{global positioning system} (GPS) coordinates. The macro-economic features will be sourced and created from internal data sources in \subjectname\ and externally from open data sources. It will also explain how these features have been created, what transformations or data wrangling had to be done so the features fit/map into an analytical base table (ABT) discussed in Section \ref{sec:datasetConstruction} that is a requirement for predictive modelling.
 
+\section{Experiment Set-up}
+This section will detail data is in scope for prediction in this research. In Fig. \ref{fig:experiment_setup1} below SME customers are selected at the \textit{observation point}, June 2014. These customers are not in default at this point in time. Information prior to the observation point will be used for modelling to predict if a customer is likely to go into default, this is known as the \textit{performance window}.
+
+Data from each individual customers performance will be taken from data in the performance window time period, which will be combined with macro location-based data prior to the observation point also. This data will be aggregated and structured into features for an ABT. The aim will be that these features will be able to distinguish what customers are likely to default on there repayment in the next 12 months. 
+
+\begin{figure}[H]
+	\includegraphics[width=0.8\textwidth,center]{experiment_setup}
+	\caption[Experiment Performance Window and Outcome Window]
+	{Experiment Performance Window and Outcome Window}
+	\label{fig:experiment_setup1}
+\end{figure}
+
+Previous, Section \ref{classLabelDef} described that there were two methods used to define if a customer was in default or not: (i) the \textit{worst status} label definition method; and (ii) the \textit{current status} label method approach. As mentioned previously, for the purpose of this experiment we will be using the industry standard worst status method, this means if the customers is in 90+ days arrears at any stage in the outcome window they will be labelled as a bad customer or as one that has defaulted on their financial obligation. 
+
+
 \section{Customers for Credit Scoring and Existing Features}
 
 The customer data used for prediction in these experiments was sourced from a financial institution \subjectname, which is one of the two main pillar banks in Ireland. It contains details of 27,082 SME customers who were active between June 2014 and June 2015. These 27,082 customers are a subset of SME customers on the \subjectname\ book as the experiment will only be completed on one of the loan systems in the financial institution. None of the 27,082 customers are in default at the observation point(June 2014). The baseline model for this experiment will be built from features from a historic scorecard in \subjectname.
@@ -47,7 +62,6 @@ The characteristics of the two datasets that will be used to build the baseline 
 \end{table}
 
 It can be seen above in Table \ref{characteristicsDatasets} that two datasets are not very similar. There are only 2,936 customers in the \textit{previous delinquency} dataset and 24,156 in the \textit{no previous delinquency} dataset. Perhaps the the biggest difference is class imbalance difference between the datasets. 25\% of customers in the \textit{previous delinquency} dataset are bad by the end of the outcome window but there is only 3\% of the \textit{no previous delinquency} dataset that are bad at the end of the outcome window. As discussed in Section \ref{sec:imBalance} this presents significant challenges when try to build a predictive model but also a very common challenge in real world applications. 
-
 
 
 \section{Macro-Economic Areas for Experiment}
