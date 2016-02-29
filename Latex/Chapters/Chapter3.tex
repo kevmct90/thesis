@@ -10,19 +10,19 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 \section{Introduction}
-This chapter presents the data that will be used for the experiments to be carried out in this research and will be split into two major sections. 
+This chapter presents the data that will be used for the experiments to be carried out in this research and will be split into two main sections. 
 
-The first section will outline where the customers for the experiment have been gathered and under what criteria they have been selected. As part of the experiment a baseline predictive model will be built, this will be done using features that were used in historic industry credit scorecard models in \subjectname. Performance measure measure will selected evaluated also using this base line analysis.
+The first section will outline where the customers for the experiment have been gathered from, and under what criteria they have been selected. As part of the experiment a baseline predictive model will be built, this will be done using features that were used in historic industry credit scorecard models in \subjectname. Performance measure measure will also selected evaluated also using this base line analysis later seen in Chapter \ref{Chapter4}.
 
-The second section will outline what macro-economic features will be used as part of the research in the experiment. The aim of this research is to investigate the predictive power of macro-economic features by geographic regions such as electoral divisions and local authority in Ireland. To do this addresses are stored in \subjectname's databases are queried against an search engine built for this research and mapped to \textit{Global Positioning System} (GPS) coordinates string metric algorithms. The macro-economic features will be sourced internally in \subjectname\ and externally from open data sources. It will also explain how these features have been created, what transformations or data wrangling had to be done so the features fit/map into an analytical base table (ABT) discussed in Section \ref{sec:datasetConstruction} that is a requirement for predictive modelling.
+The second section will outline what macro-economic features will be built as part of the experiment in this research. The aim of this research is to investigate the predictive power of macro-economic features by geographic regions such as electoral divisions and local authority in Ireland. To do this the addresses that are stored in \subjectname's databases are queried against an search engine and string metric algorithm application built for this research map addresses to \textit{global positioning system} (GPS) coordinates. The macro-economic features will be sourced and created from internal data sources in \subjectname\ and externally from open data sources. It will also explain how these features have been created, what transformations or data wrangling had to be done so the features fit/map into an analytical base table (ABT) discussed in Section \ref{sec:datasetConstruction} that is a requirement for predictive modelling.
 
 \section{Customers for Credit Scoring and Existing Features}
 
-The customer data used for prediction in these experiments was sourced from a financial institution \subjectname which is one of the two main pillar banks in Ireland. It contains details of 27,082 SME customers who were active between June 2014 and June 2015. These 27,082 customers are a subset of SME customers on the \subjectname\ book as the experiment will only be completed on one of the loan systems in the financial institution. None of the 27,082 are in area in arrears at the point of selection June 2014. The baseline model for this experiment will built from features of a historic scorecard in \subjectname.
+The customer data used for prediction in these experiments was sourced from a financial institution \subjectname, which is one of the two main pillar banks in Ireland. It contains details of 27,082 SME customers who were active between June 2014 and June 2015. These 27,082 customers are a subset of SME customers on the \subjectname\ book as the experiment will only be completed on one of the loan systems in the financial institution. None of the 27,082 customers are in default at the observation point(June 2014). The baseline model for this experiment will be built from features from a historic scorecard in \subjectname.
 
-As mentioned in Section \ref{sec:segment} it is very common in credit scoring to model the population into multiple groups. This is done so homogeneous customers are grouped and modelled together based on for example pattern, characteristic, demographic etc. This common practice in industry also, in \subjectname\ is one method of modelling the credit risk of customers by splitting the customers into two segments. The criteria for selecting which segment each customer is modelled in is if that customer has been in arrears previously or not. If they have been for this research that customer will be modelled in the \textit{Previous Delinquency} segment, if the customer has been performing well and not in arrears previously they will be modelled in the \textit{No Previous Delinquency} segment. The historic scorecards that was used in \subjectname\ used different features for prediction in each segment population. This was decided doing empirical analysis of the data where it was observed that different features contributed to the prediction of each subset of the population with a few overlapping features in each subset. Due to sensitivity of information the feature set for these models could not be documented in this thesis paper.
+As mentioned in Section \ref{sec:segment} it is very common in credit scoring to model the population into multiple groups. This is done so homogeneous customers are grouped and modelled together based on for example pattern, characteristic, demographic etc. This common practice in industry also, in \subjectname\ is one method of modelling the credit risk of customers by splitting the customers into two segments. The criteria for selecting which segment each customer is modelled in is if that customer has been in arrears previously or not. For for this research a customer will be modelled in the \textit{Previous Delinquency} segment, if the customer \textbf{has not been} performing well and been in arrears previously. If the customer \textbf{has been } performing well and not been in arrears previously they will be modelled in the \textit{No Previous Delinquency} segment. The historic scorecards that were used in \subjectname\ used different features to build a model for each segment population. This was done using empirical analysis of the data where it was observed that different features contributed to the prediction of each subset of the population with a few overlapping features in each subset. Due to sensitivity of the information in \subjectname, the feature set for these models could not be documented in this research paper.
 
-As mentioned in Section \ref{sec:imBalance} class imbalance in datasets is a major real world problem when building a predictive model. As mentioned previous this happens the target class is is not distributed evenly in your dataset. The dataset in this example suffers from this imbalance also, however because the data is partitioned into two segments the imbalance in \textit{previous delinquency} dataset improves significantly but gets worse in the \textit{no previous delinquency} dataset.
+As mentioned in Section \ref{sec:imBalance} class imbalance in datasets is a major real world problem when building a predictive model. As mentioned previous this happens when the target class is is not distributed evenly in the dataset. The dataset in this experiment suffers from this imbalance also, however because the data is partitioned into two segments the imbalance in \textit{previous delinquency} dataset improves significantly but gets worse in the \textit{no previous delinquency} dataset.
 
 The characteristics of the two datasets that will be used to build the baseline benchmark can be illustrated in Table \ref{characteristicsDatasets} below.
 
@@ -68,11 +68,11 @@ The experiment in this research is to investigate if macro-economic features by 
 	\label{fig:Ireland_ED_LA_Example}
 \end{figure}
 
-There are 34 primary local authorities in the Republic of Ireland, including 29 county councils and 5 city councils. Organisations within each area are responsible for managing issues such as housing, planning, roads, water supply and sewerage, Development Incentives and Controls, Environmental Protection, Recreation Facilities and Amenities, Agriculture, Education, Health and Welfare \footnote{\url{http://www.iro.ie/local_authorities.html}}. There are 3,440 electoral divisions in the Republic of Ireland. Electoral divisions are formed by grouping town-lands together and are the smallest legally defined administrative areas in the state which small population statistics are published from in the Census \footnote{\url{http://census.cso.ie/censusasp/saps/boundaries/eds_bound.htm}}.
+There are 34 primary local authorities in the Republic of Ireland, including 29 county councils and 5 city councils. Organisations within each area are responsible for managing issues such as housing, planning, roads, water supply and sewerage, development incentives and controls, environmental protection, recreation facilities and amenities, agriculture, education, health and welfare \footnote{\url{http://www.iro.ie/local_authorities.html}}. There are 3,440 electoral divisions in the Republic of Ireland. Electoral divisions are formed by grouping town-lands together and are the smallest legally defined administrative areas in the state which small population statistics are published from in the Census \footnote{\url{http://census.cso.ie/censusasp/saps/boundaries/eds_bound.htm}}.
 
 
 \section{Converting Addresses to GPS Coordinates}
-To link macro-economic features by electoral division and local authorities to a SME customer there has to be a mechanism to link to that customers address. In an ideal world this would be done through a data model where a customers address would be linked to the address reference database. This can be illustrated through the Entity-Relationship Model (ERD) in Fig. \ref{fig:MasterReferenceAddressDataArchitecture}.
+To link macro-economic features by electoral division and local authorities to a SME customer there has to be a mechanism. In an ideal world this would be done through a data model where a customers address would be linked to the address reference database. This can be illustrated through the Entity-Relationship Model (ERD) in Fig. \ref{fig:MasterReferenceAddressDataArchitecture}.
 
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth,center]{MasterReferenceAddressDataArchitecture}
@@ -96,12 +96,12 @@ With the release of Ireland's new postcode system in July 2015 Eircode\footnote{
 	\label{fig:GeoDirectoryDatabase}
 \end{figure}
 
-So to complete this research and experiment a mechanism or application for matching customer addresses to the the GeoDirectory database needed to be built. There are many vendors in Ireland and International that provide serves correct and validate services such as Address Doctor\footnote{\url{https://www.informatica.com/addressdoctor.html}}, Gamma\footnote{\url{http://www.gamma.ie/about-gamma}} and Data Ireland\footnote{\url{http://www.dataireland.ie/}} to name a few. Committing to one of these products would require a project to evaluate each service \subjectname\ to analyse the pros and cons and understanding the full requirements of the bank.
+So to complete this research and experiment a mechanism or application for matching customer addresses to the the GeoDirectory database needed to be built. There are many vendors in Ireland and internationally that provide services to correct and validate addresses such as Address Doctor\footnote{\url{https://www.informatica.com/addressdoctor.html}}, Gamma\footnote{\url{http://www.gamma.ie/about-gamma}} and Data Ireland\footnote{\url{http://www.dataireland.ie/}} to name a few. Committing to one of these products would require a project to evaluate each service where \subjectname\ would analyse the pros and cons, understanding the full requirements of the financial institution.
 
-In the interim as part of this research it was decided to look at in house solution that could be developed using existing resources. After some investigation and experimentation it was identified that it was possible to build a solution levering an address database GeoDirectory database, a search platform/engine Solr\footnote{\url{http://lucene.apache.org/solr/}} and a high level programming language \footnote{\url{https://www.python.org/}}.
+In the interim as part of this research it was decided to look at in house solution that could be developed using existing resources and open source technologies. After some investigation and experimentation it was identified that it was possible to build a solution levering an address database GeoDirectory database, a search platform/engine Solr\footnote{\url{http://lucene.apache.org/solr/}} and a high level programming language Python \footnote{\url{https://www.python.org/}}.
 
 
-The Solr search works by creating an index of the data chosen for application. an example of this can be illustrated in Fig. \ref{fig:solrIndexing}\footnote{\url{http://blog.e-zest.net/about-apache-solr/}}. 
+Solr search works by creating an index of the data chosen for application. An example of this can be illustrated in Fig. \ref{fig:solrIndexing}\footnote{\url{http://blog.e-zest.net/about-apache-solr/}}. 
 
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth,center]{solrIndexing}
@@ -110,7 +110,7 @@ The Solr search works by creating an index of the data chosen for application. a
 	\label{fig:solrIndexing}
 \end{figure}
 
-For this experiment the GeoDirectory database was indexed using Solr allowing it to be queried through the web interface or multiple Application Program Interface (API) such as Python, JavaScript, Ruby, Java, HTTP to name a few. Solr returns a number results from queries posted against it based on these indexes which can be seen in Fig. \ref{fig:Solr_Example_Search}.
+For this experiment the GeoDirectory database was indexed using Solr allowing it to be queried through the web interface or multiple Application Program Interface (API) such as Python, JavaScript, Ruby, Java, HTTP to name a few. Solr returns a number results from queries posted against it based on these indexes which can be seen in Fig. \ref{fig:Solr_Example_Search from Web Interface}.
 
 \begin{figure}[H]
 	\includegraphics[width=1.1\textwidth,,height = 10cm,center]{Solr_Example_Search}
@@ -118,9 +118,9 @@ For this experiment the GeoDirectory database was indexed using Solr allowing it
 	\label{fig:Solr_Example_Search from Web Interface}
 \end{figure}
 
-Although this solution worked quite well in the majority of cases observed it did have some issue because way Irish addresses are structured. For example because there are number of addresses that contain "Some County Road" there were cases when the first result return by Solr returned a false positive. To cater for this number of the top results returned from Solr were compared using sting similarity metrics. String comparison algorithms/metrics are used to determine the distance or number of changes between two strings \citep{wagner_string--string_1974}. The two string comparison methods that were used as part of this experiment are the \textit{Levenshtein Distance} \citep{levenshtein_binary_1966} and \textit{Jaro–Winkler Distance} \citep{winkler_string_1990}. The Levenshtein is computed by calculating the smallest number of single character changes between to strings. The score can be normalised for it produces a so it produces a value between 0 and 1 by $1 -\frac{\text{number of edits}}{\text{length of the larger string}}$. It is very useful for compensating for typos in string matching. The Jaro-Winkler algorithm is used to measure number of characters in common but also works on the basis that differences at the start of the string are more important than those at end. In research completed by \cite{christen_comparison_2006} the Jaro-Winkler method techniques performed quite well across all experiments and was included in this experiment as a result. 
+Although this solution worked quite well in the majority of cases observed it did have some issues because way Irish addresses are structured. For example because there are number of addresses that contain ``Some County Road'' there were cases when the first result returned by Solr returned a false positive. To cater for this number of the top results returned from Solr were compared using sting similarity metrics. String comparison algorithms/metrics are used to determine the distance or number of changes between two strings \citep{wagner_string--string_1974}. The two string comparison methods that were used as part of this experiment are the \textit{Levenshtein Distance} \citep{levenshtein_binary_1966} and \textit{Jaro–Winkler Distance} \citep{winkler_string_1990}. The Levenshtein is computed by calculating the smallest number of single character changes between to strings. The score can be normalised for it so it produces a value between 0 and 1 by $1 -\frac{\text{number of edits}}{\text{length of the larger string}}$. It is very useful for compensating for typos in string matching. The Jaro-Winkler algorithm is used to measure number of characters in common but also works on the basis that differences at the start of the string are more important than those at end. In research completed by \cite{christen_comparison_2006} the Jaro-Winkler method techniques performed quite well across all experiments and was included in this experiment as a result. 
 
-Fig. \ref{fig:address_matching_application} illustrates the application that was built as part of this research to map addresses in \subjectname\ to a master address database (GeoDirectory).
+Fig. \ref{fig:address_matching_application} illustrates the full application that was built as part of this research to map addresses in \subjectname\ to a master address database, combining GeoDirectory, Solr and Python.
 
 \begin{figure}[H]
 	\includegraphics[width=.8\textwidth,center]{address_matching_application}
@@ -128,15 +128,17 @@ Fig. \ref{fig:address_matching_application} illustrates the application that was
 	\label{fig:address_matching_application}
 \end{figure}
 
-From test cases the application appears to work quite especially at matching addresses to Electoral Divisions and Local Authorities which is vital for this research. There are some inaccuracies due to data quality issues with the originating address but that was only when mapping to one address in the GeoDirectory database.
+From test cases it was observed that the application appears to work quite especially at matching addresses to Electoral Divisions and Local Authorities which is vital for this research. There are some inaccuracies due to data quality issues with the originating address but that was only when mapping to one specific address in the GeoDirectory database not electoral division or local authority.
 
-Unfortunately there was not scope in this research to carry out further analysis on the accuracy of the results but the business were so impressed with the result they observed that they are going to carry out an enterprise product investigation and evaluation. Leading on from this research they will be taking a sample of 20,000 addresses in \subjectname\ and allowing vendors detailed earlier to return their results. These results will then be collated by the business. Testing will done using a crowd sourcing to build confidence intervals evaluate which product and service offered the best result. A decision can then be made if a proprietary address matching application is needed or the application from this research is accurate meets the requirements.  
+Unfortunately there was not scope in this research to carry out further analysis on the accuracy of the results but the business were so impressed with the results they observed that they are going to carry out an enterprise product investigation and evaluation. Leading on from this research they will be taking a sample of 20,000 addresses in \subjectname\ and allowing vendors detailed earlier to return their results. These results will then be collated by the business. Testing will done using a crowd sourcing to build confidence intervals to evaluate which product and service offered the best result. An informed data driven decision can then be made if a proprietary address matching application is needed or the application from this research is accurate and meets the requirements of \subjectname.  
 
 
 \section{Data for Experiment}
-As discussed in the literature there has been much evidence to support that macro-economic trends such as unemployment and arrears rates at a regional areas are useful for features for predicting credit risk and future unperforming SME loans.
+As discussed in the literature there has been much evidence to support the idea that macro-economic trends such as unemployment and arrears rates at a regional areas are useful features for predicting credit risk and future unperforming SME customers.
 
-The main experiments to be carried out as part of this research will aim to investigate the macro-economic features can improve the prediction model in \subjectname\ compared to the results a prediction model based on features from a historic scorecard. There will be 5 main categories of experimental features created and tested as part of this experiment which will be explained in the next subsections of this chapter. 
+The main experiments to be carried out as part of this research will aim to investigate the macro-economic features can improve the prediction model in \subjectname\ compared to the results of prediction model based on application and customer behavioural features from a historic scorecard. 
+
+There will be 5 main categories of experimental features created and tested as part of this experiment which will be explained in the next subsections of this chapter. 
 
 \begin{itemize}
 	\item Personal customer card spending behaviour
@@ -148,8 +150,9 @@ The main experiments to be carried out as part of this research will aim to inve
 
 
 \subsubsection{Personal customer card spending behaviour}
-One experiment in this research will test to see if customer transactional spending behaviour metrics could be useful for predicting if SME customers will default. The intuition for this analysis is that is customers in one area are suffering hardship there spending habits might be reflective that and as consumers have an adverse affect on SMEs. To do this transactions will be gathered from the personal customers VISA debit card transaction database in \subjectname. 192 million transactions from 1.3 million customers  will be collected for 12 month prior to the observation point (June 2014) in the experiment. 
-Merchants are assigned what is known a merchant category code (MCC), it is used generally for classifying the primary business of the merchant \footnote{\url{https://www.visa.com/supplierlocator/}}. These codes have been leveraged in \subjectname\ to create a Money Manager Application which rolls these MCC in MCC categories. This application allows personal customers to keep track of their spending behaviour through a combination of reports, visualisation and search functionality. These categories are broken down into parent and child categories for this application. These categories can be seen in Table \ref{table:mcc} below
+One experiment in this research will test to see if customers transactional spending behaviour metrics could be useful for predicting if SME customers will default. The intuition for this analysis is that if customers in one area are suffering hardship there spending habits might be reflective of that and as consumers this will have an adverse affect on SMEs business. To do this transactions will be gathered from the personal customers VISA debit card transactional database in \subjectname. 192 million transactions from 1.3 million customers  will be collected for 12 month period prior to the observation point (June 2014) in the experiment. 
+
+Merchants are assigned what is known as a merchant category code (MCC), it is used generally for classifying the primary business of the merchant \footnote{\url{https://www.visa.com/supplierlocator/}}. These codes have been leveraged in \subjectname\ to create a Money Manager Application which rolls these MCC in MCC categories. This application allows personal customers to keep track of their spending behaviour through a combination of reports, visualisation and search functionality. These categories are broken down into parent and child categories for this application. These categories can be seen in Table \ref{table:mcc} below
 
 \begin{table}[H]
 	\centering
@@ -174,9 +177,11 @@ Merchants are assigned what is known a merchant category code (MCC), it is used 
 	\label{table:mcc}
 \end{table}
 
-For this research and experiment these transactions MCC categories have been assigned \textit{Spend} or \textit{Live} category. Transactions categorised as \textit{Spend} will translate to what has been derived as discretionary spend of \subjectname\ customers. This will include transactions such as social activities such as going to the cinema, going to bars and clubs and eating out in restaurants which can be seen in \ref{table:mcc}. Transactions categorised as \textit{Live} will translate to what as been derived as transactions required/associated needed for customers to live. This will include transactions such as paying bills, shopping/groceries.
+For this research and experiment these transactions MCC categories have been assigned \textit{Spend} or \textit{Live} category. Transactions categorised as \textit{Spend} will translate to what has been derived as discretionary spend of \subjectname\ customers. This will include transactions such as social activities such as going to the cinema, going to bars and clubs and eating out in restaurants which can be seen in Table \ref{table:mcc}. Transactions categorised as \textit{Live} will translate to what as been derived as transactions required/associated/needed for customers to live. This will include transactions such as paying bills, shopping/groceries, healthcare etc.
 
-Transactions for each customer will be aggregated to electoral division and local authority for aggregated per month for 12 months prior to the observation point. Metrics will be created calculating the difference between time periods to that's aim will be to see trends or patterns to identify default. The rates of change between transactional spend will be calculated by using the percentage change equation seen below
+Transactions for each customer will be aggregated to electoral division and local authority for each month for the 12 months prior to the observation point. Metrics will be created calculating the difference between time periods to evaluate what trends or patterns are useful for identifying default. 
+
+The rates of change between transactional spend will be calculated by using the percentage change equation seen below
 
 \begin{equation} \label{eqn:PercentageChange}
 \text{Percentage Change} = \frac{X^{2} - X^{1}}{X^{1}}*100  
@@ -199,7 +204,7 @@ There will be 68 features created as part of this experiment. The names, data ty
 
 
 \subsubsection{Personal Loans \& Homeloans default behaviour}
-An experiment will be carried out as part of this research to investigate if \subjectname's personal customers default ratios of loans and homeloans could be useful in predicting if SME customers will default. The intuition for this insight is that if there is a high proportion of personal loan and homeloan defaulting in an area then there could be a relationship with SME defaulting. It was also discussed in literature by \cite{di_pietro_regional} how this was useful for predicting default in Italy.
+An experiment will be carried out as part of this research to investigate if \subjectname's personal customers default ratios of loans and homeloans to investigate if they could be useful in predicting if SME customers will default. The intuition for this insight is that if there is a high proportion of personal loan and homeloan defaulting in an area then there could be a relationship with SMEs also defaulting. It was also discussed in literature by \cite{di_pietro_regional} how metrics like this were useful for predicting default in Italy.
 
 At the observation point (June 2014), personal loan and homeloan products that were active on the \subjectname\ book were analysed. Table \ref{table:AIB_Products} details the products that were extracted as part of this experiment.
 
@@ -228,7 +233,7 @@ At the observation point (June 2014), personal loan and homeloan products that w
 	\label{table:AIB_Products}
 \end{table}
 
-Each product in the Table \ref{table:AIB_Products} above will be rolled up to its product category. Each product will be associated with customer that owns that products where an address so they can be aggregated to electoral division and local authority. The products are then classified as default or not default so a ratio can be built for each electoral division and local authority. Fig. \ref{fig:BothPersonalRatio} below illustrates the default rates for each local authority for personal loan and homeloan products combined. 
+Each product in the Table \ref{table:AIB_Products} above will be rolled up to its product category. Each product will be associated with customer and customer to an address so they can be aggregated to electoral division and local authority. The products are then classified as default or not default so a ratio can be built for each electoral division and local authority. Fig. \ref{fig:BothPersonalRatio} below illustrates the default rates for each local authority for personal loan and homeloan products combined. 
 
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth,center]{BothPersonalRatio}
@@ -240,7 +245,7 @@ There will be 6 features created as part of this experiment. The names, data typ
 
 
 \subsubsection{Central Statistics Office (CSO) Features}
-An experiment will be carried out as part of this research to investigate if data collected as part of the Irish census is indicative of SME default. Census are carried out every 5 years in the Republic of Ireland to paint a picture of living and social conditions of the population. It provide details to the smallest geographic areas which can be used for decision making and planning. For example to find what infrastructure and services need to be invested in each areas for example schools, job training centre and health care services\footnote{\url{http://census.ie/}}. 
+An experiment will be carried out as part of this research to investigate if data collected as part of the Irish census is indicative of SME default. Census are carried out every 5 years in the Republic of Ireland to paint a picture of living and social conditions of the population. It provides details to the smallest geographic areas which can be used for decision making and planning. For example to find what infrastructure and services need to be invested in each areas for example schools, job training centre and health care services\footnote{\url{http://census.ie/}}. 
 
 The data from the census can be organised into 11 themes which can be illustrated below in Table \ref{table:censusThemes}
 
@@ -271,7 +276,7 @@ The data from the census can be organised into 11 themes which can be illustrate
 \end{table}
 
 
-Anecdotally low unemployment rates and higher education rates would be associated with areas good economic growth and prosperity. Since the financial crisis of 2008-2009 there has been huge reduction in the number of construction projects which is said to be heavily linked to higher unemployment. As a result for this experiment features have been created using data provided from the census as local authority and electoral division areas. The features that have been created are lower than secondary level of eduction ratio, manual based occupation ratio, unemployment ratio by electoral division and local authority. There was some data manipulation and business logic applied to transform the raw data into these metrics.
+Anecdotally low unemployment rates and higher education rates would be associated with areas good economic growth and prosperity. Since the financial crisis of 2008-2009 there has been huge reduction in the number of construction projects which is said to be heavily linked to higher unemployment. As a result for this experiment features have been created using data provided from the census at local authority and electoral division areas. The features that have been created are lower than secondary level of eduction ratio, manual based occupation ratio, unemployment ratio by electoral division and local authority. There was some data manipulation and business logic applied to transform the raw data into these metrics.
 
 There will be 6 features created as part of this experiment. The names, data types and description for each features can be found in Appendix \ref{AppendixE}.
 
@@ -287,57 +292,16 @@ The majority of the features will be built using the percentage change formula s
 There will be 20 features created as part of this experiment. The names, data types and description for each features can be found in Appendix \ref{AppendixF}.
 
 \subsubsection{Feature grouping based on Home Loans, Personal Loans, SME Loans}
-As reviewed in the literature \ref{sec:binning} is a useful method of transforming interval based features into categorical features which have a number of benefits such as simplifying the structure of the data into nominal and ordinal based on a grouping and interval based on estimating the groups weight of evidence (WoE). This binning increases scoring models robustness by generalising model for unseen data thus reducing the chances of over-fitting. As discussed in the literature it also has the capability to incorporate missing values and other extreme outliers which cause instability in the model. 
+As reviewed in the literature in Section \ref{sec:binning}, binning is a useful method of transforming interval based features into categorical features. This has a number of benefits such as simplifying the structure of the data into nominal and ordinal based features and interval based on estimating the groups weight of evidence (WoE). Binning increases scoring models robustness by generalising model for unseen data thus reducing the chances of over-fitting. As discussed in the literature it also has the capability to incorporate missing values and other extreme outliers which cause instability in the model. 
 
-The features to be binned as part of this experiment are based on features already seen in this section. Homeloan, personal loan and SME default ratios at the observation point (June 2014) will be binned in attempt to build robust and simplified feature set. This experiment will test the nominal/ordinal outputs and WoE outputs in the predictive modelling stage to see if either are indicative of arrears. 
-
+The features to be binned as part of this experiment are based on features already seen in this section. Homeloan, personal loan and SME default ratios at the observation point (June 2014) will be binned in attempt to build robust and simplified feature set. This experiment will test the nominal/ordinal outputs and WoE outputs in the predictive modelling stage to see if either improve the prediction of the baseline model.
 
 There will be 16 features created as part of this experiment. The names, data types and description for each features can be found in Appendix \ref{AppendixG}.
 
-\pagebreak
-
-
-\section{Old Sections}
-This chapter will detail the design of the experiments that are to be implemented as part of the research project. It will detail how customers addresses are mapped to locations and how features are generated for these locations. It will also discuss any of the pre-processing, and feature selection and statistical techniques used to create select the data for the ABT.
-
-The SME default problem would be considered imbalanced dataset for classification problem where algorithms make the assumption there is a equal number of good and bad classes/group \citep{japkowicz_class_2000}. The dataset used in this experiment has a small number of SME customer in default, because of this issue a number of approaches will taken to considered to address.
-
-Statistical analysis and evaluation methods used to assess the strength of models will be detailed and discussed, also it will outline any further transformations necessary for specific algorithms. Finally criteria for deciding which model will be chosen as the best and most fit for purpose will be detailed.
-
-
-\subsection{Generating the ABTs}
-We now have a reference list that allows us to apply a rank to all achievable loan application events prior to completion. A method is required to join this reference list with our csv (comma seperated value) log files resulting from the MapReduce job. 
-
-%Fine from here
-\subsection{Software Used}\label{softwareUsed}
-
-\subsubsection{Address Matching}
-A combination of Apache Solr\footnote{\url{http://lucene.apache.org/solr/}} and Python\footnote{\url{https://www.python.org/}} were used to match \subjectname's addresses to an ED/LA in GDD. Solr ia an open source web application enterprise search engine. It is an open source application written in Java, which is a wrapper around the Apache Lucence \footnote{{\url{https://lucene.apache.org/core/}}}. Combined they provide a reliable, fast, scalable platform capable of providing distributed indexing which can then be used for searching or navigation. Solr was used to index GD which then allowed it to be searched. Python is a high-level, general purpose programming language which can be used to build both large and small scale programs. Python like Solr is open source and freely available. One its most attractive and best characteristics is it is easy to read and use. A program was created to standardise and cleanse the addresses in \subjectname's database. The program would then take the cleansed addresses and query them against GDD indexed through the Solr web API, using string comparison algorithms discussed in Chapter 2 to return the most likely GDD address.
-
-\subsubsection{Data Wrangling}
-Anecdotally speaking, data scientists and analysts spend majority of their time data wrangling. Data wrangling is time consuming mundane process used to collect and prepare data prior to being explored for useful information. In the experiment of this thesis a variety of data types and data sources were used. Data from the \subjectname\ EDW, GDD in Solr served in JSON, CSO data in flat file to name a few. R\footnote{{\url{https://www.r-project.org/}}}, another open source programming language but has much more emphasis on statistical computing. It also has many libraries available for processing and data manipulation which are available in the CRAN\footnote{{\url{https://cran.r-project.org/}}} repository. The most useful package used during this process was \textit{reshape}\footnote{{\url{https://cran.r-project.org/web/packages/reshape/index.html}}}. Reshape allows to easily restructure, transpose and aggregate your data. 
-
-\subsubsection{Visualisations}
-R is also a very strong programming language at creating beautiful visualisations so it will be used throughout this paper. One package used in this paper was \textit{ggplot}
-\footnote{{\url{https://cran.r-project.org/web/packages/ggplot2/index.html}}}. 
-
-Some other custom geospatial visualisations may also be required. This could be done using Arcgis, Qgis, D3 or R still to be decided.
-
-\subsubsection{Modelling}
-SQL was used to identify customers to be used for predictions and generate the target class.
-The models and experiments performed in this used in this are built in R and SAS. SAS is a proprietary software. SAS is the tool of choice by the modelling teams in \subjectname. Anecdotally SAS is a legacy in financial institutions, it is what people are used to using but also there is a for-profit corporation vetting the code for its customers and customer service and support corporations are used to. SAS offers a graphical interfaces which means users do not have to enter code, but this can be complemented using the SAS programming language. Anecdotally speaking SAS is excellent for building predictive modes resulting in good time to value. SAS Enterprise Miner includes the following components Time Series, Variable Clustering, Cluster, Interactive Binning, Principal Components, AutoNeural, DMNeural, DMine Regression, Gradient Boosting, Ensemble, and Text Mining.
-\\
-R is a very strong competitor to SAS in this space. Because of its open source nature there are many libraries available for building predictive models. For example one popular package \textit{caret}\footnote{{\url{https://cran.r-project.org/web/packages/caret/index.html}}} contains many models and continues to grow
-
-\section{Building Models}
-In order to avoid over-fitting models, considerations need to be made as to what data to use in training the model. Each of the models built will be trained using a training set which is a subset of the over all available samples. We discussed possible options for training set selection in subsection
-
-
-\section{Evaluation Methods}
-Several evaluation techniques will be applied to quantify the usefulness of all models produced. As discussed in section \ref{modelEval}, there are various ways to evaluate the performance of a classifier. A common metric used is overall accuracy (\% of records correctly classified). 
-
 
 \section{Conclusions}\label{desConc}
+
+
 \begin{comment}
 This chapter has discussed the processes required to carry out data mining techniques on non-relational web log data. The required data transformations have been discussed as well as the implemented methods for feature generation.
 \end{comment}
