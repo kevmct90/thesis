@@ -8,14 +8,9 @@
 
 \section{Introduction}
 
-Make sure say you are using the same data split for training and testing so results are consistent.
-\textit{
-As the standard approach to assess credit scoring
-systems is to use a holdout test set, each dataset used was divided into three subsets:
-(i) the training set (55\%); (ii) the validation set (15\%), and (iii) the test set (30\%).
-The training set and the validation set were used to train and tune the classifiers
-while the test set was used to assess their performance. This procedure was performed
-repeatedly over a number of turns \citep{kennedy_credit_2013}}
+This chapter will present the design of the experiment to be undertaken as part of this research. The aim of this research is see if including macro-economic features while training a SME credit scoring model will it return better results than a model just trained using the benchmark features from a historic scorecard. 
+
+There will be two main sections to this chapter. The first we will be building and evaluating the benchmark features for \textit{previous delinquency} and \textit{no previous delinquency} models. This will involve evaluating the predictive capabilities of various models discussed in Chapter \ref{Chapter2}.
 
 
 
@@ -28,14 +23,16 @@ repeatedly over a number of turns \citep{kennedy_credit_2013}}
 \end{figure}
 
 
+
+
+
+\section{Baseline Benchmark Evaluation}
+
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth,height = 11cm,center]{Experiment_Workflow}
 	\caption{Default Ratios for Homeloan and Personal Loans by Local Authority}
 	\label{fig:Experiment_Workflow}
 \end{figure}
-
-
-
 
 
 \pagebreak
