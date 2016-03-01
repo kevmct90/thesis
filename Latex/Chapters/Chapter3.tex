@@ -54,7 +54,7 @@ The characteristics of the two datasets that will be used to build the baseline 
 			\textbf{Total} &  &  & \textbf{27,082} & \textbf{25,703} & \textbf{1,389} & \textbf{95:05} \\ \hline
 		\end{tabular}
 	}
-	\caption{Characteristics of datasets to be used in the exploratory evaluation for training a baseline model and assessing the evaluation metrics to be used in the research \\
+	\caption{Characteristics of datasets to be used in the exploratory evaluation for training a benchmark model and assessing the evaluation metrics to be used in the research \\
 		 \# Numeric refers to the number of continuous features \\
 		 \# Nominal refers to the number of categorical features
 		}
@@ -147,7 +147,7 @@ From test cases it was observed that the application appears to work quite espec
 Unfortunately there was not scope in this research to carry out further analysis on the accuracy of the results but the business were so impressed with the results they observed that they are going to carry out an enterprise product investigation and evaluation. Leading on from this research they will be taking a sample of 20,000 addresses in \subjectname\ and allowing vendors detailed earlier to return their results. These results will then be collated by the business. Testing will done using a crowd sourcing to build confidence intervals to evaluate which product and service offered the best result. An informed data driven decision can then be made if a proprietary address matching application is needed or the application from this research is accurate and meets the requirements of \subjectname.  
 
 
-\section{Data for Experiment}
+\section{Data for Experiment}\label{sec:dataForExper}
 As discussed in the literature there has been much evidence to support the idea that macro-economic trends such as unemployment and arrears rates at a regional areas are useful features for predicting credit risk and future unperforming SME customers.
 
 The main experiments to be carried out as part of this research will aim to investigate the macro-economic features can improve the prediction model in \subjectname\ compared to the results of prediction model based on application and customer behavioural features from a historic scorecard. 
@@ -324,6 +324,26 @@ The data that will be collected and processed as part of this research has been 
 
 When the process is finished we will be left with the two ABTs generated for SME customers based on features from historic scorecards and two ABTs that also incorporate experimental features based on electoral division and local authority which will be investigated as part of this research.
 
+
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l r r r r r r}
+			\hline
+			\textbf{Model} &  \textbf{\# Numeric} & \textbf{\# Nominal} & \textbf{\# Observations} & \textbf{\# Good} & \textbf{\# Bad} & \textbf{Good:Bad}\\
+			\hline
+			Previous Delinquency & 119(Previously 11) & 8(Previously 0) & 2,926 & 2,198  & 738 & 75:25 \\ 
+			No Previous Delinquency & 117(Previously 9)  & 8(Previously 0) & 24,156 & 23,505 & 651  & 97:03 \\ \hline
+			\textbf{Total} &  &  & \textbf{27,082} & \textbf{25,703} & \textbf{1,389} & \textbf{95:05} \\ \hline
+		\end{tabular}
+	}
+	\caption{Characteristics of datasets to be used in the experiment \\to evaluate macro-economic features \\
+		\# Numeric refers to the number of continuous features \\
+		\# Nominal refers to the number of categorical features
+	}
+	\label{characteristicsMacroDatasets}
+\end{table}
 
 \section{Software Used}\label{chp3:softwareUsed}
 A number of software tools and applications were required in this research. These have been broken down into four main subsection address matching, data wrangling to create ABT, Visualisations and Modelling. All the software used in this research was open sources apart from SAS which is used to build the for the benchmark evaluation experiment in Section \ref{sec:benchFeature}. 

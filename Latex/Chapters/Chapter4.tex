@@ -24,6 +24,8 @@ So two models will be built as experiments benchmarks which will be compared to 
 
 There were many model validation methods discussed in Section \ref{sec:modelValid} such as LOOCV, k-fold validation and hold-out validation method. Due to practicability and reproducibility it was decided that hold-out method with training/validation/test dataset was the best assess model results and performance measures in this experiment. As mentioned before at the observation point, June 2014 SME customers were selected that were not in default. The number of customers for these experiments is 27,082 which is broken down into a previous delinquency and no previous delinquency dataset. Stratified sampling on the target class to build a training/validation/test dataset. The split will be broken down as 60\% training, 20\% validation and 20\% testing. The breakdown for the these partitions can be observed in Table \ref{table:benchmark_holdout} below. 
 
+Note: The data partitions will be consistent across all tests to mitigate the risk of misleading results.
+
 \begin{table}[H]
 	\centering\
 	\resizebox{\textwidth}{!}
@@ -268,36 +270,35 @@ As observed in the previous example of the performance measures used in this dat
 
 It can be concluded from the experiments in this Section that there Regression model worked well in comparison to the others on both datasets therefore we will continue use it in the next experiments using macro-economic features. It was also observed that the KS statistic was the optimal performance measure at selecting a cut-off value measure the performance of the model therefore it will also be used in future experiments.
 
-\section{Macro-Economic Experiment Setup }
+\section{Methodology for Evaluating Macro-Economic Features}
+Leading on from the results in Section \ref{sec:benchFeature} this section will layout the design of the experiment to evaluate macro-economic features created as part of this research. 
+ 
+Fig. \ref{fig:Experiment_Workflow} below illustrates at a high level design of this experiment. 
 
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth,height = 11cm,center]{Experiment_Workflow}
-	\caption{Default Ratios for Homeloan and Personal Loans by Local Authority}
+	\caption{Overview of Experiment to Evaluate Macro-Economic Features}
 	\label{fig:Experiment_Workflow}
 \end{figure}
 
+Data for this experiment as discussed in Chapter \ref{Chapter3} will include features that were used in a historical credit scorecard model in \subjectname\ (See Section \ref{sec:existFeatures}) along with macro-economic features built from transaction spend, census metrics, default ratios and trends (See Section \ref{sec:dataForExper}). 
 
-\pagebreak
+Stratified sampling will on target class to build a training/test dataset will be completed. The split will broken down into 70\% training and 30\% test recommended by research completed by \cite{siddiqi_credit_2012}. We no longer need a validation dataset since parameters for the model have been tuned using the benchmark evaluation. 
 
-
-\section{Old Sections}
-This chapter will detail the design of the experiments that are to be implemented as part of the research project. It will detail how customers addresses are mapped to locations and how features are generated for these locations. It will also discuss any of the pre-processing, and feature selection and statistical techniques used to create select the data for the ABT.
-
-The SME default problem would be considered imbalanced dataset for classification problem where algorithms make the assumption there is a equal number of good and bad classes/group \citep{japkowicz_class_2000}. The dataset used in this experiment has a small number of SME customer in default, because of this issue a number of approaches will taken to considered to address.
-
-Statistical analysis and evaluation methods used to assess the strength of models will be detailed and discussed, also it will outline any further transformations necessary for specific algorithms. Finally criteria for deciding which model will be chosen as the best and most fit for purpose will be detailed.
+\subsection{Building the Models}
 
 
-\subsection{Generating the ABTs}
-We now have a reference list that allows us to apply a rank to all achievable loan application events prior to completion. A method is required to join this reference list with our csv (comma seperated value) log files resulting from the MapReduce job. 
+\subsubsection{Baseline Model in R}
+\subsubsection{Correlation Analysis}
+\subsubsection{Information Gain}
+\subsubsection{Coarse Selection}
+\subsubsection{KNN Approach}
+\subsubsection{Random Oversampling}
+\subsubsection{Synthetic Sampling }
+\subsubsection{Evaluation Methods}
 
-%Fine from here
 
 
-\section{Building Models}
-In order to avoid over-fitting models, considerations need to be made as to what data to use in training the model. Each of the models built will be trained using a training set which is a subset of the over all available samples. We discussed possible options for training set selection in subsection
 
 
-\section{Evaluation Methods}
-Several evaluation techniques will be applied to quantify the usefulness of all models produced. As discussed in section \ref{modelEval}, there are various ways to evaluate the performance of a classifier. A common metric used is overall accuracy (\% of records correctly classified). 
-
+\section{Conclusions}
