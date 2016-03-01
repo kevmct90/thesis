@@ -53,7 +53,7 @@ There were many model validation methods discussed in Section \ref{sec:modelVali
 
 It can be observed it Table \ref{table:benchmark_holdout} that the \textit{Good:Bad} ratio is consistent for each partition due because stratified sampling based on the target feature ensuring each partition shares the same homogeneous properties as the full dataset. 
 
-Five different predictive models will be trained as part of this experiment which have been discussed previously in Section \ref{sec:predictModels}. Typically in \subjectname\ and industry the predictive model of choice is logistic regression. This experiment will evaluate if there is any significant difference between the results from a logistic regression compared mode compared with a decision tree, neural network, adaboost, and SVM. As discussed in the research these are some of the most common algorithms used in predictive modelling.
+Five different predictive models will be trained as part of this experiment which have been discussed previously in Section \ref{sec:predictModels}. Typically in \subjectname\ and industry the predictive model of choice is logistic regression. This experiment will evaluate if there is any significant difference between the results from a logistic regression compared mode compared with a decision tree, neural network, gradient boosting, and SVM. As discussed in the research these are some of the most common algorithms used in predictive modelling.
 
 Once the each of the models have been trained they will need to assesses for performance and accuracy. Based on the literature and industry practice the AUC is the performance measure of choice for evaluating how well the model performed across all test observations. When combined with the ROC chart it allows you identify if the model generalised well or if the model has over-fitted the training data and how accurate the model is overall. However AUC does not allow you to identify what threshold should be chosen to break your predictions into goods and bads. Statistics such as the minimum misclassification rate, K-S statistic, equal precision equal recall (EPER), lift and the default threshold will be evaluated to identify the optimal performance measure to split the test results into goods and bads. 
 
@@ -67,7 +67,7 @@ The evaluation process used for model and performance measure is illustrated bel
 
 \subsubsection{Previous Delinquency Dataset Benchmark Evaluation}
 
-There are 11 features in the dataset to model customers who have been in default in the past. For privacy reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total number of customers to be be modelled in the Previous Delinquency dataset approximately 25\% of customers are in default at the end of outcome window. This default rate is just based on SME customers for this analysis and is not reflective of the enterprise default rate. The results for the benchmarks models are can be seen in Table \ref{table:prevdelinqbase}.
+There are 11 features in the dataset to model customers who have been in default in the past. For privacy reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total number of customers to be be modelled in the Previous Delinquency dataset approximately 25\% of customers are in default at the end of outcome window. This default rate is just based on customers in this analysis and is not reflective of the enterprise default rate. The results for the benchmarks models can be seen in Table \ref{table:prevdelinqbase}.
 
 \begin{table}[H]
 	\centering
@@ -90,7 +90,7 @@ There are 11 features in the dataset to model customers who have been in default
 			\hline
 		\end{tabular}
 	}
-	\caption{Previous Delinquency Base Benchmark Results}
+	\caption{Previous Delinquency Benchmark Results}
 	\label{table:prevdelinqbase}
 \end{table}
 
@@ -98,19 +98,18 @@ The model that outputted the best result as seen in Table \ref{table:prevdelinqb
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{Base_Delinq_Model_ROC}
-	\caption{Previous Delinquency Base Benchmark Model ROC Charts}
+	\caption{Previous Delinquency Benchmark Model ROC Charts}
 	\label{fig:Delinq_Model_ROC}
 \end{figure}
 
-It can be observed that this is not the case for the \textit{SVM Radial Basis Fn} model where it appears to have completely \textit{over-fitted} the training partition with an AUC training = 0.812 which drops to 0.60 and 0.619 for the validation and testing partitions datasets respectively. Overall most of the models appears to be predictive and have generalised quite well, however there may be case for investigating and removing the \textit{SVM Radial Basis Fn, Decision Tree and SVM Sigmoid} as these appear to not be predictive, not generalised well or to have over-fitted the training data partition. 
+It can be observed that the \textit{SVM Radial Basis Fn} model does not generalise well where it appears to have completely \textit{over-fitted} the training partition with an AUC training = 0.812 which drops to 0.60 and 0.619 for the validation and testing partitions datasets respectively. Overall most of the models appears to be predictive and have generalised quite well, however there may be case for investigating and removing the \textit{SVM Radial Basis Fn, Decision Tree and SVM Sigmoid} as these appear to not be predictive, not generalised well or to have over-fitted the training data partition. There is no one stand-out model from the results in Table \ref{table:prevdelinqbase} and there is an argument that logistic regression should be continued to be used. 
 
-\begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{Base_Delinq_Model_Lift}
-	\caption{Previous Delinquency Base Benchmark Model Lift Charts}
-	\label{fig:Delinq_Model_Lift}
-\end{figure}
 
-We can see above in Fig. \ref{fig:Delinq_Model_Lift} that the majority of the models are returning positive results in the unseen test chart. This is very encouraging, for example if we were to contact 10\% of customers that these models decided were going to go into default, you would contact over twice as many customers that would go into default than if you used no model at all. This is very important when deciding on a business strategy and is where BE becomes extremely important. 
+Next we will evaluate the performance measure that will be used to identify the accuracy of the model at 
+
+If the 
+
+
 
 \begin{figure}[H]
 	\centering
@@ -224,13 +223,7 @@ The model that outputted the best result as seen table \ref{table:NoPreviousDeli
 
 It can be observed that most the majority of the models generalise quite well and are predictive. However as can seen in Table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} the \textit{AutoNeural Network, Decision Tree and SVM Polynomial Models} are not predictive. There be a case in investigate this further and the huge class imbalance may be causing an issue or to remove the models completely for further investigation.
 
-\begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{Base_NonDelinq_Model_Lift}
-	\caption{No Previous Delinquency Model Lift Chart}
-	\label{fig:NonDelinq_Model_Lift}
-\end{figure}
 
-As with the lift chart in the Previous Delinquency model we can see in Fig. \ref{fig:NonDelinq_Model_Lift} the majority of the models are returning positive results most notably in the the regression validation and test result as you would expect. We are seeing a larger lift than in the Previous Delinquency model also. We can see for the regression model if we were to contact 10\% of the customers that this model decided were to going to go into default we would contact three times as many customers than you if you didn't use a model at all and choose them at random. 
 
 \begin{figure}[H]
 	\centering
