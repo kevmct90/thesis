@@ -105,11 +105,7 @@ The model that outputted the best result as seen in Table \ref{table:prevdelinqb
 It can be observed that the \textit{SVM Radial Basis Fn} model does not generalise well where it appears to have completely \textit{over-fitted} the training partition with an AUC training = 0.812 which drops to 0.60 and 0.619 for the validation and testing partitions datasets respectively. Overall most of the models appears to be predictive and have generalised quite well, however there may be case for investigating and removing the \textit{SVM Radial Basis Fn, Decision Tree and SVM Sigmoid} as these appear to not be predictive, not generalised well or to have over-fitted the training data partition. There is no one stand-out model from the results in Table \ref{table:prevdelinqbase} and there is an argument that logistic regression should be continued to be used. 
 
 
-Next we will evaluate the performance measure that will be used to identify the accuracy of the model at 
-
-If the 
-
-
+Next we will evaluate the performance measure that will be used to identify the threshold that will be selected to evaluate the model. Results can observed in Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:DelinquencyModelCutoff}. 	
 
 \begin{figure}[H]
 	\centering
@@ -137,10 +133,6 @@ If the
 	\label{fig:Base_Delinq_Model_CutOff_Analysis}
 \end{figure}
 
-As mentioned before knowing the business goal and aim can be very useful when trying to decide how you want to evaluate you model. The over usefulness and predictiveness of model can be got by combing the AUC with the ROC chart but sometimes this will not suffice. 
-
-In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:DelinquencyModelCutoff} you can see the cut-off analysis for the best benchmark model \textit{Gradient Boosting}. As discussed in Chapter \ref{Chapter2} this analysis demonstrates that your business goal and objectives will dictate which performance metric you may want to maximise or minimise over another. 
-
 \begin{table}[H]
 	\centering
 	\resizebox{\textwidth}{!}
@@ -162,27 +154,17 @@ In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:Delinqu
 			0.29             & EPER (Test)           & 50          & 87          & 96          & 353         & 0.688             & 0.365              & 0.786        & 0.342           & 0.802                & 0.312  & 0.572    \\ \hline
 		\end{tabular}
 	}
-	\caption{Delinquency Model Cut-off Results }
+	\caption{Previous Delinquency Cut-off Results }
 	\label{table:DelinquencyModelCutoff}
 \end{table}
 
-Table \ref{table:DelinquencyModelCutoff} above illustrates which cut-off threshold are best for results you are trying to maximise for the previous delinquency model.
+It can be observed in Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and \ref{table:DelinquencyModelCutoff} that using the default, min misclassification and EPER methods for selecting the threshold are not very useful in this problem.
 
-\textit{
-	\url{https://cran.r-project.org/doc/contrib/Sharma-CreditScoring.pdf}
-	To the dismay of optimal credit scoring cut off decision literature the KS statistic is
-	heavily in use of the industry. Hand has shown that KS can be misleading and the only
-	metric which matters should be the conditional bad rate given the loan is approved
-	(Hand, 2005).
-	That said due to prevalence of KS we show how to compute it in R as it might be needed
-	in work settings. The efficient frontier trade off approach although optimal seems to not appeal to executives as making explicit and forced trade offs seems to cause cognitive
-	dissonance. For some reason people in the industry are entrenched on showing 1 number
-	to communicate models whether it is KS or FICO etc.
-	KS is the maximum difference between the cumulative true positive and cumulative false
-	positive rate. The code above calculates this using the ROC curve.
-	If you do not use this cut off point the KS in essence does not mean much for actual
-	separation of the cut off chosen for the credit granting decision.
-}
+The default cut-off assumes that the dataset is balanced therefore it is not optimal for this dataset. The misclassification rate which inverse is accuracy, is made bias by the large number of true negative values it is getting correct. Basically overall it is making the making the most correct predictions but not on the true positive defaulting customers that we are really interested. 
+
+The EPER cut-off derived where the threshold gives you precision rate and recall rate intersect. which are almost the same. With this method you are aiming to classify a large number of true positive will not classifying too many false positives. 
+
+The KS statistic aim to set the threshold that maximises the separation between good and bads. As discussed in Section \ref{modelPerformMeasure} it widely used in credit scoring industry for selecting the threshold cut-off. Looking at the results from Table \ref{table:DelinquencyModelCutoff} it scores the best results in Recall which tells us how well its being able to classify all the customers in default. Balanced accuracy which is not biased to large imbalanced also performed best using the KS statistic. For selecting the threshold of future experiments on the previous delinquency dataset the KS statistic will be used.
 
 \subsubsection{No Previous Delinquency}
 

@@ -20,3 +20,17 @@ We can see above in Fig. \ref{fig:Delinq_Model_Lift} that the majority of the mo
 \end{figure}
 
 As with the lift chart in the Previous Delinquency model we can see in Fig. \ref{fig:NonDelinq_Model_Lift} the majority of the models are returning positive results most notably in the the regression validation and test result as you would expect. We are seeing a larger lift than in the Previous Delinquency model also. We can see for the regression model if we were to contact 10\% of the customers that this model decided were to going to go into default we would contact three times as many customers than you if you didn't use a model at all and choose them at random. 
+
+Because of the large imbalance in the dataset the default, min misclassification rate will return very misleading results. These performance measures are made easily bias and skewed due to the 
+
+Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} allows you analyse multiple methods deriving what the cut-off threshold should be and Table \ref{table:DelinquencyModelCutoff} allows you to evaluate these results.
+
+Ideally in this situation for credit scoring maximise the number of customer you can identify that will go into defaul 
+
+As mentioned before knowing the business goal and aim can be very useful when trying to decide how you want to evaluate you model. The over usefulness and predictiveness of model can be got by combing the AUC with the ROC chart but sometimes this will not suffice. 
+
+In Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:DelinquencyModelCutoff} you can see the cut-off analysis for the best benchmark model \textit{Gradient Boosting}. As discussed in Chapter \ref{Chapter2} this analysis demonstrates that your business goal and objectives will dictate which performance metric you may want to maximise or minimise over another. 
+
+Based 
+
+Based on the literature it was decided that \textit{balanced accuracy} (BA) would be be the most measure to evaluate the performance of the model at a specific threshold. As discussed in Section \ref{modelPerformMeasure} BA negates the impact of bias and skewness of mo
