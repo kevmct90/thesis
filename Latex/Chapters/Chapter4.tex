@@ -67,7 +67,7 @@ The evaluation process used for model and performance measure is illustrated bel
 
 \subsubsection{Previous Delinquency Dataset Benchmark Evaluation}
 
-There are 11 features in the dataset to model customers who have been in default in the past. For privacy reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total number of customers to be be modelled in the Previous Delinquency dataset approximately 25\% of customers are in default at the end of outcome window. This default rate is just based on customers in this analysis and is not reflective of the enterprise default rate. The results for the benchmarks models can be seen in Table \ref{table:prevdelinqbase}.
+There are 11 features in the dataset to model customers who \textbf{have been} in default in the past. For privacy reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total number of customers to be be modelled in the Previous Delinquency dataset approximately 25\% of customers are in default at the end of outcome window which can be seen in Table \ref{table:benchmark_holdout}. This default rate is just based on customers in this analysis and is not reflective of the enterprise default rate. The results for the benchmarks models can be seen in Table \ref{table:prevdelinqbase}.
 
 \begin{table}[H]
 	\centering
@@ -94,7 +94,7 @@ There are 11 features in the dataset to model customers who have been in default
 	\label{table:prevdelinqbase}
 \end{table}
 
-The model that outputted the best result as seen in Table \ref{table:prevdelinqbase} highlighted in green above was the Gradient Boosting Model(Ada), this is based on the highest validation AUC = 0.681. We can see above table \ref{table:prevdelinqbase} and Fig. \ref{fig:Delinq_Model_ROC} below that the \textit{Gradient Boosting Model} generalises quite well across the training, validation and testing partitions.
+The model that outputted the best result as seen in Table \ref{table:prevdelinqbase} highlighted in green above was the Gradient Boosting Model(Ada), this is based on the highest validation AUC = 0.681. We can see above Table \ref{table:prevdelinqbase} and Fig. \ref{fig:Delinq_Model_ROC} below that the Gradient Boosting Model generalises quite well across the training, validation and testing partitions.
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{Base_Delinq_Model_ROC}
@@ -102,7 +102,7 @@ The model that outputted the best result as seen in Table \ref{table:prevdelinqb
 	\label{fig:Delinq_Model_ROC}
 \end{figure}
 
-It can be observed that the \textit{SVM Radial Basis Fn} model does not generalise well where it appears to have completely \textit{over-fitted} the training partition with an AUC training = 0.812 which drops to 0.60 and 0.619 for the validation and testing partitions datasets respectively. Overall most of the models appears to be predictive and have generalised quite well, however there may be case for investigating and removing the \textit{SVM Radial Basis Fn, Decision Tree and SVM Sigmoid} as these appear to not be predictive, not generalised well or to have over-fitted the training data partition. There is no one stand-out model from the results in Table \ref{table:prevdelinqbase} and there is an argument that logistic regression should be continued to be used. 
+It can be observed that the SVM Radial Basis Fn model does not generalise well where it appears to have completely over-fitted the training partition with an AUC training = 0.812 which drops to 0.60 and 0.619 for the validation and testing partitions datasets respectively. Overall most of the models appears to be predictive and have generalised quite well, however there may be case for investigating and removing the SVM Radial Basis Fn, Decision Tree and SVM Sigmoid as these appear to not be predictive, not generalised well or to have over-fitted the training data partition. There is no one stand-out model from the results in Table \ref{table:prevdelinqbase} and there is an argument that logistic regression should be continued to be used. 
 
 
 Next we will evaluate the performance measure that will be used to identify the threshold that will be selected to evaluate the model. Results can observed in Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:DelinquencyModelCutoff}. 	
@@ -164,11 +164,13 @@ The default cut-off assumes that the dataset is balanced therefore it is not opt
 
 The EPER cut-off derived where the threshold gives you precision rate and recall rate intersect. which are almost the same. With this method you are aiming to classify a large number of true positive will not classifying too many false positives. 
 
-The KS statistic aim to set the threshold that maximises the separation between good and bads. As discussed in Section \ref{modelPerformMeasure} it widely used in credit scoring industry for selecting the threshold cut-off. Looking at the results from Table \ref{table:DelinquencyModelCutoff} it scores the best results in Recall which tells us how well its being able to classify all the customers in default. Balanced accuracy which is not biased to large imbalanced also performed best using the KS statistic. For selecting the threshold of future experiments on the previous delinquency dataset the KS statistic will be used.
+The KS statistic aim to set the threshold that maximises the separation between good and bads. As discussed in Section \ref{modelPerformMeasure} it widely used in credit scoring industry for selecting the threshold cut-off. Looking at the results from Table \ref{table:DelinquencyModelCutoff} it scores the best results in Recall which tells us how well its being able to classify all the customers in default. Balanced accuracy which is not biased to large imbalanced also performed best using the KS statistic. It is also worth noting that the KS statistic sets a threshold equal to the imbalance ratio in the dataset. For selecting the threshold of future experiments on the previous delinquency dataset the KS statistic will be used. 
+
+
 
 \subsubsection{No Previous Delinquency}
 
-There are 9 features in the dataset to model customers who have been in default in the past. For security reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total customers to be be modelled in the No Previous Delinquency model approximately 2.7\% of customers are in default at the end of outcome window. This default rate is just based on SME customers for this analysis and is not reflective of the enterprise default rate. The results for the baseline benchmarks models are as follows.
+There are 9 features in the dataset to model customers who \textbf{have not been} in default in the past. For privacy reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total customers to be be modelled in the No Previous Delinquency model approximately 2.7\% of customers are in default at the end of outcome window which can be seen in Table \ref{table:benchmark_holdout}. This default rate is just based on customers in this analysis and is not reflective of the enterprise default rate. The results for the baseline benchmarks models are as follows in Table \ref{table:NoPreviousDelinquencyBaseModelDetails}.
 
 \begin{table}[H]
 	\centering
@@ -191,11 +193,11 @@ There are 9 features in the dataset to model customers who have been in default 
 			\hline
 		\end{tabular}
 	}
-	\caption{No Previous Delinquency Base Model Details}
+	\caption{No Previous Delinquency Bench Mark Results}
 	\label{table:NoPreviousDelinquencyBaseModelDetails}
 \end{table}
 
-The model that outputted the best result as seen table \ref{table:NoPreviousDelinquencyBaseModelDetails} highlighted in green above  was the \textit{Logistic Regression Model}, this is based on the highest validation AUC = 0.71. We can see above table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} below that the \textit{Logistic Regression Model} generalises quite well across the training, validation and testing partitions.
+The model that outputted the best result as seen table \ref{table:NoPreviousDelinquencyBaseModelDetails} highlighted in green above  was Logistic Regression, this is based on the highest validation AUC = 0.71. We can see above table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} below that the Logistic Regression Model generalises quite well across the training, validation and testing partitions.
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{Base_NonDelinq_Model_ROC}
@@ -203,9 +205,11 @@ The model that outputted the best result as seen table \ref{table:NoPreviousDeli
 	\label{fig:NonDelinq_Model_ROC}
 \end{figure}
 
-It can be observed that most the majority of the models generalise quite well and are predictive. However as can seen in Table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} the \textit{AutoNeural Network, Decision Tree and SVM Polynomial Models} are not predictive. There be a case in investigate this further and the huge class imbalance may be causing an issue or to remove the models completely for further investigation.
+It can be observed that most the majority of the models generalise quite well and are predictive. However it can observed in Table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} the AutoNeural Network, Decision Tree and SVM Polynomial Models are not predictive at all. These models as a result will be removed from any further analysis. Out of the remaining model logistic regression performed the best like in the previous dataset in this experiment. 
 
 
+
+The class imbalance problem in the No Previous Delinquency dataset becomes very evident in Fig.  \ref{fig:NonDelinquencyModelCutOffAnalysis} when compared to Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis}. This issue of imbalance will be investigated further in this Chapter. The algorithm really struggles to distinguish the good from the bad customers in this dataset. Results can observed in Fig. \ref{fig:NonDelinquencyModelCutOffAnalysis} and Table \ref{table:NoDelinquencyModelCutoff}
 
 \begin{figure}[H]
 	\centering
@@ -233,8 +237,6 @@ It can be observed that most the majority of the models generalise quite well an
 	\label{fig:NonDelinquencyModelCutOffAnalysis}
 \end{figure}
 
-The imbalance problem in the No Previous Delinquency model becomes very evident in Fig.  \ref{fig:NonDelinquencyModelCutOffAnalysis} when compared to Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis}. This issue of imbalance will be investigated further in this Chapter.
-
 \begin{table}[H]
 	\centering
 	\resizebox{\textwidth}{!}
@@ -259,11 +261,11 @@ The imbalance problem in the No Previous Delinquency model becomes very evident 
 			0.08            & EPER (Test)     & 21          & 173         & 109         & 4528        & 0.942             & 0.108              & 0.976        & 0.162           & 0.963                & 0.058 & 0.563     \\ \hline
 		\end{tabular}
 	}
-	\caption{My caption}
-	\label{my-label}
+	\caption{No Previous Delinquency Cut-off Results}
+	\label{table:NoDelinquencyModelCutoff}
 \end{table}
 
-
+As observed in the previous example of the performance measures used in this dataset the KS statistic is the most useful from separating correct good and bad predictions, it also the best metric for identifying a high average accuracy and recall compared to the other performance measures. 
 
 
 \section{Macro-Economic Experiment Setup }
