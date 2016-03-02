@@ -8,7 +8,7 @@
 
 \section{Introduction}
 
-This chapter will present the design of the experiment to be undertaken as part of this research. The aim of this research is see if including macro-economic features while training a SME credit scoring model will it return better results than a model just trained using the benchmark features from a historic scorecard. 
+This chapter will present the design of the experiment to be undertaken as part of this research. The aim of this research is to see if including macro-economic features while training a SME credit scoring model will it return better results than a model trained using the benchmark features from a historic scorecard only. 
 
 There will be two main sections to this chapter. The first will be an exploratory evaluation building a predictive model and evaluating the benchmark features for \textit{previous delinquency} and \textit{no previous delinquency} datasets. The dataset will be split into training, validation and test as models and performance measures will be assessed as part of this experiment. This will involve training multiple models based on features selected for a historic credit scorecard. Each model will be assessed to accurately ascertain the strength of each model and make model selection for future experiments in this research. This section will also explore and evaluate the results from performance measures that will be used  to evaluate the accuracy of the model. Performance measures will be chosen to evaluate the the accuracy of the whole model and how well it generalises and also over a specific threshold. This will done using the validation dataset. 
 
@@ -268,7 +268,7 @@ The class imbalance problem in the No Previous Delinquency dataset becomes very 
 As observed in the previous example of the performance measures used in this dataset the KS statistic is the most useful from separating correct good and bad predictions, it also the best metric for identifying a high average accuracy and recall compared to the other performance measures. 
 
 
-It can be concluded from the experiments in this Section that there Regression model worked well in comparison to the others on both datasets therefore we will continue use it in the next experiments using macro-economic features. It was also observed that the KS statistic was the optimal performance measure at selecting a cut-off value measure the performance of the model therefore it will also be used in future experiments.
+It can be concluded from the experiments in this Section that the Regression model worked well in comparison to the others on both datasets therefore we will continue use it in the next experiments using macro-economic features. It was also observed that the KS statistic was the optimal performance measure at selecting a cut-off value measure the performance of the model therefore it will also be used in future experiments.
 
 \section{Methodology for Evaluating Macro-Economic Features}
 Leading on from the results in Section \ref{sec:benchFeature} this section will layout the design of the experiment to evaluate macro-economic features created as part of this research. 
@@ -277,28 +277,30 @@ Fig. \ref{fig:Experiment_Workflow} below illustrates at a high level design of t
 
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth,height = 11cm,center]{Experiment_Workflow}
-	\caption{Overview of Experiment to Evaluate Macro-Economic Features}
+	\caption{Overview of Experiment to Evaluate Macro-Economic Features \\
+		for Previous Delinquency Dataset \\
+		and No Previous Delinquency Dataset}
 	\label{fig:Experiment_Workflow}
 \end{figure}
 
+
 Data for this experiment as discussed in Chapter \ref{Chapter3} will include features that were used in a historical credit scorecard model in \subjectname\ (See Section \ref{sec:existFeatures}) along with macro-economic features built from transaction spend, census metrics, default ratios and trends (See Section \ref{sec:dataForExper}). 
 
-Stratified sampling will on target class to build a training/test dataset will be completed. The split will broken down into 70\% training and 30\% test recommended by research completed by \cite{siddiqi_credit_2012}. We no longer need a validation dataset since parameters for the model have been tuned using the benchmark evaluation. 
+Stratified sampling will on target class to build a training/test dataset will be completed. The split will broken down into 70\% training and 30\% test recommended by research completed by \cite{siddiqi_credit_2012}. We no longer need a validation dataset since parameters for the model have been tuned using the benchmark evaluation. A baseline benchmark model will be built using this 70/30 split of data which will be evaluated using the AUC and threshold from the KS statistic discussed in the previous section. Regression will be used for as the algorithm of choice for both benchmark due to its success in the previous section.
 
-\subsection{Building the Models}
+Once the benchmark model has been built we can begin to start evaluating the macro economic features. There were 116 features created as part of this research. As discussed in Section \ref{sec2:featureSection} models can suffer from the curse of dimensionality where too many features are trained in the model. This causes over-fitting and the resulting model does not generalise well when making predictions on unseen data. It is also discussed in this section that research suggests a model should encompass between 8 and 20 features as a guideline.
 
+Therefore as part of the experiment feature selection will be used to analyse what are features have the strongest relationship with the target feature. Two methods of features selection will be visited, correlation feature based selection and information gain. The features that demonstrate the strongest relationship to the target feature will be added for model training and evaluation. The correlation based feature selection will be run over the combined datasets (previous delinquency and no previous delinquency). The information gain feature selection will be run twice, once over each homogeneous dataset separately (previous delinquency and no previous delinquency). 
 
-\subsubsection{Baseline Model in R}
-\subsubsection{Correlation Analysis}
-\subsubsection{Information Gain}
-\subsubsection{Coarse Selection}
-\subsubsection{KNN Approach}
-\subsubsection{Random Oversampling}
-\subsubsection{Synthetic Sampling }
-\subsubsection{Evaluation Methods}
+Coarse selection will next be applied to try and reduce the macro-economic features to a manageable level. As reviewed in Section \ref{sec:binning} this method will transform all the continuous macro-economic features into nominal/ordinal features. These nominal features will have a small number of values. As discussed earlier in the literature this allows the model to become more robust, mitigating the risk of over-fitting and also allowing it handle missing values for this feature. As discussed previously the information gain of each feature will then be calculated. As with the previous method the binned features that demonstrate the strongest relationship to the target class will be added for model training and evaluation. 
+
+As discussed earlier the distribution  of number of good and bad customers is very imbalanced in the dataset for prediction. Random over sampling and synthetic sampling are methods of tackling this issue by creating new instances of the minority dataset that the model can be trained on. As discussed earlier in Section \ref{sec:dataManip} synthetic sampling leverages the k-NN algorithm to create synthetic samples of the minority class. An experiment is run using repeated cross validation to find out what the optimal value of \textit{k} for each dataset is. A model will be trained and evaluated from the results. The resulting \textit{k} values can also be used to build the synthetic examples of the minority class. 
+
+As just discussed synthetic sampling and random oversampling of the minority class will be completed as an experiment. These methods were applied to the benchmark features dataset and feature dataset including macro economic features to evaluate if it was useful for either dataset.
 
 
-
+It must be noted that all feature and coarse selection were carried out on the same training datasets as the benchmark model. Also it must be ensured that feature and coarse selection must only be carried out on the training dataset or the model could end up over fitting the the test data which cause misleading results. All models will be trained, tested and evaluated based on results discussed in Section \ref{sec:benchFeature}. All results will then be documented for comparison with the benchmark model. 
 
 
 \section{Conclusions}
+
