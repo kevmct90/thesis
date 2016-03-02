@@ -1,6 +1,6 @@
 % Chapter Template
 
-\chapter{Experiment Implementation \& Evaluation} % Main chapter title
+\chapter{Implementation \& Evaluation} % Main chapter title
 
 \label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
@@ -10,10 +10,110 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 \section{Introduction}
-This chapter describes the experiment set-up and methodology for this project to predict if SME customers will go into arrears. The main theory being examined is that macro location based features/metrics can be indicative of SME's in the future going into arrears.  
+This chapter will present the implementation of the experiments to evaluate the use of macro-economic features for predicting SME defaults. The predictive capability of customers spending behaviour, personal customer default rates, SME default rates and Census data  will be analysed and discussed.
 
-There is relatively limited literature to support the location-based features chosen in this thesis, decisions are largely made due to anecdotal evidence and subject matter experts knowledge. To address this issue, empirical analysis of these features will be completed where one set of results will cascade new results and inspire further analysis. 
+The experiments in this research are sequential meaning results from one experiment are used in the following experiment. Therefore results will also be discussed and evaluated in this section.
 
-To understand if the location-based features in this analysis are useful, an initial model will be used as a baseline model from which we will look to improve iteratively. The features from this model will be derived from a historic scorecard used in \subjectname.  
+A benchmark predictive model will be built in SAS and R based on historical scorecard features. This will be used to make fair comparisons to the results from the experiments.
+
+
+\section{Benchmark Models}
+As mentioned in previous section when building predictive models its is essential to have a baseline or benchmark model to compare your experiments to. Therefore benchmark regression models have been built in R and SAS that will be used to make comparisons to experiments in this chapter. Regression was chosen because of its success in experiments in Section \ref{sec:benchFeature} and its wide use in industry. The models have been trained for both R and SAS using a 70\% stratified sample dataset with 30\% being kept for holdout which will be used for testing. Results may vary from both R and SAS due to varying samples in each application and algorithms will be slightly different but they should relatively close. This will not impact analysis of comparing experiments as experiments in R will be compared to the benchmark from R and likewise for comparisons in SAS. The AUC will the performance measure of choice for evaluating the well the model fits over all possible thresholds. As the AUC does not give us the accuracy of the model a specific threshold we will also use the recall, specificity and balanced accuracy(BA). The threshold used is based on fine tuning of the parameters testing using a validation dataset in Section \ref{sec:benchFeature}.
+
+The results from the benchmark models can be found in Table \ref{table:benchmodel} below.
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l l l r r r r}
+			\hline
+			\textbf{Model} & \textbf{Dataset} & \textbf{Software} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+			\textit{PD\_Bench\_R} & Previous Delinquency & R & 0.54 & 0.70 & 0.62 & 0.65   \\ 
+			\textit{PD\_Bench\_SAS} & Previous Delinquency & SAS & 0.53 & 0.62 & 0.57 & 0.62   \\ \hline
+			\textit{NPD\_Bench\_R} & No Previous Delinquency & R & 0.53 & 0.74 & 0.63 & 0.65   \\ 
+			\textit{NPD\_Bench\_SAS} & No Previous Delinquency & SAS & 0.49 & 0.74 & 0.62 & 0.65   \\ \hline
+		\end{tabular}
+	}
+	\caption{Benchmark Model Results for Experiment Comparison}
+	\label{table:benchmodel}
+\end{table}
+
+Models in this this section will be aliased for ease of reading, for example the benchmark models will be referred to as \textit{PD\_Bench\_R}, \textit{PD\_Bench\_SAS}, \textit{NPD\_Bench\_R} and \textit{NPD\_Bench\_SAS} which can be seen in Table \ref{table:benchmodel} above. 
+
+
+\section{Correlation Analysis}
+
+
+Performed correlation analysis on the imbalanced dataset and randomly took a sample of a balanced dataset.
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Grouped_Features_Correlation_Analysis_Subset}\caption{Grouped Features}\label{fig:groupedFeaturesCorrelation}
+	\end{subfigure} 
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{SME_Arrears_Trends_Correlation_Analysis_Subset}
+		\caption{SME Arrears Trends}\label{fig:smeArrearsCorrelation}
+	\end{subfigure} 
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Personal_Arrears_Ratio}
+		\caption{Personal Arrears}\label{fig:personalArrearsCorrelation}
+	\end{subfigure} 
+	\medskip
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Visa_Debit_Correlation_Analysis_Subset}
+		\caption{Transactions}\label{fig:transVisaCorrelation}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{CSO_Correlation_Analysis}
+		\caption{CSO}\label{fig:CSOCorrelation}
+	\end{subfigure}
+	\caption{Unbalanced Correlation Analysis}
+	\label{fig:unbal_corr_analysis}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Balanced_Grouped_Features_Correlation_Analysis_Subset}\caption{Grouped Features}\label{fig:groupedFeaturesCorrelation}
+	\end{subfigure} 
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Balanced_SME_Arrears_Trends_Correlation_Analysis_Subset}
+		\caption{SME Arrears Trends}\label{fig:smeArrearsCorrelation}
+	\end{subfigure} 
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Balanced_Personal_Arrears_Ratio}
+		\caption{Personal Arrears}\label{fig:personalArrearsCorrelation}
+	\end{subfigure} 
+	\medskip
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Balanced_Visa_Debit_Correlation_Analysis_Subset}
+		\caption{Transactions}\label{fig:transVisaCorrelation}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{Balanced_CSO_Correlation_Analysis}
+		\caption{CSO}\label{fig:CSOCorrelation}
+	\end{subfigure}
+	\caption{Balanced Correlation Analysis}
+	\label{fig:balanced_corr_analysis}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{CorrelationChart}
+	\caption{Correlation Analysis}
+	\label{fig:Correlation Analysis}
+\end{figure}
+
 
 \section{Conclusion}
