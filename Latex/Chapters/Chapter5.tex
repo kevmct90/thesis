@@ -181,18 +181,20 @@ Therefore a number of feature selection process will be experimented with in thi
 The feature selection process of this experiment was only carried out on the training partitions of the dataset.
 
 \subsection{Information Gain Feature Importance}
-Information gain is an approach that utilises measures commonly seen when a decision tree model is being trained (See Section \ref{decTrees}). It calculates and ranks features using entropy and information gain. For each experiment the existing scorecard features and macro-economic features as part of this experiment were analysed. Since we are only interested in the identifying the importance of macro-economic features as part of this research the existing features were stripped out of the result as they were significantly more important than the macro economic features. Due to the risks previously discussed with having too many features in your training dataset only the top 20 features will be included in models to be trained along with the existing scorecard features.
+Information gain is an approach that utilises measures commonly seen when a decision tree model is being trained (See Section \ref{decTrees}). It calculates and ranks features using entropy and information gain. For each experiment the existing scorecard features and macro-economic features as part of this experiment were analysed. Since we are only interested in the identifying the importance of macro-economic features as part of this research the existing features were stripped out of the result as we cannot tamper with the benchmark model dataset as this could lead to misleading results. Due to the risks previously discussed with having too many features in your training dataset only the top 20 features will be included in models to be trained along with the existing scorecard features as part of this experiment.
 
-\subsubsection{Information Gain for Previous Delinquency Data}
+\subsubsection{Information Gain for Previous Delinquency Data} \label{IGPDExper}
 Addressing the \textit{Previous Delinquency} dataset the information gain was calculated for each of the existing scorecard features and macro-economic features. Details of the feature importance can be seen in Fig. \ref{fig:DelinqInformationGainAnalysis}
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{DelinqInformationGainAnalysis}
-	\caption{Top 20 Macro-Economic Feature calculated by Information \\Gain on Previous Delinquency Dataset}
+	\caption{Top 20 Macro-Economic Feature calculated by \\ Information Gain on Previous Delinquency Dataset}
 	\label{fig:DelinqInformationGainAnalysis}
 \end{figure}
 
-As can be seen in Fig. \ref{fig:DelinqInformationGainAnalysis} the results from this test are not very promising. The information gain is very small for features which suggests the features were not any better at explaining the target feature as the existing scorecard features. 
+As can be seen in Fig. \ref{fig:DelinqInformationGainAnalysis} the results from this test are not very promising. The information gain is very small for features which suggests the features were not any better at explaining the target feature than the existing scorecard features. 
+
+The features that show strongest performance \textit{ED\_LOAN}, \textit{ED\_HOME} as based on default rates of personal loan and homeloan customers at electoral division. This intuitively could makes sense i.e. if people in an electoral division are struggling with their loan and mortgage repayments they are less likely to spend money in businesses in that area. \textit{ED\_LOWER\_THAN\_UPPER\_SECONDARY}, \textit{ED\_UNEMPLOYMENT} and \textit{ED\_NON\_MANUALOCCUPATION} relates to features created in the census data to with low levels of education, high unemployment rate which again intuitively at least make sense. If there are people in an area with low levels of education and therefore cant get work they're less likely to spend money on businesses in that area.
 
 Despite the low information gain of all macro economic feature in the results above we re-train and test the model including the most important features from the information gain calculation. Separate models will be trained using the top 5, 10, 15 and 20 features from the information gain calculation. Table \ref{table:InfoGainPDModelResults} details the results for the re-trained model on the test data using the features selected as part of the information gain calculation.
 
@@ -213,18 +215,24 @@ Despite the low information gain of all macro economic feature in the results ab
 	\label{table:InfoGainPDModelResults}
 \end{table}
 
-The results from including macro-economic features based on the information gain feature importance are compared against the benchmark model (\textit{PD\_Bench\_R})built in Section \ref{sec:benchModels}. \textit{PD\_IG5\_R} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{PD\_IG10\_R} is the top 10 features, \textit{PD\_IG15\_R} is the top 15 features, \textit{PD\_IG20\_R} is the top 20 features.
+The results from including macro-economic features based on the information gain feature importance are compared against the benchmark model (\textit{PD\_Bench\_R})built in Section \ref{sec:benchModels}. \textit{PD\_IG5\_R} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{PD\_IG10\_R} is the top 10 features, \textit{PD\_IG15\_R} is the top 15 features, \textit{PD\_IG20\_R} is the top 20 features.The highest results for each performance metric are highlighted in green.
 
-None of the models trained in this experiment performed better under the AUC which identifies the best model accuracy of the model over all possible thresholds. The \textit{PD\_IG5\_R}, \textit{PD\_IG20\_R} models have a larger specificity than the benchmark meaning the model was able to identify a larger proportion of the negative cases correctly. \textit{PD\_IG10\_R} and \textit{PD\_IG20\_R} both returned higher balanced accuracy and recall. Higher recall means both models predicted higher percentage of the positive class correctly. Although this is an improvement on the benchmark models the results are not markedly better.
+None of the models trained in this experiment performed better under the AUC which identifies the best model accuracy of the model over all possible thresholds. The \textit{PD\_IG5\_R}, \textit{PD\_IG20\_R} models have a larger specificity than the benchmark meaning the model was able to identify a larger proportion of the negative cases correctly. \textit{PD\_IG10\_R} and \textit{PD\_IG20\_R} both returned higher balanced accuracy and recall. Higher recall means both models predicted higher percentage of the positive class correctly. Although this is an improvement on the benchmark models the results are not markedly better and would need further investigation to test for statistical significance.
 
-\subsubsection{Information Gain No Delinquency Model Existing \& Experimental Features}
-
+\subsubsection{Information Gain for No Previous Delinquency Data}\label{IGNPDExper}
+Addressing the \textit{No Previous Delinquency} dataset the information gain was calculated for each of the existing scorecard features and macro-economic features. Details of the feature importance can be seen in Fig. \ref{fig:NoDelinqInformationGainAnalysis}
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{NoDelinqInformationGainAnalysis}
-	\caption{Information Gain No Previous Delinquency Model Features}
+	\caption{Top 20 Macro-Economic Feature calculated by \\ Information Gain on No Previous Delinquency Dataset}
 	\label{fig:NoDelinqInformationGainAnalysis}
 \end{figure}
+
+It can be seen in Fig. \ref{fig:NoDelinqInformationGainAnalysis} the results from this test are not very promising as with the previous experiment. The information gain is very small for features which suggests the features were not any better at explaining the target feature than the existing scorecard features. 
+
+The features that show strongest performance as based on SME default rates in an electoral division (See \ref{SMEDefaultBehaviourDataset}). The features that show strongest performance \textit{ED PERCENT 30 06 2014}, \textit{ED CNT 1 30 06 2014} as based on the default rate of SME customers and the number of SME customers in default at an electoral division. \textit{DIFF 12 2013} to \textit{ED DIFF 06 2012 ED} are based on the percentage change of default rates. Again these intuitively for predicting either the negative of positive class. If defaulting is trending up in area they could be indicative of further defaulters, likewise if default rate is or going down consumer spend must be good in these areas and there is smaller risk of default is the future
+
+Again despite the low information gain of all macro economic feature in the results above we re-train and test the model including the most important features from the information gain calculation. Separate models will be trained using the top 5, 10, 15 and 20 features from the information gain calculation. Table \ref{table:InfoGainNPDModelResults} details the results for the re-trained model on the test data using the features selected as part of the information gain calculation.
 
 
 \begin{table}[H]
@@ -232,24 +240,48 @@ None of the models trained in this experiment performed better under the AUC whi
 \small
 		\begin{tabular}{l r r r r}
 			\hline
-			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
-			\textit{NPD\_IG5\_R} & 0.542 & 0.736 & 0.639 & 0.667   \\ 
+			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA*} & \textbf{AUC}  \\ \hline
+			\textit{NPD\_Bench\_R} & 0.530 & \cellcolor{green!25}0.740 & 0.630 & 0.650   \\ \hline
+			\textit{NPD\_IG5\_R} & \cellcolor{green!25}0.542 & 0.736 & \cellcolor{green!25}0.639 & \cellcolor{green!25}0.667   \\ 
 			\textit{NPD\_IG10\_R} & 0.536 & 0.736 & 0.636 & 0.667  \\ 
 			\textit{NPD\_IG15\_R} & 0.520 & 0.732 & 0.626 & 0.663 \\
 			\textit{NPD\_IG20\_R} &  0.508 & 0.730 & 0.619 & 0.665  \\\hline 
 		\end{tabular}
-	\caption{Models from Information Gain Feature Selection for No Previous Delinquency}
+	\caption{No Previous Delinquency Model results when most important \\Macro-Economic features calculated using Information Gain were included in training.\\
+		*BA = Balanced Accuracy}
 	\label{table:InfoGainNPDModelResults}
 \end{table}
 
+The results from including macro-economic features based on the information gain feature importance are compared against the benchmark model (\textit{PD\_Bench\_R})built in Section \ref{sec:benchModels}. \textit{NPD\_IG5\_R} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{NPD\_IG10\_R} is the top 10 features, \textit{NPD\_IG15\_R} is the top 15 features, \textit{NPD\_IG20\_R} is the top 20 features. The highest results for each performance metric are highlighted in green.
+
+All four models (\textit{NPD\_IG5\_R}, \textit{NPD\_IG10\_R}, \textit{NPD\_IG15\_R}, \textit{NPD\_IG20\_R}) outperformed the benchmark model in terms of the AUC which identifies the best model accuracy of the model over all possible thresholds. Of these \textit{NPD\_IG5\_R} performed the strongest by scoring a highest recall and balanced accuracy of models compared. This means it was identifying it a predicted higher percentage of the positive class correctly than the benchmark. Although this is an improvement on the benchmark models the results are not markedly better and would need further investigation to test for statistical significance.
+
 \subsection{Random Forest Feature Importance}
-\subsubsection{Random Forest Delinquency Model Existing \& Experimental Features}
+A random forest is a very common and popular method of building a predictive modelling. It is an extension of the previously discussed decision tree (See Section \ref{decTrees}). The approach is to create large number of decision trees and then combine them together to make a classification, hence why its called a forest. For each decision tree random subsets of the full training set for each decision tree are used, hence random. Hence this is why it is called a random forest. It is also widely in the process of feature selection every build $n$ number of trees in your forest and evaluate how much each feature improves the classification over the entire forest. 
+
+For both the \textit{Previous Delinquency} and \textit{No Previous Delinquency} experiments in this section 1000 trees will be created to evaluate the importance of all the features. As with the previous experiment since we are only
+interested in the identifying the importance of macro-economic features as part of this
+research the existing features were stripped out of the results as tampering with the benchmark model dataset as this could lead to misleading results. Due to the risks previously discussed
+with having too many features in your training dataset only the top 20 features will be
+included in models to be trained along with the existing scorecard features as part of this experiment.
+
+
+\subsubsection{Feature Importance for Previous Delinquency Data using Random Forests}
+Addressing the size of the Previous Delinquency dataset random forest feature importance was calculated for
+each of the existing scorecard features and macro-economic features. Details of the feature importance can be seen in Fig. \ref{fig:DelinqRandomForestsAnalysis} below
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{DelinqRandomForestsAnalysis}
-	\caption{Macro-Economic Feature Importance using Random Forests}
+	\caption{Top 20 Macro-Economic Feature calculated by \\
+		Random Forest Feature Importance on Previous Delinquency Dataset}
 	\label{fig:DelinqRandomForestsAnalysis}
 \end{figure}
+
+It can be seen in Fig. \ref{fig:DelinqRandomForestsAnalysis} that features associated with discretionary and non discretionary (See Table \ref{discretionarySpend}) perform strongly in this analysis as 17 of the top 20 features are represented by this dataset. It is worth noting that all of there features are at an electoral division level opposed local authority which signify there has been some shift in customer discretionary and non discretionary at the geographic level that is useful for predicting SME defaults or non-defaults. As with the previous experiment calculating information gain  (See Section \ref{IGNPDExper}) the SME default rates at an electoral division also included in the top 20 most important features.
+
+Using these results separate models will be trained using the top 5, 10, 15 and 20 features from
+the random forest feature importance algorithm. Table \ref{table:RFPDModelResults} details the results for the re-trained model
+on the test data using the features selected as part of the random forest feature ranking
 
 \begin{table}[H]
 \centering
@@ -257,17 +289,22 @@ None of the models trained in this experiment performed better under the AUC whi
 		\begin{tabular}{l r r r r}
 			\hline
 			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
-			\textit{PD\_RF5\_R} & 0.548 & 0.692 & 0.620 & 0.662   \\ 
-			\textit{PD\_RF10\_R} & 0.556 & 0.703 & 0.630 & 0.655  \\ 
+			\textit{PD\_Bench\_R} & 0.540 & 0.700 & 0.620 & 0.654 \\ \hline
+			\textit{PD\_RF5\_R} & 0.548 & 0.692 & 0.620 & \cellcolor{green!25}0.662   \\ 
+			\textit{PD\_RF10\_R} & \cellcolor{green!25}0.556 & \cellcolor{green!25}0.703 & \cellcolor{green!25}0.630 & 0.655  \\ 
 			\textit{PD\_RF15\_R} & 0.548 & 0.698 & 0.623 & 0.654  \\
 			\textit{PD\_RF20\_R} & 0.535 & 0.698 & 0.617 & 0.651  \\\hline 
 		\end{tabular}
 
-	\caption{Models from Random Forest Feature Selection for Previous Delinquency}
+	\caption{Previous Delinquency Model results when most important\\
+Macro-Economic features calculated using Random Forest feature \\selection were included in training.
+\\*BA = Balanced Accuracy}
 	\label{table:RFPDModelResults}
 \end{table}
 
+The results from including macro-economic features based on the random forest feature selection are compared against the benchmark model (\textit{PD\_Bench\_R}) built in Section \ref{sec:benchModels}. \textit{PD\_RF5\_R} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{PD\_RF10\_R} is the top 10 features, \textit{PD\_RF15\_R} is the top 15 features, \textit{PD\_RF20\_R} is the top 20 features. The highest results for each performance metric are highlighted in green.
 
+Results are promising from this experiment, the benchmark model did not outperform the models ran as part of this experiment for any performance measure. \textit{PD\_RF10\_R} demonstrated  very promising results returning a better result for every performance measure compared to the benchmark model. The only result it was not optimal in was the AUC which scored highest in the \textit{PD\_RF20\_R} model. Although the \textit{PD\_RF10\_R} is outperforming the benchmark on all measures the results are not markedly better and would need further investigation to test for statistical significance.
 
 \subsubsection{Random Forest No Delinquency Model Existing \& Experimental Features}
 
@@ -284,6 +321,7 @@ None of the models trained in this experiment performed better under the AUC whi
 		\begin{tabular}{l  r r r r}
 			\hline
 			\textbf{Model}  & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+			\textit{NPD\_Bench\_R} & 0.530 & 0.740 & 0.630 & 0.650   \\ \hline
 			\textit{NPD\_RF5\_R}  & 0.534 & 0.685 & 0.610 & 0.654   \\ 
 			\textit{NPD\_RF10\_R} & 0.556 & 0.679 & 0.618 & 0.658  \\ 
 			\textit{NPD\_RF15\_R} & 0.594 & 0.690 & 0.643 & 0.665  \\
