@@ -245,32 +245,32 @@ Performed correlation analysis on dataset to identify what features are correlat
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[width=0.5\textwidth,center]{ExampleInteractiveGrouping}
+	\includegraphics[width=0.7\textwidth,center]{ExampleInteractiveGrouping}
 	\caption{Interactive Grouping Diff Percent 06 2012 ED}
 	\label{fig:Interactive Grouping Diff Percent 06 2012 ED}
 \end{figure}
 
+\begin{figure}[H]
+	\includegraphics[width=0.7\textwidth,center]{PDCoarseSelectionVariableImportanceInformationGain}
+	\caption{Coarse Selection Feature Importance Previous Delinquency by Information Gain and Gini Statistic}
+	\label{fig:PDCoarseSelectionVariableImportanceInformationGain}
+\end{figure}
+
 \begin{table}[H]
 	\centering
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{l | r | r | r | r| r}
-			\hline
-			\textbf{Model} & \textbf{Information Value Cut-off}& \textbf{No. Grouped Features Used} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
-			\hline
-			Regression  & 0.100 & 4 &  0.649 &  0.673 &  0.639  \\
-			Regression &  0.063 & 15 & 0.699 &  0.669 &  0.603  \\			
-			Regression &  0.042 & 20 & 0.711 &  0.668 &  0.611  \\	
-			Regression & 0.0385 & 5 &  0.657 &  0.662 &  0.616  \\	
-			Regression & 0.036 & 10 &  0.685 &  0.654 &  0.590  \\		
-			\hline
-		\end{tabular}
-	}
-	\caption{Results from Interactive Grouping for Previous Delinquency Model}
-	\label{table:InteractiveGroupingPreviousDelinquency}
+	\small
+	\begin{tabular}{l r r r r}
+		\hline
+		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+		\textit{PD\_Coarse5\_SAS}  & 0.543 & 0.645 & 0.694 & 0.627   \\ 
+		\textit{PD\_Coarse10\_SAS} & 0.552 & 0.618 & 0.585 & 0.619  \\ 
+		\textit{PD\_Coarse15\_SAS} & 0.511 & 0.618 & 0.564 & 0.59  \\
+		\textit{PD\_Coarse20\_SAS} & 0.511 & 0.625 & 0.568 & 0.59  \\\hline 
+	\end{tabular}
+	\caption{Previous Delinquency Models from Coarse Selection using Information Gain}
+	\label{table:CoarsePDModelResults}
 \end{table}
 
-See Appendix \ref{Previous Delinquency Interactive Grouping Information Gain Analysis} for the result of the information gain for each feature
 
 \subsubsection{No Previous Delinquency}
 
@@ -280,27 +280,32 @@ See Appendix \ref{Previous Delinquency Interactive Grouping Information Gain Ana
 	\label{fig:Information Value using SAS No Previous Delinquency Features}
 \end{figure}
 
+\begin{figure}[H]
+	\includegraphics[width=0.7\textwidth,center]{ExampleInteractiveGroupingNPD}
+	\caption{Interactive Grouping Event Rate Chart top 5}
+	\label{fig:ExampleInteractiveGroupingNPD}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=0.7\textwidth,center]{NPDCoarseSelectionVariableImportanceInformationGain}
+	\caption{Coarse Selection Feature Importance No Previous Delinquency by Information Gain and Gini Statistic}
+	\label{fig:NPDCoarseSelectionVariableImportanceInformationGain}
+\end{figure}
+
 \begin{table}[H]
 	\centering
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{l | r | r | r | r| r}
-			\hline
-			\textbf{Model} & \textbf{Information Value Cut-off}& \textbf{No. Grouped Features Used} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
-			\hline
-			Regression12  & 0.08 & 5 &  0.691 &  0.715 &  0.681  \\
-			Regression2 &  0.052 & 6 & 0.70 &  0.714 &  0.681  \\			
-			Regression25 &  0.045 & 10 & 0.720 &  0.70 &  0.686  \\	
-			Regression20 & 0.041 & 15 &  0.728 &  0.699 &  0.675  \\	
-			Regression24 & 0.0379 & 20 &  0.729 &  0.698 &  0.673 \\		
-			\hline
-		\end{tabular}
-	}
-	\caption{Results from Interactive Grouping for No Previous Delinquency Model}
-	\label{table:NoInteractiveGroupingPreviousDelinquency}
+	\small
+	\begin{tabular}{l r r r r}
+		\hline
+		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+		\textit{NPD\_Coarse5\_SAS}  & 0.492 & 0.738 & 0.615 & 0.664   \\ 
+		\textit{NPD\_Coarse10\_SAS} & 0.497 & 0.742 & 0.619 & 0.667  \\ 
+		\textit{NPD\_Coarse15\_SAS} & 0.517 & 0.741 & 0.629 & 0.669  \\
+		\textit{NPD\_Coarse20\_SAS} & 0.50 & 0.739 & 0.619 & 0.665  \\\hline 
+	\end{tabular}
+	\caption{No Previous Delinquency Models from Coarse Selection using Information Gain}
+	\label{table:CoarseNPDModelResults}
 \end{table}
-
-See Appendix \ref{No Previous Delinquency Interactive Grouping Information Gain Analysis} for the result of the information gain for each feature
 
 \section{Oversampling}
 

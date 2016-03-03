@@ -108,29 +108,31 @@ It can be observed that the SVM Radial Basis Fn model does not generalise well w
 Next we will evaluate the performance measure that will be used to identify the threshold that will be selected to evaluate the model. Results can observed in Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:DelinquencyModelCutoff}. 	
 
 \begin{figure}[H]
+	\begin{adjustwidth}{-2cm}{-2cm}
 	\centering
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.60\textwidth}
 		\captionsetup{font=scriptsize}
 		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Default_50}\caption{Default Cut-Off = 0.50}\label{fig:Base_Delinq_Model_CutOff_Analysis_Default_50}
 	\end{subfigure}  ~\quad
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.60\textwidth}
 		\captionsetup{font=scriptsize}
 		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_48}
 		\caption{Min Misclassification Rate Cut-Off = 0.48}\label{fig:Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_54}
 	\end{subfigure} 
-	\medskip \newline
-	\begin{subfigure}[b]{0.45\textwidth}
+	\newline
+	\begin{subfigure}[b]{0.60\textwidth}
 		\captionsetup{font=scriptsize}
 		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_KS_25}
 		\caption{K-S Cut-Off = 0.25}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_KS_25}
 	\end{subfigure} ~\quad
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.60\textwidth}
 		\captionsetup{font=scriptsize}
 		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_29}
 		\caption{EPER Cut-Off = 0.29}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_29}
 	\end{subfigure}
 	\caption{Delinquency Model Cut-off Analysis Confusion Matrix}
 	\label{fig:Base_Delinq_Model_CutOff_Analysis}
+\end{adjustwidth}
 \end{figure}
 
 \begin{table}[H]
@@ -213,28 +215,30 @@ The class imbalance problem in the No Previous Delinquency dataset becomes very 
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{ 0.45\textwidth}
+	\begin{adjustwidth}{-2cm}{-2cm}
+	\begin{subfigure}[b]{ 0.60\textwidth}
 		\captionsetup{font=scriptsize}
 		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Default_50}\caption{Default Cut-Off = 0.50}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Default_50}
 	\end{subfigure}  ~\quad
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.60\textwidth}
 		\captionsetup{font=scriptsize}
 		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_21}
 		\caption{Min Misclassification Cut-Off= 0.21}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_17}
 	\end{subfigure} 
 	\medskip \newline
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.60\textwidth}
 		\captionsetup{font=scriptsize}
 		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_0269}
 		\caption{K-S Cut-Off = 0.026}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_026}
 	\end{subfigure} ~\quad
-	\begin{subfigure}[b]{0.45\textwidth}
+	\begin{subfigure}[b]{0.60\textwidth}
 		\captionsetup{font=scriptsize}
 		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_08}
 		\caption{EPER Cut-Off = 0.08}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_09}
 	\end{subfigure}
 	\caption{Non Delinquency Model Cut-Off Analysis}
 	\label{fig:NonDelinquencyModelCutOffAnalysis}
+\end{adjustwidth}
 \end{figure}
 
 \begin{table}[H]
