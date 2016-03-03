@@ -17,7 +17,7 @@ The experiments in this research are sequential meaning results from one experim
 A benchmark predictive model will be built in SAS and R based on historical scorecard features. This will be used to make fair comparisons to the results from the experiments.
 
 
-\section{Benchmark Models}
+\section{Benchmark Models}\label{sec:benchModels}
 As mentioned in previous section when building predictive models its is essential to have a baseline or benchmark model to compare your experiments to. Therefore benchmark regression models have been built in R and SAS that will be used to make comparisons to experiments in this chapter. Regression was chosen because of its success in experiments in Section \ref{sec:benchFeature} and its wide use in industry. The models have been trained for both R and SAS using a 70\% stratified sample dataset with 30\% being kept for holdout which will be used for testing. Results may vary from both R and SAS due to varying samples in each application and algorithms will be slightly different but they should relatively close. This will not impact analysis of comparing experiments as experiments in R will be compared to the benchmark from R and likewise for comparisons in SAS. The AUC will the performance measure of choice for evaluating the well the model fits over all possible thresholds. As the AUC does not give us the accuracy of the model a specific threshold we will also use the recall, specificity and balanced accuracy(BA). The threshold used is based on fine tuning of the parameters testing using a validation dataset in Section \ref{sec:benchFeature}. The breakdown of the training and test for the benchmark model datasets and their target class distribution can be shown in Table \ref{table:benchmark_holdout_train_test}.
 
 \begin{table}[H]
@@ -148,7 +148,7 @@ We then analyse the variables that are most correlated with the target to see if
 	\label{fig:Correlation Analysis}
 \end{figure}
 
-Table \ref{table:CorrModelResults} below shows the results from including the top 5, 10, 15, 20 correlated features after the correlation analysis as per the Fig. \ref{fig:Correlation Analysis}. 
+Table \ref{table:CorrModelResults} below shows the results from including the top 5, 10, 15, 20 correlated features after the correlation analysis as per the Table \ref{table:CorrModelResults}. 
 
 \begin{table}[H]
 \centering
@@ -173,36 +173,52 @@ Table \ref{table:CorrModelResults} below shows the results from including the to
 For each model result the AUC will be used to measure the overall accuracy of the model while Recall, Specificity, Balanced Accuracy will be recorded to evaluate how the model performs at specified threshold. These results will be evaluated against the benchmark results in a later section of the chapter.
 
 
-\section{Information Gain \& Random Forest Feature Selection}
+\section{Feature Selection}
+As mentioned in the research literature in Section \ref{sec2:featureSection} feature selection is important when building a predictive model for a reasons such as reducing the complexity of the model, mitigating the risk of over-fitting, overhead involved with having to understand and maintain a larger number of features, model training and computation time and when you need evaluate/explain your results. In summary simpler in the majority of cases is better.
 
-\footnote{\url{https://cran.r-project.org/web/packages/FSelector/index.html}}
+Therefore a number of feature selection process will be experimented with in this section to try and identify the features that are of key importance, reducing the complexity of the model and identifying the important features. The two process that will be used are \textit{Information Gain Feature Importance} and \textit{Random Forest Feature Importance}
 
-\subsubsection{Information Gain Delinquency Model Existing \& Experimental Features}
+The feature selection process of this experiment was only carried out on the training partitions of the dataset.
+
+\subsection{Information Gain Feature Importance}
+Information gain is an approach that utilises measures commonly seen when a decision tree model is being trained (See Section \ref{decTrees}). It calculates and ranks features using entropy and information gain. For each experiment the existing scorecard features and macro-economic features as part of this experiment were analysed. Since we are only interested in the identifying the importance of macro-economic features as part of this research the existing features were stripped out of the result as they were significantly more important than the macro economic features. Due to the risks previously discussed with having too many features in your training dataset only the top 20 features will be included in models to be trained along with the existing scorecard features.
+
+\subsubsection{Information Gain for Previous Delinquency Data}
+Addressing the \textit{Previous Delinquency} dataset the information gain was calculated for each of the existing scorecard features and macro-economic features. Details of the feature importance can be seen in Fig. \ref{fig:DelinqInformationGainAnalysis}
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{DelinqInformationGainAnalysis}
-	\caption{Macro-Economic Feature Importance using Information Gain}
+	\caption{Top 20 Macro-Economic Feature calculated by Information \\Gain on Previous Delinquency Dataset}
 	\label{fig:DelinqInformationGainAnalysis}
 \end{figure}
 
+As can be seen in Fig. \ref{fig:DelinqInformationGainAnalysis} the results from this test are not very promising. The information gain is very small for features which suggests the features were not any better at explaining the target feature as the existing scorecard features. 
+
+Despite the low information gain of all macro economic feature in the results above we re-train and test the model including the most important features from the information gain calculation. Separate models will be trained using the top 5, 10, 15 and 20 features from the information gain calculation. Table \ref{table:InfoGainPDModelResults} details the results for the re-trained model on the test data using the features selected as part of the information gain calculation.
 
 \begin{table}[H]
 \centering
 \small
 		\begin{tabular}{l r r r r}
 			\hline
-			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
-			\textit{PD\_IG5\_R} & 0.540 & 0.715 & 0.627 & 0.652   \\ 
-			\textit{PD\_IG10\_R} & 0.548 & 0.693 & 0.621 & 0.649  \\ 
+			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA*} & \textbf{AUC}  \\ \hline
+			\textit{PD\_Bench\_R} & 0.540 & 0.700 & 0.620 & \cellcolor{green!25}0.654 \\ \hline
+			\textit{PD\_IG5\_R} & 0.540 & \cellcolor{green!25}0.715 & 0.627 & 0.652   \\ 
+			\textit{PD\_IG10\_R} & \cellcolor{green!25}0.548 & 0.693 & 0.621 & 0.649  \\ 
 			\textit{PD\_IG15\_R} & 0.536 & 0.690 & 0.613 & 0.65  \\
-			\textit{PD\_IG20\_R} & 0.544 & 0.711 & 0.628 & 0.651 \\\hline 
+			\textit{PD\_IG20\_R} & 0.544 & 0.711 & \cellcolor{green!25}0.628 & 0.651 \\\hline 
 		\end{tabular}
-	\caption{Models from Information Gain Feature Selection for Previous Delinquency}
+	\caption{Previous Delinquency Model results when most important \\Macro-Economic features calculated using Information Gain were included in training.\\
+		*BA = Balanced Accuracy}
 	\label{table:InfoGainPDModelResults}
 \end{table}
 
+The results from including macro-economic features based on the information gain feature importance are compared against the benchmark model (\textit{PD\_Bench\_R})built in Section \ref{sec:benchModels}. \textit{PD\_IG5\_R} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{PD\_IG10\_R} is the top 10 features, \textit{PD\_IG15\_R} is the top 15 features, \textit{PD\_IG20\_R} is the top 20 features.
+
+None of the models trained in this experiment performed better under the AUC which identifies the best model accuracy of the model over all possible thresholds. The \textit{PD\_IG5\_R}, \textit{PD\_IG20\_R} models have a larger specificity than the benchmark meaning the model was able to identify a larger proportion of the negative cases correctly. \textit{PD\_IG10\_R} and \textit{PD\_IG20\_R} both returned higher balanced accuracy and recall. Higher recall means both models predicted higher percentage of the positive class correctly. Although this is an improvement on the benchmark models the results are not markedly better.
 
 \subsubsection{Information Gain No Delinquency Model Existing \& Experimental Features}
+
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{NoDelinqInformationGainAnalysis}
@@ -226,6 +242,7 @@ For each model result the AUC will be used to measure the overall accuracy of th
 	\label{table:InfoGainNPDModelResults}
 \end{table}
 
+\subsection{Random Forest Feature Importance}
 \subsubsection{Random Forest Delinquency Model Existing \& Experimental Features}
 
 \begin{figure}[H]
