@@ -206,6 +206,11 @@ A base model has been built using SAS, however for the feature selection process
 
 
 
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{CorrelationChart}
+	\caption{Correlation Analysis}
+	\label{fig:Correlation Analysis}
+\end{figure}
 
 \begin{table}[H]
 	\centering
@@ -266,58 +271,6 @@ A base model has been built using SAS, however for the feature selection process
 	\label{table:featureselection_base_model}
 \end{table}
 
-\subsubsection{Delinquency Model Existing \& Experimental Features}
-
-\begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{InformationGainAllFeaturesDelinq}
-	\caption{Information Gain Delinquency Model Features}
-	\label{fig:Information Gain Delinquency Model Features}
-\end{figure}
-
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{l | r | r| r}
-			\hline
-			\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
-			\hline
-			Regression (Previous Delinq) Top 10 Features &  0.65 &  0.6048 &  0.643  \\
-			Regression (Previous Delinq) Top 15 Features &  0.652 &  0.609 &  0.637  \\
-			Regression (Previous Delinq) Top 20 Features &  0.656 &  0.607 &  0.64  \\			
-			\hline
-		\end{tabular}
-	}
-	\caption{Results based on features output from Information Gain Analysis Delinq Features }
-	\label{table:featureselection_base_model}
-\end{table}
-
-\subsubsection{No Delinquency Model Existing \& Experimental Features}
-
-\begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{InformationGainAllFeaturesNonDelinq}
-	\caption{Information Gain No Previous Delinquency Model Features}
-	\label{fig:Information Gain No Previous Delinquency Model Features}
-\end{figure}
-
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{l | r | r| r}
-			\hline
-			\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
-			\hline
-			Regression (No Previous Delinq) Top 5 Features &  0.542 &  0.537 &  0.5206  \\
-			Regression (No Previous Delinq) Top 10 Features &  0.565 &  0.540 &  0.552  \\			
-			Regression (No Previous Delinq) Top 15 Features &  0.571 &  0.551 &  0.540  \\	
-			Regression (No Previous Delinq) Top 20 Features &  0.586 &  0.526 &  0.540  \\		
-			\hline
-		\end{tabular}
-	}
-	\caption{Results based on features output from Information Gain Analysis No Previous Delinquency Features }
-	\label{table:featureselection_base_model}
-\end{table}
 
 \section{Interactive Grouping}
 
@@ -572,7 +525,7 @@ The final value used for the model was k = 51.
 		\hline
 		\textbf{Model} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
 		\hline
-		Regression (No Previous Delinq) & 0.771 & 0.662 & 0.628  \\
+		KNN51 No Previous Delinq) & 0.771 & 0.662 & 0.628  \\
 		\hline
 	\end{tabular}
 	\caption{Model Results from optimised KNN results for No Previous Delinquency Model where K=51}

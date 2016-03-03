@@ -20,12 +20,35 @@ A benchmark predictive model will be built in SAS and R based on historical scor
 \section{Benchmark Models}
 As mentioned in previous section when building predictive models its is essential to have a baseline or benchmark model to compare your experiments to. Therefore benchmark regression models have been built in R and SAS that will be used to make comparisons to experiments in this chapter. Regression was chosen because of its success in experiments in Section \ref{sec:benchFeature} and its wide use in industry. The models have been trained for both R and SAS using a 70\% stratified sample dataset with 30\% being kept for holdout which will be used for testing. Results may vary from both R and SAS due to varying samples in each application and algorithms will be slightly different but they should relatively close. This will not impact analysis of comparing experiments as experiments in R will be compared to the benchmark from R and likewise for comparisons in SAS. The AUC will the performance measure of choice for evaluating the well the model fits over all possible thresholds. As the AUC does not give us the accuracy of the model a specific threshold we will also use the recall, specificity and balanced accuracy(BA). The threshold used is based on fine tuning of the parameters testing using a validation dataset in Section \ref{sec:benchFeature}.
 
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l l r r r r}
+			\hline
+			\textbf{Model} &  \textbf{Dataset} & \textbf{\# Bad} & \textbf{\# Good} & \textbf{\# Observations} & \textbf{Good:Bad} \\
+			\hline
+			Previous Delinquency & Training       & 483 & 1,565 & 2,048 & 76:24\\
+			          & Test & 245 & 633 & 878 & 72:28\\\hline
+			\textbf{Previous Previous Delinquency}     & \textbf{Total} & \textbf{728} & \textbf{2,198} & \textbf{2,926} & \textbf{75:25} \\
+			\hline
+			No Previous Delinquency & Training & 474 & 16,435 & 16,909 & 97:03 \\ 
+			          & Test & 177 & 7,070 & 7,247 & 97:03 	\\\hline
+			\textbf{No Previous Delinquency}     & \textbf{Total} & \textbf{651} & \textbf{23,505} & \textbf{24,156} & \textbf{97:03} \\
+			\hline
+			\textbf{Total } 	&     	     & \textbf{1,379} & \textbf{25,703} & \textbf{27,082} & \textbf{95:05}\\ \hline
+		\end{tabular}
+	}
+	\caption{Breakdown Holdout Training/Test Dataset \\for Benchmark Models}
+	\label{table:benchmark_holdout_train_test}
+\end{table}
+
 The results from the benchmark models can be found in Table \ref{table:benchmodel} below.
 
 \begin{table}[H]
 	\centering
 	\resizebox{\textwidth}{!}
-	{
+	{\footnotesize
 		\begin{tabular}{l l l r r r r}
 			\hline
 			\textbf{Model} & \textbf{Dataset} & \textbf{Software} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
@@ -86,26 +109,187 @@ Performed correlation analysis on dataset to identify what features are correlat
 
 
 \begin{table}[H]
+\centering
+\small
+		\begin{tabular}{l r r r r}
+			\hline
+			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+			\textit{PD\_Cor5\_R}  & 0.534 & 0.685 & 0.610 & 0.654   \\ 
+			\textit{PD\_Cor10\_R} & 0.556 & 0.679 & 0.618 & 0.658  \\ 
+			\textit{PD\_Cor15\_R} & 0.594 & 0.690 & 0.643 & 0.665  \\
+			\textit{PD\_Cor20\_R} & 0.561 & 0.698 & 0.630 & 0.665  \\\hline 
+			
+			\textit{NPD\_Cor5\_R}  & 0.525 & 0.743 & 0.634 & 0.671   \\ 
+			\textit{NPD\_Cor10\_R} & 0.555 & 0.725 & 0.640 & 0.677  \\ 
+			\textit{NPD\_Cor15\_R} & 0.538 & 0.723 & 0.630 & 0.680  \\
+			\textit{NPD\_Cor20\_R} & 0.549 & 0.731 & 0.640 & 0.676  \\\hline 
+		\end{tabular}
+	\caption{Models from Correlation Feature Selection}
+	\label{table:CorrModelResults}
+\end{table}
+
+
+\section{Information Gain \& Random Forest Feature Selection}
+
+\footnote{\url{https://cran.r-project.org/web/packages/FSelector/index.html}}
+
+\subsubsection{Information Gain Delinquency Model Existing \& Experimental Features}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{DelinqInformationGainAnalysis}
+	\caption{Macro-Economic Feature Importance using Information Gain}
+	\label{fig:DelinqInformationGainAnalysis}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\small
+		\begin{tabular}{l r r r r}
+			\hline
+			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+			\textit{PD\_IG5\_R} & 0.540 & 0.715 & 0.627 & 0.652   \\ 
+			\textit{PD\_IG10\_R} & 0.548 & 0.693 & 0.621 & 0.649  \\ 
+			\textit{PD\_IG15\_R} & 0.536 & 0.690 & 0.613 & 0.65  \\
+			\textit{PD\_IG20\_R} & 0.544 & 0.711 & 0.628 & 0.651 \\\hline 
+		\end{tabular}
+	\caption{Models from Information Gain Feature Selection for Previous Delinquency}
+	\label{table:InfoGainPDModelResults}
+\end{table}
+
+
+\subsubsection{Information Gain No Delinquency Model Existing \& Experimental Features}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{NoDelinqInformationGainAnalysis}
+	\caption{Information Gain No Previous Delinquency Model Features}
+	\label{fig:NoDelinqInformationGainAnalysis}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\small
+		\begin{tabular}{l r r r r}
+			\hline
+			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+			\textit{NPD\_IG5\_R} & 0.542 & 0.736 & 0.639 & 0.667   \\ 
+			\textit{NPD\_IG10\_R} & 0.536 & 0.736 & 0.636 & 0.667  \\ 
+			\textit{NPD\_IG15\_R} & 0.520 & 0.732 & 0.626 & 0.663 \\
+			\textit{NPD\_IG20\_R} &  0.508 & 0.730 & 0.619 & 0.665  \\\hline 
+		\end{tabular}
+	\caption{Models from Information Gain Feature Selection for No Previous Delinquency}
+	\label{table:InfoGainNPDModelResults}
+\end{table}
+
+\subsubsection{Random Forest Delinquency Model Existing \& Experimental Features}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{DelinqRandomForestsAnalysis}
+	\caption{Macro-Economic Feature Importance using Random Forests}
+	\label{fig:DelinqRandomForestsAnalysis}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\small
+		\begin{tabular}{l r r r r}
+			\hline
+			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+			\textit{PD\_RF5\_R} & 0.548 & 0.692 & 0.620 & 0.662   \\ 
+			\textit{PD\_RF10\_R} & 0.556 & 0.703 & 0.630 & 0.655  \\ 
+			\textit{PD\_RF15\_R} & 0.548 & 0.698 & 0.623 & 0.654  \\
+			\textit{PD\_RF20\_R} & 0.535 & 0.698 & 0.617 & 0.651  \\\hline 
+		\end{tabular}
+
+	\caption{Models from Random Forest Feature Selection for Previous Delinquency}
+	\label{table:RFPDModelResults}
+\end{table}
+
+
+
+\subsubsection{Random Forest No Delinquency Model Existing \& Experimental Features}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{NoDelinqRandomForestsAnalysis}
+	\caption{Macro-Economic Feature Importance using Random Forests}
+	\label{fig:NoDelinqRandomForestsAnalysis}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\small
+		\begin{tabular}{l  r r r r}
+			\hline
+			\textbf{Model}  & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+			\textit{NPD\_RF5\_R}  & 0.534 & 0.685 & 0.610 & 0.654   \\ 
+			\textit{NPD\_RF10\_R} & 0.556 & 0.679 & 0.618 & 0.658  \\ 
+			\textit{NPD\_RF15\_R} & 0.594 & 0.690 & 0.643 & 0.665  \\
+			\textit{NPD\_RF20\_R} & 0.561 & 0.698 & 0.630 & 0.665  \\\hline 
+		\end{tabular}
+
+	\caption{Models from Random Forest Feature Selection for No Previous Delinquency}
+	\label{table:RFNPDModelResults}
+\end{table}
+
+
+\section{Oversampling}
+
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l l r r r r}
+			\hline
+			\textbf{Model} &  \textbf{Dataset} & \textbf{\# Bad} & \textbf{\# Good} & \textbf{\# Observations} & \textbf{Good:Bad} \\
+			\hline
+			Previous Delinquency & Training Oversample & 1,562 & 1,552 & 3,114 & 50:50\\
+			& Test & 245 & 633 & 878 & 72:28\\\hline
+			\textbf{Previous Previous Delinquency}     & \textbf{Total} & \textbf{1,807} & \textbf{2,185} & \textbf{3,992} & \textbf{55:45} \\
+			\hline
+			No Previous Delinquency & Training Oversample & 16,198 & 16,435 & 32,633 & 50:50 \\ 
+			& Test & 177 & 7,070 & 7,247 & 97:03 	\\\hline
+			\textbf{No Previous Delinquency}     & \textbf{Total} & \textbf{16,375} & \textbf{23,505} & \textbf{39,880} & \textbf{68:32} \\
+			\hline
+			\textbf{Total } 	&     	     & \textbf{18,182} & \textbf{25,690} & \textbf{43,872} & \textbf{58:42}\\ \hline
+		\end{tabular}
+	}
+	\caption{Breakdown Holdout Training/Test Dataset \\for Oversample Benchmark Models}
+	\label{table:benchmark_holdout_oversample_train_test}
+\end{table}
+
+\begin{table}[H]
 	\centering
 	\resizebox{\textwidth}{!}
 	{
-		\begin{tabular}{l r r r r r r r r}
+		\begin{tabular}{l l l r r r r}
 			\hline
-			\textbf{Model} & \textbf{TN} & \textbf{FN}  & \textbf{FP} & \textbf{TP} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
-			\textit{PD\_Cor5\_R} &  434 & 114 & 199 & 131 & 0.534 & 0.685 & 0.610 & 0.654   \\ 
-			\textit{PD\_Cor10\_R} & 415 & 105 & 196 & 132 & 0.556 & 0.679 & 0.618 & 0.658  \\ 
-			\textit{PD\_Cor15\_R} & 422 & 96  & 189 & 141 & 0.594 & 0.690 & 0.643 & 0.665  \\
-			\textit{PD\_Cor20\_R} & 427 & 104 & 184 & 133 & 0.561 & 0.698 & 0.630 & 0.665  \\\hline 
-			
-			\textit{NPD\_Cor5\_R} &  5320 & 84 & 1840 & 93 & 0.525 & 0.743 & 0.634 & 0.671   \\ 
-			\textit{NPD\_Cor10\_R} & 5031 & 76 & 1906 & 95 & 0.555 & 0.725 & 0.640 & 0.677  \\ 
-			\textit{NPD\_Cor15\_R} & 5018 & 79 & 1919 & 92 & 0.538 & 0.723 & 0.630 & 0.680  \\
-			\textit{NPD\_Cor20\_R} & 5041 & 77 & 1846 & 94 & 0.549 & 0.731 & 0.640 & 0.676  \\\hline 
+			\textbf{Model} & \textbf{Dataset} & \textbf{Software} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+			\textit{PD\_OverBench\_R} & Previous Delinquency & R & 0.587 & 0.615 & 0.601 & 0.651   \\ \hline
+			\textit{NPD\_OverBench\_R} & No Previous Delinquency & R & 0.559 & 0.720 & 0.640 & 0.67   \\ \hline
 		\end{tabular}
 	}
-	\caption{Models from Correlation Feature Selection}
-	\label{table:benchmodel}
+	\caption{Benchmark Oversampling Model results for Comparison}
+	\label{table:benchmodelOver}
 \end{table}
+
+\begin{table}[H]
+\centering
+\small
+		\begin{tabular}{l  r r r r}
+			\hline
+			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+			\textit{PD\_OverExper\_R}  & 0.567 & 0.647 & 0.607 & 0.646   \\ \hline
+			\textit{NPD\_OverExper\_R} & 0.587 & 0.711 & 0.649 & 0.671   \\ \hline
+		\end{tabular}
+	\caption{Experiment Oversampling Model Results for Experiment Comparison}
+	\label{table:benchmodelOverExper}
+\end{table}
+
+
+
+\section{Synthetic Sampling}
 
 
 \section{Conclusion}
