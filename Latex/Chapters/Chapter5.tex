@@ -66,41 +66,81 @@ Models in this this section will be aliased for ease of reading, for example the
 
 
 \section{Correlation Analysis}
-Correlation matrix were used to investigate the relationship between multiple features. The Pearson correlation co
-
-
-Performed correlation analysis on dataset to identify what features are correlated most with the target class. 
+Correlation matrix is a very simple and powerful way of analysing the relationship of predictive features with each other and the target features. Including highly correlated predictive features has the potential to throw off or fool your predictive model potentially causing misleading results. The Pearson correlation coefficient is a common measure used to test your data to check this relationship and will be deployed in this experiment. The correlation tests are ran separately on each category of features created as part of this experiment e.g. \textit{CSO Features by ED \& LA}, \textit{SME Default Trends by ED \& LA}, \textit{Homeloan and Personal Loan Default Trends by ED \& LA}, \textit{Transactions Behaviour by ED \& LA}, and \textit{Binned SME Defaults Rates by ED and LA}. Fig. \ref{fig:unbal_corr_analysis} shows a subset of the results demonstrating correlation scores between the experiment features categories with a full breakdown of the results available in Appendix \ref{AppendixB} where a correlation score coloured red represents a very strong positive correlation between features and blue a very low negative correlation.
 
 \begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{0.32\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.75cm]{Grouped_Features_Correlation_Analysis_Subset}\caption{Grouped Features}\label{fig:groupedFeaturesCorrelation}
-	\end{subfigure} 
+ 	\begin{subfigure}[b]{0.32\textwidth}
+ 		\captionsetup{font=scriptsize}
+ 		\includegraphics[width=\textwidth,height=2.75cm]{CSO_Correlation_Analysis}
+ 		\caption{CSO Features by ED \& LA\\}
+ 		\label{fig:CSOCorrelation}
+ 	\end{subfigure}
 	\begin{subfigure}[b]{0.32\textwidth}
 		\captionsetup{font=scriptsize}
 		\includegraphics[width=\textwidth,height=2.75cm]{SME_Arrears_Trends_Correlation_Analysis_Subset}
-		\caption{SME Arrears Trends}\label{fig:smeArrearsCorrelation}
+		\caption{SME Default Trends \\by ED \& LA}\label{fig:smeArrearsCorrelation}
 	\end{subfigure} 
 	\begin{subfigure}[b]{0.32\textwidth}
 		\captionsetup{font=scriptsize}
 		\includegraphics[width=\textwidth,height=2.75cm]{Personal_Arrears_Ratio}
-		\caption{Personal Arrears}\label{fig:personalArrearsCorrelation}
+		\caption{Homeloan and Personal Loan Default Trends by ED \& LA}
+		\label{fig:personalArrearsCorrelation}
 	\end{subfigure} 
 	\medskip
 	\begin{subfigure}[b]{0.32\textwidth}
 		\captionsetup{font=scriptsize}
 		\includegraphics[width=\textwidth,height=2.75cm]{Visa_Debit_Correlation_Analysis_Subset}
-		\caption{Transactions}\label{fig:transVisaCorrelation}
+		\caption{Transactions Behaviour \\by ED \& LA }\label{fig:transVisaCorrelation}
 	\end{subfigure} ~\quad
 	\begin{subfigure}[b]{0.32\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.75cm]{CSO_Correlation_Analysis}
-		\caption{CSO}\label{fig:CSOCorrelation}
+		\includegraphics[width=\textwidth,height=2.75cm]{Grouped_Features_Correlation_Analysis_Subset}
+		\caption{Binned SME Defaults Rates \\by ED and LA\\}
+		\label{fig:groupedFeaturesCorrelation}
 	\end{subfigure}
 	\caption{Correlation Analysis}
 	\label{fig:unbal_corr_analysis}
 \end{figure}
+
+There is a high level of correlation between among many of the variables. It was decided that any features that had a correlation score of 0.80 would be candidate features for removal. For features that were this highly correlated the feature scoring the lowest bivariate correlation to the target feature was removed, ensuring the variable which had the strongest relationship with the target class was prioritised and kept for further predictions. The a subset of the results after this feature reduction process can be found in Fig. \ref{unbal_corr_analysis_filtered} with a full set of results available in Appendix \ref{AppendixC}. 
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{CSO_Correlation_Analysis}
+		\caption{CSO Features by ED \& LA\\}
+		\label{fig:CSOCorrelation}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{SMETrendsCorrSub}
+		\caption{SME Default Trends \\by ED \& LA}\label{fig:SMETrendsCorrSub}
+	\end{subfigure} 
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{PersonalTrendFull}
+		\caption{Homeloan and Personal Loan Default Trends by ED \& LA}
+		\label{fig:PersonalTrendFull}
+	\end{subfigure} 
+	\medskip
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{TransactionCorrSub}
+		\caption{Transactions Behaviour \\by ED \& LA }\label{fig:TransactionCorrSub}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.32\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height=2.75cm]{GroupedCorrSub}
+		\caption{Binned SME Defaults Rates \\by ED and LA\\}
+		\label{fig:GroupedCorrSub}
+	\end{subfigure}
+	\caption{Correlation Analysis after highly correlated features have been removed}
+	\label{fig:unbal_corr_analysis_filtered}
+\end{figure}
+
+We then analyse the variables that are most correlated with the target to see if included in the prediction model how well it performs, results from this analysis are demonstrated in Fig. \ref{fig:Correlation Analysis} below.
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{CorrelationChart}
@@ -108,6 +148,7 @@ Performed correlation analysis on dataset to identify what features are correlat
 	\label{fig:Correlation Analysis}
 \end{figure}
 
+Table \ref{table:CorrModelResults} below shows the results from including the top 5, 10, 15, 20 correlated features after the correlation analysis as per the Fig. \ref{fig:Correlation Analysis}. 
 
 \begin{table}[H]
 \centering
@@ -128,6 +169,8 @@ Performed correlation analysis on dataset to identify what features are correlat
 	\caption{Models from Correlation Feature Selection}
 	\label{table:CorrModelResults}
 \end{table}
+
+For each model result the AUC will be used to measure the overall accuracy of the model while Recall, Specificity, Balanced Accuracy will be recorded to evaluate how the model performs at specified threshold. These results will be evaluated against the benchmark results in a later section of the chapter.
 
 
 \section{Information Gain \& Random Forest Feature Selection}
