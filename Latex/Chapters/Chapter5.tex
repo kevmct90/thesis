@@ -18,7 +18,7 @@ A benchmark predictive model will be built in SAS and R based on historical scor
 
 
 \section{Benchmark Models}
-As mentioned in previous section when building predictive models its is essential to have a baseline or benchmark model to compare your experiments to. Therefore benchmark regression models have been built in R and SAS that will be used to make comparisons to experiments in this chapter. Regression was chosen because of its success in experiments in Section \ref{sec:benchFeature} and its wide use in industry. The models have been trained for both R and SAS using a 70\% stratified sample dataset with 30\% being kept for holdout which will be used for testing. Results may vary from both R and SAS due to varying samples in each application and algorithms will be slightly different but they should relatively close. This will not impact analysis of comparing experiments as experiments in R will be compared to the benchmark from R and likewise for comparisons in SAS. The AUC will the performance measure of choice for evaluating the well the model fits over all possible thresholds. As the AUC does not give us the accuracy of the model a specific threshold we will also use the recall, specificity and balanced accuracy(BA). The threshold used is based on fine tuning of the parameters testing using a validation dataset in Section \ref{sec:benchFeature}.
+As mentioned in previous section when building predictive models its is essential to have a baseline or benchmark model to compare your experiments to. Therefore benchmark regression models have been built in R and SAS that will be used to make comparisons to experiments in this chapter. Regression was chosen because of its success in experiments in Section \ref{sec:benchFeature} and its wide use in industry. The models have been trained for both R and SAS using a 70\% stratified sample dataset with 30\% being kept for holdout which will be used for testing. Results may vary from both R and SAS due to varying samples in each application and algorithms will be slightly different but they should relatively close. This will not impact analysis of comparing experiments as experiments in R will be compared to the benchmark from R and likewise for comparisons in SAS. The AUC will the performance measure of choice for evaluating the well the model fits over all possible thresholds. As the AUC does not give us the accuracy of the model a specific threshold we will also use the recall, specificity and balanced accuracy(BA). The threshold used is based on fine tuning of the parameters testing using a validation dataset in Section \ref{sec:benchFeature}. The breakdown of the training and test for the benchmark model datasets and their target class distribution can be shown in Table \ref{table:benchmark_holdout_train_test}.
 
 \begin{table}[H]
 	\centering\
@@ -43,7 +43,7 @@ As mentioned in previous section when building predictive models its is essentia
 	\label{table:benchmark_holdout_train_test}
 \end{table}
 
-The results from the benchmark models can be found in Table \ref{table:benchmodel} below.
+The threshold used for performance measuring is based on fine tuning of the parameters testing using a validation dataset in Section \ref{sec:benchFeature}. The results from the benchmark models can be found in Table \ref{table:benchmodel} below.
 
 \begin{table}[H]
 	\centering
@@ -62,10 +62,11 @@ The results from the benchmark models can be found in Table \ref{table:benchmode
 	\label{table:benchmodel}
 \end{table}
 
-Models in this this section will be aliased for ease of reading, for example the benchmark models will be referred to as \textit{PD\_Bench\_R}, \textit{PD\_Bench\_SAS}, \textit{NPD\_Bench\_R} and \textit{NPD\_Bench\_SAS} which can be seen in Table \ref{table:benchmodel} above. 
+Models in this this section will be aliased for ease of reading, for example the benchmark models will be referred to as \textit{PD\_Bench\_R}, \textit{PD\_Bench\_SAS}, \textit{NPD\_Bench\_R} and \textit{NPD\_Bench\_SAS} which can be seen in Table \ref{table:benchmodel} above. The results found here are consistent with the evaluations completed in Chapter \ref{Chapter4} which guarantees we have good benchmarks to compare the results in the experiment in this chapter to.
 
 
 \section{Correlation Analysis}
+Correlation matrix were used to investigate the relationship between multiple features. The Pearson correlation co
 
 
 Performed correlation analysis on dataset to identify what features are correlated most with the target class. 
@@ -233,6 +234,73 @@ Performed correlation analysis on dataset to identify what features are correlat
 	\label{table:RFNPDModelResults}
 \end{table}
 
+
+\section{Interactive Grouping}
+
+\subsubsection{Previous Delinquency}
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{PreviousDelinq_InformationGain_InteractiveGrouping}
+	\caption{Information Value using SAS Previous Delinquency Features}
+	\label{fig:Information Value using SAS Previous Delinquency Features}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=0.5\textwidth,center]{ExampleInteractiveGrouping}
+	\caption{Interactive Grouping Diff Percent 06 2012 ED}
+	\label{fig:Interactive Grouping Diff Percent 06 2012 ED}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Information Value Cut-off}& \textbf{No. Grouped Features Used} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression  & 0.100 & 4 &  0.649 &  0.673 &  0.639  \\
+			Regression &  0.063 & 15 & 0.699 &  0.669 &  0.603  \\			
+			Regression &  0.042 & 20 & 0.711 &  0.668 &  0.611  \\	
+			Regression & 0.0385 & 5 &  0.657 &  0.662 &  0.616  \\	
+			Regression & 0.036 & 10 &  0.685 &  0.654 &  0.590  \\		
+			\hline
+		\end{tabular}
+	}
+	\caption{Results from Interactive Grouping for Previous Delinquency Model}
+	\label{table:InteractiveGroupingPreviousDelinquency}
+\end{table}
+
+See Appendix \ref{Previous Delinquency Interactive Grouping Information Gain Analysis} for the result of the information gain for each feature
+
+\subsubsection{No Previous Delinquency}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinq_InformationGain_InteractiveGrouping}
+	\caption{Information Value using SAS No Previous Delinquency Features}
+	\label{fig:Information Value using SAS No Previous Delinquency Features}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l | r | r | r | r| r}
+			\hline
+			\textbf{Model} & \textbf{Information Value Cut-off}& \textbf{No. Grouped Features Used} & \textbf{Train AUC} & \textbf{Valid AUC} &  \textbf{Test AUC} \\
+			\hline
+			Regression12  & 0.08 & 5 &  0.691 &  0.715 &  0.681  \\
+			Regression2 &  0.052 & 6 & 0.70 &  0.714 &  0.681  \\			
+			Regression25 &  0.045 & 10 & 0.720 &  0.70 &  0.686  \\	
+			Regression20 & 0.041 & 15 &  0.728 &  0.699 &  0.675  \\	
+			Regression24 & 0.0379 & 20 &  0.729 &  0.698 &  0.673 \\		
+			\hline
+		\end{tabular}
+	}
+	\caption{Results from Interactive Grouping for No Previous Delinquency Model}
+	\label{table:NoInteractiveGroupingPreviousDelinquency}
+\end{table}
+
+See Appendix \ref{No Previous Delinquency Interactive Grouping Information Gain Analysis} for the result of the information gain for each feature
 
 \section{Oversampling}
 
