@@ -290,6 +290,220 @@ Performed correlation analysis on dataset to identify what features are correlat
 
 
 \section{Synthetic Sampling}
+NonDelinqknnFit
+
+k-Nearest Neighbors 
+
+
+16408 samples
+
+116 predictor
+
+2 classes: 'N', 'Y' 
+
+
+Pre-processing: centered (116), scaled (116) 
+
+Resampling: Cross-Validated (10 fold, repeated 3 times) 
+
+Summary of sample sizes: 14768, 14767, 14766, 14767, 14768, 14767, ... 
+
+Resampling results across tuning parameters:
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinquencyExperimentKNN}
+	\caption{Repeated 3 Times 10-Fold Cross-Validation Optimal No. of Neighbours for No Previous Delinquency Experiment Data}
+	\label{fig:NoPreviousDelinquencyExperimentKNN}
+\end{figure}
+
+{\footnotesize
+	\begin{longtable}
+		{l | l | l | l | l | l | l}
+		\hline
+		\textbf{k} & \textbf{ROC} & \textbf{Sens} & \textbf{Spec} & \textbf{ROCSD} & \textbf{SensSD} & \textbf{SpecSD} \\ \hline
+		5          & 0.474        & 1.000         & 0.000         & 0.023          & 0.000           & 0.000           \\
+		7          & 0.469        & 1.000         & 0.000         & 0.024          & 0.000           & 0.000           \\
+		9          & 0.467        & 1.000         & 0.000         & 0.030          & 0.000           & 0.000           \\
+		11         & 0.462        & 1.000         & 0.000         & 0.030          & 0.000           & 0.000           \\
+		13         & 0.468        & 1.000         & 0.000         & 0.027          & 0.000           & 0.000           \\
+		15         & 0.471        & 1.000         & 0.000         & 0.024          & 0.000           & 0.000           \\
+		17         & 0.479        & 1.000         & 0.000         & 0.031          & 0.000           & 0.000           \\
+		19         & 0.485        & 1.000         & 0.000         & 0.042          & 0.000           & 0.000           \\
+		21         & 0.501        & 1.000         & 0.000         & 0.048          & 0.000           & 0.000           \\
+		23         & 0.520        & 1.000         & 0.000         & 0.049          & 0.000           & 0.000           \\
+		25         & 0.532        & 1.000         & 0.000         & 0.045          & 0.000           & 0.000           \\
+		27         & 0.535        & 1.000         & 0.000         & 0.041          & 0.000           & 0.000           \\
+		29         & 0.547        & 1.000         & 0.000         & 0.033          & 0.000           & 0.000           \\
+		31         & 0.548        & 1.000         & 0.000         & 0.034          & 0.000           & 0.000           \\
+		33         & 0.550        & 1.000         & 0.000         & 0.032          & 0.000           & 0.000           \\
+		35         & 0.541        & 1.000         & 0.000         & 0.043          & 0.000           & 0.000           \\
+		37         & 0.475        & 1.000         & 0.000         & 0.056          & 0.000           & 0.000           \\
+		39         & 0.452        & 1.000         & 0.000         & 0.040          & 0.000           & 0.000           \\
+		41         & 0.447        & 1.000         & 0.000         & 0.033          & 0.000           & 0.000           \\
+		43         & 0.447        & 1.000         & 0.000         & 0.035          & 0.000           & 0.000           \\
+		45         & 0.444        & 1.000         & 0.000         & 0.041          & 0.000           & 0.000           \\
+		47         & 0.454        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
+		49         & 0.476        & 1.000         & 0.000         & 0.067          & 0.000           & 0.000           \\
+		51         & 0.481        & 1.000         & 0.000         & 0.071          & 0.000           & 0.000           \\
+		53         & 0.501        & 1.000         & 0.000         & 0.073          & 0.000           & 0.000           \\
+		55         & 0.511        & 1.000         & 0.000         & 0.070          & 0.000           & 0.000           \\
+		57         & 0.509        & 1.000         & 0.000         & 0.069          & 0.000           & 0.000           \\
+		59         & 0.508        & 1.000         & 0.000         & 0.065          & 0.000           & 0.000           \\
+		61         & 0.517        & 1.000         & 0.000         & 0.066          & 0.000           & 0.000           \\
+		63         & 0.525        & 1.000         & 0.000         & 0.064          & 0.000           & 0.000           \\
+		65         & 0.536        & 1.000         & 0.000         & 0.053          & 0.000           & 0.000           \\
+		67         & 0.536        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
+		69         & 0.545        & 1.000         & 0.000         & 0.051          & 0.000           & 0.000           \\
+		71         & 0.552        & 1.000         & 0.000         & 0.047          & 0.000           & 0.000           \\
+		73         & 0.552        & 1.000         & 0.000         & 0.044          & 0.000           & 0.000           \\
+		\cellcolor{green!25}75         &  \cellcolor{green!25}0.556        &  \cellcolor{green!25}1.000         &  \cellcolor{green!25}0.000         &  \cellcolor{green!25}0.038          &  \cellcolor{green!25}0.000           &  \cellcolor{green!25}0.000           \\
+		77         & 0.541        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
+		79         & 0.527        & 1.000         & 0.000         & 0.061          & 0.000           & 0.000           \\
+		81         & 0.476        & 1.000         & 0.000         & 0.064          & 0.000           & 0.000           \\
+		83         & 0.456        & 1.000         & 0.000         & 0.056          & 0.000           & 0.000          \\ \hline
+		\caption{No Previous Delinquency Model Analysis K-NN}
+		\label{No Previous Delinquency Model Analysis K-NN}
+	\end{longtable}
+}
+
+ROC was used to select the optimal model using  the largest value.
+
+The final value used for the model was k = 75. 
+
+
+
+
+DelinqknnFit
+
+k-Nearest Neighbors 
+
+1967 samples
+
+118 predictor
+
+2 classes: 'N', 'Y' 
+
+
+Pre-processing: centered (118), scaled (118) 
+
+Resampling: Cross-Validated (10 fold, repeated 3 times) 
+
+Summary of sample sizes: 1770, 1771, 1770, 1771, 1770, 1770, ... 
+
+Resampling results across tuning parameters:
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{DelinqencyAnalysisKNN}
+	\caption{Repeated 3 Times 10-Fold Cross-Validation Optimal No. of Neighbours for Previous Delinquency Experiment Data}
+	\label{fig:DelinqencyAnalysisKNN}
+\end{figure}
+
+{\footnotesize
+	\begin{longtable}
+		{l|l|l|l|l|l|l}
+		\hline
+		\textbf{k} & \textbf{ROC} & \textbf{Sens} & \textbf{Spec} & \textbf{ROC SD} & \textbf{Sens SD} & \textbf{Spec SD} \\ \hline
+		5          & 0.486        & 0.886         & 0.130         & 0.053           & 0.030            & 0.043            \\
+		7          & 0.507        & 0.920         & 0.101         & 0.060           & 0.023            & 0.049            \\
+		9          & 0.509        & 0.937         & 0.086         & 0.057           & 0.019            & 0.032            \\
+		11         & 0.514        & 0.952         & 0.059         & 0.054           & 0.015            & 0.030            \\
+		13         & 0.517        & 0.961         & 0.049         & 0.052           & 0.019            & 0.024            \\
+		15         & 0.525        & 0.967         & 0.034         & 0.048           & 0.018            & 0.024            \\
+		17         & 0.521        & 0.976         & 0.020         & 0.054           & 0.014            & 0.017            \\
+		19         & 0.533        & 0.981         & 0.020         & 0.046           & 0.013            & 0.019            \\
+		21         & 0.525        & 0.988         & 0.016         & 0.050           & 0.009            & 0.014            \\
+		23         & 0.529        & 0.993         & 0.008         & 0.048           & 0.006            & 0.010            \\
+		25         & 0.516        & 0.997         & 0.006         & 0.052           & 0.006            & 0.011            \\
+		27         & 0.528        & 0.998         & 0.005         & 0.049           & 0.005            & 0.009            \\
+		29         & 0.515        & 0.998         & 0.005         & 0.052           & 0.004            & 0.009            \\
+		31         & 0.509        & 0.998         & 0.004         & 0.057           & 0.003            & 0.008            \\
+		33         & 0.528        & 0.999         & 0.004         & 0.053           & 0.002            & 0.008            \\
+		35         & 0.508        & 1.000         & 0.001         & 0.061           & 0.001            & 0.005            \\
+		37         & 0.533        & 1.000         & 0.000         & 0.054           & 0.000            & 0.000            \\
+		39         & 0.528        & 1.000         & 0.000         & 0.059           & 0.000            & 0.000            \\
+		41         & 0.536        & 1.000         & 0.000         & 0.057           & 0.000            & 0.000            \\
+		43         & 0.541        & 1.000         & 0.000         & 0.058           & 0.000            & 0.000            \\
+		45         & 0.532        & 1.000         & 0.000         & 0.062           & 0.000            & 0.000            \\
+		47         & 0.541        & 1.000         & 0.000         & 0.057           & 0.000            & 0.000            \\
+		49         & 0.541        & 1.000         & 0.000         & 0.056           & 0.000            & 0.000            \\
+		\cellcolor{green!25}51         &  \cellcolor{green!25}0.545        &  \cellcolor{green!25}1.000         &  \cellcolor{green!25}0.000         &  \cellcolor{green!25}0.053           &  \cellcolor{green!25}0.000            &  \cellcolor{green!25}0.000            \\
+		53         & 0.539        & 1.000         & 0.000         & 0.056           & 0.000            & 0.000            \\
+		55         & 0.539        & 1.000         & 0.000         & 0.057           & 0.000            & 0.000            \\
+		57         & 0.535        & 1.000         & 0.000         & 0.056           & 0.000            & 0.000            \\
+		59         & 0.545        & 1.000         & 0.000         & 0.049           & 0.000            & 0.000            \\
+		61         & 0.539        & 1.000         & 0.000         & 0.052           & 0.000            & 0.000            \\
+		63         & 0.540        & 1.000         & 0.000         & 0.052           & 0.000            & 0.000            \\
+		65         & 0.545        & 1.000         & 0.000         & 0.045           & 0.000            & 0.000            \\
+		67         & 0.534        & 1.000         & 0.000         & 0.052           & 0.000            & 0.000            \\
+		69         & 0.540        & 1.000         & 0.000         & 0.047           & 0.000            & 0.000            \\
+		71         & 0.543        & 1.000         & 0.000         & 0.047           & 0.000            & 0.000            \\
+		73         & 0.532        & 1.000         & 0.000         & 0.053           & 0.000            & 0.000            \\
+		75         & 0.541        & 1.000         & 0.000         & 0.044           & 0.000            & 0.000            \\
+		77         & 0.541        & 1.000         & 0.000         & 0.042           & 0.000            & 0.000            \\
+		79         & 0.538        & 1.000         & 0.000         & 0.044           & 0.000            & 0.000            \\
+		81         & 0.529        & 1.000         & 0.000         & 0.050           & 0.000            & 0.000            \\
+		83         & 0.537        & 1.000         & 0.000         & 0.048           & 0.000            & 0.000           \\ \hline
+		\caption{Delinquency Model Analysis K-NN}
+		\label{Delinquency Model Analysis K-NN}
+	\end{longtable}
+}  
+
+ROC was used to select the optimal model using  the largest value.
+
+The final value used for the model was k = 51.
+
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l l r r r r}
+			\hline
+			\textbf{Model} &  \textbf{Dataset} & \textbf{\# Bad} & \textbf{\# Good} & \textbf{\# Observations} & \textbf{Good:Bad} \\
+			\hline
+			Previous Delinquency & Training Synthetic K51 & 1,449 & 1,932 & 3,381 & 50:50\\
+			& Test & 245 & 633 & 878 & 72:28\\\hline
+			\textbf{Previous Previous Delinquency}     & \textbf{Total} & \textbf{1,694} & \textbf{2,565} & \textbf{4,259} & \textbf{60:40} \\
+			\hline
+			No Previous Delinquency & Training Synthetic K75 & 9,480 & 18,012 & 27,492 & 66:34 \\ 
+			& Test & 177 & 7,070 & 7,247 & 97:03 	\\\hline
+			\textbf{No Previous Delinquency}     & \textbf{Total} & \textbf{9,597} & \textbf{25,032} & \textbf{34,739} & \textbf{72:28} \\
+			\hline
+			\textbf{Total } 	&     	     & \textbf{11,291} & \textbf{27,597} & \textbf{38,998} & \textbf{71:29}\\ \hline
+		\end{tabular}
+	}
+	\caption{Breakdown Holdout Training/Test Dataset \\for Synthetic Benchmark Models}
+	\label{table:benchmark_holdout_Synthetic_train_test}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l l l r r r r}
+			\hline
+			\textbf{Model} & \textbf{Dataset} & \textbf{Software} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+			\textit{PD\_SyntheticBench\_R} & Previous Delinquency & R & 0.444 & 0.818 & 0.631 & 0.652   \\ \hline
+			\textit{NPD\_SyntheticBench\_R} & No Previous Delinquency & R & 0.610 & 0.677 & 0.643 & 0.67   \\ \hline
+		\end{tabular}
+	}
+	\caption{Benchmark Synthetic Model results for Comparison}
+	\label{table:benchmodelSynthetic}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{l  r r r r}
+		\hline
+		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+		\textit{PD\_SyntheticExper\_R}  & 0.444 & 0.803 & 0.624 & 0.650   \\ \hline
+		\textit{NPD\_SyntheticExper\_R} & 0.621 & 0.656 & 0.639 & 0.669   \\ \hline
+	\end{tabular}
+	\caption{Experiment Oversampling Model Results for Experiment Comparison}
+	\label{table:benchmodelSyntheticExper}
+\end{table}
+
 
 
 \section{Conclusion}
