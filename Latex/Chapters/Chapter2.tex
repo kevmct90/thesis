@@ -407,10 +407,18 @@ SVM handles situations non-linear data by using kernel function (non linear) to 
 
 It has been documented across a range of domains where SVMs are performing well such as credit risk evaluation \cite{van_gestel_credit_2009} and text categorisation, cancer diagnosis and pattern recognition \citep{shin_application_2005}
 
-\subsection{Ensemble models \& Boosting} \label{boosting}
-\begin{comment}
-In 1907, statistician Sir Francis Galton attended a fair in which there was a competition to judge the weight of an Ox. Upon reviewing the 787 predictions made by the competing public, he observed that while there was a 
-\end{comment}
+\subsection{Ensemble Models \& Boosting} \label{boosting}
+
+In 1907, mathematician Sir Francis Galton went a market in which there was a challenge
+to approximate the weight of an Ox. After evaluation the 787 forecasts made by the
+participants, he noticed that while there was a large variance in the guesstimate
+with large deviations from the correct weight, the median value of the
+forecasts was less than 1\% away from the correct weight of the Ox \citep{galton_vox_1907}. Although the failings of the separate guesses, the united wisdom of the every guess generated a very accurate estimate. This is a similar how ensemble models are generated.
+
+
+Boosting relates to an powerful principal of generating a very accurate prediction model using an aggregation of reasonably inaccurate ``rules of thumb'' \citep{freund_short_1999}. A frequently utilised ensemble is the Adaptive Boosting algorithm which frequently called AdaBoost in the literature. A weak learner is produced from the first iteration where all observations are are potentially to be chosen. For later sampling of the distribution the model adjustments are made bases on the error rates of the classifier so that model will look at samples of data were incorrectly classified \citep{freund_short_1999}. This way the algorithm is step by step adapting based on the errors of past classifications and then focuses correcting the record labels it got incorrect. A specific method of AdaBoost is the Boosted-Stumps Model. This is an ensemble model that leverages decision tree stumps, these are decision trees with one split. This method is seen to be optimal to common AdaBoost which tends to over-fit the training dataset \citep{caruana_empirical_2006}.
+
+Bagging is an alternative method employed to generate ensemble models levering decision trees. One method of bagging is \textit{bootstrap replica}. This method works on the principal for a dataset of size $n$ that will be used to train a model, it generates trees using just different partitions of the training data with replacement \citep{dietterich_experimental_2000}. Random forests are another example of an ensemble model generated using multiple decision trees. A large number of decisions trees will be trained and results are combined together to make a classification, hence why its called a forest. Each decision tree is trained on random subsets of the features available hence why its called a random forest. Research provided by \cite{breiman_random_2001} demonstrated that the random forests performed better on tests compared to AdaBoost method across a variety of datasets.
 
 
 \section{Feature Selection}\label{sec2:featureSection}
@@ -427,15 +435,32 @@ Embedded feature selection method attempts to combine the two previous methods t
 
 Feature selection is very important in the credit scoring process and there are many reasons in the literature that suggest it should be used. The \textit{curse of dimensionality} is one such issue, if you have too many features in your model it may perform well on the training dataset but when executed on unseen data it may perform poorly because the model has over-fitted too many irrelevant or noisy features \citep{loughrey_overfitting_2005}.Research from (\cite{thomas_consumer_2009}; \cite{mays_credit_2004})  advise that to build a robust scoring model you should have somewhere between 8 and 20 predictive features. There are many reason for this, there is a practical issue having to model more features and there are costs and overheads associated with each features that is redundant in the model. Referencing Fig. \ref{fig:simpleComplex} we can see that is much desirable to have simple decision tree than a complex decision tree with the same outputs, likewise if two datasets are providing the same results only one is a subset it is always better to choose the subset. This way we will reduce the risk of over-fitting that goes with including redundant features.
 
-\section{Coarse Classification / Binning} \label{sec:binning}
+\section{Coarse Classification} \label{sec:binning}
+Coarse classification is often utilized to transform the predictive features into a simpler form which is better suited for modelling \citep{carroll_transformation_1988}. Coarse classification is also referred to in the literature as binning, grouping, discretisation. For continuous and categorical feature values are transformed into a small number of bins or groups. These values  are mapped into these groups by referring to the target feature to identify the optimal cut-off points. 
 
+Coarse classification has many benefits one is that it allows one you to capture some of the features non liner relationship with the target feature. This is done each category in the group being treated as its own dummy variable which will have its own weight in a logistic regression model \citep{hand_optimal_2005}. Coarse selection can also increase the overall robustness of the model by reducing the possibility of over-fitting by creating groups with the optimal number of good and records \citep{baesens_50_2009}. It also gives you the capability of mitigating against the risk or outliers and missing values. 
 
-\url{http://blog.revolutionanalytics.com/2015/03/r-package-smbinning-optimal-binning-for-scoring-modeling.html}
+Coarse classification is also very quick to deploy, previously it would have been completed by analysts iteratively complete the process which was a very time consuming process. Algorithms now such as chimerge and recursive partitioning to name a few, find optimal cut-points in the features quickly and accurately. Those groups are then evaluated using the \textit{Weight of Evidence} (WoE) and \textit{Information Value} (IV) \citep{garcia_survey_2013}. 
 
-\url{http://www.saedsayad.com/supervised_binning.htm}
+A common methodology to coarse classification is to break up each feature into roughly three to six bins or groups \citep{hand_optimal_2005}. It is recommended that bins are limited to six to ensure the model does not become over-parameterised and difficult to manage. Contrarily, the model will become too rigid less than three groups are used. 
 
-\url{http://www.listendata.com/2015/03/weight-of-evidence-woe-and-information.html}
-The weight of evidence tells the predictive power of an independent variable in relation to the dependent variable. It is calculated by taking the natural logarithm (log to base e) of division of \% of non-events and \% of events.
+Approximating the WoE of each bin, and tuning where optimal is the most known method to carrying out coarse selection \citep{thomas_consumer_2009}. In a credit scoring problem the WoE for bin $i$ is defined as 
+  
+\begin{equation} \label{eq:woe}
+\text{WoE} =  \ln\bigg(\frac{n_g(i)}{n_b(i)} \bigg/ \frac{N_g}{N_b}\bigg)
+\end{equation}
+
+where the amount of goods in a bin $i$ is $n_g(i)$, and the amount of bads in a bin $i$ is $n_b(i)$. $N_g$ and $N_b$ are the total amount of goods and bads in the full dataset. A negative WoE signals that a bin is more likely to default, whereas a positive WoE signals they likely to not default.
+
+The information value is frequently applied frequently with the WoE. The IV is powerful method ranking variables by their importance which can be used for feature selection in the prediction model. The IV suggests the predictive capability of a binned feature, it is defined as  
+ 
+\begin{equation} \label{eq:informatoValue}
+\text{IV} =  \sum\limits_{i=1}^j \bigg(\frac{n_g(i)}{N_g} -   \frac{n_b(i)}{N_b}\bigg) * \text{WoE$_i$}
+\end{equation}
+
+where $j$ is the amount of bins in a feature. The IV of each bin is known as a contribution, which are then added together to generate the IV of a feature.
+
+In general binned features with an IV between 0.3 and and less than 0.5 are thought to be very predictive features \citep{mays_credit_2004}. If the the IV is more than 0.5 it could be over-fitted or it could be a anachronistic feature and should be examined further \citep{si} \citep{siddiqi_credit_2012}. Binned features with an IV of smaller than 0.1 is thought to be weaker features and could be considered to be removed from the model \citep{anderson_credit_2007}.
 
 \begin{comment}
 \subsection{Correlation-based Feature Selection}

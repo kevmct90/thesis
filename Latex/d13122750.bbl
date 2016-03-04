@@ -63,13 +63,18 @@ Bradley, A.~P.  \harvardyearleft 1997\harvardyearright , `The use of the area
   Pattern recognition} {\bf 30}(7),~1145--1159.
 \newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S0031320396001422}
 
+\harvarditem{Breiman}{2001}{breiman_random_2001}
+Breiman, L.  \harvardyearleft 2001\harvardyearright , `Random forests', {\em
+  Machine learning} {\bf 45}(1),~5--32.
+\newline\harvardurl{http://link.springer.com/article/10.1023/A:1010933404324}
+
 \harvarditem[Brodersen et~al.]{Brodersen, Ong, Stephan \harvardand\
   Buhmann}{2010}{brodersen_balanced_2010}
 Brodersen, K.~H., Ong, C.~S., Stephan, K.~E. \harvardand\ Buhmann, J.~M.
   \harvardyearleft 2010\harvardyearright , The balanced accuracy and its
   posterior distribution, {\em in} `Pattern recognition ({ICPR}), 2010 20th
   international conference on', IEEE, pp.~3121--3124.
-\newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5597285}}
+\newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=5597285}
 
 \harvarditem{Burges}{1998}{burges_tutorial_1998}
 Burges, C.~J.  \harvardyearleft 1998\harvardyearright , `A tutorial on support
@@ -91,13 +96,25 @@ Caouette, J.~B., Altman, E.~I. \harvardand\ Narayanan, P.  \harvardyearleft
   1998\harvardyearright , {\em Managing credit risk: the next great financial
   challenge}, Vol.~2, John Wiley \& Sons.
 
+\harvarditem{Carroll \harvardand\ Ruppert}{1988}{carroll_transformation_1988}
+Carroll, R.~J. \harvardand\ Ruppert, D.  \harvardyearleft 1988\harvardyearright
+  , {\em Transformation and weighting in regression}, Vol.~30, CRC Press.
+
+\harvarditem{Caruana \harvardand\
+  Niculescu-Mizil}{2006}{caruana_empirical_2006}
+Caruana, R. \harvardand\ Niculescu-Mizil, A.  \harvardyearleft
+  2006\harvardyearright , An empirical comparison of supervised learning
+  algorithms, {\em in} `Proceedings of the 23rd international conference on
+  {Machine} learning', ACM, pp.~161--168.
+\newline\harvardurl{http://dl.acm.org/citation.cfm?id=1143865}
+
 \harvarditem[Chawla et~al.]{Chawla, Bowyer, Hall \harvardand\
   Kegelmeyer}{2002}{chawla_smote:_2002}
 Chawla, N.~V., Bowyer, K.~W., Hall, L.~O. \harvardand\ Kegelmeyer, W.~P.
   \harvardyearleft 2002\harvardyearright , `{SMOTE}: synthetic minority
   over-sampling technique', {\em Journal of artificial intelligence research}
   pp.~321--357.
-\newline\harvardurl{\url{http://www.jair.org/papers/paper953.html}}
+\newline\harvardurl{http://www.jair.org/papers/paper953.html}
 
 \harvarditem[Chawla et~al.]{Chawla, Japkowicz \harvardand\
   Kotcz}{2004}{chawla_editorial:_2004}
@@ -160,11 +177,18 @@ Dietrich, A.  \harvardyearleft 2012\harvardyearright , `Explaining loan rate
   {Switzerland}', {\em Small Business Economics} {\bf 38}(4),~481--494.
 \newline\harvardurl{http://link.springer.com/article/10.1007/s11187-010-9273-8}
 
+\harvarditem{Dietterich}{2000}{dietterich_experimental_2000}
+Dietterich, T.~G.  \harvardyearleft 2000\harvardyearright , `An experimental
+  comparison of three methods for constructing ensembles of decision trees:
+  {Bagging}, boosting, and randomization', {\em Machine learning} {\bf
+  40}(2),~139--157.
+\newline\harvardurl{http://link.springer.com/article/10.1023/A:1007607513941}
+
 \harvarditem{Drummond \harvardand\ Holte}{2005}{drummond_severe_2005}
 Drummond, C. \harvardand\ Holte, R.~C.  \harvardyearleft 2005\harvardyearright
   , Severe class imbalance: {Why} better algorithms aren’t the answer, {\em
   in} `Machine {Learning}: {ECML} 2005', Springer, pp.~539--546.
-\newline\harvardurl{\url{http://link.springer.com/chapter/10.1007/11564096_52}}
+\newline\harvardurl{http://link.springer.com/chapter/10.1007/11564096\_52}
 
 \harvarditem{Duffie \harvardand\ Singleton}{2012}{duffie_credit_2012}
 Duffie, D. \harvardand\ Singleton, K.~J.  \harvardyearleft
@@ -192,12 +216,33 @@ Frawley, W.~J., Piatetsky-Shapiro, G. \harvardand\ Matheus, C.~J.
   {An} overview', {\em AI magazine} {\bf 13}(3),~57.
 \newline\harvardurl{http://www.aaai.org/ojs/index.php/aimagazine/article/viewArticle/1011}
 
+\harvarditem[Freund et~al.]{Freund, Schapire \harvardand\
+  Abe}{1999}{freund_short_1999}
+Freund, Y., Schapire, R. \harvardand\ Abe, N.  \harvardyearleft
+  1999\harvardyearright , `A short introduction to boosting', {\em
+  Journal-Japanese Society For Artificial Intelligence} {\bf
+  14}(771-780),~1612.
+\newline\harvardurl{http://www.yorku.ca/gisweb/eats4400/boost.pdf}
+
 \harvarditem[Friedman et~al.]{Friedman, Kohavi \harvardand\
   Yun}{1996}{friedman_lazy_1996}
 Friedman, J.~H., Kohavi, R. \harvardand\ Yun, Y.  \harvardyearleft
   1996\harvardyearright , Lazy decision trees, {\em in} `{AAAI}/{IAAI}, {Vol}.
   1', pp.~717--724.
 \newline\harvardurl{http://www.aaai.org/Papers/AAAI/1996/AAAI96-107.pdf}
+
+\harvarditem{Galton}{1907}{galton_vox_1907}
+Galton, F.  \harvardyearleft 1907\harvardyearright , `Vox populi ({The} wisdom
+  of crowds)', {\em Nature} {\bf 75},~450--51.
+\newline\harvardurl{http://www.all-about-psychology.com/support-files/the-wisdom-of-crowds.pdf}
+
+\harvarditem[Garcia et~al.]{Garcia, Luengo, Sáez, López \harvardand\
+  Herrera}{2013}{garcia_survey_2013}
+Garcia, S., Luengo, J., Sáez, J.~A., López, V. \harvardand\ Herrera, F.
+  \harvardyearleft 2013\harvardyearright , `A survey of discretization
+  techniques: {Taxonomy} and empirical analysis in supervised learning', {\em
+  Knowledge and Data Engineering, IEEE Transactions on} {\bf 25}(4),~734--750.
+\newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=6152258}
 
 \harvarditem{Guyon \harvardand\ Elisseeff}{2003}{guyon_introduction_2003}
 Guyon, I. \harvardand\ Elisseeff, A.  \harvardyearleft 2003\harvardyearright ,
@@ -224,6 +269,12 @@ Hand, D.~J. \harvardand\ Henley, W.~E.  \harvardyearleft 1997\harvardyearright
   {\em Journal of the Royal Statistical Society. Series A (Statistics in
   Society)} pp.~523--541.
 \newline\harvardurl{http://www.jstor.org/stable/2983268}
+
+\harvarditem[Hand et~al.]{Hand, Sohn \harvardand\ Kim}{2005}{hand_optimal_2005}
+Hand, D.~J., Sohn, S.~Y. \harvardand\ Kim, Y.  \harvardyearleft
+  2005\harvardyearright , `Optimal bipartite scorecards', {\em Expert Systems
+  with Applications} {\bf 29}(3),~684--690.
+\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S0957417405000850}
 
 \harvarditem{Hand \harvardand\ Zhou}{2010}{hand_evaluating_2010}
 Hand, D.~J. \harvardand\ Zhou, F.  \harvardyearleft 2010\harvardyearright ,
@@ -253,7 +304,7 @@ Haykin, S.  \harvardyearleft 1998\harvardyearright , {\em Neural {Networks}:
 He, H. \harvardand\ Garcia, E.~A.  \harvardyearleft 2009\harvardyearright ,
   `Learning from imbalanced data', {\em Knowledge and Data Engineering, IEEE
   Transactions on} {\bf 21}(9),~1263--1284.
-\newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5128907}}
+\newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=5128907}
 
 \harvarditem{Henley \harvardand\ Hand}{1996}{henley_k-nearest-neighbour_1996}
 Henley, W.~E. \harvardand\ Hand, D.~J.  \harvardyearleft 1996\harvardyearright
@@ -274,7 +325,6 @@ Hosmer, D.~W. \harvardand\ Lemeshow, S.  \harvardyearleft 2000\harvardyearright
 Japkowicz, N.  \harvardyearleft 2000\harvardyearright , The class imbalance
   problem: {Significance} and strategies, {\em in} `Proc. of the {Int}’l
   {Conf}. on {Artificial} {Intelligence}', Citeseer.
-\newline\harvardurl{\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.1693&rep=rep1&type=pdf}}
 
 \harvarditem{Kaastra \harvardand\ Boyd}{1995}{kaastra_forecasting_1995}
 Kaastra, I. \harvardand\ Boyd, M.~S.  \harvardyearleft 1995\harvardyearright ,
@@ -327,7 +377,7 @@ Lessmann, S., Baesens, B., Mues, C. \harvardand\ Pietsch, S.  \harvardyearleft
   2008\harvardyearright , `Benchmarking classification models for software
   defect prediction: {A} proposed framework and novel findings', {\em Software
   Engineering, IEEE Transactions on} {\bf 34}(4),~485--496.
-\newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4527256}}
+\newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=4527256}
 
 \harvarditem{Levenshtein}{1966}{levenshtein_binary_1966}
 Levenshtein, V.~I.  \harvardyearleft 1966\harvardyearright , `Binary {Codes}
@@ -417,7 +467,7 @@ Raju, M.~M., Srivastava, R.~K., Bisht, D. C.~S., Sharma, H.~C., Kumar, A.,
 Refaeilzadeh, P., Tang, L. \harvardand\ Liu, H.  \harvardyearleft
   2009\harvardyearright , Cross-validation, {\em in} `Encyclopedia of database
   systems', Springer, pp.~532--538.
-\newline\harvardurl{\url{http://link.springer.com/10.1007/978-0-387-39940-9_565}}
+\newline\harvardurl{http://link.springer.com/10.1007/978-0-387-39940-9\_565}
 
 \harvarditem[Rocha et~al.]{Rocha, Farazi, Khouri \harvardand\
   Pearce}{2011}{rocha_status_2011}
@@ -448,7 +498,7 @@ Seiffert, C., Khoshgoftaar, T.~M. \harvardand\ Van~Hulse, J.  \harvardyearleft
   2009\harvardyearright , `Improving software-quality predictions with data
   sampling and boosting', {\em Systems, Man and Cybernetics, Part A: Systems
   and Humans, IEEE Transactions on} {\bf 39}(6),~1283--1294.
-\newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5233804}}
+\newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=5233804}
 
 \harvarditem[Seliya et~al.]{Seliya, Khoshgoftaar \harvardand\
   Van~Hulse}{2009}{seliya_study_2009}
@@ -456,7 +506,7 @@ Seliya, N., Khoshgoftaar, T.~M. \harvardand\ Van~Hulse, J.  \harvardyearleft
   2009\harvardyearright , A study on the relationships of classifier
   performance metrics, {\em in} `Tools with {Artificial} {Intelligence}, 2009.
   {ICTAI}'09. 21st {International} {Conference} on', IEEE, pp.~59--66.
-\newline\harvardurl{\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5364367}}
+\newline\harvardurl{http://ieeexplore.ieee.org/xpls/abs\_all.jsp?arnumber=5364367}
 
 \harvarditem{Shannon}{2001}{shannon_mathematical_2001}
 Shannon, C.~E.  \harvardyearleft 2001\harvardyearright , `A mathematical theory
@@ -525,7 +575,7 @@ Van~Gestel, T. \harvardand\ Baesens, B.  \harvardyearleft 2009\harvardyearright
   , {\em Credit risk management: basic concepts: financial risk components,
   rating analysis, models, economic and regulatory capital}, Oxford University
   Press.
-\newline\harvardurl{\url{http://is.muni.cz/do/econ/soubory/aktivity/fai/17809295/FAI_issue2010_01_valova.pdf?so=ed;pocnep=1}}
+\newline\harvardurl{http://is.muni.cz/do/econ/soubory/aktivity/fai/17809295/FAI\_issue2010\_01\_valova.pdf?so=ed;pocnep=1}
 
 \harvarditem{Vapnik}{1995}{vapnik_nature_1995}
 Vapnik, V.~N.  \harvardyearleft 1995\harvardyearright , {\em The {Nature} of
