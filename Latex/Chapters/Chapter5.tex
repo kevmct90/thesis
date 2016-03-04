@@ -348,26 +348,33 @@ The results from including macro-economic features based on the random forest fe
 
 Results from the macro economic based predictive models are not very promising from this experiment as the benchmark model outperforms the others across all performance measures, apart from \textit{NPD\_RF5\_R} which performs slightly better on recall than the benchmark model \textit{NPD\_Bench\_R}. \textit{NPD\_RF5\_R} is comparatively very close across all performance measure. Interestingly with the introduction 15 and 20 features in \textit{NPD\_RF15\_R} and \textit{NPD\_RF20\_R} the models results get considerably compared to the introduction of 5 and 10 features \textit{NPD\_RF5\_R} and \textit{NPD\_RF10\_R}.
 
+
+
 \section{Coarse Selection}
+As mentioned in Section \ref{sec:binning}, coarse selection or binning is a process where you transform your features continuous or nominal into a simplified structure of just a number of categories. There are many benefits which have been noted in the literature for using coarse selection such as handling missing data and outliers and increasing robustness by reducing risks or over-fitting. A standard approach is to split each feature into approximately three to six groups or bins. This is done by finding cut-points in the data and evaluating the relationship with target feature using Weight of Evidence (WoE) and the information value is used to compare the predictive capability of grouped features.
+
+For both the \textit{Previous Delinquency} and \textit{No Previous Delinquency} dataset experiments in this section coarse selection will applied to all the macro economic features where we will look to transform each feature into a much more simplified feature which will have up to 6 groups or bins. Coarse selection will not be applied to existing model features as this would not allow for a fair comparison with the benchmark model and could lead to misleading results. It also worth noting that coarse selection must only be run on the training dataset as running it on the full dataset would lead to anachronistic group features.
+
+
+\subsubsection{Coarse Selection for Previous Delinquency Data}
+Coarse selection will be run on the macro-economic Previous Delinquency features. As mentioned previous a maximum of 6 bins/groups per feature will be created as per the literature. As with previous experiments in this chapter the top 5, 10, 15, 20 grouped features will be added to the existing Previous Delinquency model feature set and models will be generated. The results from these models will then be compared and evaluated against the results from the benchmark model.
+
+Coarse selection is applied to the previous delinquency macro-economic features, results are shown in Fig. \ref{fig:PDCoarseSelectionVariableImportanceInformationGain}
+	\includegraphics[width=.9\textwidth,center]{PDCoarseSelectionVariableImportanceInformationGain}
+	\caption{Feature ranking by Information Value after coarse selection \\is applied to the macro-economic features of the Previous Delinquency dataset}
+	\label{fig:PDCoarseSelectionVariableImportanceInformationGain}
 
 \subsubsection{Previous Delinquency}
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{PreviousDelinq_InformationGain_InteractiveGrouping}
-	\caption{Information Value using SAS Previous Delinquency Features}
 	\label{fig:Information Value using SAS Previous Delinquency Features}
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[width=0.7\textwidth,center]{ExampleInteractiveGrouping}
 	\caption{Interactive Grouping Diff Percent 06 2012 ED}
 	\label{fig:Interactive Grouping Diff Percent 06 2012 ED}
 \end{figure}
 
-\begin{figure}[H]
-	\includegraphics[width=0.7\textwidth,center]{PDCoarseSelectionVariableImportanceInformationGain}
-	\caption{Coarse Selection Feature Importance Previous Delinquency by Information Gain and Gini Statistic}
-	\label{fig:PDCoarseSelectionVariableImportanceInformationGain}
-\end{figure}
 
 \begin{table}[H]
 	\centering
@@ -386,7 +393,6 @@ Results from the macro economic based predictive models are not very promising f
 \end{table}
 
 
-\subsubsection{No Previous Delinquency}
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinq_InformationGain_InteractiveGrouping}
