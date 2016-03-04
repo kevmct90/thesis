@@ -367,7 +367,7 @@ Coarse selection is applied to the previous delinquency macro-economic features,
 	\label{fig:PDCoarseSelectionVariableImportanceInformationGain}
 \end{figure}
 
-The results from the coarse selection are interesting, there are seven binned features based on local authority and thirteen based on electoral division. All the other experiments so far feature importance have been dominated completely by electoral division features. Most (14) of the binned features are sourced from source from the discretionary/non-discretionary spend dataset  (See Table \ref{discretionarySpend}). The top rated feature \textit{DIFF PERCENT 06 2012 ED} is the difference in SME default rates at June 2012 and at the observation point June 2014. It is worth noting that the top 5 or 6 binned features appear to be much more predictive based on the information value than the rest. This illustrated in in Fig. \ref{fig:Information Value using SAS Previous Delinquency Features}.
+The results from the coarse selection are interesting, there are seven binned features based on local authority and thirteen based on electoral division. All the other experiments so far feature importance have been dominated completely by electoral division features. Most (14) of the binned features are sourced from source from the discretionary/non-discretionary spend dataset  (See Table \ref{discretionarySpend}). The top rated feature \textit{DIFF PERCENT 06 2012 ED} is the difference in SME default rates at June 2012 and at the observation point June 2014 by electoral division. It is worth noting that the top 5 or 6 binned features appear to be much more predictive based on the information value than the rest. This illustrated in in Fig. \ref{fig:Information Value using SAS Previous Delinquency Features}.
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{PreviousDelinq_InformationGain_InteractiveGrouping}
@@ -408,7 +408,7 @@ on the test data using the features selected as part of the coarse classificatio
 		\textit{PD\_Coarse15\_SAS} & 0.511 & 0.618 & 0.564 & 0.59  \\
 		\textit{PD\_Coarse20\_SAS} & 0.511 & 0.625 & 0.568 & 0.59  \\\hline 
 	\end{tabular}
-	\caption{No Previous Delinquency Model results when most important\\
+	\caption{Previous Delinquency Model results when most important\\
 		Macro-Economic features calculated using Coarse selection were included.
 		\\ *BA = Balanced Accuracy}
 	\label{table:CoarsePDModelResults}
@@ -420,25 +420,47 @@ Results are very promising from this experiment,the \textit{PD\_Coarse5\_SAS} an
 
 Although the tests for this experiment are very promising further tests would need to be carried out to evaluate if the inclusion of these binned features in the model is statistically significant. 
 
+
 \subsubsection{Coarse Selection for No Previous Delinquency Data}
+Coarse selection will be run on the macro-economic No Previous Delinquency features. As mentioned previous a maximum of 6 bins/groups per feature will be created as per the literature. As with previous experiments in this chapter the top 5, 10, 15, 20 grouped features will be added to the existing Previous Delinquency model feature set and models will be generated. The results from these models will then be compared and evaluated against the results from the benchmark model.
+
+Coarse selection is applied to the previous delinquency macro-economic features, results are shown in Fig. \ref{fig:NPDCoarseSelectionVariableImportanceInformationGain}
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{NPDCoarseSelectionVariableImportanceInformationGain}
+	\caption{Feature ranking by Information Value after coarse selection \\is applied to the macro-economic features of the No Previous Delinquency dataset}
+	\label{fig:NPDCoarseSelectionVariableImportanceInformationGain}
+\end{figure}
+
+
+The results from the coarse selection are interesting, there are 13 binned features based on local authority and 7 based on electoral division. This is first time during any of the experiments in this research where local authority features are more dominant than the electoral division features. Most (12) of the binned features are sourced from source from the discretionary/non-discretionary spend dataset  (See Table \ref{discretionarySpend}). The top rated feature \textit{DIFF PERCENT 06 2013 ED} is the difference in SME default rates at June 2013 and at the observation point June 2014 by electoral division. It is worth noting that the top 5 binned features appear to be much more predictive based on the information value than the rest. This illustrated in in Fig. \ref{fig:Information Value using SAS No Previous Delinquency Features}.
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinq_InformationGain_InteractiveGrouping}
-	\caption{Information Value using SAS No Previous Delinquency Features}
+	\caption{Barplot of feature ranking by Information Value after coarse selection \\is applied to the macro-economic features of the No Previous Delinquency dataset}
 	\label{fig:Information Value using SAS No Previous Delinquency Features}
 \end{figure}
 
+If you look to the left the barplot above you can see that there top 5 features are the which have a much higher information value than the rest. This result may mean when we include these features in the building the prediction model we will se promising results.
+
+Fig. \ref{fig:ExampleInteractiveGroupingNPD} demonstrates the results of the top 5 macro economic binned features.
+
 \begin{figure}[H]
-	\includegraphics[width=0.7\textwidth,center]{ExampleInteractiveGroupingNPD}
-	\caption{Interactive Grouping Event Rate Chart top 5}
+	\includegraphics[width=1\textwidth,center]{ExampleInteractiveGroupingNPD}
+	\caption{Top 5 binned features results based on information value after coarse \\selection is applied to the macro-economic features of the Previous Delinquency dataset
+		\\ Top 5 Binned Features: \textit{DIFF PERCENT 06 2013 ED, ED LOWER THAN UPPER SECONDARY RATIO, LA DISC LST 6MTH MED VS PRV 6MTH MED SPEND MEDIAN, LA LIVE LST 3MTH AVG VS 6MTH AVG LIVE MEAN, LA LIVE LST 3MTH MED VS 6MTH MED LIVE MEDIAN  }}
 	\label{fig:ExampleInteractiveGroupingNPD}
 \end{figure}
 
-\begin{figure}[H]
-	\includegraphics[width=0.7\textwidth,center]{NPDCoarseSelectionVariableImportanceInformationGain}
-	\caption{Coarse Selection Feature Importance No Previous Delinquency by Information Gain and Gini Statistic}
-	\label{fig:NPDCoarseSelectionVariableImportanceInformationGain}
-\end{figure}
+Fig. \ref{fig:ExampleInteractiveGroupingNPD} shows demonstrates how the features now look in their binned nominal state. Optimal cutpoint are decided using WoE and information value as discussed earlier. The group highlighted in the chart above shows the rules for building that bin which is highlighted the equation below
+\[
+\text{Group 3(Event Rate 63.15) Values} = 0.0 < \text{\textit{DIFF PERCENT 06 2013 ED}} < 0.13
+\]
+It saying that for all the features values greater than $0.0$ and less than $0.13$ assign then to bin 3, the event rate details what percentage of the times it happens in this example it 63.15\% of the time. It can be observed that all the features in Fig. \ref{fig:ExampleInteractiveGroupingNPD} got transformed into features of 5 bins which would have been the optimal result based on WoE and information value.
+
+Using these results separate models will be trained using the top 5, 10, 15 and 20 features from
+the coarse classification ranked on information value. Table \ref{table:CoarseNPDModelResults} details the results for the re-trained model
+on the test data using the features selected as part of the coarse classification process
 
 \begin{table}[H]
 	\centering
@@ -446,15 +468,22 @@ Although the tests for this experiment are very promising further tests would ne
 	\begin{tabular}{l r r r r}
 		\hline
 		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
-		\textit{NPD\_Bench\_SAS} & 0.492 & 0.748 & 0.620 & 0.654 \\ \hline
+		\textit{NPD\_Bench\_SAS} & 0.492 & \cellcolor{green!25}0.748 & 0.620 & 0.654 \\ \hline
 		\textit{NPD\_Coarse5\_SAS}  & 0.492 & 0.738 & 0.615 & 0.664   \\ 
 		\textit{NPD\_Coarse10\_SAS} & 0.497 & 0.742 & 0.619 & 0.667  \\ 
-		\textit{NPD\_Coarse15\_SAS} & 0.517 & 0.741 & 0.629 & 0.669  \\
+		\textit{NPD\_Coarse15\_SAS} & \cellcolor{green!25}0.517 & 0.741 & \cellcolor{green!25}0.629 & \cellcolor{green!25}0.669  \\
 		\textit{NPD\_Coarse20\_SAS} & 0.500 & 0.739 & 0.619 & 0.665  \\\hline 
 	\end{tabular}
-	\caption{No Previous Delinquency Models from Coarse Selection using Information Gain}
+	\caption{{No Previous Delinquency Model results when most important\\
+			Macro-Economic features calculated using Coarse selection were included.
+			\\ *BA = Balanced Accuracy}}
 	\label{table:CoarseNPDModelResults}
 \end{table}
+The results from including macro-economic features based on the coarse selection process are compared against the benchmark model (\textit{PD\_Bench\_SAS}) built in Section \ref{sec:benchModels}. \textit{NPD\_Coarse5\_SAS} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{NPD\_Coarse10\_SAS} is the top 10 features, \textit{NPD\_Coarse15\_SAS} is the top 15 features, \textit{NPD\_Coarse20\_SAS} is the top 20 features. The highest results for each performance metric are highlighted in green.
+
+Results are promising for this experiment but not as promising as the experiment for coarse selection on the previous delinquency. This because we do not see promising results from the models using macro economic features until we introduce 15 features, ideally you want to keep number of features in the model small for simplicity and robustness. However the \textit{NPD\_Coarse15\_SAS} model has outperformed the benchmark on three of the four performance measures. AUC, recall and balanced accuracy. This means across all possible threshold this model is performing better than the benchmark (AUC), its identifying correctly more customers that will go into arrears (recall), and on average its identifying correctly more customer than will or will not go into arrears (balanced accuracy). 
+
+Although the tests for this experiment are promising further tests would need to be carried out to evaluate if the inclusion of these binned features in the model are statistically significant. 
 
 \section{Oversampling}
 
