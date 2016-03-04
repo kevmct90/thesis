@@ -427,7 +427,9 @@ Embedded feature selection method attempts to combine the two previous methods t
 
 Feature selection is very important in the credit scoring process and there are many reasons in the literature that suggest it should be used. The \textit{curse of dimensionality} is one such issue, if you have too many features in your model it may perform well on the training dataset but when executed on unseen data it may perform poorly because the model has over-fitted too many irrelevant or noisy features \citep{loughrey_overfitting_2005}.Research from (\cite{thomas_consumer_2009}; \cite{mays_credit_2004})  advise that to build a robust scoring model you should have somewhere between 8 and 20 predictive features. There are many reason for this, there is a practical issue having to model more features and there are costs and overheads associated with each features that is redundant in the model. Referencing Fig. \ref{fig:simpleComplex} we can see that is much desirable to have simple decision tree than a complex decision tree with the same outputs, likewise if two datasets are providing the same results only one is a subset it is always better to choose the subset. This way we will reduce the risk of over-fitting that goes with including redundant features.
 
-\section{Coarse Classification/ Binning} \label{sec:binning}
+\section{Coarse Classification / Binning} \label{sec:binning}
+
+
 \url{http://blog.revolutionanalytics.com/2015/03/r-package-smbinning-optimal-binning-for-scoring-modeling.html}
 
 \url{http://www.saedsayad.com/supervised_binning.htm}
@@ -720,26 +722,6 @@ The \textit{gain} \& \textit{lift} measure the performance of the classifier. On
 The charts above illustrate how much likely it is we receive positive responses using the classifier compared to use a random model. The population in the dataset are broken into deciles, which can be seen in \ref{fig:gains} \& \ref{fig:lift}. An example of how they can be used is if we were to evaluate the first 10\% of the population identified by the classifier it would outperform a random selection of customers that would turn out to positive by 3.6.
 
 Essentially these charts are visual aids which can be leveraged for evaluating the performance of the classifier. 
-
-
-\section {Statistical Significance Testing}
-\textit{Statistical significance testing is used in scientific research to determine whether the
-performance difference between classification algorithms are attributable to real factors
-or apparent factors which are caused by uncontrolled variability of any sort. For
-example, Brown \& Mues (2012) performed a comparison of classification algorithms
-for imbalanced credit scoring datasets by using a set of designed significance tests.
-Demsar (2006) recommends a set of non-parametric statistical tests that can be used
-for comparing the performance of two or more of classifiers over multiple datasets.
-Namely, the Wilcoxon signed-rank test (Wilcoxon, 1945) when comparing two clas-
-48
-sifiers and the Friedman test (Friedman, 1937) when more than two classifiers are
-compared over multiple datasets. Extensions to Demsar (2006) guidelines and recommendations
-are provided by Garcıa \& Herrera (2008) and Garcıa et al. (2010),
-including advanced alternatives to the Friedman test. Rather than have classifier
-performance ranked separately for each dataset, the Friedman aligned ranks test
-(Hodges \& Lehmann, 1962) [or its alternative the Kruskal-Wallis one-way analysis
-of variance by ranks test (Kruskal \& Wallis, 1952)] compare classifier performance
-among all the datasets of interest. \citep{kennedy_credit_2013}}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 9
