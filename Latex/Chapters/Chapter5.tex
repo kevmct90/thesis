@@ -360,39 +360,67 @@ For both the \textit{Previous Delinquency} and \textit{No Previous Delinquency} 
 Coarse selection will be run on the macro-economic Previous Delinquency features. As mentioned previous a maximum of 6 bins/groups per feature will be created as per the literature. As with previous experiments in this chapter the top 5, 10, 15, 20 grouped features will be added to the existing Previous Delinquency model feature set and models will be generated. The results from these models will then be compared and evaluated against the results from the benchmark model.
 
 Coarse selection is applied to the previous delinquency macro-economic features, results are shown in Fig. \ref{fig:PDCoarseSelectionVariableImportanceInformationGain}
+
+\begin{figure}[H]
 	\includegraphics[width=.9\textwidth,center]{PDCoarseSelectionVariableImportanceInformationGain}
 	\caption{Feature ranking by Information Value after coarse selection \\is applied to the macro-economic features of the Previous Delinquency dataset}
 	\label{fig:PDCoarseSelectionVariableImportanceInformationGain}
+\end{figure}
 
-\subsubsection{Previous Delinquency}
+The results from the coarse selection are interesting, there are seven binned features based on local authority and thirteen based on electoral division. All the other experiments so far feature importance have been dominated completely by electoral division features. Most (14) of the binned features are sourced from source from the discretionary/non-discretionary spend dataset  (See Table \ref{discretionarySpend}). The top rated feature \textit{DIFF PERCENT 06 2012 ED} is the difference in SME default rates at June 2012 and at the observation point June 2014. It is worth noting that the top 5 or 6 binned features appear to be much more predictive based on the information value than the rest. This illustrated in in Fig. \ref{fig:Information Value using SAS Previous Delinquency Features}.
+
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{PreviousDelinq_InformationGain_InteractiveGrouping}
+	\caption{Barplot of feature ranking by Information Value after coarse selection \\is applied to the macro-economic features of the Previous Delinquency dataset}
 	\label{fig:Information Value using SAS Previous Delinquency Features}
 \end{figure}
 
+If you look to the left the barplot above you can see that there 5 or 6 features which have a much higher information value than the rest.
+
+
+Fig. \ref{fig:Interactive Grouping Diff Percent 06 2012 ED} demonstrates the results of the top 5 macro economic binned features.
 \begin{figure}[H]
-	\caption{Interactive Grouping Diff Percent 06 2012 ED}
+	\includegraphics[width=1\textwidth,center]{ExampleInteractiveGrouping}
+	\caption{Top 5 binned features results based on information value after coarse \\selection is applied to the macro-economic features of the Previous Delinquency dataset
+	\\ Top 5 Binned Features: \textit{DIFF PERCENT 06 2012 ED, ED LIVE LST MTH VS 3MTH AVG LIVE MEAN, LA LIVE LST MTH VS 12MTH AVG LIVE MEAN, ED DISC LST 3MTH MED VS PRV 3MTH MED SPEND MEDIAN, ED LIVE LST MTH VS 6MTH AVG LIVE MEAN}}
 	\label{fig:Interactive Grouping Diff Percent 06 2012 ED}
 \end{figure}
 
+Fig. \ref{fig:Interactive Grouping Diff Percent 06 2012 ED} shows demonstrates how the features now look in their binned nominal state. Optimal cutpoint are decided using WoE and information value as discussed earlier. The group highlighted in the chart above shows the rules for building that bin which is highlighted the equation below
+\[
+\text{Group 4(Event Rate 37.75) Values} = 0.05 \leq \text{\textit{DIFF PERCENT 06 2012 ED}} < 0.16
+\]
+It saying that for all the features values greater than or equal to $0.05$ and less than $0.16$ assign then to bin 4, the event rate details what percentage of the times it happens in this example it 37.75\% of the time. It can be observed that all the features in Fig. \ref{fig:Interactive Grouping Diff Percent 06 2012 ED} got transformed into features of 5 bins which would have been the optimal result based on WoE and information value.
+
+Using these results separate models will be trained using the top 5, 10, 15 and 20 features from
+the coarse classification ranked on information value. Table \ref{table:CoarsePDModelResults} details the results for the re-trained model
+on the test data using the features selected as part of the coarse classification process
 
 \begin{table}[H]
 	\centering
 	\small
 	\begin{tabular}{l r r r r}
 		\hline
-		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA*} & \textbf{AUC}  \\ \hline
 		\textit{PD\_Bench\_SAS} & 0.529 & 0.616 & 0.573 & 0.615 \\ \hline
-		\textit{PD\_Coarse5\_SAS}  & 0.543 & 0.645 & 0.594 & 0.627   \\ 
-		\textit{PD\_Coarse10\_SAS} & 0.552 & 0.618 & 0.585 & 0.619  \\ 
+		\textit{PD\_Coarse5\_SAS}  & 0.543 & \cellcolor{green!25}0.645 & \cellcolor{green!25}0.594 & \cellcolor{green!25}0.627   \\ 
+		\textit{PD\_Coarse10\_SAS} & \cellcolor{green!25}0.552 & 0.618 & 0.585 & 0.619  \\ 
 		\textit{PD\_Coarse15\_SAS} & 0.511 & 0.618 & 0.564 & 0.59  \\
 		\textit{PD\_Coarse20\_SAS} & 0.511 & 0.625 & 0.568 & 0.59  \\\hline 
 	\end{tabular}
-	\caption{Previous Delinquency Models from Coarse Selection using Information Gain}
+	\caption{No Previous Delinquency Model results when most important\\
+		Macro-Economic features calculated using Coarse selection were included.
+		\\ *BA = Balanced Accuracy}
 	\label{table:CoarsePDModelResults}
 \end{table}
 
+The results from including macro-economic features based on the coarse selection process are compared against the benchmark model (\textit{PD\_Bench\_SAS}) built in Section \ref{sec:benchModels}. \textit{PD\_Coarse5\_SAS} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{PD\_Coarse10\_SAS} is the top 10 features, \textit{PD\_Coarse15\_SAS} is the top 15 features, \textit{PD\_Coarse20\_SAS} is the top 20 features. The highest results for each performance metric are highlighted in green.
 
+Results are very promising from this experiment,the \textit{PD\_Coarse5\_SAS} and \textit{PD\_Coarse10\_SAS} models outperformed the benchmark model(\textit{PD\_Bench\_SAS}) over every performance measure suggesting it would be valid to include these macro-economic values in the development of a model in the future. 
+
+Although the tests for this experiment are very promising further tests would need to be carried out to evaluate if the inclusion of these binned features in the model is statistically significant. 
+
+\subsubsection{Coarse Selection for No Previous Delinquency Data}
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinq_InformationGain_InteractiveGrouping}
