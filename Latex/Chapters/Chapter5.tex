@@ -17,6 +17,65 @@ The experiments in this research are sequential meaning results from one experim
 A benchmark predictive model will be built in SAS and R based on historical scorecard features. This will be used to make fair comparisons to the results from the experiments.
 
 
+\section{Data Exploration}\label{sec:Dataexplor}
+
+This section will explore some of the trends and patters of SME default rates of customers in the dataset. We will visualise SME defaults trends from June 2012 - June 2015 by looking at the number of SME customers in default each month, the percentage of customers in default each month to see if there as anything obvious that stands out in the data. 
+
+Finally we will visualise the percentage of SME customers in default by electoral division and local authority at the observation point to see if there is reason to believe the location has any obvious on default rates which will be done using a geographic information system (GIS) application.
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,height=6cm, center]{SME_Status}
+	\caption{SME Customers Default/Performing June 2012 - June 2015 \\ x-axis = Year-Month  \\
+		y-axis = \# SME Customers
+		\\Red Trend Line = \# SME Customers in Default each month
+		\\Blue Trend Line = \# SME Customers in Performing each month}
+	\label{fig:SME_Status}
+\end{figure}
+
+Fig. \ref{fig:SME_Status} shows the number of SME customers that are performing or are defaulting each month from June 2012-June 2015. The data looks to appears to be relatively well behaved. You can see to the right of the chart that the number of SME customers performing is increasing while at the same time the number of customers in default is dropping. 
+
+\begin{figure}[H]
+	\includegraphics[width=.9\textwidth,height=6cm, center]{percentageArrears}
+	\caption{Percentage of SME Customers in default each month 
+		\\ June 2012 - June 2015
+		\\ x-axis = Year-Month \\
+		y-axis = \% of SME Customers in default
+		\\Black Trend Line = \% SME Customers in Default each month}
+	\label{fig:percentageArrears}
+\end{figure}
+
+Fig. \ref{fig:percentageArrears} shows the percentage of SME customers that are in default each month from June 2012 - June 2015. The trend of default is more obvious in this visualisation compared to Fig. \ref{fig:SME_Status}. You can see at the lowest percentage of defaulting customers occurs in June 2012 (left of the chart) where default percentage is just over 17.8\%. This percentage increases over time reaching a maximum at July 2014 (Observation Point) with a percentage of 22.5\%. By June 2015 the SME default has fallen significantly to just over 18\%. This could make predictions using macro-economic features challenging as in the trained dataset the percentage of SME default is rising while a prediction is being made when the percentage of SME default is falling.
+
+
+Fig. \ref{fig:SMEArrearsLAED} below is a GIS application of the \% SME Customers in Default by County and Electoral Division at the observation point (June 2014). Regions that have a small percentage of SME customers in default are coloured in white while regions that have a high percentage of default are coloured a dark red.
+\begin{figure}[H]
+	\begin{adjustwidth}{-2cm}{-2cm}
+	\begin{subfigure}[b]{0.55\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth,height = 11cm]{June2014ArrearsByLA}
+		\caption{\% SME Customers in Default by Local Authority June 2014}\label{fig:June2014ArrearsByLA}
+	\end{subfigure} ~\quad
+	\begin{subfigure}[b]{0.55\textwidth}
+		\captionsetup{font=scriptsize}
+		\includegraphics[width=\textwidth, height = 11cm]{June2014ArrearsByED}
+		\caption{\% SME Customers in Default by Electoral Division June 2014}
+		\label{fig:June2014ArrearsByED}
+	\end{subfigure}
+	\caption{\% SME Customers in Default by 34 Local Authority and 3,440 Electoral Division}
+	\label{fig:SMEArrearsLAED}
+	\end{adjustwidth}
+\end{figure}
+
+The results of this visualisation are quite interesting and backup the hypothesis that location is important in factor in SME defaulting in Ireland. Firstly looking at Fig. \ref{fig:June2014ArrearsByLA} we can see that the local authorities with a high percentage of default are cluster to the east cost Ireland with Cavan, Meath, Louth, Dublin performing the worst. 
+
+It can also be seen when you focus in on the cities that they are performing worse than counties they are in. Galway City, Limerick City, Cork City and Waterford City all have higher percentage default than the default percentage of the counties. Waterford City is an extreme example where there huge difference between the city and county.
+
+Fig. \ref{fig:June2014ArrearsByED} is a little bit more difficult to draw conclusions from due number of electoral division is Ireland. It does demonstrate that within each local authority there is a large amount of variation between the percentage default of a electoral divisions. Focusing on the Dublin Area in particular in Fig. \ref{fig:June2014ArrearsByED (Top Left)} it can be seen that large differences between electoral divisions where you can see some performing very well and other performing very badly. 
+ 
+ 
+The results from this section have been very useful. They have proved that the data is well behaved in Fig. \ref{fig:percentageArrears}. We have identified that falling SME default percentages from the observation point could provide a challenge \ref{fig:percentageArrears}. We were also able to backup the hypothesis that location is important factor when analysing SME default by mapping the percentage default by electoral division and local authority in Fig. \ref{fig:SMEArrearsLAED}. 
+
+
 \section{Benchmark Models}\label{sec:benchModels}
 As mentioned in previous section when building predictive models its is essential to have a baseline or benchmark model to compare your experiments to. Therefore benchmark regression models have been built in R and SAS that will be used to make comparisons to experiments in this chapter. Regression was chosen because of its success in experiments in Section \ref{sec:benchFeature} and its wide use in industry. The models have been trained for both R and SAS using a 70\% stratified sample dataset with 30\% being kept for holdout which will be used for testing. Results may vary from both R and SAS due to varying samples in each application and algorithms will be slightly different but they should relatively close. This will not impact analysis of comparing experiments as experiments in R will be compared to the benchmark from R and likewise for comparisons in SAS. The AUC will the performance measure of choice for evaluating the well the model fits over all possible thresholds. As the AUC does not give us the accuracy of the model a specific threshold we will also use the recall, specificity and balanced accuracy(BA). The threshold used is based on fine tuning of the parameters testing using a validation dataset in Section \ref{sec:benchFeature}. The breakdown of the training and test for the benchmark model datasets and their target class distribution can be shown in Table \ref{table:benchmark_holdout_train_test}.
 
