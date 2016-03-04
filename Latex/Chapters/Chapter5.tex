@@ -469,7 +469,7 @@ on the test data using the features selected as part of the coarse classificatio
 	\small
 	\begin{tabular}{l r r r r}
 		\hline
-		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA*} & \textbf{AUC}  \\ \hline
 		\textit{NPD\_Bench\_SAS} & 0.492 & \cellcolor{green!25}0.748 & 0.620 & 0.654 \\ \hline
 		\textit{NPD\_Coarse5\_SAS}  & 0.492 & 0.738 & 0.615 & 0.664   \\ 
 		\textit{NPD\_Coarse10\_SAS} & 0.497 & 0.742 & 0.619 & 0.667  \\ 
@@ -492,17 +492,25 @@ To address the class imbalance property that exists in the dataset in this exper
 
 It is decided that as part of this experiment random undersampling of the majority class would not carried out as part of the experiment. This is because there is a possibility of removing important information from the training dataset that would allow the model to identify non-defaulters.
 
-As part of this experiment two methods of re-sampling data will be carried by means of oversampling and synthetic sampling. These experiments will evaluate whether 
+As part of this experiment two methods of re-sampling data will be carried by means of oversampling and synthetic sampling. These experiments will evaluate whether adding macro-economic features to datasets improved the benchmark results. For practical reason tests will not be carried out on every macro-economic feature created as part of the research. Instead we will refer to previous experiments where macro-economic demonstrated promising results. 
 
-\textit{PD\_RF10\_R}
+For the previous delinquency dataset we will include macro economic features that were included in the \textit{PD\_RF10\_R} model in Section \ref{RFPDExper} as this model performed the best of all previous delinquency models when macro economic features were included.This will be carried out as part of the synthetic and oversampling experiments.
 
-\ref{RFPDExper}
+For the no previous delinquency dataset we will include macro economic features that were included in the \textit{NPD\_IG5\_R} model in Section \ref{IGNPDExper} as this model performed the best of all no previous delinquency models when macro economic features were included. This will be carried out as part of the synthetic and oversampling experiments.
+
+It is hoped that introducing extra observations of the target class through oversampling and synthetic sampling in the training set will improve the accuracy of the models across the performance measures for datasets including macro-economic features
 
 
-\textit{NPD\_IG5\_R}
-\ref{IGNPDExper}
 
-\subsection{Oversampling}
+
+\subsection{Random Oversampling of the Minority Class}
+Random oversampling will be carried out using the \textit{ovun.sample} function as part of the \textit{rose} package in R\footnote{\url{https://cran.r-project.org/web/packages/ROSE/index.html}}. The ovun.sample function generates a balanced sample by over-sampling minority class examples. It can also be used to under-sample majority classes or use a combination of over and undersampling to balance the training set.
+
+The results from the oversampling of the previous delinquency and no previous delinquency dataset can be found at Table \ref{table:oversample_train_testPD} and Table \ref{table:oversample_train_testNPD} respectively.
+
+\subsubsection{Oversampling for Previous Delinquency Data}
+
+It can be observed in Table \ref{table:oversample_train_testPD} that after oversampling of the previous delinquency dataset the target class distribution is now 50:50 meaning the dataset is now balanced.
 
 \begin{table}[H]
 	\centering\
@@ -514,131 +522,87 @@ As part of this experiment two methods of re-sampling data will be carried by me
 			\hline
 			Previous Delinquency & Training Oversample & 1,562 & 1,552 & 3,114 & 50:50\\
 			& Test & 245 & 633 & 878 & 72:28\\\hline
-			\textbf{Previous Previous Delinquency}     & \textbf{Total} & \textbf{1,807} & \textbf{2,185} & \textbf{3,992} & \textbf{55:45} \\
-			\hline
-			No Previous Delinquency & Training Oversample & 16,198 & 16,435 & 32,633 & 50:50 \\ 
-			& Test & 177 & 7,070 & 7,247 & 97:03 	\\\hline
-			\textbf{No Previous Delinquency}     & \textbf{Total} & \textbf{16,375} & \textbf{23,505} & \textbf{39,880} & \textbf{68:32} \\
-			\hline
-			\textbf{Total } 	&     	     & \textbf{18,182} & \textbf{25,690} & \textbf{43,872} & \textbf{58:42}\\ \hline
+			\textbf{Total}     & & \textbf{1,807} & \textbf{2,185} & \textbf{3,992} & \textbf{55:45} \\
+			\hline 
 		\end{tabular}
 	}
-	\caption{Breakdown Holdout Training/Test Dataset \\for Oversample Benchmark Models}
-	\label{table:benchmark_holdout_oversample_train_test}
+	\caption{Breakdown Holdout Training/Test Dataset \\for Oversampled Previous Delinquency Models}
+	\label{table:oversample_train_testPD}
 \end{table}
+
+Table \ref{table:overPD} below details the results from the macro-economic features included in the \textit{PD\_RF10\_R} model in Section \ref{RFPDExper} retrained on the oversampled previous delinquency balanced training dataset. The retrained model is aliased \textit{PD\_Over\_RF10\_R} below. The highest results for each performance metric are highlighted in green.
 
 \begin{table}[H]
 	\centering
 	\small
 		\begin{tabular}{l l l r r r r}
 			\hline
-			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
-			\textit{PD\_OverBench\_R} & 0.587 & 0.615 & 0.601 & 0.651   \\ \hline
-			\textit{NPD\_OverBench\_R} & 0.559 & 0.720 & 0.640 & 0.67   \\ \hline
+			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA*} & \textbf{AUC}  \\ \hline
+			\textit{PD\_Bench\_R} & 0.542 & 0.696 & 0.619 & 0.654 \\ \hline
+			\textit{PD\_RF10\_R} & 0.556 & \cellcolor{green!25}0.703 & \cellcolor{green!25}0.630 & 0.655  \\ 
+			\textit{PD\_Over\_RF10\_R}  & \cellcolor{green!25}0.569 & 0.662 & 0.615 & \cellcolor{green!25}0.666   \\ \hline
 		\end{tabular}
-	\caption{Benchmark Oversampling Model results for Comparison}
-	\label{table:benchmodelOver}
+	\caption{{Oversampled Previous Delinquency Model results when most important\\
+			Macro-Economic features from \textit{PD\_RF10\_R} model were included.
+			\\ *BA = Balanced Accuracy}}
+	\label{table:overPD}
 \end{table}
+
+The results are somewhat promising from the retrained model. The retrained does not produce markedly better results for any of the performance measures in the oversampled model but it does it score the highest in the recall and AUC performance measures. It performs poorly in the specificity measure which has a negative knock on effect to the balanced accuracy. A decision based on business objectives would have to made to decide whether increase in recall is more important than the decrease in specificity to decide which of these models is optimal. 
+
+In industry there can also be a stigma associated with models that trained using oversampled data so this could be the deciding factor when the results are not that much better.
+
+\subsubsection{Oversampling for No Previous Delinquency Data}
+
+It can be observed in Table \ref{table:oversample_train_testNPD} that after oversampling of the no previous delinquency dataset the target class distribution is now 50:50 meaning the dataset is now balanced.
 
 \begin{table}[H]
-\centering
-\small
-		\begin{tabular}{l  r r r r}
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l l r r r r}
 			\hline
-			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
-			\textit{PD\_Over\_RF10\_R}  & 0.569 & 0.662 & 0.615 & 0.666   \\ \hline
-			\textit{NPD\_Over\_IG5\_R} & 0.553 & 0.711 & 0.632 & 0.688   \\ \hline
+			\textbf{Model} &  \textbf{Dataset} & \textbf{\# Bad} & \textbf{\# Good} & \textbf{\# Observations} & \textbf{Good:Bad} \\
+			\hline
+			No Previous Delinquency & Training Oversample & 16,198 & 16,435 & 32,633 & 50:50 \\ 
+			& Test & 177 & 7,070 & 7,247 & 97:03 	\\\hline
+			\textbf{Total}     &  & \textbf{16,375} & \textbf{23,505} & \textbf{39,880} & \textbf{68:32} \\
+			\hline
 		\end{tabular}
-	\caption{Experiment Oversampling Model Results for Experiment Comparison}
-	\label{table:benchmodelOverExper}
+	}
+	\caption{Breakdown Holdout Training/Test Dataset \\for Oversampled No Previous Delinquency Models}
+	\label{table:oversample_train_testNPD}
 \end{table}
 
+Table \ref{table:overNPD} below details the results from the macro-economic features included in the \textit{NPD\_IG5\_R} model in Section \ref{IGNPDExper} retrained on the oversampled previous delinquency balanced training dataset. The retrained model is aliased \textit{NPD\_Over\_IG5\_R} below. The highest results for each performance metric are highlighted in green.
 
-
-\subsection{Synthetic Sampling}
-NonDelinqknnFit
-
-k-Nearest Neighbors 
-
-
-16408 samples
-
-116 predictor
-
-2 classes: 'N', 'Y' 
-
-
-Pre-processing: centered (116), scaled (116) 
-
-Resampling: Cross-Validated (10 fold, repeated 3 times) 
-
-Summary of sample sizes: 14768, 14767, 14766, 14767, 14768, 14767, ... 
-
-Resampling results across tuning parameters:
-
-\begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinquencyExperimentKNN}
-	\caption{Repeated 3 Times 10-Fold Cross-Validation Optimal No. of Neighbours for No Previous Delinquency Experiment Data}
-	\label{fig:NoPreviousDelinquencyExperimentKNN}
-\end{figure}
-
-{\footnotesize
-	\begin{longtable}
-		{l | l | l | l | l | l | l}
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{l l l r r r r}
 		\hline
-		\textbf{k} & \textbf{ROC} & \textbf{Sens} & \textbf{Spec} & \textbf{ROCSD} & \textbf{SensSD} & \textbf{SpecSD} \\ \hline
-		5          & 0.474        & 1.000         & 0.000         & 0.023          & 0.000           & 0.000           \\
-		7          & 0.469        & 1.000         & 0.000         & 0.024          & 0.000           & 0.000           \\
-		9          & 0.467        & 1.000         & 0.000         & 0.030          & 0.000           & 0.000           \\
-		11         & 0.462        & 1.000         & 0.000         & 0.030          & 0.000           & 0.000           \\
-		13         & 0.468        & 1.000         & 0.000         & 0.027          & 0.000           & 0.000           \\
-		15         & 0.471        & 1.000         & 0.000         & 0.024          & 0.000           & 0.000           \\
-		17         & 0.479        & 1.000         & 0.000         & 0.031          & 0.000           & 0.000           \\
-		19         & 0.485        & 1.000         & 0.000         & 0.042          & 0.000           & 0.000           \\
-		21         & 0.501        & 1.000         & 0.000         & 0.048          & 0.000           & 0.000           \\
-		23         & 0.520        & 1.000         & 0.000         & 0.049          & 0.000           & 0.000           \\
-		25         & 0.532        & 1.000         & 0.000         & 0.045          & 0.000           & 0.000           \\
-		27         & 0.535        & 1.000         & 0.000         & 0.041          & 0.000           & 0.000           \\
-		29         & 0.547        & 1.000         & 0.000         & 0.033          & 0.000           & 0.000           \\
-		31         & 0.548        & 1.000         & 0.000         & 0.034          & 0.000           & 0.000           \\
-		33         & 0.550        & 1.000         & 0.000         & 0.032          & 0.000           & 0.000           \\
-		35         & 0.541        & 1.000         & 0.000         & 0.043          & 0.000           & 0.000           \\
-		37         & 0.475        & 1.000         & 0.000         & 0.056          & 0.000           & 0.000           \\
-		39         & 0.452        & 1.000         & 0.000         & 0.040          & 0.000           & 0.000           \\
-		41         & 0.447        & 1.000         & 0.000         & 0.033          & 0.000           & 0.000           \\
-		43         & 0.447        & 1.000         & 0.000         & 0.035          & 0.000           & 0.000           \\
-		45         & 0.444        & 1.000         & 0.000         & 0.041          & 0.000           & 0.000           \\
-		47         & 0.454        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
-		49         & 0.476        & 1.000         & 0.000         & 0.067          & 0.000           & 0.000           \\
-		51         & 0.481        & 1.000         & 0.000         & 0.071          & 0.000           & 0.000           \\
-		53         & 0.501        & 1.000         & 0.000         & 0.073          & 0.000           & 0.000           \\
-		55         & 0.511        & 1.000         & 0.000         & 0.070          & 0.000           & 0.000           \\
-		57         & 0.509        & 1.000         & 0.000         & 0.069          & 0.000           & 0.000           \\
-		59         & 0.508        & 1.000         & 0.000         & 0.065          & 0.000           & 0.000           \\
-		61         & 0.517        & 1.000         & 0.000         & 0.066          & 0.000           & 0.000           \\
-		63         & 0.525        & 1.000         & 0.000         & 0.064          & 0.000           & 0.000           \\
-		65         & 0.536        & 1.000         & 0.000         & 0.053          & 0.000           & 0.000           \\
-		67         & 0.536        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
-		69         & 0.545        & 1.000         & 0.000         & 0.051          & 0.000           & 0.000           \\
-		71         & 0.552        & 1.000         & 0.000         & 0.047          & 0.000           & 0.000           \\
-		73         & 0.552        & 1.000         & 0.000         & 0.044          & 0.000           & 0.000           \\
-		\cellcolor{green!25}75         &  \cellcolor{green!25}0.556        &  \cellcolor{green!25}1.000         &  \cellcolor{green!25}0.000         &  \cellcolor{green!25}0.038          &  \cellcolor{green!25}0.000           &  \cellcolor{green!25}0.000           \\
-		77         & 0.541        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
-		79         & 0.527        & 1.000         & 0.000         & 0.061          & 0.000           & 0.000           \\
-		81         & 0.476        & 1.000         & 0.000         & 0.064          & 0.000           & 0.000           \\
-		83         & 0.456        & 1.000         & 0.000         & 0.056          & 0.000           & 0.000          \\ \hline
-		\caption{No Previous Delinquency Model Analysis K-NN}
-		\label{No Previous Delinquency Model Analysis K-NN}
-	\end{longtable}
-}
+\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA*} & \textbf{AUC}  \\ \hline
+\textit{NPD\_Bench\_R} & 0.525 & \cellcolor{green!25}0.739 & 0.632 & 0.671   \\ \hline
+\textit{NPD\_IG5\_R} & 0.542 & 0.736 & \cellcolor{green!25}0.639 & 0.667   \\ 
+\textit{NPD\_Over\_IG5\_R} &  \cellcolor{green!25}0.553 & 0.711 & 0.632 & \cellcolor{green!25}0.688   \\ \hline
+	\end{tabular}
+	\caption{{Oversampled No Previous Delinquency Model results when most \\important
+			Macro-Economic features from \textit{NPD\_IG5\_R} model were included.
+			\\ *BA = Balanced Accuracy}}
+	\label{table:overNPD}
+\end{table}
 
-ROC was used to select the optimal model using  the largest value.
+The results are somewhat promising from the retrained model as with the the previous oversampling experiment. The retrained models scores the highest in the recall and AUC performance measures. It performs a small bit worse in the specificity measure which has a negative knock on effect to the balanced accuracy. Again as with the previous experiment a decision based on business objectives would have to made to decide whether increase in recall is more important than the decrease in specificity to decide which of these models is optimal. 
 
-The final value used for the model was k = 75. 
+As mentioned industry there can also be a stigma associated with models that trained using oversampled data so this could be the deciding factor when the results are not that much better.
 
 
+\subsection{Synthetic Sampling of the Minority Class}
 
+\footnote{\url{https://cran.r-project.org/web/packages/DMwR/index.html}}
+SMOTE 
 
+\subsubsection{Synthetic Sampling for Previous Delinquency Data}
 DelinqknnFit
 
 k-Nearest Neighbors 
@@ -726,35 +690,14 @@ The final value used for the model was k = 51.
 			\hline
 			\textbf{Model} &  \textbf{Dataset} & \textbf{\# Bad} & \textbf{\# Good} & \textbf{\# Observations} & \textbf{Good:Bad} \\
 			\hline
-			Previous Delinquency & Training Synthetic K51 & 1,449 & 1,932 & 3,381 & 50:50\\
+			Previous Delinquency & Training Synthetic 51-NN & 1,449 & 1,932 & 3,381 & 58:42\\
 			& Test & 245 & 633 & 878 & 72:28\\\hline
-			\textbf{Previous Previous Delinquency}     & \textbf{Total} & \textbf{1,694} & \textbf{2,565} & \textbf{4,259} & \textbf{60:40} \\
+			\textbf{Total}     &  & \textbf{1,694} & \textbf{2,565} & \textbf{4,259} & \textbf{60:40} \\
 			\hline
-			No Previous Delinquency & Training Synthetic K75 & 9,480 & 18,012 & 27,492 & 66:34 \\ 
-			& Test & 177 & 7,070 & 7,247 & 97:03 	\\\hline
-			\textbf{No Previous Delinquency}     & \textbf{Total} & \textbf{9,597} & \textbf{25,032} & \textbf{34,739} & \textbf{72:28} \\
-			\hline
-			\textbf{Total } 	&     	     & \textbf{11,291} & \textbf{27,597} & \textbf{38,998} & \textbf{71:29}\\ \hline
 		\end{tabular}
 	}
 	\caption{Breakdown Holdout Training/Test Dataset \\for Synthetic Benchmark Models}
-	\label{table:benchmark_holdout_Synthetic_train_test}
-\end{table}
-
-
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{l l l r r r r}
-			\hline
-			\textbf{Model} & \textbf{Dataset} & \textbf{Software} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
-			\textit{PD\_SyntheticBench\_R} & Previous Delinquency & R & 0.444 & 0.818 & 0.631 & 0.652   \\ \hline
-			\textit{NPD\_SyntheticBench\_R} & No Previous Delinquency & R & 0.610 & 0.677 & 0.643 & 0.67   \\ \hline
-		\end{tabular}
-	}
-	\caption{Benchmark Synthetic Model results for Comparison}
-	\label{table:benchmodelSynthetic}
+	\label{table:Synthetic_train_testPD}
 \end{table}
 
 \begin{table}[H]
@@ -763,11 +706,126 @@ The final value used for the model was k = 51.
 	\begin{tabular}{l  r r r r}
 		\hline
 		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
-		\textit{PD\_Synthetic\_RF10\_R}  & 0.444 & 0.803 & 0.624 & 0.650   \\ \hline
-		\textit{NPD\_Synthetic\_IG5\_R} & 0.604 & 0.661 & 0.633 & 0.663   \\ \hline
+		\textit{PD\_Bench\_R} & \cellcolor{green!25}0.542 & 0.696 & 0.619 & \cellcolor{green!25}0.654 \\ \hline
+		\textit{PD\_Synthetic\_RF10\_R}  & 0.535 & 0.705 & 0.620 & 0.650   \\ \hline
 	\end{tabular}
 	\caption{Experiment Oversampling Model Results for Experiment Comparison}
-	\label{table:benchmodelSyntheticExper}
+	\label{table:benchmodelSyntheticExperPD}
+\end{table}
+
+
+\subsubsection{Synthetic Sampling for No Previous Delinquency Data}
+NonDelinqknnFit
+
+k-Nearest Neighbors 
+
+
+16408 samples
+
+116 predictor
+
+2 classes: 'N', 'Y' 
+
+
+Pre-processing: centered (116), scaled (116) 
+
+Resampling: Cross-Validated (10 fold, repeated 3 times) 
+
+Summary of sample sizes: 14768, 14767, 14766, 14767, 14768, 14767, ... 
+
+Resampling results across tuning parameters:
+
+\begin{figure}[H]
+	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinquencyExperimentKNN}
+	\caption{Repeated 3 Times 10-Fold Cross-Validation Optimal No. of Neighbours for No Previous Delinquency Experiment Data}
+	\label{fig:NoPreviousDelinquencyExperimentKNN}
+\end{figure}
+
+{\footnotesize
+	\begin{longtable}
+		{l | l | l | l | l | l | l}
+		\hline
+		\textbf{k} & \textbf{ROC} & \textbf{Sens} & \textbf{Spec} & \textbf{ROCSD} & \textbf{SensSD} & \textbf{SpecSD} \\ \hline
+		5          & 0.474        & 1.000         & 0.000         & 0.023          & 0.000           & 0.000           \\
+		7          & 0.469        & 1.000         & 0.000         & 0.024          & 0.000           & 0.000           \\
+		9          & 0.467        & 1.000         & 0.000         & 0.030          & 0.000           & 0.000           \\
+		11         & 0.462        & 1.000         & 0.000         & 0.030          & 0.000           & 0.000           \\
+		13         & 0.468        & 1.000         & 0.000         & 0.027          & 0.000           & 0.000           \\
+		15         & 0.471        & 1.000         & 0.000         & 0.024          & 0.000           & 0.000           \\
+		17         & 0.479        & 1.000         & 0.000         & 0.031          & 0.000           & 0.000           \\
+		19         & 0.485        & 1.000         & 0.000         & 0.042          & 0.000           & 0.000           \\
+		21         & 0.501        & 1.000         & 0.000         & 0.048          & 0.000           & 0.000           \\
+		23         & 0.520        & 1.000         & 0.000         & 0.049          & 0.000           & 0.000           \\
+		25         & 0.532        & 1.000         & 0.000         & 0.045          & 0.000           & 0.000           \\
+		27         & 0.535        & 1.000         & 0.000         & 0.041          & 0.000           & 0.000           \\
+		29         & 0.547        & 1.000         & 0.000         & 0.033          & 0.000           & 0.000           \\
+		31         & 0.548        & 1.000         & 0.000         & 0.034          & 0.000           & 0.000           \\
+		33         & 0.550        & 1.000         & 0.000         & 0.032          & 0.000           & 0.000           \\
+		35         & 0.541        & 1.000         & 0.000         & 0.043          & 0.000           & 0.000           \\
+		37         & 0.475        & 1.000         & 0.000         & 0.056          & 0.000           & 0.000           \\
+		39         & 0.452        & 1.000         & 0.000         & 0.040          & 0.000           & 0.000           \\
+		41         & 0.447        & 1.000         & 0.000         & 0.033          & 0.000           & 0.000           \\
+		43         & 0.447        & 1.000         & 0.000         & 0.035          & 0.000           & 0.000           \\
+		45         & 0.444        & 1.000         & 0.000         & 0.041          & 0.000           & 0.000           \\
+		47         & 0.454        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
+		49         & 0.476        & 1.000         & 0.000         & 0.067          & 0.000           & 0.000           \\
+		51         & 0.481        & 1.000         & 0.000         & 0.071          & 0.000           & 0.000           \\
+		53         & 0.501        & 1.000         & 0.000         & 0.073          & 0.000           & 0.000           \\
+		55         & 0.511        & 1.000         & 0.000         & 0.070          & 0.000           & 0.000           \\
+		57         & 0.509        & 1.000         & 0.000         & 0.069          & 0.000           & 0.000           \\
+		59         & 0.508        & 1.000         & 0.000         & 0.065          & 0.000           & 0.000           \\
+		61         & 0.517        & 1.000         & 0.000         & 0.066          & 0.000           & 0.000           \\
+		63         & 0.525        & 1.000         & 0.000         & 0.064          & 0.000           & 0.000           \\
+		65         & 0.536        & 1.000         & 0.000         & 0.053          & 0.000           & 0.000           \\
+		67         & 0.536        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
+		69         & 0.545        & 1.000         & 0.000         & 0.051          & 0.000           & 0.000           \\
+		71         & 0.552        & 1.000         & 0.000         & 0.047          & 0.000           & 0.000           \\
+		73         & 0.552        & 1.000         & 0.000         & 0.044          & 0.000           & 0.000           \\
+		\cellcolor{green!25}75         &  \cellcolor{green!25}0.556        &  \cellcolor{green!25}1.000         &  \cellcolor{green!25}0.000         &  \cellcolor{green!25}0.038          &  \cellcolor{green!25}0.000           &  \cellcolor{green!25}0.000           \\
+		77         & 0.541        & 1.000         & 0.000         & 0.052          & 0.000           & 0.000           \\
+		79         & 0.527        & 1.000         & 0.000         & 0.061          & 0.000           & 0.000           \\
+		81         & 0.476        & 1.000         & 0.000         & 0.064          & 0.000           & 0.000           \\
+		83         & 0.456        & 1.000         & 0.000         & 0.056          & 0.000           & 0.000          \\ \hline
+		\caption{No Previous Delinquency Model Analysis K-NN}
+		\label{No Previous Delinquency Model Analysis K-NN}
+	\end{longtable}
+}
+
+ROC was used to select the optimal model using  the largest value.
+
+The final value used for the model was k = 75. 
+
+
+
+\begin{table}[H]
+	\centering\
+	\resizebox{\textwidth}{!}
+	{
+		\begin{tabular}{l l r r r r}
+			\hline
+			\textbf{Model} &  \textbf{Dataset} & \textbf{\# Bad} & \textbf{\# Good} & \textbf{\# Observations} & \textbf{Good:Bad} \\
+			\hline
+			No Previous Delinquency & Training Synthetic 75-NN & 9,480 & 18,012 & 27,492 & 66:34 \\ 
+			& Test & 177 & 7,070 & 7,247 & 97:03 	\\\hline
+			\textbf{Total}     & & \textbf{9,597} & \textbf{25,032} & \textbf{34,739} & \textbf{72:28} \\
+			\hline
+		\end{tabular}
+	}
+	\caption{Breakdown Holdout Training/Test Dataset \\for Synthetic Benchmark Models}
+	\label{table:Synthetic_train_testNPD}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{l  r r r r}
+		\hline
+		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+		\textit{NPD\_Bench\_R} & 0.525 & 0.739 & 0.632 & 0.671   \\ \hline
+		\textit{NPD\_Synthetic\_IG5\_R} & 0.517 & 0.749 & 0.633 & 0.663   \\ \hline
+	\end{tabular}
+	\caption{Experiment Oversampling Model Results for Experiment Comparison}
+	\label{table:benchmodelSyntheticExperNPD}
 \end{table}
 
 
