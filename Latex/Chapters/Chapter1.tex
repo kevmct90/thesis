@@ -7,7 +7,9 @@
 \lhead{Chapter 1. \emph{Introduction}} % Change X to a consecutive number; this is for the header on each page - perhaps a shortened title
 
 % INTRO
-In the financial market credit risk is one of the oldest forms of risk. If credit can be defined as "one party (lender) (he/she/it) trusting another party (borrower) so much that they are willing to provide them with money or a resource where they expect to be repaid not immediately but after some period of time", then credit risk the probability or chance that the borrower never repays the lender. Credit risk has existed since lending began itself dating back to 1800 B.C., where there has always been a certain amount of uncertainty in the lending borrowing process in the financial market \citep{caouette_managing_1998}.
+\section{Overview of Project Area}
+
+In the finance credit risk is one of the oldest forms of risk. If credit can be defined as ``one party (lender) (he/she/it) trusting another party (borrower) so much that they are willing to provide them with money or a resource where they expect to be repaid not immediately but after some period of time", then credit risk the probability or chance that the borrower never repays the lender. Credit risk has existed since lending began itself dating back to 1800 B.C., where there has always been a certain amount of uncertainty in the lending borrowing process in the financial market \citep{caouette_managing_1998}.
 
 There are many risks in the repayment process of lending where the lender will not receive the full payment, the principle, the interest or both. To help tackle this issue credit risk models have been deployed to identify what borrowers are likely to fail paying back their financial obligation \citep{sirirattanaphonkun_default_2012}
 
@@ -39,30 +41,6 @@ Studies demonstrate that performing SMEs are vital as they as seen as the spine 
 \textit{For example, we know that during recessions, consumers
 	are likely to cut back on luxuries, and thus firms in the consumer durable goods sector
 	should see their credit risk increase. \citep{hackbarth_capital_2006}}
-
-\textit{ \textbf{this paper will be useful for introduction motivation etc}
-In the aftermath of the global financial crisis of
-2008–2009, there has been an increased interest in the
-role of small and medium enterprises in job creation
-and economic growth. However the lack of consistent
-indicators at the country level restricts extensive crosscountry
-analyses of lending to small and medium
-enterprises. This paper introduces a new dataset to fill this
-gap in the small and medium enterprise data landscape.
-In addition, it provides the first set of results of analyses
-with this new dataset, predicting the global small and 
-medium enterprise lending volume to be $10$ trillion.
-The bulk of this volume, 70 percent, is in high-income
-countries. On average, small and medium enterprise
-loans constitute 13 percent of gross domestic product
-in developed countries and 3 percent in developing
-countries. Note that although a unique small and
-medium enterprise definition does not exist, differences
-in definitions across countries are not statistically
-significant in explaining the differences in small and
-medium enterprise lending volumes.
-\citep{ardic_small_2011}
-}
 
 This chapter introduces the research topic, the predictiveness of location-based features in \textit{Small Medium Enterprises} SME credit scoring, and how it can potentially can be used to improve credit scoring in financial institutions. The motivation for the research question are discussed with details of its significance. The aims of the thesis along with the research objectives and analytical approach are then stated. The scope and limitation of this research are then described. The chapter concludes with a summary and outlines of this thesis.
 
@@ -116,7 +94,6 @@ Each stage of this process cannot be left out when completing a industry credit 
 %	
 %----------------------------------------------------------------------------------------
 
-\section{Motivation}
 Since the financial of 2007-2008 there is an even greater emphasis on quality credit scoring. In Ireland it was the property bubble that collapsed causing the banking crisis. 
 
 "Many believe that focusing on lending on the SME sector could play an important role in restoring faith in the banking system and supporting economic growth, according to leading experts"
@@ -183,10 +160,12 @@ The objectives of this research are:
 %	SECTION 6
 %----------------------------------------------------------------------------------------
 \section{Scope and Limitations}
-The project will focus on building an SME credit scorecard, subset of the customers in \subjectname. A holdout dataset will be taken to build the model which will be predicting 12 months in advance.
-\\\\
-The data used in this project will be taken from the transaction visa debit table, in an ideal world for this analysis you get the location of the actual transactions taking place but this was not available so I had to roll it back to the customers address. Diagram possibly
-\\\\ 
+The scope of this project is to build a prediction model in \subjectname\ for SMEs which utilises macro-economic features by geographic regions (Electoral Division and Local Authority) in Ireland. The aim of the experiment is to evaluate the predictiveness of these macro-economic features and evaluate if they should be included in industry credit risk models in \subjectname\ in the future.
+
+SMEs included in this project will only be taken from one of the accounting systems in \subjectname. Macro-economic features for this experiment will be generated from customer transactional spending behaviour, default trends over disparate banking credit products (Personal Loans, Homeloans, SMEs) and Census data(Employment levels, Education levels, and Occupation Type). 
+
+As part of the experiment a benchmark prediction model will be trained using features that were selected to be in a SME credit risk model in the past. Further prediction models will be built using the features from the benchmark model and the macro-economic features generated as part of this research. Prediction models using macro-economic features will be compared and evaluated against the benchmark model. If the models trained using the  macro-economic features perform better than the benchmark model then these features should be considered for inclusion in the SME credit risk model in the future. 
+
 
 
 %----------------------------------------------------------------------------------------
