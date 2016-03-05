@@ -439,3 +439,130 @@ As discussed is Chapter 2, undersampling is not a good fit for absolute rarity s
 
 \section{Evaluation of Experiments}
 
+\section{Background OlD}
+
+We begin with a high-level overview of SME credit scoring and location data in machine learning.
+
+
+Credit scoring, in layman's language is the name given to describe the process of assessing how risky customers and applicants are to default on their financial obligation \citep{hand_statistical_1997}. The goal is to split customers into two classes, 'good' and 'bad'. Customers in the good class are considered likely to repay on their financial obligation while customers in the bad class are likely to default on theirs. In order to make this decision about its customers, financial institutions use information known about the customer and other relevant metrics to identify how risky a customer is. 
+
+
+Since the financial crisis of 2007-2008 there has been a  much greater emphasis on credit scoring in the consumer lending process in banking. One of the most common methods of building scorecards is by using data mining \citep{baesens_50_2009}. 
+\\\\
+There are three main stages of a typical credit scorecard development \cite{van_gestel_credit_2009}
+
+\begin{itemize}
+	\item Dataset Construction
+	\item Modelling
+	\item Documentation 
+\end{itemize}
+
+This can displayed using this architectural diagram. Insert find diagram.
+\\\\
+Each stage of this process cannot be left out when completing a industry credit scorecard, however for this research will be focusing particularly on the data construction and modelling stages. The documentation stage is critical for deployment of an industry scorecard but will not be investigated further in this thesis. 
+
+%----------------------------------------------------------------------------------------
+%	
+%----------------------------------------------------------------------------------------
+
+Since the financial of 2007-2008 there is an even greater emphasis on quality credit scoring. In Ireland it was the property bubble that collapsed causing the banking crisis. 
+
+"Many believe that focusing on lending on the SME sector could play an important role in restoring faith in the banking system and supporting economic growth, according to leading experts"
+
+
+The primary aim of this research project is to build a quantitative credit scorecard that will identify Small Medium Enterprise (SME) customers who are likely to go into arrears/defaults.
+
+
+The upheaval in the financial markets that accompanied the 2007-2008 sub-prime
+mortgage crisis has emphasised the large proportion of the banking industry based
+on consumer lending (Thomas, 2009b). Credit scoring is an important part of the
+consumer lending process. It is an endeavour regarded as one of the most popular
+application fields for both data mining and operational research techniques (Baesens
+et al., 2009). Improving the scoring accuracy of the credit decision by as much as
+a fraction of a percent can result in significant future savings (West, 2000). Furthermore,
+global (Bank for International Settlements) and national (central banks)
+regulators insist that financial institutions keep better track of their credit scoring
+systems. The costs of incorrectly classifying a customer can be high, both financially
+and in terms of reputation.
+
+
+\textit{It is an endeavour regarded as one of the most popular
+	application fields for both data mining and operational research techniques (Baesens
+	et al., 2009). Improving the scoring accuracy of the credit decision by as much as
+	a fraction of a percent can result in significant future savings}
+
+
+
+\textit{footnotes found in \citep{rocha_status_2011} also very good introduction for references
+	According to Ayyagari et al., (2007) SMEs account for more than 60\% of manufacturing employment across 76
+	developed and developing economies. 
+	Schiffer and Weder (2001), IADB (2004) and Beck et al. (2005, 2006 and 2008) show SMEs perceive access to
+	finance and cost of credit to be greater obstacles than large firms and these factors affect their growth.
+}
+
+Two thirds of the labour workforce are employed by SMEs with less than 250 employees in countries in \textit{The Organisation for Economic Co-operation and Development} (OECD)\footnote{The OECD's origins date back to 1960, when 18 European countries plus the United States and Canada joined forces to create an organisation dedicated to economic development. Today, our 34 Member countries span the globe, from North and South America to Europe and Asia-Pacific. They include many of the world’s most advanced countries but also emerging countries like Mexico, Chile and Turkey. We also work closely with emerging economies like the People's Republic of China, India and Brazil and developing economies in Africa, Asia, Latin America and the Caribbean. Together, our goal continues to be to build a stronger, cleaner and fairer world. \url{http://www.oecd.org/about/membersandpartners/}} (\cite{beck_bank_2008}; \cite{dietrich_explaining_2012}). In its simplest 
+
+\textit{There  are  numerous  studies  on  credit 
+	risk based on financial data of listed companies, which are mostly 
+	large  corporations,  but  very  few  studies  utilized  the  data  of  small 
+	and  medium  enterprises  (SMEs).  This  could  be  mainly  due  to  the 
+	concern of the reliability of the data since large firms listed at the 
+	stock  exchanges  are  closely  monitored  by  the  authority  to  ensure 
+	that the financial data provide accurate and useful information for 
+	investors and shareholders. \citep{sirirattanaphonkun_default_2012}}
+
+\textit{The
+	implementation of reliable statistical methods to measure and forecast these probabilities implies the
+	consideration of an observation period. In other words, the identification of default events implies mon
+	-
+	itoring each debtor over time and the identification of a transition from non-default to a default state.
+	The obtained statistics are useful for credit institutions in many ways, spanning from the credit ap-
+	proval process (for instance to implement cut-off points to screen credit applications), to the establish-
+	ment of risk-sensitive pricing, the decision on whether collateral is required or not, the estimation of
+	provisioning requirements or impairment losses, and the assessment of capital adequacy.
+	\citep{antunes_estimating_2005}}
+
+Studies demonstrate that performing SMEs are vital as they as seen as the spine of countries economies all around the world, because they are hubs for providing jobs, innovation and growth to the economy \citep{craig_sba-guaranteed_2004}.
+
+
+\textit{For example, we know that during recessions, consumers
+	are likely to cut back on luxuries, and thus firms in the consumer durable goods sector
+	should see their credit risk increase. \citep{hackbarth_capital_2006}}
+
+This chapter introduces the research topic, the predictiveness of location-based features in \textit{Small Medium Enterprises} SME credit scoring, and how it can potentially can be used to improve credit scoring in financial institutions. The motivation for the research question are discussed with details of its significance. The aims of the thesis along with the research objectives and analytical approach are then stated. The scope and limitation of this research are then described. The chapter concludes with a summary and outlines of this thesis.
+
+\textit{
+	http://www.cso.ie/en/surveysandmethodology/multisectoral/businessdemography/
+	The CSO Business Demography results for 2012 found that 68% of Irish private sector employees work for an SME. They account for 52% of total employment.
+}
+
+
+\textit{footnotes found in \citep{rocha_status_2011} also very good introduction for references
+	According to Ayyagari et al., (2007) SMEs account for more than 60\% of manufacturing employment across 76
+	developed and developing economies. 
+	Schiffer and Weder (2001), IADB (2004) and Beck et al. (2005, 2006 and 2008) show SMEs perceive access to
+	finance and cost of credit to be greater obstacles than large firms and these factors affect their growth.
+}
+
+
+\cite{beck_bank_2008} research indicates that most commercial financial institutions consider the SME sector to be very profitable. 
+
+
+\cite{anderson_credit_2007} defines \textit{credit risk} as a risk of a customers defaulting on their financial obligation due to the a negative change in their credit worthiness.
+
+Since the financial crisis of 2007-2008 there has been a  much greater emphasis on credit scoring in the consumer lending process in banking. One of the most common methods of building scorecards is by using data mining \citep{baesens_50_2009}. 
+
+Since the financial crisis of 2007-2008 there has been a  much greater emphasis on credit scoring in the consumer lending process in banking.
+
+The most common definition for an SME is a registered business that with less than 250 employees \citep{ifc_sme_2009}, however this definition is not always consistent and can vary from country to country, financial institution to financial institution. 
+
+Studies demonstrate that performing SMEs are vital as they as seen as the spine of countries economies all around the world, because they are hubs for providing jobs, innovation and growth to the economy \citep{craig_sba-guaranteed_2004}.
+
+Worldwide the most common method by regulators for defining businesses as SME are based the number of people they have employed, sales/turnover or/and loan size \cite{ardic_small_2011}.
+
+
+\cite{beck_bank_2008} research indicates that most commercial financial institutions consider the SME sector to be very profitable.
+
+
+
+
