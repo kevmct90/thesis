@@ -180,7 +180,7 @@ pdfstartview={FitV},unicode,breaklinks=true]{hyperref}
 %	defined as \examname above so you cite it as \examname
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Investigation into the predictiveness of location-based features in Small Medium Enterprisess Credit Risk Modelling } % Your thesis title - this is used in the title and abstract
+\thesistitle{Investigation into the predictive capability of macro-economic features in Modelling Credit Risk for Small Medium Enterprises} % Your thesis title - this is used in the title and abstract
 %-------------------------------------------------  
 \supervisor{Dr. Sarah Jane Delany} % You supervisor's name - this is used in the title page
 %-------------------------------------------------   
