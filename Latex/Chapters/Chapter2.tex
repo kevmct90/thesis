@@ -116,7 +116,7 @@ Predictive models are built by using interval/numerical or/and categorical/nomin
 
 \section{Dataset Construction}\label{sec:datasetConstruction}
 
-Experts often detail how steps performed in the data construction and preparation stage can turn out to some of the most time consuming  when building predictive models\footnote{For example see \url{http://www.kdnuggets.com/polls/2003/data_preparation.htm}}. There are many steps that need to be considered during the data preparation stage for building a predictive model of SME credit risk, two that will be discussed in this section are the Sampling Period and Class Label Definition. 
+Experts often detail how steps performed in the data construction and preparation stage can turn out to some of the most time consuming  when building predictive models\footnote{For example see \url{http://www.kdnuggets.com/polls/2003/data_preparation.htm}}. There are many steps that need to be considered during the data preparation stage for building a prediction model that model credit risk of SMEs, two that will be discussed in this section are the Sampling Period and Class Label Definition. 
 
 Practitioners often cite the steps performed during this stage as the most time-consuming
 activities performed during the construction of credit scorecards1. The
@@ -124,9 +124,8 @@ main steps performed when creating a dataset with which to construct a scorecard
 are described hereafter.
 
 \subsection{Sampling Period}
-As already stated in the thesis, predictive models are built using historical data. It must be stated that past performance can be useful predictor of default it does not guarantee that future predictions of the model will be accurate or reliable. A training dataset is built to build a predictive model, customers are observed at two different points in time \citep{martens_credit_2010}, these are called the \textit{observation point and prediction point/"default observation point"} (cite). The time period between these two points is referred to the \textit{outcome window}. This can vary based on business objectives and requirements, industry standard in \subjectname\ dictates that this usually 12 months. \\\\
+As already stated in the thesis, predictive models are built using historical data. It must be stated that past performance can be useful predictor of default it does not guarantee that future predictions of the model will be accurate or reliable. A training dataset is built to build a predictive model, customers are observed at two different points in time \citep{martens_credit_2010}. They are observed at the time that the prediction is made based on past performance. They are observed sometime in the future called the \textit{default observation point} at which they will classified from the model as good or bad. The amount of time between these two points is commonly known as the \textit{outcome window}. The length of the outcome window can vary based on business objectives and requirements, the industry standard in \subjectname\ dictates that this usually 12 months. \\\\
 
-Reason/Arguments for shorter/longer periods may need to be added here \\
 
 \subsection{Class Label Definition} \label{classLabelDef}
 For customer to be defined as defaulted is dependant on what the objective of that predictive model is and the requirements of the financial institution \citep{mcnab_principles_2000}. The Basel II definition (paragraph 452) which is widely used by financial institutions and \subjectname\ considers a default to have taken place when either or both of the following criteria are met:
@@ -138,55 +137,29 @@ For customer to be defined as defaulted is dependant on what the objective of th
 
 There are two well known approaches to class label definition that financial institutions can choose according to \cite{anderson_credit_2007}: (\textit{i}) a \textit{current status} label definition which classifies a customer to have defaulted or not at the end of the outcome window; or option (\textit{ii}) a \textit{worst status} label definition which classifies whether the customer has defaulted or not throughout the outcome window. It is \subjectname's industry standard to use the \textit{worst status} option. This agrees with Basel II \citep{basel_international_2006}, that customers 90 days worst status covering a one-year period is considered the standard definition for customers that have defaulted. 
 
-\subsection{Dataset Completion}
-\textit{
-The final step of the dataset construction stage involves splitting the data into two
-portions: the training sample and the testing sample. The training sample is used
-to build the scorecard and the testing sample estimates how well the scorecard performs.
-There are various ways to split the training and testing datasets. Normally,
-where there is sufficient data available, scorecard builders opt for the hold-out approach
-(see Section 2.5.2) with a 70:30 split between the size of the training and
-testing samples (Siddiqi, 2005). In the hold-out approach, a portion of the training
-sample, called the validation sample, is set aside for tuning the parameters of the
-74
-underlying scorecard model.
-Where there is insufficient data available, standard statistical approaches such as
-cross-validation (see Bishop, 2006) and bootstrapping (see Japkowicz \& Shah, 2011)
-can be used to estimate model parameters without losing too much information
-(Thomas, 2009a) \citep{kennedy_credit_2013}
-}
 
 \subsection{Segmentation}\label{sec:segment}
-Data may need to be split up into multiple subset to create simpler models \citep{myatt_making_2007}. This divide will be done under certain rules or criteria and allows you to model characteristics and features that important to each subset creating a much simpler and robust model output.
+Segmentation is carried out by splitting the dataset population into multiple groups and building a prediction model for each group \citep{myatt_making_2007}. This splitting will be carried out using group specific criteria and allows for modelling characteristics and features that are important each group independently.
 
+For marketing, \cite{wedel_market_2012} portrays how segmentation can be utilised to collate customers in homogeneous groups founded on those customers buying pattens, and demographic data like location, age, income.
 
-\textit{An early decision in scorecard modelling is whether or not to segment the population
-and build different scorecards for each segment. Segmentation is performed
-by dividing the population into several groups and building separate scorecards for
-each group. In marketing, Wedel \& Kamakura (2000) describe how segmentation
-is regularly used to group customers into homogeneous groups based on their purchasing
-patterns and demographic information such as, amongst others, income,
-and age (Hand et al., 2001). In credit scoring, the purpose of segmentation is to
-improve scorecard discriminability and allow greater lender flexibility with regard
-to product configurations such as interest rate, repayment structure, and other such
-requirements. The construction and maintenance of additional scorecards involves
-additional labour and requires careful consideration to limit the number of segments.
-The three considerations influencing the decision to segment the data are (Thomas,
-2009a): (i) operational; (ii) statistical; and (iii) strategic.
-\citep{kennedy_credit_2013}}
+Segmentation can be used in credit scoring to allow the lender to have more flexibility when personalising credit products for customers for example interest rate and repayment structure\citep{kennedy_credit_2013}.
+
+Segmentation is carried out by analysts who generally would need both subject matter expert experience and by levering statistical methods \citep{siddiqi_credit_2012}
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 5
 %----------------------------------------------------------------------------------------
 \section{Predictive Models}\label{sec:predictModels}
-This sections we give discuss and compare classification algorithms that are useful when modelling a binary classification problem, in the thesis this is did the customer default or not-default. The algorithms discussed in this section is not an exhausted list but contains are suitable to be used in the financial industry. Classifiers discussed include Linear \& Logistic Regression, k-nearest neighbour (KNN), support vector machines (SVM), neural networks. 
+This section details some of the classification algorithms that can be used when modelling a binary classification problem, in this thesis the problem is if a customer did default or not-default on their financial obligation. The algorithms discussed in this section are not an exhausted list but all are suitable for use in the financial industry. Classification models discussed include Linear \& Logistic Regression, k-nearest neighbour (KNN), support vector machines (SVM), neural networks. 
 
-Logistic regression is one of the most widely used classifier used by industry based on research and experience working in industry, therefore this classifier will be discussed in detail while the other classifiers will be discussed briefly.
+Logistic regression is one of the most widely used classification algorithms used by industry based on research and experience working in industry.
 
 \subsection{Regression} \label{Reg}
 Regression models are used to model the linear relationship between features in a feature space or between the features and the target variable. 
 
-A very simple form of linear regression is where there is one independent and one dependent variable, which is the target we are attempting to predict. The model is often represented by the following model
+A very simple form of linear regression is where there is one independent and one dependent variable, which is the target we are attempting to predict. The model is often represented by the following equation
 
 \begin{equation} \label{eq:reg}
 	\text{Linear Model} = y = b_0 + b_1x
@@ -194,7 +167,7 @@ A very simple form of linear regression is where there is one independent and on
 
 where we're trying to predict $y$ based using the value of $x$.
 
-Fig. \ref{fig:simpleLinearRegression} illustrates very simply and intuitively using a real life example you can relate to. It demonstrates the linear relationship between a persons heights and a persons weight.
+Fig. \ref{fig:simpleLinearRegression} illustrates a very simple real life example of linear regression. It demonstrates the linear relationship between a persons heights and a persons weight.
 
 \begin{figure}[H]
 	\includegraphics[center]{simpleLinearRegression}
@@ -203,7 +176,7 @@ Fig. \ref{fig:simpleLinearRegression} illustrates very simply and intuitively us
 	\label{fig:simpleLinearRegression}
 \end{figure}
 
-We can see from above the $y$ in this example is weight (wgt) and $b_0 + b_1x$ is $80 + 2*Height(hgt)$. This is a very basic example but demonstrates how this can be leveraged for more complex feature sets. Predicting arrears is a dichotomous problem meaning the outcome of the experiment can only have two possible values. 
+It can be seen from the above the $y$ in this example is weight (wgt) and $b_0 + b_1x$ is $80 + 2*Height(hgt)$ is what we are using to predict $y$. This is a very basic example but demonstrates how this can be leveraged for more complex feature sets. Predicting arrears is a dichotomous problem meaning the outcome of the experiment can only have two possible values. 
 
 \subsection{Logistic Regression} \label{LogReg}
 \textit{Logistic Regression} \cite[See:][]{hosmer_applied_2000} within the credit scoring industry is one of the most used algorithms \citep{hand_evaluating_2010}. As seen above in Fig. \ref{fig:simpleLinearRegression} a simple regression model outputs a continuous response, in that example body weight. Credit scoring or predicting arrears is a problem where there can only be two possibly values default or not-default, to simplify this we will reduce this to a binary problem where the outcome will be 1 or 0 \citep{zou_modified_2004}. To transform the output of a regression model from $[-\infty, +\infty]$ to a probability between 0 and 1 a logistic transformation is applied. The logistic function can be used to take any value between $+\infty$ and $-\infty$ and output a value between $0$ and $1$. Fig. \ref{fig:logistic_function} below illustrates what a logistic function looks like.
@@ -222,7 +195,7 @@ The logistic function is defined in Equation \ref{eq:logitReg} as the following:
 	\text{Logistic Model}  =  p  =  \frac{1}{1 + e^{-(b_0 + b_1x)}}
 \end{equation}
 
-As discussed already linear regression is an unsuitable classifier for making dichotomous predictions as linear regression produces predictions for a range beyond 0 to 1. Logistic regression also produces a curved line that is bounded by values between 0 and 1. Fig. \ref{fig:LogRegVsLineReg}
+As discussed previously linear regression is an unsuitable classifier for making dichotomous predictions as linear regression produces predictions for a range beyond 0 to 1. Logistic regression also produces a curved line that is bounded by values between 0 and 1. see Fig. \ref{fig:LogRegVsLineReg}.
 
 \begin{figure}[H]
 	\includegraphics[width=0.6\textwidth, center]{LogRegVsLineReg}
@@ -230,9 +203,9 @@ As discussed already linear regression is an unsuitable classifier for making di
 	\label{fig:LogRegVsLineReg}
 \end{figure}
 
-in \ref{fig:LogRegVsLineReg} the constant, $b_0$ dictates the position of the curve which can be moved left and right depending on its value, $b_1$ will be the slope of the curve. 
+In Fig. \ref{fig:LogRegVsLineReg} the constant, $b_0$ dictates the position of the curve which can be moved left and right depending on its value, $b_1$ will be the slope of the curve. 
 
-The logistic regression model can be extended to include any number of interval and nominal variables which is illustrated in Equation \ref{eq:logitRegExtended}
+The logistic regression model can be extended to include any number of interval and nominal features which is illustrated in Equation \ref{eq:logitRegExtended}
 
 \begin{equation} \label{eq:logitRegExtended}
 	p  =  \frac{1}{1 + e^{-(b_0 + b_1x_1 + b_2x_2 +\cdot\cdot\cdot+ b_px_p )}}
@@ -244,7 +217,7 @@ Logistic Regression can also be used in cases where there are more than two outc
 One of the main major attractions of logistic regressions it allows you to use discrete, continuous features or a combination of both \citep{lee_application_2005}.
 
 \subsection{K-Nearest Neighbours} \label{kNN}
-The \textit{k-nearest neighbour} or {k-NN} for short, is an algorithm that classifies observations based on the how its nearest neighbours are classified. It can be known as the nearest neighbour but in the majority of cases it is useful to use more than one neighbour \citep{henley_k-nearest-neighbour_1996}. The intuition behind this algorithm is that instances which are close by each other will more likely be classified the same way \citep{cover_nearest_1967}. We can see in Fig. \ref{fig:KNN_Example}\\ %added space for small gap in picture 
+The \textit{k-nearest neighbour} or {k-NN} for short, is an algorithm that classifies observations based on how its nearest neighbours are classified. It can be known as the nearest neighbour but in the majority of cases it is useful to use more than one neighbour \citep{henley_k-nearest-neighbour_1996}. The intuition behind this algorithm is that instances which are close by each other will more likely be classified the same way \citep{cover_nearest_1967}. We can see in Fig. \ref{fig:KNN_Example}\\ %added space for small gap in picture 
 
 
 \begin{figure}[H]
@@ -255,7 +228,7 @@ The \textit{k-nearest neighbour} or {k-NN} for short, is an algorithm that class
 
 that results of the algorithm can vary with the choice of \textit{k}. It should also be noted that when applying this algorithm to binary experiment it is good practice to only choose odd values of \textit{k}, this will eliminate the risk of ties from the decision process \citep{keller_fuzzy_1985} 
 
-While adopting the k-NN algorithm you can choose which method and validate what the best distance measure to decide what are your nearest neighbours. There are some common distance measures for continuous features only, Equation \ref{eq:Minkowski} is the \textit{minkowski distance} is one of the most common, where \textit{p=1} this becomes the Equation \ref{eq:Manhatten} the \textit{manhatten distance} and where \textit{p=2} this becomes the Equation \ref{eq:Euclidean} the \textit{euclidean distance}
+While adopting the k-NN algorithm there are multiple methods to decide what is your nearest neighbours. There are some common distance measures for continuous features only. Equation \ref{eq:Minkowski} is the \textit{minkowski distance}, it is one of the most common, where \textit{p=1} this becomes the Equation \ref{eq:Manhatten} the \textit{manhatten distance} and where \textit{p=2} this becomes the Equation \ref{eq:Euclidean} the \textit{euclidean distance}
 
 \begin{equation} \label{eq:Minkowski}
 	\text{Minkowski Distance}   = \Big(\sum_{i=1}^k (\abs{x_i-y_i})^p\Big)^\frac{1}{p}
@@ -269,12 +242,12 @@ While adopting the k-NN algorithm you can choose which method and validate what 
 	\text{Euclidean Distance}   = \sqrt{\sum_{i=1}^k (x_i-y_i)^2}
 \end{equation}
 
-The results from k-NN will vary depending on your choice of distance measurement, but there more distance metrics for continuous features such as \textit{Correlation Similarity}, \textit{Cosine Similarity} \citep{sarwar_item-based_2001}
+The results from k-NN will vary depending on your choice of distance measurement. There are also other distance metrics for continuous features such as \textit{Correlation Similarity}, \textit{Cosine Similarity} \citep{sarwar_item-based_2001}
 
-Analysis can be completed to evaluate what the optimal value for \textit{k} is based on inspecting the results and creating benchmarks. Anecdotally the larger the value of \textit{k} the more precise the algorithm can be but as with most things in machine learning there are no guarantees. You can leverage methods such as cross validation discussed in Section \ref{subsec:k_fold} and utilised in Chapter \ref{Chapter4} to evaluate what the good choice of \textit{k} would be. It is also a widely used method in synthetic sampling with will be discussed later in the chapter, in Chapter \ref{Chapter4} and Chapter \ref{Chapter5}.
+Analysis can be completed to evaluate what the optimal value for \textit{k} is based on inspecting the results and creating benchmarks. Anecdotally the larger the value of \textit{k} the more precise the algorithm can be but as with most things in data mining there are no guarantees. Choosing a high $k$ could potentially cause over-fitting of the training data.
 
 \subsection{Decision Trees} \label{decTrees}
-The \textit{decision tree} algorithm classifies observations into classes in the form of tree like structure, hence the name. The algorithm seeks to partition the dataset into smaller subsets, using the relationship between the feature set and target variable to do so. Fig. \ref{fig:decisionTree}
+The \textit{decision tree} algorithm classifies observations into classes in the form of tree like structure, hence the name. The algorithm seeks to partition the dataset into smaller subsets, using the relationship between the feature set and target variable to do so. an example can of a simple decision can be seen in Fig. \ref{fig:decisionTree}
 
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth, center]{decisionTree}
@@ -282,7 +255,7 @@ The \textit{decision tree} algorithm classifies observations into classes in the
 	\label{fig:decisionTree}
 \end{figure}
 
-The output of the algorithm splits the data into smaller subsets of data, which output is a tree with root, internal and leaf nodes. As can be seen in Fig. \ref{fig:decisionTreeExplained}, the root node in this example \textit{Outlook} is the first node in the tree which means it is the most predictive feature. 
+The output of the algorithm splits the data into smaller subsets of data, which output is a tree with root node, internal nodes and leaf nodes. As can be seen in Fig. \ref{fig:decisionTreeExplained}, the root node in this example \textit{Outlook} is the first node in the tree which means it is the most predictive feature. 
 
 \begin{figure}[H]
 	\includegraphics[width=.6\textwidth, center]{decisionTreeExplained}
@@ -290,9 +263,9 @@ The output of the algorithm splits the data into smaller subsets of data, which 
 	\label{fig:decisionTreeExplained}
 \end{figure}
 
-The \textit{root node} will have have two or more branches in this case three \textit{Rainy, Overcast} and \textit{Sunny}. Below these branches you have \textit{internal or split node} \textit{Windy} or \textit{Humidity} which output more branches. The bottom nodes of each decision or branch is the prediction or classification, this is called the \textit{leaf node}. In this example the leaf node decision will be whether or not it will rain represented by Yes/No in Fig. \ref{fig:decisionTreeExplained}
+The \textit{root node} will have have two or more branches in this case three \textit{Rainy, Overcast} and \textit{Sunny}. Below these branches you have \textit{internal or split node} \textit{Windy} and \textit{Humidity} which output more branches. The bottom nodes of each decision or branch is the prediction or classification, this is called the \textit{leaf node}. In this example the leaf node decision will be whether or not it will rain represented by Yes/No in Fig. \ref{fig:decisionTreeExplained}
 
-The algorithm that builds decision trees is called the \textit{iterative dichotomiser 3} more commonly known as ID3 by \cite{quinlan_induction_1986}. The algorithm applies a top down approach to choosing its root and internal nodes. The algorithm only evaluates one step ahead from where it is in the decision process at any time and does not allow for any backtracking. This decision making process is known as a greedy approach as it just makes the optimal solution at that stage of the process. Thus because of these limitations the optimal solution is not guaranteed taking this approach \citep{friedman_lazy_1996}.
+The algorithm that builds decision trees is called the \textit{iterative dichotomiser 3} more commonly known as ID3 \citep{quinlan_induction_1986}. The algorithm applies a top down approach to choosing its root and internal nodes. The algorithm only evaluates one step ahead from where it is in the decision process at any time and does not allow for any backtracking. This decision making process is known as a greedy approach as it just makes the optimal solution at that stage of the process. Thus because of these limitations the optimal solution is not guaranteed \citep{friedman_lazy_1996}.
 
 The ID3 algorithm works by calculating the \textit{entropy} and \textit{information gain} at each step or decision node, where you use the feature with the smallest entropy or feature that maximises information gain.
 
@@ -305,7 +278,7 @@ Where:
 \begin{itemize}[label=]
 	\item $S$: The current dataset entropy is being calculated for, this will change each time entropy is being calculated
 	\item $X$: The set of classes in $S$
-	\item $p(x)$: Proportion of observation in class $x$ compared to total number in set $S$
+	\item $p(x)$: Proportion of observations in class $x$ compared to total number in set $S$
 \end{itemize}
 If $H(S) = 0$ then the observations in $S$ are all of the same class. Entropy is calculated for each feature, the feature with the smallest entropy is used to split at that step.
 
@@ -320,7 +293,7 @@ Where:
 	\item $H(T)$ is the entropy of subset T based on splitting data on some feature
 \end{itemize}
 
-Information gain is calculated and the feature with the highest gain is chosen to split the dataset. The algorithm then runs recursively until all the data is classified and predictions have been made. 
+Information gain is calculated and the feature with the highest information gain is chosen to split the dataset. The algorithm then runs recursively until all the data is classified and predictions have been made. 
 
 Multiple decision trees may output the same results. This can be seen in Fig. \ref{fig:simpleComplex} where two different decision trees classify the dataset correctly. \cite{quinlan_induction_1986} suggests that that in scenarios like this the simpler decision tree would be chosen Fig. \ref{fig:simple}
 
@@ -342,15 +315,14 @@ Multiple decision trees may output the same results. This can be seen in Fig. \r
 	\label{fig:simpleComplex}
 \end{figure}
 
-This is done because the simpler the rules of the tree the more likely the tree is to generalise well on unseen data. In other words if the tree is too complex it is more than likely over-fitting the training dataset. There is also a computational cost to classifying complex trees. 
+This is done because the simpler the rules of the tree the more likely the tree is to generalise well on unseen data. In other words if the tree is too complex it is more than likely over-fitting the training dataset. There is also a computational cost to classifying complex algorithms. 
 
-There are also other issues to be aware of when building a classifier using a decision tree. Information gain can be biased to features that have a large number of values. These features will result in a root node that produces a very broad or wide tree that classifies the training data well or perfectly but performs very poorly in unseen cases. One scenario where this could happen would be if you used the unique identifier of each record in as a training input, this model would perform very well in training but would not perform well on unseen data. There are methods to mitigate the the risk of over-fitting against these features \textit{gain ratio}, \textit{symmetric uncertainty} and the \textit{gini index}. \cite{quinlan_induction_1986} noted that using these methods for node decision often found favourable results compared with information gain. It should be noted also that these metrics can be using in the feature selection process where not related to building decision trees
-
+There are also other issues to be aware of when building a classifier using a decision tree. Information gain can be biased to features that have a large number of values. These features will result in a root node that produces a very broad or wide tree that classifies the training data well or perfectly but performs very poorly on unseen cases. One scenario where this could happen would be if you used the unique identifier of each record  as a training input, this model would perform very well in training but would not perform well on unseen data. There are methods to mitigate the the risk of over-fitting against these features such as \textit{gain ratio}, \textit{symmetric uncertainty} and the \textit{gini index}. \cite{quinlan_induction_1986} noted that using these methods for node decision often found favourable results compared with information gain. It should also be noted that \textit{gain ratio}, \textit{symmetric uncertainty}, \textit{gini index}, and \textit{information gain} can be used in the feature selection process which is discussed in Section \ref{sec2:featureSection}.
 
 \subsection{Artificial Neural Networks} \label{neuralNets}
 The \textit{artificial neural network} (ANN) is learning algorithm that is based on an understanding of how neural networks, such as our brain learns. Motivation to study how ANN comes from the success of how the human brain was faster than the worlds fastest computers at certain applications such as object recognition, speech recognition and general perception \citep{haykin_neural_1998}.
 
-As a human grows their brain develops, learns and creates a set rules based on the experiences it has had. These rules and experiences are stored in approximately 100 billion neurons or nerve cell in the brain. These neurons are connected in a network and use this as a method of communication sending electrical and chemical signals back and forth between neurons. On their own each neuron is not very useful but combined and with communication has allowed humans to learn and grow so successfully. 
+As a human grows their brain develops, learns and creates a set rules based on the experiences it has had. These rules and experiences are stored in approximately 100 billion neurons or nerve cells in the brain. These neurons are connected in a network and use this as a method of communication sending electrical and chemical signals back and forth between each other. On their own each neuron is not very useful but together combined and with communication has allowed humans to learn and grow so successfully. 
 
 An ANN seeks to replicate the neural network of the human brain, albeit on a much smaller scale. It does this by taking advantage of powerful computers which carry out a lot of simple tasks very quickly. ANN have proven their value from their ability to map out any non-linear function \citep{white_learning_1989} and their prowess in applications such as pattern and speech recognition and forecasting \citep{kaastra_forecasting_1995}.
 
@@ -364,14 +336,14 @@ Fig. \ref{fig:annFotwardFeeding} shows a common layout of an ANN. Like in the br
 	\label{fig:annFotwardFeeding}
 \end{figure}
 
-Data comes in through the input layers nodes and is fed through the network, from the input to the hidden and then onto the output layer. In the hidden layer each node calculates a sum based on the input node and the weight of the connection, these hidden nodes then pass on values to the nodes in the outer layer where another calculation which converts the value to a value between 0 and 1 by passing it through the sigmoid function seen in Fig. \ref{fig:logistic_function}. Throughout the training process the connection weights are changed and tested against in order for the ANN to learn and improve its predictions \citep{haykin_neural_1998}
+Data comes in through the input layers nodes and is fed through the network, from the input to the hidden and then onto the output layer. In the hidden layer each node calculates a sum based on the input node and the weight of the connection, these hidden nodes then pass on values to the nodes in the outer layer where another calculation which converts the value to a value between 0 and 1 by passing it through the sigmoid function seen in Fig. \ref{fig:logistic_function}. Throughout the training process the connection weights are changed and tested in order for the ANN to learn and improve its predictions \citep{haykin_neural_1998}
 
 Although ANN have become increasingly popular in recent years due to improvements in the algorithms, the the increase in computer power and success in application such as object and speech recognition,  some are still sceptical because of the "black box" nature of their results, where users do not know what the internal workings of the algorithm are  \citep{kaastra_forecasting_1995}. 
 
 
 
 \subsection{Support Vector Machines} \label{SVM}
-A Support Vector Machines (SVMs) learning was developed first by \cite{vapnik_nature_1995}. The algorithm performs classifications via a hyperplane in a higher dimensional feature space that maximises the margin or distance separating the two classes. It can be seen in Fig. \ref{fig:svmExample} that the two class are linearly separable using the hyperplane in the higher dimensional feature space. 
+A Support Vector Machines (SVMs) algorithm was developed first by \cite{vapnik_nature_1995}. The algorithm performs classifications via a hyperplane in a higher dimensional feature space that maximises the margin or distance separating the two classes. It can be seen in Fig. \ref{fig:svmExample} that the two classes are linearly separable using the hyperplane in the higher dimensional feature space. 
 
 \begin{figure}[H]
 	\includegraphics[width=.5\textwidth, center]{svmExample}
@@ -381,7 +353,7 @@ A Support Vector Machines (SVMs) learning was developed first by \cite{vapnik_na
 	\label{fig:svmExample}
 \end{figure}
 
-SVM handles situations non-linear data by using kernel function (non linear) to transform the data into a higher dimensional feature space. This allows it to become linearly separable via a hyperplane, this is known as the \textit{kernel trick}. It can illustrated in Fig. \ref{fig:svm_nonLinearlySeperable} by transforming non linearly seperable data into a higher dimensional feature space where it can be linearly separated using a hyperplane. This is ability is what differentiates SVM from logistic regression.
+SVM handles situations of non-linear data by using kernel functions (non linear) to transform the data into a higher dimensional feature space. This allows it to become linearly separable via a hyperplane, this is known as the \textit{kernel trick}. It can illustrated in Fig. \ref{fig:svm_nonLinearlySeperable} by transforming non linearly seperable data into a higher dimensional feature space where it can be linearly separated using a hyperplane. This is ability is what differentiates SVM from logistic regression.
 
 \begin{figure}[H]
 	\includegraphics[width=.5\textwidth, center]{svm_nonLinearlySeperable}
@@ -391,20 +363,21 @@ SVM handles situations non-linear data by using kernel function (non linear) to 
 	\label{fig:svm_nonLinearlySeperable}
 \end{figure}
 
-It has been documented across a range of domains where SVMs are performing well such as credit risk evaluation \cite{van_gestel_credit_2009} and text categorisation, cancer diagnosis and pattern recognition \citep{shin_application_2005}
+It has been documented across a range of domains where SVMs perform well such as credit risk evaluation \citep{van_gestel_credit_2009} and text categorisation, cancer diagnosis and pattern recognition \citep{shin_application_2005}
 
 \subsection{Ensemble Models \& Boosting} \label{boosting}
 
-In 1907, mathematician Sir Francis Galton went a market in which there was a challenge
-to approximate the weight of an Ox. After evaluation the 787 forecasts made by the
-participants, he noticed that while there was a large variance in the guesstimate
-with large deviations from the correct weight, the median value of the
-forecasts was less than 1\% away from the correct weight of the Ox \citep{galton_vox_1907}. Although the failings of the separate guesses, the united wisdom of the every guess generated a very accurate estimate. This is a similar how ensemble models are generated.
+In 1907, mathematician Sir Francis Galton went to a market in which there was a challenge
+to approximate the weight of an Ox. After evaluating the 787 forecasts made by the
+participants, he noticed that while there was a large variance in the forecast from the correct weight, the median value of the
+forecasts was less than 1\% away from the correct weight of the Ox \citep{galton_vox_1907}. Although separate forecasts failed miserably, the united wisdom of the every guess generated a very accurate estimate. This is a similar how ensemble models are generated.
 
 
-Boosting relates to an powerful principal of generating a very accurate prediction model using an aggregation of reasonably inaccurate ``rules of thumb'' \citep{freund_short_1999}. A frequently utilised ensemble is the Adaptive Boosting algorithm which frequently called AdaBoost in the literature. A weak learner is produced from the first iteration where all observations are are potentially to be chosen. For later sampling of the distribution the model adjustments are made bases on the error rates of the classifier so that model will look at samples of data were incorrectly classified \citep{freund_short_1999}. This way the algorithm is step by step adapting based on the errors of past classifications and then focuses correcting the record labels it got incorrect. A specific method of AdaBoost is the Boosted-Stumps Model. This is an ensemble model that leverages decision tree stumps, these are decision trees with one split. This method is seen to be optimal to common AdaBoost which tends to over-fit the training dataset \citep{caruana_empirical_2006}.
+Boosting relates to a powerful principal of generating a very accurate prediction model using an aggregation of reasonably inaccurate ``rules of thumb'' \citep{freund_short_1999}. A frequently utilised ensemble is the Adaptive Boosting algorithm which is frequently called AdaBoost in the literature. A weak learner is produced from the first iteration where all of the observations can potentially be chosen. For later sampling of the distribution the model makes adjustments based on the error rates of the classifier so that model only will look at samples of data that were incorrectly classified \citep{freund_short_1999}. This way the algorithm is step by step adapting based on the errors of past classifications and then focuses on correcting the record labels it got incorrect. A specific method of AdaBoost is the Boosted-Stumps Model. This is an ensemble model that leverages decision tree stumps, these are decision trees with one split. This method is seen to be optimal compared to the common AdaBoost model which tends to over-fit the training dataset \citep{caruana_empirical_2006}.
 
-Bagging is an alternative method employed to generate ensemble models levering decision trees. One method of bagging is \textit{bootstrap replica}. This method works on the principal for a dataset of size $n$ that will be used to train a model, it generates trees using just different partitions of the training data with replacement \citep{dietterich_experimental_2000}. Random forests are another example of an ensemble model generated using multiple decision trees. A large number of decisions trees will be trained and results are combined together to make a classification, hence why its called a forest. Each decision tree is trained on random subsets of the features available hence why its called a random forest. Research provided by \cite{breiman_random_2001} demonstrated that the random forests performed better on tests compared to AdaBoost method across a variety of datasets.
+Bagging is an alternative method employed to generate ensemble models leveraging decision trees. One method of bagging is \textit{bootstrap replica}. This method works on the principal for a dataset of size $n$ that will be used to train a model, it generates trees using just different partitions of the training data with replacement \citep{dietterich_experimental_2000}. 
+
+Random forests are another example of an ensemble model generated using multiple decision trees. A large number of decisions trees will be trained and results are combined together to make a classification, hence why its called a forest. Each decision tree is trained on random subsets of the features available hence why its called a random forest. Research provided by \cite{breiman_random_2001} demonstrated that the random forests performed better on tests compared to AdaBoost method across a variety of datasets.
 
 
 \section{Feature Selection}\label{sec2:featureSection}
