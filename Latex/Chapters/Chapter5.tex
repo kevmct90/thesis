@@ -66,11 +66,11 @@ Fig. \ref{fig:SMEArrearsLAED} below is a GIS application of the \% SME Customers
 	\end{adjustwidth}
 \end{figure}
 
-The results of this visualisation are quite interesting and backup the hypothesis that location is important in factor in SME defaulting in Ireland. Firstly looking at Fig. \ref{fig:June2014ArrearsByLA} we can see that the local authorities with a high percentage of default are cluster to the east cost Ireland with Cavan, Meath, Louth, Dublin performing the worst. 
+The results of this visualisation are quite interesting and backup the hypothesis that location is important in factor in SME defaulting in Ireland. Firstly looking at Fig. \ref{fig:June2014ArrearsByLA} we can see that the local authorities with a high percentage of default cluster to the east coast of Ireland with Cavan, Meath, Louth, Dublin performing the worst. 
 
 It can also be seen when you focus in on the cities that they are performing worse than counties they are in. Galway City, Limerick City, Cork City and Waterford City all have higher percentage default than the default percentage of the counties. Waterford City is an extreme example where there huge difference between the city and county.
 
-Fig. \ref{fig:June2014ArrearsByED} is a little bit more difficult to draw conclusions from due number of electoral division is Ireland. It does demonstrate that within each local authority there is a large amount of variation between the percentage default of a electoral divisions. Focusing on the Dublin Area in particular in Fig. \ref{fig:June2014ArrearsByED (Top Left)} it can be seen that large differences between electoral divisions where you can see some performing very well and other performing very badly. 
+Fig. \ref{fig:June2014ArrearsByED} is a little bit more difficult to draw conclusions from due to the number of electoral division in Ireland. It does demonstrate that within each local authority there is a large amount of variation between the percentage default of a electoral divisions. Focusing on the Dublin Area in particular in Fig. \ref{fig:June2014ArrearsByED} it can be seen that large differences between electoral divisions where you can see some performing very well and other performing very badly. 
  
  
 The results from this section have been very useful. They have proved that the data is well behaved in Fig. \ref{fig:percentageArrears}. We have identified that falling SME default percentages from the observation point could provide a challenge \ref{fig:percentageArrears}. We were also able to backup the hypothesis that location is important factor when analysing SME default by mapping the percentage default by electoral division and local authority in Fig. \ref{fig:SMEArrearsLAED}. 
@@ -565,7 +565,7 @@ Results are promising for this experiment but not as promising as the experiment
 There are two hypothesis suggested for why this experiment not being as successful for the no previous delinquency data compared to the previous delinquency data is that. One is that the class imbalance in the no previous delinquency model is so low (97:03) the information is not getting picked up. The other is that the coarse selection process for previous delinquency data that was successful mainly made up of electoral division features where coarse classification in this experiment was mainly made up of local authority features. It may be that local authority features are at too high a level. 
 
 \section{Addressing the imbalance in the dataset}
-To address the class imbalance property that exists in the dataset in this experiment a number of methods that manipulate the data by re-sampling have been proposed such \textit{random undersampling of the majority class}, \textit{random oversampling of the minority class} and \textit{synthetic sampling of the minority class} (See Section \ref{sec:imBalance}). Re-sampling of the dataset must and will only be carried out on the training set of the data as otherwise your training data could contain anachronistic features.
+To address the class imbalance property that exists in the datasets in this experiment a number of methods that manipulate the data by re-sampling have been proposed such as \textit{random undersampling of the majority class}, \textit{random oversampling of the minority class} and \textit{synthetic sampling of the minority class} (See Section \ref{sec:imBalance}). Re-sampling of the dataset must and will only be carried out on the training set of the data.
 
 It is decided that as part of this experiment random undersampling of the majority class would not carried out as part of the experiment. This is because there is a possibility of removing important information from the training dataset that would allow the model to identify non-defaulters.
 
@@ -620,14 +620,12 @@ Table \ref{table:overPD} below details the results from the macro-economic featu
 			\textit{PD\_Over\_RF10\_R}  & \cellcolor{green!25}0.569 & 0.662 & 0.615 & \cellcolor{green!25}0.666   \\ \hline
 		\end{tabular}
 	\caption{{Oversampled Previous Delinquency Model results when most important\\
-			Macro-Economic features from \textit{PD\_RF10\_R} model were included.
+			Macro-Economic features from \textit{PD\_RF10\_R} model are included.
 			\\ *BA = Balanced Accuracy}}
 	\label{table:overPD}
 \end{table}
 
-The results are somewhat promising from the retrained model. The retrained does not produce markedly better results for any of the performance measures in the oversampled model but it does it score the highest in the recall and AUC performance measures. It performs poorly in the specificity measure which has a negative knock on effect to the balanced accuracy. A decision based on business objectives would have to made to decide whether increase in recall is more important than the decrease in specificity to decide which of these models is optimal. 
-
-In industry there can also be a stigma associated with models that trained using oversampled data so this could be the deciding factor when the results are not significantly better.
+The results from oversampling are promising. The retrained model \textit{PD\_Over\_RF10\_R} 1.1\%. This increase appears to be based on oversampling alone and not the introduction of the macro-economic features as there was only a marginal increase in the AUC when \textit{PD\_RF10\_R} was tested before. Specificity appears to have preformed much worse in the oversampled model but this is most likely due to threshold that was selected is not valid any more and may need to be retrained for the oversampled dataset. 
 
 \subsubsection{Oversampling for No Previous Delinquency Data}
 
@@ -669,9 +667,28 @@ Table \ref{table:overNPD} below details the results from the macro-economic feat
 	\label{table:overNPD}
 \end{table}
 
-The results are somewhat promising from the retrained model as with the the previous oversampling experiment. The retrained models scores the highest in the recall and AUC performance measures. It performs a small bit worse in the specificity measure which has a negative knock on effect to the balanced accuracy. Again as with the previous experiment a decision based on business objectives would have to made to decide whether increase in recall is more important than the decrease in specificity to decide which of these models is optimal. 
+As with the previous example the oversampled model has performed very well on the AUC performance measure. This consistency of improvements across datasets is promising. The other performance measures recall, specificity and balanced accuracy did not perform that well but this is most likely caused by using the wrong threshold for the oversampling classification. 
 
-As mentioned industry there can also be a stigma associated with models that trained using oversampled data so this could be the deciding factor when the results are not significantly better.
+It can be confirmed that oversampling should be considered when training a prediction model for the two datasets in this research project.
+
+
 
 
 \section{Interpretation of Results and Experiment Overview}
+This chapter presented the experiment implementation and evaluation of this project. 
+
+An experimental address matching application was designed and built as part of this research project to map 1.4 million personal customers addresses and 28,000 SME addresses to two geographic regions in Ireland called Electoral Division and Local Authorities. The experiment was a huge success that 120 macro-economic features were able to be generated and tested as part of this experiment. Based on the success of limited tests work carried out as part of this research \subjectname\ are going carry out an enterprise application evaluation where they are going to assess the application built as part of this research against external vendors which provide solutions and software for address matching.
+
+This chapter began with some data exploration where SME default trends were visualised over time. It went onto introduce a geographical informations systems (GIS) application visualised how default appears at local authority level. It was observed local authorities of cities appear to have a higher percentage of default than rural county does. It was also observed that there was a much higher percentage of default on the east coast of Ireland. Also SME default rates by the electoral division in Dublin were analysed it appears that they are not all part of the one homogeneous group. These trends and patterns back up the hypothesis that macro-economic factors have an influence on whether or not an SME defaults on their financial obligation.
+
+Two benchmark models trained as part of the experiment \textit{previous delinquency} and \textit{no previous delinquency}. These were used throughout the experiment to compare to predictive models that included macro-economic features. Feature selection process such as random forest feature importance and information gain were employed along with correlation analysis to try and identify macro-economic features that would be useful in predicting whether or not a SME customer was likely to default on their financial obligations. These methods not excel, and were not able to identify clear signs that these features were having any real impact on the model. 
+
+Coarse classification was deployed to try and simplify the macro-economic by transforming the features from continuous into grouped features with a number of bins or categories. Feature selection was carried out on these binned features to identify useful features for the prediction model. When building a predictive model including these features on the previous delinquency dataset it was found that these macro-economic features were predictive and the prediction model. The same result did not hold through for the no previous delinquency dataset and hypothesis have been proposed for why this is.
+
+
+There was a large imbalance problem within the target class of the datasets in this experiment. An experiment was carried out that oversampled the minority class for the previous delinquency and no previous delinquency datasets. It was found in both cases that AUC which measures model performance over all possible thresholds of the model performed better after oversampling had been carried out. Based on this is is suggested that any future models using this data investigate oversampling of the minority class.
+
+
+
+
+  
