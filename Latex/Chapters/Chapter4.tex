@@ -60,7 +60,7 @@ Once the each of the models have been trained they will need to assesses for per
 The evaluation process used for model and performance measure is illustrated below in Fig. \ref{fig:exploratoryevaluationmodel}. 
 
 \begin{figure}[H]
-	\includegraphics[width=1\textwidth,height = 12cm,center]{exploratoryevaluationmodel}
+	\includegraphics[width=.9\textwidth,height = 10cm,center]{exploratoryevaluationmodel}
 	\caption{Overview of Benchmark Evaluation Process\\for model and performance measure selection}
 	\label{fig:exploratoryevaluationmodel}
 \end{figure}
@@ -105,70 +105,48 @@ The model that outputted the best result as seen in Table \ref{table:prevdelinqb
 It can be observed that the SVM Radial Basis Fn model does not generalise well where it appears to have completely over-fitted the training partition with an AUC training = 0.812 which drops to 0.60 and 0.619 for the validation and testing partitions datasets respectively. Overall most of the models appears to be predictive and have generalised quite well, however there may be case for investigating and removing the SVM Radial Basis Fn, Decision Tree and SVM Sigmoid as these appear to not be predictive, not generalised well or to have over-fitted the training data partition. There is no one stand-out model from the results in Table \ref{table:prevdelinqbase} and there is an argument that logistic regression should be continued to be used. 
 
 
-Next we will evaluate the threshold that will be selected to evaluate the model. Results can observed in Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:DelinquencyModelCutoff}. 	
+Although the AUC is very useful for detailing how well the prediction performed over all possible thresholds it is not very useful if trying to split the predictions into good and bad. In an ideal scenario the target class distribution would 50:50 this would allow the baseline/default threshold of 0.50. When there is an imbalance in the dataset many thresholds need to be evaluated to test which one meets the business objective.
 
-\begin{figure}[H]
-	\begin{adjustwidth}{-2cm}{-2cm}
-	\centering
-	\begin{subfigure}[b]{0.60\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Default_50}\caption{Default Cut-Off = 0.50}\label{fig:Base_Delinq_Model_CutOff_Analysis_Default_50}
-	\end{subfigure}  ~\quad
-	\begin{subfigure}[b]{0.60\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_48}
-		\caption{Min Misclassification Rate Cut-Off = 0.48}\label{fig:Base_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_54}
-	\end{subfigure} 
-	\newline
-	\begin{subfigure}[b]{0.60\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_KS_25}
-		\caption{K-S Cut-Off = 0.25}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_KS_25}
-	\end{subfigure} ~\quad
-	\begin{subfigure}[b]{0.60\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_29}
-		\caption{EPER Cut-Off = 0.29}\label{fig:Base_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_29}
-	\end{subfigure}
-	\caption{Delinquency Model Cut-off Analysis Confusion Matrix}
-	\label{fig:Base_Delinq_Model_CutOff_Analysis}
-\end{adjustwidth}
-\end{figure}
+Recall measures the percentage of defaulters (positive class) that were identified correctly. Accuracy measures what percentage of the predictions made were correct. Specificity measures the percentage of the non-defaulter (negative class) that were identified correctly. Precision measures of the positive predictions made what percentage were correctly identified. Balanced accuracy is the average of the sum of recall and specificity. All of these performance measures are based on a single threshold in the predictions made, a cut-off point.
+
+Selecting this cut-off point is important for your business objective. In predicting defaults you want to maximise recall where possible but you cannot maximise this performance measure because all the good customers will get predicted bad too. Balanced accuracy is a useful performance measure it uses how many of the negative class and positive class are being classified correctly but because it is an average the results could be skewed by one performance measure performing well so recall and specificity will have to be checked to ensure there is no bias. So this experiment will try and maximise balanced accuracy, recall and specificity.
+
+An experiment will be generated for the previous delinquency and no previous delinquency dataset where threshold will selected based on the validation dataset and will then evaluated on the test dataset. The default cut-off is 0.50 so it will be included in the experiment as a base. The minimum misclassification rate, Kologorov-Smirnov (K-S) statistic, and event precision event recall (EPER) methods of evaluating cut-off values for this problem will be use.
+K-S statistic measures at what cut-off maximum difference between the cumulative positive and negative distributions of the predicted positive and negative class are. EPER measures at what value at what cut-off precision and recall measures are the same. The min misclassification rate is the cut-off where the model makes the most correct prediction. 
+
+Results for the previous delinquency data can observed below in Table \ref{table:DelinquencyModelCutoff}. 	
 
 \begin{table}[H]
 	\centering
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{l|l|r|r|r|r|r|}
+\small
+		\begin{tabular}{|l|l|r|r|r|r|}
 			\hline
-\textbf{Cut-off} & \textbf{Method}       & \textbf{Accuracy} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR*} & \textbf{BA*} \\ \hline
-0.5              & Default (Valid)       & 0.763             & 0.055           & 0.998                & 0.237   & 0.526    \\
-0.5              & Default (Test)        & 0.765             & 0.062           & 0.998                & 0.235      & 0.53  \\ \hline
-0.48             & Min MR (Valid)        & 0.758             & 0.062           & 0.989                & 0.242       & 0.526 \\
-0.48             & Min MR (Test)         & \cellcolor{yellow!25}0.765         & 0.068 & \cellcolor{yellow!25}0.995                & \cellcolor{yellow!25}0.235    & 0.532   \\ \hline
-0.25             & K-S* (Valid) 		     & 0.666             & 0.548           & 0.705                & 0.334     & 0.627  \\
-0.25             & K-S* (Test)  		     & 0.630             & \cellcolor{yellow!25}0.507           & 0.670                & 0.370  & \cellcolor{yellow!25}0.586     \\ \hline
-0.29             & EPER* (Valid)          & 0.705             & 0.370           & 0.816                & 0.295    & 0.593   \\
-0.29             & EPER* (Test)           & 0.688             & 0.342           & 0.802                & 0.312  & 0.572    \\ \hline
-\end{tabular}
-	}
+			\textbf{Cut-off} & \textbf{Method}       & \textbf{Accuracy} & \textbf{Recall} & \textbf{Specificity}  & \textbf{BA*} \\ \hline
+			0.5              & Default (Valid)       & 0.763             & 0.055           & 0.998                  & 0.526    \\
+			0.5              & Default (Test)        & 0.765             & 0.062           & 0.998                    & 0.53  \\ \hline
+			0.48             & Min MR (Valid)        & 0.758             & 0.062           & 0.989                       & 0.526 \\
+			0.48             & Min MR (Test)         & \cellcolor{yellow!25}0.765         & 0.068                & \cellcolor{yellow!25}0.995    & 0.532   \\ \hline
+			0.25             & K-S* (Valid) 		     & 0.666             & 0.548           & 0.705                    & 0.627  \\
+			0.25             & K-S* (Test)  		     & 0.630             & \cellcolor{yellow!25}0.507                          & 0.670  & \cellcolor{yellow!25}0.586     \\ \hline
+			0.29             & EPER* (Valid)          & 0.705             & 0.370           & 0.816                    & 0.593   \\
+			0.29             & EPER* (Test)           & 0.688             & 0.342           & 0.802                 & 0.572    \\ \hline
+		\end{tabular}
 	\caption{Previous Delinquency Cut-off Results 
-	\\ K-S = Kologorov-Smirnov Statistic
-	\\ MR = Misclassification Rate
-	\\ BA = Balanced Accuracy
-	\\ EPER = Event Precision Equals Recall
+			\\ K-S = Threshold that's optimal for Kologorov-Smirnov Statistic
+			\\ Min MR = Threshold that's optimal for Min Misclassification Rate
+			\\ EPER = Threshold that's optimal for Event Precision Equals Recall
+			\\ BA = Balanced Accuracy = $\frac{Recall + Specificity }{2}$
 		}
 	\label{table:DelinquencyModelCutoff}
 \end{table}
 
-It can be observed in Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and \ref{table:DelinquencyModelCutoff} that using the default, min misclassification and EPER methods for selecting the threshold are not very useful in this problem.
+The validation data is used to choose the cut-off for the measures and the test data is then evaluated to see how they perform on unseen data. Optimal values are coloured in yellow in Table \ref{table:DelinquencyModelCutoff}.
 
-The default cut-off assumes that the dataset is balanced therefore it is not optimal for this dataset. The misclassification rate which inverse is accuracy, is made bias by the large number of true negative values it is getting correct. Basically overall it is making the making the most correct predictions but not on the true positive defaulting customers that we are really interested. 
+The min misclassification rate calculates the accuracy of model, but because the model is so heavily imbalanced the majority negative class (good customers) is skewing the results. It can be seen that cut-off that gives min misclassification rate the scores for accuracy very well, but terribly on the recall so it will be discounted.
 
-The EPER cut-off derived where the threshold gives you precision rate and recall rate intersect. which are almost the same. With this method you are aiming to classify a large number of true positive will not classifying too many false positives. 
+The EPER cut-off derives the threshold where the precision rate and recall rate intersect. This method performs extremely well on the specificity, while also performing at a decent level on the recall.
 
-The KS statistic aim to set the threshold that maximises the separation between good and bads. As discussed in Section \ref{modelPerformMeasure} it widely used in credit scoring industry for selecting the threshold cut-off. Looking at the results from Table \ref{table:DelinquencyModelCutoff} it scores the best results in Recall which tells us how well its being able to classify all the customers in default. Balanced accuracy which is not biased to large imbalanced also performed best using the KS statistic. It is also worth noting that the KS statistic sets a threshold equal to the imbalance ratio in the dataset. For selecting the threshold of future experiments on the previous delinquency dataset the KS statistic will be used. 
-
+The KS statistic gives threshold that maximises the separation between good and bads. It scores the optimal results as it is scores recall the highest and balanced accuracy while specificity also performs well. For these reason the threshold that will be used when building the benchmark model for previous delinquency will be where the cut-off value is equal to 0.25.
 
 
 \subsubsection{No Previous Delinquency}
@@ -210,70 +188,38 @@ The model that outputted the best result as seen table \ref{table:NoPreviousDeli
 
 It can be observed that most the majority of the models generalise quite well and are predictive. However it can observed in Table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} the AutoNeural Network, Decision Tree and SVM Polynomial Models are not predictive at all. These models as a result will be removed from any further analysis. Out of the remaining model logistic regression performed the best like in the previous dataset in this experiment. 
 
-
-
-The class imbalance problem in the No Previous Delinquency dataset becomes very evident in Fig.  \ref{fig:NonDelinquencyModelCutOffAnalysis} when compared to Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis}. This issue of imbalance will be investigated further in this Chapter. The algorithm really struggles to distinguish the good from the bad customers in this dataset. Results can observed in Fig. \ref{fig:NonDelinquencyModelCutOffAnalysis} and Table \ref{table:NoDelinquencyModelCutoff}
-
-\begin{figure}[H]
-	\centering
-	\begin{adjustwidth}{-2cm}{-2cm}
-	\begin{subfigure}[b]{ 0.60\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Default_50}\caption{Default Cut-Off = 0.50}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Default_50}
-	\end{subfigure}  ~\quad
-	\begin{subfigure}[b]{0.60\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_21}
-		\caption{Min Misclassification Cut-Off= 0.21}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Min_Misclassification_Rate_17}
-	\end{subfigure} 
-	\medskip \newline
-	\begin{subfigure}[b]{0.60\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_0269}
-		\caption{K-S Cut-Off = 0.026}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_KS_026}
-	\end{subfigure} ~\quad
-	\begin{subfigure}[b]{0.60\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,keepaspectratio]{Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_08}
-		\caption{EPER Cut-Off = 0.08}\label{fig:Base_Non_Delinq_Model_CutOff_Analysis_Event_Precision_Equal_Recall_09}
-	\end{subfigure}
-	\caption{Non Delinquency Model Cut-Off Analysis}
-	\label{fig:NonDelinquencyModelCutOffAnalysis}
-\end{adjustwidth}
-\end{figure}
+An experiment for the no previous delinquency dataset to evaluate what threshold will now be carried out like in the previous delinquency dataset. Results for the no previous delinquency data can observed below in Table. \ref{table:NoDelinquencyModelCutoff}.
 
 \begin{table}[H]
 	\centering
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{l|l|r|r|r|r|r|}
+	\small
+		\begin{tabular}{|l|l|r|r|r|r|}
 			\hline
-			\textbf{Cut-off} & \textbf{Method} & \textbf{Accuracy} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR*} & \textbf{BA*}  \\ \hline
-			0.5             & Default (Valid)  & 0.973             & 0.000           & 1.000                & 0.027  & 0.5     \\
-			0.5             & Default (Test)   & 0.973             & 0.000           & 1.000                & 0.027  & 0.5     \\ \hline
+			\textbf{Cut-off} & \textbf{Method} & \textbf{Accuracy} & \textbf{Recall} & \textbf{Specificity}  & \textbf{BA*}  \\ \hline
+			0.5             & Default (Valid)  & 0.972             & 0.000           & 1.000                  & 0.5     \\
+			0.5             & Default (Test)   & 0.972             & 0.000           & 1.000                  & 0.5     \\ \hline
 			
-			0.21            & Min MR* (Valid)   & \cellcolor{yellow!25}0.972             & 0.000           & \cellcolor{yellow!25}0.999                & \cellcolor{yellow!25}0.028    & 0.495   \\
-			0.21            & Min MR* (Test)    & 0.972             & 0.008           & 0.999                & 0.028  & 0.499     \\ \hline
+			0.21            & Min MR* (Valid)   & 0.972             & 0.000           & 0.999                    & 0.495   \\
+			0.21            & Min MR* (Test)    & \cellcolor{yellow!25}0.972             & 0.008                         & \cellcolor{yellow!25}0.99  & 0.499     \\ \hline
 			
-			0.03            & K-S (Valid)      & 0.743             & \cellcolor{yellow!25}0.538           & 0.749                & 0.257  & \cellcolor{yellow!25}0.644     \\
-			0.03            & K-S (Test)       & 0.739             & 0.515           & 0.745                & 0.261  & 0.63     \\ \hline
+			0.03            & K-S (Valid)      & 0.743             & 0.538           & 0.749                 & 0.644     \\
+			0.03            & K-S (Test)       & 0.739             & \cellcolor{yellow!25}0.515                          & 0.745  & \cellcolor{yellow!25}0.63     \\ \hline
 			
-			0.08            & EPER* (Valid)     & 0.942             & 0.146           & 0.964                & 0.058    & 0.556   \\
-			0.08            & EPER* (Test)      & 0.942             & 0.162           & 0.963                & 0.058 & 0.563     \\ \hline
+			0.08            & EPER* (Valid)     & 0.942             & 0.146           & 0.964                   & 0.556   \\
+			0.08            & EPER* (Test)      & 0.942             & 0.162           & 0.963                 & 0.563     \\ \hline
 		\end{tabular}
-	}
 	\caption{No Previous Delinquency Cut-off Results
-			\\ K-S = Kologorov-Smirnov Statistic
-			\\ MR = Misclassification Rate
-			\\ BA = Balanced Accuracy
-			\\ EPER = Event Precision Equals Recall
+			\\ K-S = Threshold that's optimal for Kologorov-Smirnov Statistic
+			\\ MR = Threshold that's optimal for Misclassification Rate
+			\\ EPER = Threshold that's optimal for Event Precision Equals Recall
+			\\ BA = Balanced Accuracy = $\frac{Recall + Specificity }{2}$
 			}
 	\label{table:NoDelinquencyModelCutoff}
 \end{table}
 
-As observed in the previous example of the optimal cut-off/threshold used for this dataset is based on the threshold of the KS statistic. Its the best threshold for identifying a high balanced accuracy and recall compared to the other performance measures. 
+The validation data is used to choose the cut-off for the measures and the test data is then evaluated to see how they perform on unseen data. Optimal values are coloured in yellow in Table \ref{table:NoDelinquencyModelCutoff}.
 
-It can be concluded from the experiments in this Section that the Regression model worked well in comparison to the others on both datasets therefore we will continue use it in the next experiments using macro-economic features. It was also observed that the KS statistic was the optimal performance measure at selecting a cut-off value measure the performance of the model therefore it will also be used in future experiments.
+As with the previous experiment evaluating on the previous delinquency dataset the threshold for the K-S statistic performs significantly better when analysing the recall, specificity and balanced accuracy. For this reason  the threshold that will be used when building the benchmark model for no previous delinquency dataset will be where the cut-off value is equal to 0.03.
 
 \section{Methodology for Evaluating Macro-Economic Features}
 Leading on from the results in Section \ref{sec:benchFeature} this section will layout the design of the experiment to evaluate macro-economic features created as part of this research. 
@@ -306,4 +252,10 @@ It must be noted that all feature and coarse selection were carried out on the s
 
 
 \section{Conclusions}
+This chapter focused on two main topics. 
 
+The first topic of this chapter focused on designing and building an experiment to evaluate the best algorithm to build the benchmark prediction model. Decision trees, logistic regression, auto neural network, Support Vector Machine (SVM) Polynomial, SVM Radial Basis Function, SVM Sigmoid, and Gradient Boosting were evaluated. AUC was used to evaluate how accurate each model was over all possible thresholds. It was found that SVM Sigmoid model performed poorly for both the previous delinquency and no previous delinquency datasets so it should not be used in the future for this problem. The algorithms that performed best were the logistic regression and gradient boosting, they performed the best and second best in each of the datasets. It was decided because of the wide use and support for logistic regression in credit scoring that it would be chosen as the algorithm for modelling in the remaining experiments. 
+
+AUC is the performance measure of choice for assessing how a model performed over all thresholds but it does not tell explain at what threshold should be chosen to break the predictions into goods and bads. An experiment was set-up to evaluate what threshold should be selected for maximising performance measure such as recall, specificity and balanced accuracy. It was found that the threshold of the K-S statistic gave the best overall results for recall, specificity and balanced accuracy over the previous delinquency and no previous delinquency dataset.
+
+The second topic of this chapter details the experiment design for evaluating the predictive capability of macro-economic features in modelling credit risk for small medium enterprises. This experiment will incorporate two benchmark models one for the previous delinquency dataset and one for the no previous delinquency dataset. Macro-economic features will be put various feature selection process to try and and identify features that could be predictive in the model. There will also be an experiment to address the target feature imbalance in these dataset. This will be done through a sampling method \textit{random oversampling of the minority class}.
