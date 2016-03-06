@@ -493,10 +493,10 @@ There are methods that also cater for the target class imbalance of the dataset 
 %	SECTION 7
 %----------------------------------------------------------------------------------------
 \section{Model Validation Methods}\label{sec:modelValid}
-In machine learning historic data is used to build a model to make future predictions based on past information. Classification algorithms like the ones already discussed in this section need to validated and tested. This section details some methods and approaches to tackling this problem so the predictions from the model are useful which has been discussed extensively in \citep{refaeilzadeh_cross-validation_2009}
+In data mining historic data is used to train a model to make future predictions. Trained classification algorithms like the ones already discussed in this chapter need to validated and tested. This section details some of the methods and approaches to tackling this problem, and has been discussed extensively in \citep{refaeilzadeh_cross-validation_2009}.
 
 \subsubsection{Holdout Validation}
-The \textit{holdout validation} method is to split the dataset into partitions, one for training and one for testing. The algorithm is only trained on the test data, this allows for the model to generalise much better on unseen data, overall producing a much better prediction model. This method has an issue however where one, not all the data is used for training, and two the results can be dependent on the how and what data are used for training and testing. Examples where this could become an issue is important information in the data for training is lost in the test partition, or the instances chosen for test may be too easy or too difficult to classify, this may cause your results to be skewed and making your predictions bias to that testing partition. 
+The \textit{holdout validation} method is used to split the dataset into partitions, one for training and one for testing. The algorithm is trained on the training partition. This allows for the model testing to be carried out when the model classifies the test partition to evaluate how well it generalises and performs on unseen data. This method has an issue however where one, not all the data is used for training, and two the results can be dependent on the how and what data are used for training and testing. Examples where this could become an issue is if important information in the data for training is lost in the test partition, or the instances chosen for test may be too easy or too difficult to classify, this may cause your results to be skewed and making your predictions bias to that testing partition. 
 
 The hold-out method can also incorporate a third subset called the \textit{validation set}. In the case the dataset is partitioned into three partitions train, validation, and test. The validation sets purpose is to fine tune models parameters, for example selecting the best threshold cut-off measure for a model or performance measure. It is not required always for building predictive models. 
 
@@ -511,10 +511,10 @@ Fig. \ref{fig:holdout} illustrates how the complete dataset is partitioned into 
 
 
 
-To address the biasses is Holdout you could re-run multiple tests and average the results, or more commonly you could look at using \textit{k-fold cross-validation} discussed in the next subsection.
+To address the biasses in the holdout method tests can be ran multiple times with the results averaged, or more commonly employ a method such as \textit{k-fold cross-validation} discussed in the next subsection.
 
 \subsubsection{K-Fold Cross Validation}\label{subsec:k_fold}
-The \textit{k-fold cross validation} can be used to deal with the bias issues discussed above. The first step of this method is to split the data into $k$ equally sized partitions called folds. A model is then trained using $k$ iterations, where for each iteration a different fold of data is used for testing and training the model. This can be illustrated well below in Fig. \ref{fig:5-fold-cv} where there are 5-folds, and for each iteration you can see different fold is being used for testing.  
+The \textit{k-fold cross validation} can be used to deal with the bias issues discussed above in the holdout method. The first step of this method is to split the data into $k$ equally sized partitions called folds. A model is then trained using $k$ iterations, where for each iteration a different fold of data is used for testing and training the model. This can be illustrated well below in Fig. \ref{fig:5-fold-cv} where there are 5-folds, and for each iteration you can see different fold is being used for testing.  
 
 \begin{figure}[H]
 	\includegraphics[width=0.7\textwidth,center]{5-fold-cv}
@@ -525,21 +525,17 @@ The \textit{k-fold cross validation} can be used to deal with the bias issues di
 It is important and usually common practice that each fold is representative of the the whole dataset, for each example that the target class ratio split is the same for each fold as for the entire dataset. 
 
 \subsubsection{Leave-One-Out Cross-Validation}
-The \textit{leave-one-out cross-validation} (LOOCV) method is a specialised version of $k$-fold cross-validation, where $k$ is equal to the number of observations in the dataset. In layman's term this means all the data bar one observation is utilized training the model, and testing is done on one observation. This is completed for each observation in the dataset. Although it is worth noting that accuracy estimate gathered using this method produces unbiased results, it also high variance which can lead to misleading results \citep{refaeilzadeh_cross-validation_2009}.
+The \textit{leave-one-out cross-validation} (LOOCV) method is a specialised version of $k$-fold cross-validation, where $k$ is equal to the number of observations in the dataset. In layman's term this means all the data bar one observation is utilized training the model, and testing is done on one observation. This is completed for each observation in the dataset. Although it is worth noting that accuracy estimated using this method produces unbiased results, it also output high variance which can lead to misleading results \citep{refaeilzadeh_cross-validation_2009}.
  
 
 \subsubsection{Repeated K-Fold Cross Validation}
-The \textit{repeated k-fold cross validation} method is another specialised version of $k$-fold cross-validation. In an attempt to improve the performance of the model using this method $k$-fold cross-validation is rerun multiples times. Each time it is rerun the data is shuffled so data will appear in different folds for each repeat run. 
+The \textit{repeated k-fold cross validation} method is another specialised version of $k$-fold cross-validation. In an attempt to improve the performance of the model using this method $k$-fold cross-validation is rerun multiples times. Each time it is re-ran the data is shuffled so data will appear in different folds for each repeat run. 
 
 \subsubsection{Summary}
 
-Holdout and cross validation methods are both used extensively for evaluating how measuring the performance of the models. In the majority of cases if there is a large enough dataset you might choose to just use holdout method, but in some situations of you may want to use cross validation.
+The holdout and cross validation methods are both used extensively for evaluating the performance of the prediction models. If there is a large enough dataset then holdout method is usually a good choice for measuring model performance. When there is a small amount of data available it better to use a $k$-fold cross validation. $k$-fold theoretically simple to understand but may not be a simple to implement as the code may be tedious and time consuming where the gains may not be worth the investment in industry. 
 
-There are considerations that need to be thought about before using either, hold-out is simple can be implemented easily and quickly and can be rerun multiple times to get a more unbiased result. K-fold is again theoretically simple but may not be a simple to implement as the code may be tedious and time consuming where the gains may not be worth the investment in industry. 
-
-\citep{kohavi_study_1995} and \citep{salzberg_comparing_1997} both performed research on approaches to choosing the correct validation method. \cite{kohavi_study_1995} analysed many cross validation methods, regular, leave-one-out, stratified. They came to the conclusion that 10-fold cross-validation produced the most accurate and unbiased results. \cite{salzberg_comparing_1997} also studies the issues of comparing model performance and proposes a solution that combines k-fold cross validation combined appropriate hypothesis tests opposed to evaluating the average accuracy.   
-
-
+\cite{kohavi_study_1995} and \cite{salzberg_comparing_1997} both performed research on approaches to choosing the correct validation method. \cite{kohavi_study_1995} analysed many cross validation methods, regular, leave-one-out, stratified. They came to the conclusion that 10-fold cross-validation produced the most accurate and unbiased results. \cite{salzberg_comparing_1997} also studies the issues of comparing model performance and proposes a solution that combines k-fold cross validation combined with appropriate hypothesis tests opposed to evaluating the average accuracy.   
 
 %----------------------------------------------------------------------------------------
 %	SECTION 8
