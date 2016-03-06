@@ -551,13 +551,13 @@ To address the class imbalance property that exists in the dataset in this exper
 
 It is decided that as part of this experiment random undersampling of the majority class would not carried out as part of the experiment. This is because there is a possibility of removing important information from the training dataset that would allow the model to identify non-defaulters.
 
-As part of this experiment two methods of re-sampling data will be carried by means of oversampling and synthetic sampling. These experiments will evaluate whether adding macro-economic features to datasets improved the benchmark results. For practical reason tests will not be carried out on every macro-economic feature created as part of the research. Instead we will refer to previous experiments where macro-economic demonstrated promising results. 
+As part of this experiment re-sampling data will be carried by means of oversampling the minority class. This experiments will evaluate whether adding macro-economic features to datasets improved the benchmark results. For practical reason tests will not be carried out on every macro-economic feature created as part of the research. Instead we will refer to previous experiments where macro-economic demonstrated promising results. 
 
-For the previous delinquency dataset we will include macro economic features that were included in the \textit{PD\_RF10\_R} model in Section \ref{RFPDExper} as this model performed the best of all previous delinquency models when macro economic features were included.This will be carried out as part of the synthetic and oversampling experiments.
+For the previous delinquency dataset we will include macro economic features that were included in the \textit{PD\_RF10\_R} model in Section \ref{RFPDExper} as this model performed the best of all previous delinquency models when macro economic features were included.
 
-For the no previous delinquency dataset we will include macro economic features that were included in the \textit{NPD\_IG5\_R} model in Section \ref{IGNPDExper} as this model performed the best of all no previous delinquency models when macro economic features were included. This will be carried out as part of the synthetic and oversampling experiments.
+For the no previous delinquency dataset we will include macro economic features that were included in the \textit{NPD\_IG5\_R} model in Section \ref{IGNPDExper} as this model performed the best of all no previous delinquency models when macro economic features were included. 
 
-It is hoped that introducing extra observations of the target class through oversampling and synthetic sampling in the training set will improve the accuracy of the models across the performance measures for datasets including macro-economic features
+It is hoped that introducing extra observations of the target class through random oversampling in the training set will improve the accuracy of the models across the performance measures for datasets including macro-economic features
 
 
 
@@ -654,118 +654,6 @@ Table \ref{table:overNPD} below details the results from the macro-economic feat
 The results are somewhat promising from the retrained model as with the the previous oversampling experiment. The retrained models scores the highest in the recall and AUC performance measures. It performs a small bit worse in the specificity measure which has a negative knock on effect to the balanced accuracy. Again as with the previous experiment a decision based on business objectives would have to made to decide whether increase in recall is more important than the decrease in specificity to decide which of these models is optimal. 
 
 As mentioned industry there can also be a stigma associated with models that trained using oversampled data so this could be the deciding factor when the results are not significantly better.
-
-
-\subsection{Synthetic Sampling of the Minority Class}
-Synthetic sampling will be carried out using the \textit{SMOTE} function as part of the \textit{DMwR} package in R \footnote{\url{https://cran.r-project.org/web/packages/DMwR/index.html}}. The SMOTE function generates synthetic samples of the minority class  by generating new records based on k-nearest neighbour algorithm. The value for k can be assigned arbitrarily but instead we will run an experiment over a large number k for each dataset using repeated cross validation to identify the optimal value for creating synthetic samples.
-
-A repeated cross validated (10 folds, repeated 3 times) k-nn model was trained to find k that maximises the AUC/ROC of the test data. These values of k will be the optimal for finding the largest ROC/AUC based on the training methodology for each dataset. This experiment will be ran using existing features and macro-economic features for the previous delinquency and no previous delinquency dataset. 
-
-The results from the running this experiment can be shown in Fig. \ref{fig:DelinqencyAnalysisKNN} for the previous delinquency dataset and Fig. \ref{fig:NoPreviousDelinquencyExperimentKNN} for the no previous delinquency dataset.
-
-\begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{DelinqencyAnalysisKNN}
-	\caption{Repeated 3 Times 10-Fold Cross-Validation Optimal No. of \\Neighbours for Previous Delinquency Data\\
-		x-axis = Nearest Neighbour values for k tested\\
-		y-axis = AUC/ROC score for each k-NN value}
-	\label{fig:DelinqencyAnalysisKNN}
-\end{figure} 
-Fig. \ref{fig:DelinqencyAnalysisKNN} shows the optimal value of k for the nearest neighbour model which maximises the AUC. The optimal value of k returned from the experiment returns an AUC of 0.545 is k = 51. Over all possible values of k, k=51 performs considerable better than the other values therefore it will be chosen to build synthetic records for the previous delinquency dataset.
-
-\begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinquencyExperimentKNN}
-	\caption{Repeated 3 Times 10-Fold Cross-Validation Optimal No. of \\Neighbours for No Previous Delinquency Data\\
-		x-axis = Nearest Neighbour values for k tested\\
-		y-axis = AUC/ROC score for each k-NN value}
-	\label{fig:NoPreviousDelinquencyExperimentKNN}
-\end{figure}
-Fig. \ref{fig:NoPreviousDelinquencyExperimentKNN} shows the optimal value of k for the nearest neighbour model which maximises the AUC. The optimal value of k returned from the experiment which returns an AUC of 0.556 is k = 75. However there appears to be inconsistencies in the results as the AUC produced for k values between 33 and 61 plummets. k=33 returns a AUC of 0.55 which is relatively to that produced by k=71. As a result k=33 will be chosen to build synthetic records for the no previous delinquency dataset.
-
-
-\subsubsection{Synthetic Sampling for Previous Delinquency Data}
-It can be observed in Table \ref{table:Synthetic_train_testPD} that after synthetic sampling of the previous delinquency dataset using k=51 the target class distribution is now 58:42 meaning the dataset is more evenly balanced (previously 76:24).
-
-
-\begin{table}[H]
-	\centering\
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{l l r r r r}
-			\hline
-			\textbf{Model} &  \textbf{Dataset} & \textbf{\# Bad} & \textbf{\# Good} & \textbf{\# Observations} & \textbf{Good:Bad} \\
-			\hline
-			Previous Delinquency & Training Synthetic 51-NN & 1,449 & 1,932 & 3,381 & 58:42\\
-			& Test & 245 & 633 & 878 & 72:28\\\hline
-			\textbf{Total}     &  & \textbf{1,694} & \textbf{2,565} & \textbf{4,259} & \textbf{60:40} \\
-			\hline
-		\end{tabular}
-	}
-	\caption{Breakdown Holdout Training/Test Dataset \\for Synthetic Benchmark Models}
-	\label{table:Synthetic_train_testPD}
-\end{table}
-
-Table \ref{table:benchmodelSyntheticExperPD} below details the results from the macro-economic features included in the \textit{PD\_RF10\_R} model in Section \ref{RFPDExper} retrained on the synthetic sampled previous delinquency training dataset. The retrained model is aliased \textit{PD\_Synthetic\_RF10\_R} below. The highest results for each performance metric are highlighted in green.
-
-
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{l  r r r r}
-		\hline
-		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
-		\textit{PD\_Bench\_R} & 0.542 & 0.696 & 0.619 & \cellcolor{green!25}0.654 \\ \hline
-		\textit{PD\_RF10\_R} & \cellcolor{green!25}0.556 & 0.703 & \cellcolor{green!25}0.630 & 0.655  \\ 
-		\textit{PD\_Synthetic\_RF10\_R}  & 0.535 & \cellcolor{green!25}0.705 & 0.620 & 0.650   \\ \hline
-	\end{tabular}
-	\caption{Experiment Oversampling Model Results for Experiment Comparison}
-	\label{table:benchmodelSyntheticExperPD}
-\end{table}
-
-The results from this experiment are not very promising. \textit{PD\_Synthetic\_RF10\_R} does outperform the other model on the specificity performance measure but is score worse or the same in the others.
-
-In industry there can also be a stigma associated with models that trained using synthetically data so if there is not a significant difference in the results it would not be used. Based on the results it is recommended to stop any further investigation using synthetic sampling for this dataset.
-
-\subsubsection{Synthetic Sampling for No Previous Delinquency Data}
-It can be observed in Table \ref{table:Synthetic_train_testNPD} that after synthetic sampling of the previous delinquency dataset using k=33 the target class distribution is now 66:34  meaning the dataset is more evenly balanced (previously 97:03).
-
-\begin{table}[H]
-	\centering\
-	\resizebox{\textwidth}{!}
-	{
-		\begin{tabular}{l l r r r r}
-			\hline
-			\textbf{Model} &  \textbf{Dataset} & \textbf{\# Bad} & \textbf{\# Good} & \textbf{\# Observations} & \textbf{Good:Bad} \\
-			\hline
-			No Previous Delinquency & Training Synthetic 33-NN & 9,480 & 18,012 & 27,492 & 66:34 \\ 
-			& Test & 177 & 7,070 & 7,247 & 97:03 	\\\hline
-			\textbf{Total}     & & \textbf{9,597} & \textbf{25,032} & \textbf{34,739} & \textbf{72:28} \\
-			\hline
-		\end{tabular}
-	}
-	\caption{Breakdown Holdout Training/Test Dataset \\for Synthetic Benchmark Models}
-	\label{table:Synthetic_train_testNPD}
-\end{table}
-
-Table \ref{table:benchmodelSyntheticExperNPD} below details the results from the macro-economic features included in the \textit{NPD\_IG5\_R} model in Section \ref{IGNPDExper} retrained on the oversampled no previous delinquency balanced training dataset. The retrained model is aliased \textit{NPD\_Synthetic\_IG5\_R} below. The highest results for each performance metric are highlighted in green.
-
-\begin{table}[H]
-	\centering
-	\small
-	\begin{tabular}{l  r r r r}
-		\hline
-\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
-\textit{NPD\_Bench\_R} & 0.525 & 0.739 & 0.632 & 0.\cellcolor{green!25}671   \\ \hline
-
-\textit{NPD\_IG5\_R} & \cellcolor{green!25}0.542 & 0.736 & \cellcolor{green!25}0.639 & 0.667   \\ 
-\textit{NPD\_Synthetic\_IG5\_R} & 0.517 & \cellcolor{green!25}0.749 & 0.633 & 0.663   \\ \hline
-	\end{tabular}
-	\caption{Experiment Oversampling Model Results for Experiment Comparison}
-	\label{table:benchmodelSyntheticExperNPD}
-\end{table}
-
-The results from this experiment are not very promising. \textit{NPD\_Synthetic\_IG5\_R} does outperform the other model on the specificity performance measure but is score worse or the same in the others. This is interesting as this is similar to the results from the synthetic model trained on the previous delinquency dataset in the previous section. It is possible that synthetic sampling adds something to the model for predicting negative cases(customers that will not default)
-
-In industry there can also be a stigma associated with models that trained using synthetically data so if there is not a significant difference in the results it would not be used. Based on the results it is recommended to stop any further investigation using synthetic sampling for this dataset.
 
 
 \section{Interpretation of Results and Experiment Overview}

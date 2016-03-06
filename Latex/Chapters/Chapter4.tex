@@ -12,7 +12,7 @@ This chapter will present the design of the experiment to be undertaken as part 
 
 There will be two main sections to this chapter. The first will be an exploratory evaluation building a predictive model and evaluating the benchmark features for \textit{previous delinquency} and \textit{no previous delinquency} datasets. The dataset will be split into training, validation and test as models and performance measures will be assessed as part of this experiment. This will involve training multiple models based on features selected for a historic credit scorecard. Each model will be assessed to accurately ascertain the strength of each model and make model selection for future experiments in this research. This section will also explore and evaluate the results from performance measures that will be used  to evaluate the accuracy of the model. Performance measures will be chosen to evaluate the the accuracy of the whole model and how well it generalises and also over a specific threshold. This will done using the validation dataset. 
 
-The second part of the experiment will involve assessing the use if macro-economic features when building a predictive model. Another baseline model will be built using model and performance measure selection from part one of the this chapter using just a training and test dataset. Feature selection, coarse selection and a K-NN approach to modelling these features will be outlined. Following on from these experiments an approach to tackling the class imbalance issue will outlined using oversampling and synthetic sampling.
+The second part of the experiment will involve assessing the use if macro-economic features when building a predictive model. Another baseline model will be built using model and performance measure selection from part one of the this chapter using just a training and test dataset. Feature selection, coarse selection  modelling these features will be outlined. Following on from these experiments an approach to tackling the class imbalance issue will outlined using oversampling of the minority class.
 
 
 \section{Benchmark Features Evaluation}\label{sec:benchFeature}
@@ -105,7 +105,7 @@ The model that outputted the best result as seen in Table \ref{table:prevdelinqb
 It can be observed that the SVM Radial Basis Fn model does not generalise well where it appears to have completely over-fitted the training partition with an AUC training = 0.812 which drops to 0.60 and 0.619 for the validation and testing partitions datasets respectively. Overall most of the models appears to be predictive and have generalised quite well, however there may be case for investigating and removing the SVM Radial Basis Fn, Decision Tree and SVM Sigmoid as these appear to not be predictive, not generalised well or to have over-fitted the training data partition. There is no one stand-out model from the results in Table \ref{table:prevdelinqbase} and there is an argument that logistic regression should be continued to be used. 
 
 
-Next we will evaluate the performance measure that will be used to identify the threshold that will be selected to evaluate the model. Results can observed in Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:DelinquencyModelCutoff}. 	
+Next we will evaluate the threshold that will be selected to evaluate the model. Results can observed in Fig. \ref{fig:Base_Delinq_Model_CutOff_Analysis} and Table \ref{table:DelinquencyModelCutoff}. 	
 
 \begin{figure}[H]
 	\begin{adjustwidth}{-2cm}{-2cm}
@@ -139,24 +139,25 @@ Next we will evaluate the performance measure that will be used to identify the 
 	\centering
 	\resizebox{\textwidth}{!}
 	{
-		\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r|r}
+		\begin{tabular}{l|l|r|r|r|r|r|}
 			\hline
-			\textbf{Cut-off} & \textbf{Method}       & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} & \textbf{BA} \\ \hline
-			0.5              & Default (Train)       & 23          & 6           & 413         & 1312        & 0.761             & 0.793              & 0.761        & 0.053           & 0.995                & 0.239  & 0.524      \\
-			0.5              & Default (Valid)       & 8           & 1           & 138         & 439         & 0.763             & 0.889              & 0.761        & 0.055           & 0.998                & 0.237   & 0.526    \\
-			0.5              & Default (Test)        & 9           & 1           & 137         & 439         & 0.765             & 0.900              & 0.762        & 0.062           & 0.998                & 0.235      & 0.53  \\ \hline
-			0.48             & Min MR (Train)        & 34          & 13          & 402         & 1305        & 0.763             & 0.723              & 0.764        & 0.078           & 0.990                & 0.237     & 0.534  \\
-			0.48             & Min MR (Valid)        & 9           & 5           & 137         & 435         & \cellcolor{yellow!25}0.758             & \cellcolor{yellow!25}0.643              & 0.760        & 0.062           & \cellcolor{yellow!25}0.989                & \cellcolor{yellow!25}0.242       & 0.526 \\
-			0.48             & Min MR (Test)         & 10          & 2           & 136         & 438         & 0.765             & 0.833              & 0.763        & 0.068           & 0.995                & 0.235    & 0.532   \\ \hline
-			0.25             & K-S (Train) & 244         & 405         & 192         & 913         & 0.660             & 0.376              & 0.826        & 0.560           & 0.693                & 0.340  & 0.627     \\
-			0.25             & K-S (Valid) & 80          & 130         & 66          & 310         & 0.666             & 0.381              & \cellcolor{yellow!25}0.824        & \cellcolor{yellow!25}0.548           & 0.705                & 0.334     & \cellcolor{yellow!25}0.627  \\
-			0.25             & K-S (Test)  & 74          & 145         & 72          & 295         & 0.630             & 0.338              & 0.804        & 0.507           & 0.670                & 0.370  & 0.586     \\ \hline
-			0.29             & EPER (Train)          & 178         & 246         & 258         & 1072        & 0.713             & 0.420              & 0.806        & 0.408           & 0.813                & 0.287  & 0.611     \\
-			0.29             & EPER (Valid)          & 54          & 81          & 92          & 359         & 0.705             & 0.400              & 0.796        & 0.370           & 0.816                & 0.295    & 0.593   \\
-			0.29             & EPER (Test)           & 50          & 87          & 96          & 353         & 0.688             & 0.365              & 0.786        & 0.342           & 0.802                & 0.312  & 0.572    \\ \hline
-		\end{tabular}
+\textbf{Cut-off} & \textbf{Method}       & \textbf{Accuracy} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR*} & \textbf{BA*} \\ \hline
+0.5              & Default (Valid)       & 0.763             & 0.055           & 0.998                & 0.237   & 0.526    \\
+0.5              & Default (Test)        & 0.765             & 0.062           & 0.998                & 0.235      & 0.53  \\ \hline
+0.48             & Min MR (Valid)        & 0.758             & 0.062           & 0.989                & 0.242       & 0.526 \\
+0.48             & Min MR (Test)         & \cellcolor{yellow!25}0.765         & 0.068 & \cellcolor{yellow!25}0.995                & \cellcolor{yellow!25}0.235    & 0.532   \\ \hline
+0.25             & K-S* (Valid) 		     & 0.666             & 0.548           & 0.705                & 0.334     & 0.627  \\
+0.25             & K-S* (Test)  		     & 0.630             & \cellcolor{yellow!25}0.507           & 0.670                & 0.370  & \cellcolor{yellow!25}0.586     \\ \hline
+0.29             & EPER* (Valid)          & 0.705             & 0.370           & 0.816                & 0.295    & 0.593   \\
+0.29             & EPER* (Test)           & 0.688             & 0.342           & 0.802                & 0.312  & 0.572    \\ \hline
+\end{tabular}
 	}
-	\caption{Previous Delinquency Cut-off Results }
+	\caption{Previous Delinquency Cut-off Results 
+	\\ K-S = Kologorov-Smirnov Statistic
+	\\ MR = Misclassification Rate
+	\\ BA = Balanced Accuracy
+	\\ EPER = Event Precision Equals Recall
+		}
 	\label{table:DelinquencyModelCutoff}
 \end{table}
 
@@ -245,32 +246,32 @@ The class imbalance problem in the No Previous Delinquency dataset becomes very 
 	\centering
 	\resizebox{\textwidth}{!}
 	{
-		\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r|r}
+		\begin{tabular}{l|l|r|r|r|r|r|}
 			\hline
-			\textbf{Cut-off} & \textbf{Method} & \textbf{TP} & \textbf{FP} & \textbf{FN} & \textbf{TN} & \textbf{Accuracy} & \textbf{Precision} & \textbf{NPV} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR} & \textbf{BA}  \\ \hline
-			0.5             & Default (Train) & 0           & 0           & 391         & 14103       & 0.973             & NA                 & 0.973        & 0.000           & 1.000                & 0.027   & 0.5    \\
-			0.5             & Default (Valid) & 0           & 0           & 130         & 4701        & 0.973             & NA                 & 0.973        & 0.000           & 1.000                & 0.027  & 0.5     \\
-			0.5             & Default (Test)  & 0           & 0           & 130         & 4701        & 0.973             & NA          & 0.973        & 0.000           & 1.000                & 0.027  & 0.5     \\ \hline
+			\textbf{Cut-off} & \textbf{Method} & \textbf{Accuracy} & \textbf{Recall} & \textbf{Specificity} & \textbf{MR*} & \textbf{BA*}  \\ \hline
+			0.5             & Default (Valid)  & 0.973             & 0.000           & 1.000                & 0.027  & 0.5     \\
+			0.5             & Default (Test)   & 0.973             & 0.000           & 1.000                & 0.027  & 0.5     \\ \hline
 			
-			0.21            & Min MR (Train)  & 1           & 17          & 390         & 14086       & 0.972             & 0.056              & 0.973        & 0.003           & 0.999                & 0.028    & 0.497   \\
-			0.21            & Min MR (Valid)  & 0           & 6           & 130         & 4695        & \cellcolor{yellow!25}0.972             & 0.000              & 0.973        & 0.000           & \cellcolor{yellow!25}0.999                & \cellcolor{yellow!25}0.028    & 0.495   \\
-			0.21            & Min MR (Test)   & 1           & 4           & 129         & 4697        & 0.972             & 0.200              & 0.973        & 0.008           & 0.999                & 0.028  & 0.499     \\ \hline
+			0.21            & Min MR* (Valid)   & \cellcolor{yellow!25}0.972             & 0.000           & \cellcolor{yellow!25}0.999                & \cellcolor{yellow!25}0.028    & 0.495   \\
+			0.21            & Min MR* (Test)    & 0.972             & 0.008           & 0.999                & 0.028  & 0.499     \\ \hline
 			
-			0.03            & K-S (Train)     & 208         & 3583        & 183         & 10520       & 0.740             & 0.055              & 0.983        & 0.532           & 0.746                & 0.260    &  0.639  \\
-			0.03            & K-S (Valid)      & 70          & 1182        & 60          & 3519        & 0.743             & 0.056              & \cellcolor{yellow!25}0.983        & \cellcolor{yellow!25}0.538           & 0.749                & 0.257  & \cellcolor{yellow!25}0.644     \\
-			0.03            & K-S (Test)     & 67          & 1199        & 63          & 3502        & 0.739             & 0.053              & 0.982        & 0.515           & 0.745                & 0.261  & 0.63     \\ \hline
+			0.03            & K-S (Valid)      & 0.743             & \cellcolor{yellow!25}0.538           & 0.749                & 0.257  & \cellcolor{yellow!25}0.644     \\
+			0.03            & K-S (Test)       & 0.739             & 0.515           & 0.745                & 0.261  & 0.63     \\ \hline
 			
-			0.08            & EPER (Train)    & 65          & 464         & 326         & 13639       & 0.945             & 0.123              & 0.977        & 0.166           & 0.967                & 0.055  & 0.567     \\
-			0.08            & EPER (Valid)    & 19          & 167         & 111         & 4534        & 0.942             & \cellcolor{yellow!25}0.102              & 0.976        & 0.146           & 0.964                & 0.058    & 0.556   \\
-			0.08            & EPER (Test)     & 21          & 173         & 109         & 4528        & 0.942             & 0.108              & 0.976        & 0.162           & 0.963                & 0.058 & 0.563     \\ \hline
+			0.08            & EPER* (Valid)     & 0.942             & 0.146           & 0.964                & 0.058    & 0.556   \\
+			0.08            & EPER* (Test)      & 0.942             & 0.162           & 0.963                & 0.058 & 0.563     \\ \hline
 		\end{tabular}
 	}
-	\caption{No Previous Delinquency Cut-off Results}
+	\caption{No Previous Delinquency Cut-off Results
+			\\ K-S = Kologorov-Smirnov Statistic
+			\\ MR = Misclassification Rate
+			\\ BA = Balanced Accuracy
+			\\ EPER = Event Precision Equals Recall
+			}
 	\label{table:NoDelinquencyModelCutoff}
 \end{table}
 
-As observed in the previous example of the performance measures used in this dataset the KS statistic is the most useful from separating correct good and bad predictions, it also the best metric for identifying a high average accuracy and recall compared to the other performance measures. 
-
+As observed in the previous example of the optimal cut-off/threshold used for this dataset is based on the threshold of the KS statistic. Its the best threshold for identifying a high balanced accuracy and recall compared to the other performance measures. 
 
 It can be concluded from the experiments in this Section that the Regression model worked well in comparison to the others on both datasets therefore we will continue use it in the next experiments using macro-economic features. It was also observed that the KS statistic was the optimal performance measure at selecting a cut-off value measure the performance of the model therefore it will also be used in future experiments.
 
@@ -298,9 +299,7 @@ Therefore as part of the experiment feature selection will be used to analyse wh
 
 Coarse selection will next be applied to try and reduce the macro-economic features to a manageable level. As reviewed in Section \ref{sec:binning} this method will transform all the continuous macro-economic features into nominal/ordinal features. These nominal features will have a small number of values. As discussed earlier in the literature this allows the model to become more robust, mitigating the risk of over-fitting and also allowing it handle missing values for this feature. As discussed previously the information gain of each feature will then be calculated. As with the previous method the binned features that demonstrate the strongest relationship to the target class will be added for model training and evaluation. 
 
-As discussed earlier the distribution  of number of good and bad customers is very imbalanced in the dataset for prediction. Random over sampling and synthetic sampling are methods of tackling this issue by creating new instances of the minority dataset that the model can be trained on. As discussed earlier in Section \ref{sec:dataManip} synthetic sampling leverages the k-NN algorithm to create synthetic samples of the minority class. An experiment is run using repeated cross validation to find out what the optimal value of \textit{k} for each dataset is. A model will be trained and evaluated from the results. The resulting \textit{k} values can also be used to build the synthetic examples of the minority class. 
-
-As just discussed synthetic sampling and random oversampling of the minority class will be completed as an experiment. These methods were applied to the benchmark features dataset and feature dataset including macro economic features to evaluate if it was useful for either dataset.
+As discussed earlier the distribution  of number of good and bad customers is very imbalanced in the dataset for prediction. Random over sampling is a method of tackling this issue by creating new instances of the minority dataset that the model can be trained on. These method will be applied to the dataset including macro economic features to evaluate if it these models performed better than imbalanced tests.
 
 
 It must be noted that all feature and coarse selection were carried out on the same training datasets as the benchmark model. Also it must be ensured that feature and coarse selection must only be carried out on the training dataset or the model could end up over fitting the the test data which cause misleading results. All models will be trained, tested and evaluated based on results discussed in Section \ref{sec:benchFeature}. All results will then be documented for comparison with the benchmark model. 
