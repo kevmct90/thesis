@@ -25,15 +25,44 @@ Worldwide the most common method by regulators for defining businesses as SME ar
 In 2004 at the Organisation for Economic Co-operation and Development (OECD) conference on SMEs there were two key recommendations made by economies that were members of OECD and non-member states\footnote{Second OECD Conference of Ministers Responsible for Small and Medium-Sized Enterprises (SMEs), Istanbul,2004. \url{http://www.oecd.org/cfe/smes/31919278.pdf}}: (i) develop SME statistics that can be compared internationally, and (ii) establish a common definition and set of rules for what an SME is. Without these statistics and definitions in place it would be more difficult to deploy programs that aim to expand and strengthen the SME sector \citep{ardic_small_2011}. The aim of these recommendations is that by having a consistent and standard definition and statistics for SME will allow economies and analysts to learn from each other on a global scale with an end goal of building a stronger SME sector.
 
 
-\section{Credit Scoring Best Practice}
-\textit{Hand, D. J. (2005). Good practice in retail credit score-card assessment. Journal of the
-Operational Research Society, 56, 1109–1117.}
+\section{Credit Scoring}
 
-One of the fundamentals of building a prediction model on SME lending is to look at previous lending patterns and what is currently on the the financial institutions books \citep{lawless_irish_2012}. It is essential to test and evaluate the predictiveness of data from a wide variety of sources \citep{lawless_smes_2012}. This way the predictive model will be trained with the right set of features which will empower it to makes accurate predictions. To do this financial institutions deploy credit scoring to evaluate the credit risk of both existing and prospective \citep{kennedy_credit_2013}. Credit scoring is essentially the prediction models and methods that are deployed by lenders to assess the credit risk of new or existing customers. These methods will attempt to put customers into a class of good or bad customers. Typically these scoring models are generally combine two approaches to score a customer, application scoring and behavioural scoring. The application model will assess applicant details which will be based mainly on their demographics. The behavioural model will assess the risk of the recent transactions of the existing customers. 
+Financial institutions use classification systems called \textit{credit scoring} to evaluate the credit risks related with lending to a borrower. \textit{Credit risk} is the risk of losses expected when a borrower ability or willingness to repay a financial obligation is adversely effected \citep{anderson_credit_2007}. \textit{Credit scoring} is the phrase used to encompass the methods and prediction techniques used by lenders to assess the credit risk of existing and prospective borrowers. 
 
-There two approaches to credit score modelling a widely used in the literature and adopted by \subjectname\ in industry but their evidence in the literature that supports macro economic model behaving could also be used. The success of macro economic factors will be discussed in the next section.
+The aim of credit scoring is to classify prospective borrowers and existing borrowers into one of two groups, good or bad. The bad group signifies a borrower that was deemed likely to default on the financial obligation. The good group signifies borrowers that were deemed likely repay their financial obligation.
 
-Data mining  is integral to credit scoring which will be discussed in Section \ref{sec:dataMining}, it applies many techniques and methods that are required for credit scoring.
+Credit scoring models are typically broken into two main categories, \textit{application scoring} and \textit{behavioural scoring}. The objective of the application scoring model is to predict borrowers probability of defaulting at some time in future at the time the application is made. Application, product and demographic details are generally used to build the application scoring model. The objective of the behavioural scoring model is to predict the probability of existing customers defaulting. The borrowers repayment performance is mainly used to build the behavioural scoring model. 
+
+Before credit scoring systems were employed by financial institutions, the risk of a borrower was based on the biased opinion of lender who would call on their life and work experience. Information about borrowers was gathered through personal relationships between borrowers and the employees of the lender \citep{anderson_credit_2007}. Further investigation was carried out by means of a process known as the 5Cs
+
+\begin{enumerate}
+	\renewcommand{\labelenumi}{(\roman{enumi})}  
+	\item \textbf{Character} - does the borrower, or their family have a relationship with the lender?
+	\item \textbf{Capital} - what is credit amount requested?
+	\item \textbf{Collateral} - is security is being offered?
+	\item \textbf{Capacity} - how fit it the borrower to repay?
+	\item \textbf{Condition} - how is the economy performing presently?
+\end{enumerate}
+
+This process was clearly flawed as it would not offer the financial institutions any consistency or reliability for what borrowers it was lending to. With large improvements in computer power in the 1980s financial institutions started utilising analytical methods to gain a deeper understanding of customer behaviour \citep{hand_modelling_2001}.
+
+Credit scoring systems are imperfect solutions as they can only be used as estimates based on historic events or the pasts events, but not future events. A significant amount of debt goes unpaid each year to where credit scoring systems have failed to identify borrowers that will default on their financial obligation \citep{finlay_multiple_2011}
+
+Generally a credit scoring system is built using a credit scorecard. Scorecard points are added based on important borrower characteristics and a score is generated that represents the risk of that borrower relative to all the other borrowers in order of who is most likely to default on their financial obligation.
+
+The most basic credit scorecards consist of a set of features that are statistically supported to be predicting the credit risk of a borrowers \citep{siddiqi_credit_2012}. One of the reasons for building a credit scorecard is for financial institutions to have a standardised, structured, and easy to interpret mechanism of assess borrowers credit worthiness.
+ 
+The credit scorecard in Fig. \ref{fig:appScorecard} uses features such as age, previous banking history, credit card limits, years at current job, accommodation status, self employed status and monthly income assign \textit{Applicant X} a credit score. It can be seen in Fig. \ref{fig:appScorecard} that each feature is split into attributes and for each attribute a score has been generated which is added to the overall credit score for that customer. 
+
+\begin{figure}[H]
+	\includegraphics[width=0.8\textwidth, center]{appScorecard}
+	\caption{Application scorecard for Applicant X with a credit score of 355	
+	}
+	\label{fig:appScorecard}
+\end{figure}
+
+It can be observed from Fig. \ref{fig:appScorecard} that high value attributes are associated with borrowers that are statistically thought to less likely to default on a financial obligation. For example \textit{Applicant X} in the example had an overall score of 355 if they was another applicant say \textit{Applicant Y} that had an overall score of 450, \textit{Applicant Y} would score higher therefore less likely to default on the financial obligation than {Applicant X}.
+
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
@@ -542,11 +571,11 @@ The holdout and cross validation methods are both used extensively for evaluatin
 %----------------------------------------------------------------------------------------
 \section{Model Performance Measures}\label{modelPerformMeasure}
 
-This section details some of the metrics that can be used to assess the accuracy of a classifier. The result of the classification algorithm maps the modelled data into a category, in this thesis it a binary classifier that is output: 1 is output for identifying customers who will default (bad) or 0 is output for customers who will be not-default (good). The majority of classification algorithms will produce a ranked numeric value which can be converted to a binary representation by some threshold or cut-off decision driven from  the business objective that is trying to be optimised. This section will begin with a confusion matrix, details how this is leveraged to build other performance measures and details how charts and metrics can be leveraged together to decide on the performance measure to maximise the intended objective.
+This section details some of the metrics that are used to assess the accuracy of a classifier. The result of the classification algorithm maps the modelled data into a category, in this thesis it is a binary classifier that is output: 1 is output for identifying customers who will default (bad) or 0 is output for customers who will be not-default (good). The majority of classification algorithms will produce a ranked numeric value which can be converted to a binary representation by some threshold or cut-off decision driven from  the business objective that is being optimised. This section will begin with a confusion matrix, details how this is leveraged to build other performance measures. It also details how charts and metrics can be leveraged together to decide on the performance measure to maximise the intended objective.
 
 \subsubsection{Confusion Matrix}
 
-The results that made by the classification algorithm can be represented by a contingency table known as a confusion matrix. In this thesis the classification algorithm will output a binary classification, so the confusion matrix will be made from a $2 \times 2$ matrix that has two classes, known as the \textit{positive} and \textit{negative} class. For this thesis, the positive class will be the customers that default and negative class will be the customers that do not default. It will illustrate what proportion of correct and incorrect predictions were made with respect to the target.The confusion matrix can be broken down into the following categories for this thesis:
+The results that are produced by the classification algorithm can be represented by a contingency table known as a confusion matrix. In this thesis the classification algorithm will output a binary classification, so the confusion matrix will be made from a $2 \times 2$ matrix that has two classes, known as the \textit{positive} and \textit{negative} class. For this thesis, the positive class will be the customers that default and negative class will be the customers that do not default. It will illustrate what proportion of correct and incorrect predictions were made with respect to the target. The confusion matrix can be broken down into the following categories for this thesis:
 
 \begin{itemize}
 	\item \textit{true positive} (TP), cases that are predicted to default, and are {\color{green}{correctly}} classified as \textit{positive}
@@ -565,7 +594,7 @@ Fig \ref{fig:ConfusionMatrix} illustrates how information from a confusion matri
 	\label{fig:ConfusionMatrix}
 \end{figure}
 
-Using the numbers outputted from the confusion matrix, model evaluation measures can calculated and evaluated for the required objective, measures such as \textit{accuracy} (Equation \ref{eq:Accuracy}) which measures proportion of the number of predictions that were correct, the \textit{misclassification rate} (Equation \ref{eq:Misclassification Rate}) what proportion of predictions were wrong, the \textit{sensitivity} (Equation \ref{eq:Sensitivity}), otherwise known as \textit{recall} or the \textit{true positive rate} (TPR), measures the proportion of the positive instances that are correctly identified i.e. proportion default cases that have been predicted correctly. \textit{Specificity} (Equation \ref{eq:Specificity}) measures the proportion of negative cases that are predicted correctly i.e. proportion of non-default cases that have been predicted correctly, \textit{precision} (Equation \ref{eq:precision}) measures when the classifier predict positive outcomes what proportion are correct, \textit{negative predictive value} (NPV) (Equation \ref{eq:npv}) measures the proportion of negative predictions that were correct i.e. if the classifier predicted the outcome would be non-default what proportion were correct. One measure that can be very useful when the where there is class imbalance is \textit{balanced accuracy} (Equation \ref{eq:Balanaced Accuracy}), \citep{brodersen_balanced_2010} discusses how using this negates the impact of bias or skewness from the more frequent class
+Using the results from the confusion matrix, model evaluation measures can calculated and evaluated for the required objective, measures such as \textit{accuracy} (Equation \ref{eq:Accuracy}) which measures proportion of the number of predictions that were correct, the \textit{misclassification rate} (Equation \ref{eq:Misclassification Rate}) what proportion of predictions were wrong, the \textit{sensitivity} (Equation \ref{eq:Sensitivity}), otherwise known as \textit{recall} or the \textit{true positive rate} (TPR), measures the proportion of the positive instances that are correctly identified i.e. proportion default cases that have been predicted correctly. \textit{Specificity} (Equation \ref{eq:Specificity}) measures the proportion of negative cases that are predicted correctly i.e. proportion of non-default cases that have been predicted correctly, \textit{precision} (Equation \ref{eq:precision}) measures when the classifier predicts positive outcomes what proportion are correct, \textit{negative predictive value} (NPV) (Equation \ref{eq:npv}) measures the proportion of negative predictions that were correct i.e. if the classifier predicted the outcome would be non-default what proportion were correct. One measure that can be very useful when the where there is class imbalance is \textit{balanced accuracy} (Equation \ref{eq:Balanaced Accuracy}), \citep{brodersen_balanced_2010} discusses how using this negates the impact of bias or skewness from the more frequent class.
 
 \begin{equation} \label{eq:Sensitivity}
 \text{Sensitivity} = \text{Recall} = \frac{TP}{TP + FN}
@@ -602,113 +631,82 @@ Using the numbers outputted from the confusion matrix, model evaluation measures
 	\label{fig:ConfusionMatrixExample}
 \end{figure}
 
-Fig. \ref{fig:ConfusionMatrixExample} illustrates how the TP, FP, FN, TN can be used to create performance metrics for classification algorithm. As discussed already confusion matrix based performance measures are built on the threshold that is selected for converting the predicted numeric score into a binary outcome. Anecdotally you might believe that the cut-off or threshold of 0.50 is acceptable but this rule may not always especially if there is an imbalance between the positive and negative class in the dataset. The cut-off should should ideally be based on you business objective where you look to minimise, maximise and analyse the trade off as you alter the cut-off. 
+Fig. \ref{fig:ConfusionMatrixExample} illustrates how the TP, FP, FN, TN can be used to create performance metrics for classification algorithm. As discussed already confusion matrix based performance measures are built on the threshold that is selected for converting the predicted numeric scores into a binary outcome. Anecdotally you might believe that the cut-off or threshold of 0.50 is acceptable but this rule may not always especially if there is an imbalance between the positive and negative class in the dataset. The cut-off should should ideally be based on you business objective where you look to minimise, maximise and analyse the trade off as you alter the cut-off. 
 
-The confusion matrix is not the only way to evaluate the performance of the classification algorithm and is not always advocated in the literature or by industry. In studies completed by \citep{lessmann_benchmarking_2008} choose not to select a classification cut-off arguing that studies comparing the same dataset and classifier could come to the different conclusions.
+The confusion matrix is not the only way to evaluate the performance of the classification algorithm and is not always advocated in the literature or by industry. In studies completed by \cite{lessmann_benchmarking_2008} choose not to select a classification cut-off arguing that studies comparing the same dataset and classifier could come to the different conclusions.
 
 As mentioned in this section the confusion matrix measures the performance of classifier at a specific threshold, this can be leveraged to create graphical representations of the overall fitness of the model at any threshold. One such method that will be discussed in the next section is the \textit{receiver operating characteristic} (ROC). 
 
 
-Confusion Matrix is used to evaluating a model where you have divided the output into distinct or discrete categories. A confusion matrix can be reconstructed for any point on the ROC curve. ROC is also is directly related to two other performance methods \textit{area under the curve} and \textit{gini} which will also be discussed.  
+Confusion matrix is used to evaluate the model where you have divided the output into distinct or discrete categories. A confusion matrix can be reconstructed for any point on the ROC curve. ROC is also is directly related to two other performance methods \textit{area under the roc curve} (AUC/AUROC) and \textit{gini} which will also be discussed.  
 
 \subsubsection{ROC Chart, AUC and Gini Coefficient}
 %\url{https://staesthetic.wordpress.com/2014/04/14/gini-roc-auc-and-accuracy/}
-The ROC chart is used to evaluate and illustrate how well the evaluate the model fit, this can be a quick test to see if the model generalises well from the test data, to validation and test data. Fig. \ref{fig:ROC} illustrates on the \textit{x-axis} the false positive rate, and on the \textit{y-axis} the true positive rate is represented. As mentioned previously the points on the ROC chart are generated from confusion matrix built from many cut-off or threshold value between $\theta \in [0,1]$. Fig. \ref{fig:ROC} conceptually illustrates how the ROC chart is generated for varying thresholds. 
+The ROC chart is used to evaluate and illustrate how well the model fits training and test data. This can be a quick test to see if the model generalises well on test data. Fig. \ref{fig:ROC} illustrates on the \textit{x-axis} the false positive rate, and on the \textit{y-axis} the true positive rate is represented. As mentioned previously the points on the ROC chart are generated from confusion matrix built from many cut-off or threshold value between $\theta \in [0,1]$. Fig. \ref{fig:ROC} conceptually illustrates how the ROC chart is generated for varying thresholds. 
 
 \begin{figure}[H]
-	\includegraphics[width=0.8\textwidth,center]{ROC}
+	\includegraphics[width=0.9\textwidth,height=7cm,center]{ROC}
 	\caption[ROC]
 	{ROC Chart Example with thresholds 0.65 \& 0.50}
 	\label{fig:ROC}
 \end{figure}
 
-Fig. \ref{fig:ROC} also illustrate how point (0,1) represents \textit{perfect classification}, that is the classifier correctly predicts all outcomes. 
+Fig. \ref{fig:ROC} also illustrates how point (0,1) represents \textit{perfect classification}, that is the classifier correctly predicting all outcomes. 
 
 The ROC chart is basically a combination of confusion matrices over many cut-off values of a classifier. As you can see above finite number of observations in the dataset dictates the number of thresholds that can be used to generate a ROC chart.
 
-To compare ROC chart results of different classifiers the \textit{area under the ROC curve} (AUC) \citep{bradley_use_1997} \& \citep{hanley_meaning_1982}. In Fig. \ref{fig:ROC} the area under the blue ROC line represents the AUC, which is intuitively the area under the curve. In the case of perfect classification this value will be 1, for a random classifier the AUC would be 0.5. 
+To compare ROC chart results of different classifiers the \textit{area under the ROC curve} (AUC) is utilised (\cite{bradley_use_1997}; \cite{hanley_meaning_1982}). In Fig. \ref{fig:ROC} the area under the blue ROC line represents the AUC, which is intuitively the area under the curve. In the case of perfect classification this value will be 1, for a random classifier the AUC would be 0.5. 
 
-It is worth noting that AUC does not give total probability of the classifier, and also its usefulness when combined with the ROC to evaluate your classifier across training, validation and test datasets. For example if the ROC curve shifts significantly or is not similar from training to validation/test it suggests that there is possible over-fitting and the model does not generalise well. Also it is worth looking out for a drastic change in the AUC from training to validation/test another sign the classifier does not generalise well may not be useful for predictions. Because of this it is a very strong measure for classifier selection, ROC don't tend to cross over, therefore when comparing two classifiers the one which AUC is higher will be the better classifier independent of the threshold or cut-off.
+It is worth noting that AUC does not give total probability of the classifier, and also its usefulness when combined with the ROC to evaluate your classifier across training, validation and test datasets. For example if the ROC curve shifts significantly or is not similar from training to test data it suggests that there is possibly over-fitting and the model does not generalise well. Also it is worth looking out for a drastic change in the AUC from training to validation/test another sign the classifier does not generalise well may not be useful for predictions. Because of this it is a very strong measure for classifier selection, ROC don't tend to cross over, therefore when comparing two classifiers the one which AUC is higher will be the better classifier independent of the threshold or cut-off.
 
-It is illustrated in Fig. \ref{fig:matric_compare} how the performance measures for confusion matrices vary for different thresholds, but again to keep in mind that it there be just one measure for the AUC of the this ROC Chart.   
+It is illustrated in Fig. \ref{fig:matric_compare} how the performance measures for the confusion matrix vary for different thresholds, but again to keep in mind that it there be just one measure for the AUC of the this ROC chart for this model.
 
 \begin{figure}[H]
 	\centering
 	\begin{subfigure}[b]{0.45\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth]{Confusion_Matrix_threshold_065}
+		\includegraphics[width=\textwidth,height=2.25cm]{Confusion_Matrix_threshold_065}
 		\caption{Threshold $=.65$}\label{fig:Threshold65}
 	\end{subfigure} ~\quad
 	\begin{subfigure}[b]{0.45\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.025cm]{Confusion_Matrix_threshold_050}
+		\includegraphics[width=\textwidth,height=2.25cm]{Confusion_Matrix_threshold_050}
 		\caption{Threshold $=.50$}\label{fig:Threshold50}
 	\end{subfigure}
 	\caption{Confusion Matrix: Multiple Threshold Comparison}
 	\label{fig:matric_compare}
 \end{figure}
 
-A metric that is commonly used for in \subjectname, industry credit scoring is the \textit{gini coefficient} this is discussed in \citep{hand_good_2005}, this is equates to twice the area in between the diagonal of a random classifier and the ROC curve. The equation for this can be seen below in Equation \ref{eq:gini}
+A metric that is commonly used for performance measurement in \subjectname\ and industry for credit scoring is the \textit{gini coefficient} this is discussed in \citep{hand_good_2005}. Gini equates to twice the area in between the diagonal of a random classifier and the ROC curve. The equation for this can be seen below in Equation \ref{eq:gini}
 
 \begin{equation} \label{eq:gini}
 \text{Gini} = 2*\text{AUC} - 1
 \end{equation}
 
-Just like using a threshold there are limitations to using the AUC and Gini to measure classifier performance, although extremely useful for analysing the performance of wide range of thresholds but not as useful when trying to maximise the performance over a narrow range of thresholds. It cannot tell us the optimal threshold for classifier for  other statistical needs.
+Just like using a threshold there are limitations to using the AUC and gini to measure classifier performance, although extremely useful for analysing the performance of wide range of thresholds it is not as useful when trying to maximise the performance over a narrow range of thresholds. 
 
 One statistic that is commonly used in credit scoring in \subjectname\, industry and in the literature is the \textit{kolmogorov-smirnov} (KS) statistic, this will be discussed in the next subsection.
 	
 
-\subsubsection{K-S Chart}\label{subsub:ks}
+\subsubsection{K-S Statistic}\label{subsub:ks}
 %\url{http://www.saedsayad.com/model_evaluation_c.htm}
-The KS chart and more specifically the KS statistic is one value between 0 and 1. It can be used by measuring the performance of the classifier, by measuring the maximum distance between the cumulative positive and negative distributions of the predicted positive and negative class \citep{seliya_study_2009}. In other words K-S is a measure that illustrates the maximum separation between the positive and negative distributions, this can illustrated more clearly in Fig. \ref{fig:ks}. Another way of thinking KS statistic is that it is point on the ROC curve which is furthest away from diagonal, when measuring perpendicularly. The KS statistic is heavily used in industry as a method for calculating the threshold value for a prediction model \citep{hand_good_2005}. 
+The Kolmogorov-Smirnov (KS) statistic measures performance of prediction models. The measure is a single value between 0 and 1. The KS evaluates what is the maximum difference between the cumulative positive and negative distributions of the predicted positive and negative class \citep{seliya_study_2009}. This means it evaluates at each threshold of the model the cumulative percentage of positive cases identified and cumulative count of negative cases identified.
 
-Fig. \ref{fig:ks} how the KS statistic and chart is generated, probabilities from the classifier are ordered, grouped and aggregated, but importantly they are separated by the positive and negative class, creating a distribution for each. These two distributions are then plotted separately, you can see in Fig. \ref{fig:ks} that the KS statistic is 47.4\%. This is calculated by taking maximum difference between the two distributions at each group. At group 400-500, if you were to classify all the score are positive below or in this group you would be identifying 81.7\% of the positive instance and only 34.3\% of the negative class, if this was a balanced dataset this could be a very valuable result and measure. 
-
-\begin{figure}[H]
-	\includegraphics[width=0.8\textwidth,center]{ks}
-	\caption[Kolmogorov-Smirnov chart ]
-	{Kolmogorov-Smirnov Table \& Chart }
-	\label{fig:ks}
-\end{figure}
-
-There are extreme cases of the KS statistic that are worth noting, on is where the KS statistic is equal to 100, this means the scores for each distribution (positive/negative) are but into two separate groups, where one group would just have positive cases and the other just negative case. Alternatively if the model is not very useful and cannot tell the positives from the negatives, it will be like the model is selecting cases randomly and will return a KS statistic of 0.
- 
-
-\subsubsection{Gain \& Lift}
-The \textit{gain} \& \textit{lift} measure the performance of the classifier. One example where these measure as charts are extremely useful is when communicating in industry with management, they are easy to explain and intuitive where the business can derive and understand value immediately. Fig. \ref{fig:GainLiftWorkflowCharts} below illustrates how the gain and lift charts are generated. 
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}[b]{0.90\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=4cm]{gains_ratio_process}\caption{Process}\label{fig:gains_ratio_process}
-	\end{subfigure} 
-	\medskip
-	\newline
-	\begin{subfigure}[b]{0.45\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth]{gains}
-		\caption{Gain Chart}\label{fig:gains}
-	\end{subfigure} ~\quad
-	\begin{subfigure}[b]{0.45\textwidth}
-		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth]{lift}
-		\caption{Lift Chart}\label{fig:lift}
-	\end{subfigure}
-	\caption{Gain \& Lift Work-flow \& Charts}
-	\label{fig:GainLiftWorkflowCharts}
-\end{figure}
-
-The charts above illustrate how much likely it is we receive positive responses using the classifier compared to use a random model. The population in the dataset are broken into deciles, which can be seen in \ref{fig:gains} \& \ref{fig:lift}. An example of how they can be used is if we were to evaluate the first 10\% of the population identified by the classifier it would outperform a random selection of customers that would turn out to positive by 3.6.
-
-Essentially these charts are visual aids which can be leveraged for evaluating the performance of the classifier. 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 9
 %----------------------------------------------------------------------------------------
 \section{Conclusion}\label{sotaConc}
-This chapter has summarised the relevant literature available for ...
+This chapter has summarised the relevant literature for a number of topics based on the research project.
+
+Credit scoring models are employed by financial institutions to assess the risk of existing or potential customers defaulting on their financial obligation, allowing them make informed decisions about future loses. Credit score models are built using data such as borrowers repayment performance information and demographic details.
+
+There is no worldwide definition for what a small medium enterprise (SME) are. In Ireland the definition for a SME is that they're registered business with less than 250 employees and have an annual turnover not above \EUR50 million, and/or an annual balance sheet total not above \EUR43 million.
+
+It was discussed in the research that consumer confidence and a strong SME sector are dependant on each other. It has been acknowledged that there has not been a substantial amount of time spent researching how macro economic features affect credit risk. However research has demonstrated that the differences between default rates by region in Italy were shown to be statistically significant. It was also found that there have been examples when unemployment rate and default rates have useful when used in modelling credit risk.
+
+Data mining and predictive modelling encapsulates a large number of subject topics such as feature selection, classification algorithms, model validation and model performance. Logistic regression the most commonly used classification algorithm for credit scoring when predicting how likely a customer is to default on their financial obligation. Coarse classification is the most common method in credit scoring of selecting and evaluating features to be included in the predictive model. Its technique is to create bins within each feature and evaluate these bins relationship with the target feature. It widely used because of the accuracy of the results, and its ability to create a robust feature set for prediction with is able to cater for missing values and outliers. \textit{Area under the curve} (AUC) is the most common method of evaluating the performance of the credit scoring model. It is generated by measuring the performance of the model over all possible thresholds.
+
 %----------------------------------------------------------------------------------------
 %	SECTION 6
 %----------------------------------------------------------------------------------------

@@ -209,6 +209,12 @@ Fayyad, U.~M., Piatetsky-Shapiro, G., Smyth, P. \harvardand\ {others}
   pp.~82--88.
 \newline\harvardurl{http://www.aaai.org/Papers/KDD/1996/KDD96-014}
 
+\harvarditem{Finlay}{2011}{finlay_multiple_2011}
+Finlay, S.  \harvardyearleft 2011\harvardyearright , `Multiple classifier
+  architectures and their application to credit risk assessment', {\em European
+  Journal of Operational Research} {\bf 210}(2),~368--378.
+\newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S0377221710006272}
+
 \harvarditem[Frawley et~al.]{Frawley, Piatetsky-Shapiro \harvardand\
   Matheus}{1992}{frawley_knowledge_1992}
 Frawley, W.~J., Piatetsky-Shapiro, G. \harvardand\ Matheus, C.~J.
@@ -256,6 +262,12 @@ Hackbarth, D., Miao, J. \harvardand\ Morellec, E.  \harvardyearleft
   2006\harvardyearright , `Capital structure, credit risk, and macroeconomic
   conditions', {\em Journal of Financial Economics} {\bf 82}(3),~519--550.
 \newline\harvardurl{http://www.sciencedirect.com/science/article/pii/S0304405X06001115}
+
+\harvarditem{Hand}{2001}{hand_modelling_2001}
+Hand, D.~J.  \harvardyearleft 2001\harvardyearright , `Modelling consumer
+  credit risk', {\em IMA Journal of Management mathematics} {\bf
+  12}(2),~139--155.
+\newline\harvardurl{http://imaman.oxfordjournals.org/content/12/2/139.short}
 
 \harvarditem{Hand}{2005}{hand_good_2005}
 Hand, D.~J.  \harvardyearleft 2005\harvardyearright , `Good practice in retail
