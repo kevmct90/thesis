@@ -77,7 +77,7 @@ The results from this section have been very useful. They have proved that the d
 
 
 \section{Benchmark Models}\label{sec:benchModels}
-As mentioned in previous section when building predictive models its is essential to have a baseline or benchmark model to compare your experiments to. Therefore benchmark regression models have been built in R and SAS that will be used to make comparisons to experiments in this chapter. Regression was chosen because of its success in experiments in Section \ref{sec:benchFeature} and its wide use in industry. The models have been trained for both R and SAS using a 70\% stratified sample dataset with 30\% being kept for holdout which will be used for testing. Results may vary from both R and SAS due to varying samples in each application and algorithms will be slightly different but they should relatively close. This will not impact analysis of comparing experiments as experiments in R will be compared to the benchmark from R and likewise for comparisons in SAS. The AUC will the performance measure of choice for evaluating the well the model fits over all possible thresholds. As the AUC does not give us the accuracy of the model a specific threshold we will also use the recall, specificity and balanced accuracy(BA). The threshold used is based on fine tuning of the parameters testing using a validation dataset in Section \ref{sec:benchFeature}. The breakdown of the training and test for the benchmark model datasets and their target class distribution can be shown in Table \ref{table:benchmark_holdout_train_test}.
+As mentioned in previous section when building predictive models its is essential to have a baseline or benchmark model to compare your experiments to. Therefore benchmark regression models have been built in R and SAS that will be used to make comparisons to experiments in this chapter. Regression was chosen because of its success in experiments in Section \ref{sec:benchFeature} and its wide use in industry. The models have been trained for both R and SAS using a 70\% stratified sample dataset with 30\% being kept for holdout which will be used for testing. Results may vary from both R and SAS due to varying samples in each application and algorithms will be slightly different but they should relatively close. This will not impact analysis of comparing experiments as experiments in R will be compared to the benchmark from R and likewise for comparisons in SAS. The AUC will be the performance measure of choice for evaluating the well the model fits over all possible thresholds. As the AUC does not give us the accuracy of the model a specific threshold we will also use the recall, specificity and balanced accuracy(BA). The threshold used is based on fine tuning of the parameters testing using a validation dataset in Section \ref{sec:benchFeature}. The breakdown of the training and test for the benchmark model datasets and their target class distribution can be shown in Table \ref{table:benchmark_holdout_train_test}.
 
 \begin{table}[H]
 	\centering\
@@ -124,115 +124,146 @@ The threshold used for performance measuring is based on fine tuning of the para
 Models in this this section will be aliased for ease of reading, for example the benchmark models will be referred to as \textit{PD\_Bench\_R}, \textit{PD\_Bench\_SAS}, \textit{NPD\_Bench\_R} and \textit{NPD\_Bench\_SAS} which can be seen in Table \ref{table:benchmodel} above. The results found here are consistent with the evaluations completed in Chapter \ref{Chapter4} which guarantees we have good benchmarks to compare the results in the experiment in this chapter to.
 
 
+For each of the model result the AUC will be used to measure the the accuracy of the model over all possible thresholds.Performance measures over one threshold will also be evaluated. Recall, Specificity, Balanced Accuracy will be recorded to evaluate how the model performs at specified threshold.
+
+
 \section{Correlation Analysis}
 Correlation matrix is a very simple and powerful way of analysing the relationship of predictive features with each other and the target features. Including highly correlated predictive features has the potential to throw off or fool your predictive model potentially causing misleading results. The Pearson correlation coefficient is a common measure used to test your data to check this relationship and will be deployed in this experiment. The correlation tests are ran separately on each category of features created as part of this experiment e.g. \textit{CSO Features by ED \& LA}, \textit{SME Default Trends by ED \& LA}, \textit{Homeloan and Personal Loan Default Trends by ED \& LA}, \textit{Transactions Behaviour by ED \& LA}, and \textit{Binned SME Defaults Rates by ED and LA}. Fig. \ref{fig:unbal_corr_analysis} shows a subset of the results demonstrating correlation scores between the experiment features categories with a full breakdown of the results available in Appendix \ref{AppendixB} where a correlation score coloured red represents a very strong positive correlation between features and blue a very low negative correlation.
 
 \begin{figure}[H]
+	\begin{adjustwidth}{-2cm}{-2cm}
 	\centering
- 	\begin{subfigure}[b]{0.32\textwidth}
+ 	\begin{subfigure}[b]{0.6\textwidth}
  		\captionsetup{font=scriptsize}
- 		\includegraphics[width=\textwidth,height=2.75cm]{CSO_Correlation_Analysis}
+ 		\includegraphics[width=\textwidth,height=4.5cm]{CSO_Correlation_Analysis}
  		\caption{CSO Features by ED \& LA\\}
  		\label{fig:CSOCorrelation}
  	\end{subfigure}
-	\begin{subfigure}[b]{0.32\textwidth}
+	\begin{subfigure}[b]{0.6\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.75cm]{SME_Arrears_Trends_Correlation_Analysis_Subset}
-		\caption{SME Default Trends \\by ED \& LA}\label{fig:smeArrearsCorrelation}
+		\includegraphics[width=\textwidth,height=4.5cm]{SME_Arrears_Trends_Correlation_Analysis_Subset}
+		\caption{SME Default Trends by ED \& LA}\label{fig:smeArrearsCorrelation}
 	\end{subfigure} 
-	\begin{subfigure}[b]{0.32\textwidth}
+		\medskip
+	\begin{subfigure}[b]{0.6\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.75cm]{Personal_Arrears_Ratio}
-		\caption{Homeloan and Personal Loan Default Trends by ED \& LA}
+		\includegraphics[width=\textwidth,height=4.5cm]{Personal_Arrears_Ratio}
+		\caption{Homeloan and Personal Loan \\Default Trends by ED \& LA}
 		\label{fig:personalArrearsCorrelation}
 	\end{subfigure} 
-	\medskip
-	\begin{subfigure}[b]{0.32\textwidth}
+	\begin{subfigure}[b]{0.6\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.75cm]{Visa_Debit_Correlation_Analysis_Subset}
+		\includegraphics[width=\textwidth,height=4.5cm]{Visa_Debit_Correlation_Analysis_Subset}
 		\caption{Transactions Behaviour \\by ED \& LA }\label{fig:transVisaCorrelation}
-	\end{subfigure} ~\quad
-	\begin{subfigure}[b]{0.32\textwidth}
+	\end{subfigure}
+		\medskip	
+	\begin{subfigure}[b]{0.6\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.75cm]{Grouped_Features_Correlation_Analysis_Subset}
+		\includegraphics[width=\textwidth,height=4.5cm]{Grouped_Features_Correlation_Analysis_Subset}
 		\caption{Binned SME Defaults Rates \\by ED and LA\\}
 		\label{fig:groupedFeaturesCorrelation}
 	\end{subfigure}
-	\caption{Correlation Analysis}
+	\caption{Correlation Analysis of Macro-Economic Features}
 	\label{fig:unbal_corr_analysis}
+	\end{adjustwidth}
 \end{figure}
 
-There is a high level of correlation between among many of the variables. It was decided that any features that had a correlation score of 0.80 would be candidate features for removal. For features that were this highly correlated the feature scoring the lowest bivariate correlation to the target feature was removed, ensuring the variable which had the strongest relationship with the target class was prioritised and kept for further predictions. The a subset of the results after this feature reduction process can be found in Fig. \ref{unbal_corr_analysis_filtered} with a full set of results available in Appendix \ref{AppendixC}. 
+There is a high level of correlation between many of the macro-economic features generated as part of the experiment. Predictive features with pairwise correlation above 0.80 are considered candidates for removal. For features that were this highly correlated the feature scoring the lowest bivariate correlation to the target feature was removed, ensuring the feature which had the strongest relationship with the target class was prioritised and kept for further predictions. The a subset of the results after this feature reduction process can be found in Fig. \ref{fig:unbal_corr_analysis_filtered} with a full set of results available in Appendix \ref{AppendixC}. 
 
 \begin{figure}[H]
+	\begin{adjustwidth}{-2cm}{-2cm}
 	\centering
-	\begin{subfigure}[b]{0.32\textwidth}
+	\begin{subfigure}[b]{0.6\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.75cm]{CSO_Correlation_Analysis}
+		\includegraphics[width=\textwidth,height=4.5cm]{CSO_Correlation_Analysis}
 		\caption{CSO Features by ED \& LA\\}
 		\label{fig:CSOCorrelation}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.32\textwidth}
+	\begin{subfigure}[b]{0.6\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.75cm]{SMETrendsCorrSub}
+		\includegraphics[width=\textwidth,height=4.5cm]{SMETrendsCorrSub}
 		\caption{SME Default Trends \\by ED \& LA}\label{fig:SMETrendsCorrSub}
 	\end{subfigure} 
-	\begin{subfigure}[b]{0.32\textwidth}
+			\medskip
+	\begin{subfigure}[b]{0.6\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.75cm]{PersonalTrendFull}
+		\includegraphics[width=\textwidth,height=4.5cm]{PersonalTrendFull}
 		\caption{Homeloan and Personal Loan Default Trends by ED \& LA}
 		\label{fig:PersonalTrendFull}
 	\end{subfigure} 
-	\medskip
-	\begin{subfigure}[b]{0.32\textwidth}
+	\begin{subfigure}[b]{0.6\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.75cm]{TransactionCorrSub}
+		\includegraphics[width=\textwidth,height=4.5cm]{TransactionCorrSub}
 		\caption{Transactions Behaviour \\by ED \& LA }\label{fig:TransactionCorrSub}
-	\end{subfigure} ~\quad
-	\begin{subfigure}[b]{0.32\textwidth}
+	\end{subfigure}
+		\medskip
+	\begin{subfigure}[b]{0.6\textwidth}
 		\captionsetup{font=scriptsize}
-		\includegraphics[width=\textwidth,height=2.75cm]{GroupedCorrSub}
+		\includegraphics[width=\textwidth,height=4.5cm]{GroupedCorrSub}
 		\caption{Binned SME Defaults Rates \\by ED and LA\\}
 		\label{fig:GroupedCorrSub}
 	\end{subfigure}
 	\caption{Correlation Analysis after highly correlated features have been removed}
 	\label{fig:unbal_corr_analysis_filtered}
+	\end{adjustwidth}
 \end{figure}
 
-We then analyse the variables that are most correlated with the target to see if included in the prediction model how well it performs, results from this analysis are demonstrated in Fig. \ref{fig:Correlation Analysis} below.
-
+The most correlated macro-economic features with the target feature are then included in the prediction model and will be evaluated against the benchmark model for performance comparison. 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{CorrelationChart}
-	\caption{Most correlated features with target variable}
+	\caption{Most correlated features with target feature}
 	\label{fig:Correlation Analysis}
 \end{figure}
 
-Table \ref{table:CorrModelResults} below shows the results from including the top 5, 10, 15, 20 correlated features after the correlation analysis as per the Table \ref{table:CorrModelResults}. 
+
+Table \ref{table:PDCorrModelResults} details the results for the
+re-trained model on the previous delinquency training data using the macro-economic features selected as part of correlation analysis.
 
 \begin{table}[H]
 \centering
 \small
 		\begin{tabular}{l r r r r}
 			\hline
-			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+			\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA*} & \textbf{AUC}  \\ \hline
 			\textit{PD\_Bench\_R} & 0.542 & 0.696 & 0.619 & 0.654 \\ \hline
 			\textit{PD\_Cor5\_R}  & 0.534 & 0.669 & 0.602 & 0.654   \\ 
 			\textit{PD\_Cor10\_R} & 0.556 & 0.679 & 0.618 & 0.658  \\ 
-			\textit{PD\_Cor15\_R} & 0.594 & 0.690 & 0.642 & 0.665  \\
-			\textit{PD\_Cor20\_R} & 0.561 & 0.698 & 0.630 & 0.665  \\\hline 
-			\\\hline
-			\textit{NPD\_Bench\_R} & 0.525 & 0.739 & 0.632 & 0.671   \\ \hline
-			\textit{NPD\_Cor5\_R}  & 0.525 & 0.743 & 0.634 & 0.671   \\ 
-			\textit{NPD\_Cor10\_R} & 0.555 & 0.725 & 0.640 & 0.677  \\ 
-			\textit{NPD\_Cor15\_R} & 0.538 & 0.723 & 0.630 & 0.680  \\
-			\textit{NPD\_Cor20\_R} & 0.549 & 0.731 & 0.640 & 0.676  \\\hline 
+			\textit{PD\_Cor15\_R} & \cellcolor{green!25}0.594 & 0.690 & \cellcolor{green!25}0.642 & 0.665  \\
+			\textit{PD\_Cor20\_R} & 0.561 & \cellcolor{green!25}0.698 & 0.630 & \cellcolor{green!25}0.665  \\\hline
 		\end{tabular}
-	\caption{Models from Correlation Feature Selection}
-	\label{table:CorrModelResults}
+	\caption{Previous Delinquency Model results when most important \\Macro-Economic features calculated using Correlation were included in training.\\
+		*BA = Balanced Accuracy}
+	\label{table:PDCorrModelResults}
 \end{table}
 
-For each model result the AUC will be used to measure the overall accuracy of the model while Recall, Specificity, Balanced Accuracy will be recorded to evaluate how the model performs at specified threshold. These results will be evaluated against the benchmark results in a later section of the chapter.
+The results from including macro-economic features based on the correlation analysis are compared against the benchmark model (\textit{PD\_Bench\_R})built in Section \ref{sec:benchModels}. \textit{PD\_Cor5\_R} will relate to the model that was trained using the top 5 features from the correlation analysis, \textit{PD\_Cor10\_R} is the top 10 features, \textit{PD\_Cor15\_R} is the top 15 features, \textit{PD\_Cor20\_R} is the top 20 features. The highest results for each performance metric are highlighted in green.
 
+The results from Table \ref{table:PDCorrModelResults} are quite promising three of the models AUC is better than the benchmark model. \textit{PD\_Cor15\_R} and \textit{PD\_Cor20\_R} in particular perform very strongly across all performance measures. Based on the results \textit{PD\_Cor15\_R} would selected as the best model as scored strongly in specificity, balanced accuracy and AUC but also performed exceptionally with a recall of 59.4\%, much larger than any of the experimental models and 5.2\% higher than the benchmark. The AUC is also 1.1\% higher \textit{PD\_Cor15\_R} compared with the benchmark model.
+
+
+Table \ref{table:NPDCorrModelResults} details the results for the
+re-trained model on the no previous delinquency training data using the macro-economic features selected as part of correlation analysis.
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{l r r r r}
+		\hline
+		\textbf{Model} & \textbf{Recall} & \textbf{Specificity} & \textbf{BA} & \textbf{AUC}  \\ \hline
+		\textit{NPD\_Bench\_R} & 0.525 & 0.739 & 0.632 & 0.671   \\ \hline
+		\textit{NPD\_Cor5\_R}  & 0.525 & \cellcolor{green!25}0.743 & 0.634 & 0.671   \\ 
+		\textit{NPD\_Cor10\_R} & \cellcolor{green!25}0.555 & 0.725 & \cellcolor{green!25}0.640 & 0.677  \\ 
+		\textit{NPD\_Cor15\_R} & 0.538 & 0.723 & 0.630 & \cellcolor{green!25}0.680  \\
+		\textit{NPD\_Cor20\_R} & 0.549 & 0.731 & \cellcolor{green!25}0.640 & 0.676  \\\hline 
+	\end{tabular}
+	\caption{No Previous Delinquency Model results when most important \\Macro-Economic features calculated using Correlation were included in training.\\
+		*BA = Balanced Accuracy}
+	\label{table:NPDCorrModelResults}
+\end{table}
+
+The results from including macro-economic features based on the correlation analysis are compared against the benchmark model (\textit{NPD\_Bench\_R})built in Section \ref{sec:benchModels}. \textit{NPD\_Cor5\_R} will relate to the model that was trained using the top 5 features from the correlation analysis, \textit{NPD\_Cor10\_R} is the top 10 features, \textit{NPD\_Cor15\_R} is the top 15 features, \textit{NPD\_Cor20\_R} is the top 20 features. The highest results for each performance metric are highlighted in green.
+
+The results from Table \ref{table:NPDCorrModelResults} are also
+promising like the previous experiment three of the models AUC outperform the benchmark model. \textit{NPD\_Cor10\_R} looks the strongest of them all for predicting defaults as it has the largest recall score.  \textit{NPD\_Cor15\_R},  \textit{NPD\_Cor20\_R} recall and AUC are strong but because  \textit{NPD\_Cor10\_R} has less features it is chosen as the best.
 
 \section{Feature Selection}
 As mentioned in the research literature in Section \ref{sec2:featureSection} feature selection is important when building a predictive model for a reasons such as reducing the complexity of the model, mitigating the risk of over-fitting, overhead involved with having to understand and maintain a larger number of features, model training and computation time and when you need evaluate/explain your results. In summary simpler in the majority of cases is better.
@@ -257,7 +288,7 @@ As can be seen in Fig. \ref{fig:DelinqInformationGainAnalysis} the results from 
 
 The features that show strongest performance \textit{ED\_LOAN}, \textit{ED\_HOME} as based on default rates of personal loan and homeloan customers at electoral division. This intuitively could makes sense i.e. if people in an electoral division are struggling with their loan and mortgage repayments they are less likely to spend money in businesses in that area. \textit{ED\_LOWER\_THAN\_UPPER\_SECONDARY}, \textit{ED\_UNEMPLOYMENT} and \textit{ED\_NON\_MANUALOCCUPATION} relates to features created in the census data to with low levels of education, high unemployment rate which again intuitively at least make sense. If there are people in an area with low levels of education and therefore cant get work they're less likely to spend money on businesses in that area.
 
-Despite the low information gain of all macro economic feature in the results above we re-train and test the model including the most important features from the information gain calculation. Separate models will be trained using the top 5, 10, 15 and 20 features from the information gain calculation. Table \ref{table:InfoGainPDModelResults} details the results for the re-trained model on the test data using the features selected as part of the information gain calculation.
+Despite the low information gain of all these macro economic feature in the results above we re-train and test the model. Separate models will be trained using the top 5, 10, 15 and 20 features from the information gain calculation. Table \ref{table:InfoGainPDModelResults} details the results for the re-trained model on the test data using the features selected as part of the information gain calculation.
 
 \begin{table}[H]
 \centering
@@ -278,7 +309,7 @@ Despite the low information gain of all macro economic feature in the results ab
 
 The results from including macro-economic features based on the information gain feature importance are compared against the benchmark model (\textit{PD\_Bench\_R})built in Section \ref{sec:benchModels}. \textit{PD\_IG5\_R} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{PD\_IG10\_R} is the top 10 features, \textit{PD\_IG15\_R} is the top 15 features, \textit{PD\_IG20\_R} is the top 20 features.The highest results for each performance metric are highlighted in green.
 
-None of the models trained in this experiment performed better under the AUC which identifies the best model accuracy of the model over all possible thresholds. The \textit{PD\_IG5\_R}, \textit{PD\_IG20\_R} models have a larger specificity than the benchmark meaning the model was able to identify a larger proportion of the negative cases correctly. \textit{PD\_IG10\_R} and \textit{PD\_IG20\_R} both returned higher balanced accuracy and recall. Higher recall means both models predicted higher percentage of the positive class correctly. Although this is an improvement on the benchmark models the results are not markedly better and would need further investigation to test for statistical significance.
+None of the models trained in this experiment performed better under the AUC which identifies the best model accuracy of the model over all possible thresholds. This is not really surprising none of the features exhibited useful information in the information gain analysis. The \textit{PD\_IG5\_R}, \textit{PD\_IG20\_R} models have a larger specificity than the benchmark meaning the model was able to identify a larger proportion of the negative cases correctly. \textit{PD\_IG10\_R} and \textit{PD\_IG20\_R} both returned higher balanced accuracy and recall. Higher recall means both models predicted higher percentage of the positive class correctly. Although this is an improvement on the benchmark models the results are not markedly better and would need further investigation to test for statistical significance.
 
 \subsubsection{Information Gain for No Previous Delinquency Data}\label{IGNPDExper}
 Addressing the \textit{No Previous Delinquency} dataset the information gain was calculated for each of the existing scorecard features and macro-economic features. Details of the feature importance can be seen in Fig. \ref{fig:NoDelinqInformationGainAnalysis}
@@ -291,7 +322,7 @@ Addressing the \textit{No Previous Delinquency} dataset the information gain was
 
 It can be seen in Fig. \ref{fig:NoDelinqInformationGainAnalysis} the results from this test are not very promising as with the previous experiment. The information gain is very small for features which suggests the features were not any better at explaining the target feature than the existing scorecard features. 
 
-The features that show strongest performance as based on SME default rates in an electoral division (See Table \ref{SMEDefaultBehaviourDataset}). The features that show strongest performance \textit{ED PERCENT 30 06 2014}, \textit{ED CNT 1 30 06 2014} as based on the default rate of SME customers and the number of SME customers in default at an electoral division. \textit{DIFF 12 2013} to \textit{ED DIFF 06 2012 ED} are based on the percentage change of default rates. Again these intuitively for predicting either the negative of positive class. If defaulting is trending up in area they could be indicative of further defaulters, likewise if default rate is or going down consumer spend must be good in these areas and there is smaller risk of default is the future
+The features that show strongest performance as based on SME default rates in an electoral division (See Table \ref{SMEDefaultBehaviourDataset}). The features that show strongest performance \textit{ED PERCENT 30 06 2014}, \textit{ED CNT 1 30 06 2014} as based on the default rate of SME customers and the number of SME customers in default at an electoral division. \textit{DIFF 12 2013} to \textit{ED DIFF 06 2012 ED} are based on the percentage change of default rates.  If defaulting is trending up in an area this could be indicative of further defaulters, likewise if default rate is or going down consumer spend must be good in these areas and there is smaller risk of default is the future
 
 Again despite the low information gain of all macro economic feature in the results above we re-train and test the model including the most important features from the information gain calculation. Separate models will be trained using the top 5, 10, 15 and 20 features from the information gain calculation. Table \ref{table:InfoGainNPDModelResults} details the results for the re-trained model on the test data using the features selected as part of the information gain calculation.
 
@@ -315,21 +346,20 @@ Again despite the low information gain of all macro economic feature in the resu
 
 The results from including macro-economic features based on the information gain feature importance are compared against the benchmark model (\textit{PD\_Bench\_R})built in Section \ref{sec:benchModels}. \textit{NPD\_IG5\_R} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{NPD\_IG10\_R} is the top 10 features, \textit{NPD\_IG15\_R} is the top 15 features, \textit{NPD\_IG20\_R} is the top 20 features. The highest results for each performance metric are highlighted in green.
 
-None of four models (\textit{NPD\_IG5\_R}, \textit{NPD\_IG10\_R}, \textit{NPD\_IG15\_R}, \textit{NPD\_IG20\_R}) outperformed the benchmark model in terms of the AUC which identifies the best model based over all possible thresholds. \textit{NPD\_IG5\_R} performed the strongest by scoring a highest recall and balanced accuracy of models compared. This means it was identifying a higher percentage of the positive class correctly than the benchmark. Although this is an improvement on the benchmark models the results are not markedly better and would need further investigation to test for statistical significance.
+None of four models (\textit{NPD\_IG5\_R}, \textit{NPD\_IG10\_R}, \textit{NPD\_IG15\_R}, \textit{NPD\_IG20\_R}) outperformed the benchmark model in terms of the AUC which identifies the best model based over all possible thresholds. \textit{NPD\_IG5\_R} performed the strongest by scoring a highest recall and balanced accuracy of models compared. This result is promising as it means this model is capturing almost 2\% more of the defaulters. This result could be significant for in identifying higher percentage of SME customers that will default in the future. Tests would need to be carried out to identify statistical significance.
+
 
 \subsection{Random Forest Feature Importance}
-A random forest is a very common and popular method of building a predictive modelling. It is an extension of the previously discussed decision tree (See Section \ref{decTrees} and Section \ref{boosting}). The approach is to create large number of decision trees and then combine them together to make a classification, hence why its called a forest. For each decision tree random subsets of the full training set for each decision tree are used, hence random. Hence this is why it is called a random forest. It is also widely in the process of feature selection every build $n$ number of trees in your forest and evaluate how much each feature improves the classification over the entire forest. 
+A random forest is a very common and popular method of building a predictive modelling. It is an extension of the previously discussed decision tree (See Section \ref{decTrees} and Section \ref{boosting}). The approach is to create large number of decision trees and then combine them together to make a classification, hence why it's called a forest. For each decision tree in the forest, random subsets of the full training set are used, hence random. Hence this is why it is called a random forest. Random forests are also widely used in the process of feature selection as the forest is able ti identify what the important features are in building the model taken information from each tree to do so.
 
-For both the \textit{Previous Delinquency} and \textit{No Previous Delinquency} experiments in this section 1000 trees will be created to evaluate the importance of all the features. As with the previous experiment since we are only
-interested in the identifying the importance of macro-economic features as part of this
-research the existing features were stripped out of the results as tampering with the benchmark model dataset as this could lead to misleading results. Due to the risks previously discussed
+For both the \textit{Previous Delinquency} and \textit{No Previous Delinquency} experiments in this section 1000 trees will be created to evaluate the importance of all the features. As with the previous experiment the importance of macro-economic features are only important. Due to the risks previously discussed
 with having too many features in your training dataset only the top 20 features will be
-included in models to be trained along with the existing scorecard features as part of this experiment.
+included in models to be trained along with the existing scorecard features as part of this experiment. 
 
 
 \subsubsection{Feature Importance for Previous Delinquency Data using Random Forests}\label{RFPDExper}
-Addressing the size of the Previous Delinquency dataset random forest feature importance was calculated for
-each of the existing scorecard features and macro-economic features. Details of the feature importance can be seen in Fig. \ref{fig:DelinqRandomForestsAnalysis} below
+Random forest feature importance was calculated for
+each of the existing scorecard features and macro-economic features in the previous delinquency dataset. Details of the feature importance can be seen in Fig. \ref{fig:DelinqRandomForestsAnalysis} below. Unfortunately due to complex nature of random forest (1000 trees) what a good and bad score for variable importance was not clear.
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{DelinqRandomForestsAnalysis}
@@ -338,7 +368,7 @@ each of the existing scorecard features and macro-economic features. Details of 
 	\label{fig:DelinqRandomForestsAnalysis}
 \end{figure}
 
-It can be seen in Fig. \ref{fig:DelinqRandomForestsAnalysis} that features associated with discretionary and non discretionary (See Table \ref{discretionarySpend}) perform strongly in this analysis as 17 of the top 20 features are represented by this dataset. It is worth noting that all of there features are at an electoral division level opposed local authority which signify there has been some shift in customer discretionary and non discretionary spend at the geographic level that is useful for predicting SME defaults or non-defaults. As with the previous experiment calculating information gain  (See Fig. \ref{fig:NoDelinqInformationGainAnalysis}) the SME default rates at an electoral division also included in the top 20 most important features.
+It can be seen in Fig. \ref{fig:DelinqRandomForestsAnalysis} that features associated with discretionary and non discretionary spend (See Table \ref{discretionarySpend}) have strong variable importance after running random forests importance variable. It is worth noting that all of the features selected to have higher variable importance are at an electoral division level opposed to a local authority which could signify there has been some shift in customer discretionary and non discretionary spend at the geographic level that is useful for predicting SME defaults or non-defaults. As with the previous experiment calculating information gain  (See Fig. \ref{fig:NoDelinqInformationGainAnalysis}) the SME default rates at an electoral division also included in the top 20 most important features.
 
 Using these results separate models will be trained using the top 5, 10, 15 and 20 features from
 the random forest feature importance algorithm. Table \ref{table:RFPDModelResults} details the results for the re-trained model
@@ -363,14 +393,14 @@ Macro-Economic features calculated using Random Forest feature \\selection were 
 	\label{table:RFPDModelResults}
 \end{table}
 
-The results from including macro-economic features based on the random forest feature selection are compared against the benchmark model (\textit{PD\_Bench\_R}) built in Section \ref{sec:benchModels}. \textit{PD\_RF5\_R} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{PD\_RF10\_R} is the top 10 features, \textit{PD\_RF15\_R} is the top 15 features, \textit{PD\_RF20\_R} is the top 20 features. The highest results for each performance metric are highlighted in green.
+The results from including macro-economic features based on the random forest feature selection are compared against the benchmark model (\textit{PD\_Bench\_R}) built in Section \ref{sec:benchModels}. \textit{PD\_RF5\_R} will relate to the model that was trained using the top 5 features from the random forest variable importance algorithm, \textit{PD\_RF10\_R} is the top 10 features, \textit{PD\_RF15\_R} is the top 15 features, \textit{PD\_RF20\_R} is the top 20 features. The highest results for each performance metric are highlighted in green.
 
-Results are promising from this experiment, the benchmark model did not outperform the models ran as part of this experiment for any performance measure. \textit{PD\_RF10\_R} demonstrated  very promising results returning a better result for every performance measure compared to the benchmark model. The only result it was not optimal in was the AUC which scored highest in the \textit{PD\_RF20\_R} model. Although the \textit{PD\_RF10\_R} is outperforming the benchmark on all measures the results are not markedly better and would need further investigation to test for statistical significance.
+Results are promising from this experiment, the benchmark model did not outperform the models ran as part of this experiment for any performance measure. \textit{PD\_RF10\_R} demonstrated  very promising results returning a better result for every performance measure compared to the benchmark mode, including a 1.4\% increase in classing customers in default (recall) . The only result it was not higher in was the AUC which scored highest in the \textit{PD\_RF20\_R} model. Overall \textit{PD\_RF10\_R} looks like a promising model and further tests could prove if macro-economic features are significant to this.
 
 \subsubsection{Feature Importance for No Previous Delinquency Data using Random Forests}\label{RFNPDExper}
 
-Addressing the size of the No Previous Delinquency dataset random forest feature importance was calculated for
-each of the existing scorecard features and macro-economic features. Details of the feature importance can be seen in Fig. \ref{fig:NoDelinqRandomForestsAnalysis} below
+Random forest feature importance was calculated for
+each of the existing scorecard features and macro-economic features in the no previous delinquency dataset. Details of the feature importance can be seen in Fig. \ref{fig:NoDelinqRandomForestsAnalysis} below
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{NoDelinqRandomForestsAnalysis}
@@ -380,7 +410,8 @@ each of the existing scorecard features and macro-economic features. Details of 
 \end{figure}
 
 
-It can be seen in Fig. \ref{fig:NoDelinqRandomForestsAnalysis} that features associated with discretionary and non discretionary (See Table \ref{discretionarySpend}) perform strongly in this analysis as 17 of the top 20 features are represented by this dataset which is consistent with the previous random forest feature selection experiment. Again this could be due to spending shift by customers in those electoral divisions going up or down. Again electoral division features are completely dominant in comparison the local authority based features across all top 20 features selected. Lower education rates and occupation rate appear in the top 20 features as they did in information gain experiment in (See Fig. \ref{fig:DelinqInformationGainAnalysis} and Fig. \ref{fig:NoDelinqInformationGainAnalysis}).
+It can be seen in Fig. \ref{fig:NoDelinqRandomForestsAnalysis} that features associated with discretionary and non discretionary (See Table \ref{discretionarySpend}) have strong variable importance after running random forests importance variable. This was also the case in the previous experiment. This could be caused due to spending shift by customers in those electoral divisions going up or down. The random forest variable importance top 20 features are based on electoral division. Lower education rates and occupation rate appear in the top 20 features as they did in information gain experiment in (See Fig. \ref{fig:DelinqInformationGainAnalysis} and Fig. \ref{fig:NoDelinqInformationGainAnalysis}).
+
 
 Using these results separate models will be trained using the top 5, 10, 15 and 20 features from
 the random forest feature importance algorithm. Table \ref{table:RFNPDModelResults} details the results for the re-trained model
@@ -405,53 +436,56 @@ on the test data using the features selected as part of the random forest featur
 	\label{table:RFNPDModelResults}
 \end{table}
 
-The results from including macro-economic features based on the random forest feature selection are compared against the benchmark model (\textit{PD\_Bench\_R}) built in Section \ref{sec:benchModels}. \textit{NPD\_RF5\_R} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{NPD\_RF10\_R} is the top 10 features, \textit{NPD\_RF15\_R} is the top 15 features, \textit{NPD\_RF20\_R} is the top 20 features. The highest results for each performance metric are highlighted in green.
+The results from including macro-economic features based on the random forest feature selection are compared against the benchmark model (\textit{PD\_Bench\_R}) built in Section \ref{sec:benchModels}. \textit{NPD\_RF5\_R} will relate to the model that was trained using the top 5 features from the random forest variable importance algorithm, \textit{NPD\_RF10\_R} is the top 10 features, \textit{NPD\_RF15\_R} is the top 15 features, \textit{NPD\_RF20\_R} is the top 20 features. The highest results for each performance metric are highlighted in green.
 
-Results from the macro economic based predictive models are not very promising from this experiment as the benchmark model outperforms the others across all performance measures, apart from \textit{NPD\_RF5\_R} which performs slightly better on recall than the benchmark model \textit{NPD\_Bench\_R}. \textit{NPD\_RF5\_R} is comparatively very close across all performance measure. Interestingly with the introduction 15 and 20 features in \textit{NPD\_RF15\_R} and \textit{NPD\_RF20\_R} the models results get considerably compared to the introduction of 5 and 10 features \textit{NPD\_RF5\_R} and \textit{NPD\_RF10\_R}.
-
-
-
-\section{Coarse Selection}
-As mentioned in Section \ref{sec:binning}, coarse selection or binning is a process where you transform your features continuous or nominal into a simplified structure of just a number of categories. There are many benefits which have been noted in the literature for using coarse selection such as handling missing data and outliers and increasing robustness by reducing risks or over-fitting. A standard approach is to split each feature into approximately three to six groups or bins. This is done by finding cut-points in the data and evaluating the relationship with target feature using Weight of Evidence (WoE) and the information value is used to compare the predictive capability of grouped features.
-
-For both the \textit{Previous Delinquency} and \textit{No Previous Delinquency} dataset experiments in this section coarse selection will applied to all the macro economic features where we will look to transform each feature into a much more simplified feature which will have up to 6 groups or bins. Coarse selection will not be applied to existing model features as this would not allow for a fair comparison with the benchmark model and could lead to misleading results. It also worth noting that coarse selection must only be run on the training dataset as running it on the full dataset would lead to anachronistic group features.
+Results from the macro economic based predictive models are not very promising from this experiment as the benchmark model outperforms the others across all performance measures, apart from \textit{NPD\_RF5\_R} which performs slightly better on recall than the benchmark model \textit{NPD\_Bench\_R}.
 
 
-\subsubsection{Coarse Selection for Previous Delinquency Data}
-Coarse selection will be run on the macro-economic Previous Delinquency features. As mentioned previous a maximum of 6 bins/groups per feature will be created as per the literature. As with previous experiments in this chapter the top 5, 10, 15, 20 grouped features will be added to the existing Previous Delinquency model feature set and models will be generated. The results from these models will then be compared and evaluated against the results from the benchmark model.
 
-Coarse selection is applied to the previous delinquency macro-economic features, results are shown in Fig. \ref{fig:PDCoarseSelectionVariableImportanceInformationGain}
+\section{Coarse Classification}
+As mentioned in Section \ref{sec:binning}, coarse classification or binning is a process where you transform your features continuous or nominal into a simplified structure of just a number of categories. There are many benefits which have been noted in the literature for using coarse classification such as handling missing data and outliers and increasing robustness by reducing risks or over-fitting. A standard approach is to split each feature into approximately three to six groups or bins. This is done by finding cut-points in the data and evaluating the relationship with target feature using Weight of Evidence (WoE) and the Information Value (IV) is used to compare the predictive capability of grouped features.
+
+For both the \textit{Previous Delinquency} and \textit{No Previous Delinquency} dataset experiments in this section coarse classification will applied to all the macro economic features where we will look to transform each feature into a much more simplified feature which will have up to 6 groups or bins. coarse classification will not be applied to existing model features as this would not allow for a fair comparison with the benchmark model. It also worth noting that coarse classification must only be run on the training dataset.
+
+
+\subsubsection{Coarse classification for Previous Delinquency Data}
+Coarse classification will be run on the macro-economic previous delinquency features. As mentioned previously a maximum of 6 bins/groups per feature will be created as per the literature. As with previous experiments in this chapter the top 5, 10, 15, 20 grouped features will be added to the existing previous delinquency model feature set and models will be generated. The results from these models will then be compared and evaluated against the results from the benchmark model.
+
+Coarse classification is applied to the previous delinquency macro-economic features, results are shown in Fig. \ref{fig:PDCoarseSelectionVariableImportanceInformationGain}
 
 \begin{figure}[H]
-	\includegraphics[width=.9\textwidth,center]{PDCoarseSelectionVariableImportanceInformationGain}
-	\caption{Feature ranking by Information Value after coarse selection \\is applied to the macro-economic features of the Previous Delinquency dataset}
+	\includegraphics[width=.6\textwidth,center]{PDCoarseSelectionVariableImportanceInformationGain}
+	\caption{Feature ranking by Information Value after coarse classification \\is applied to the macro-economic features of the Previous Delinquency dataset}
 	\label{fig:PDCoarseSelectionVariableImportanceInformationGain}
 \end{figure}
 
-The results from the coarse selection are interesting, there are seven binned features based on local authority and thirteen based on electoral division. All the other experiments so far feature importance have been dominated completely by electoral division features. Most (14) of the binned features are sourced from source from the discretionary/non-discretionary spend dataset  (See Table \ref{discretionarySpend}). The top rated feature \textit{DIFF PERCENT 06 2012 ED} is the difference in SME default rates at June 2012 and at the observation point June 2014 by electoral division. It is worth noting that the top 5 or 6 binned features appear to be much more predictive based on the information value than the rest. This illustrated in in Fig. \ref{fig:Information Value using SAS Previous Delinquency Features}.
+The results from the coarse classification are interesting, there are seven binned features based on local authority and thirteen based on electoral division. All the other experiments so far feature importance have been dominated completely by electoral division features. Most (14) of the binned features are sourced from source from the discretionary/non-discretionary spend dataset  (See Table \ref{discretionarySpend}). The top rated feature \textit{DIFF PERCENT 06 2012 ED} is the difference in SME default rates at June 2012 and at the observation point June 2014 by electoral division. It is worth noting also that the top five or six binned features appear to be much more predictive based on the information value than the remaining features. This illustrated in in Fig. \ref{fig:Information Value using SAS Previous Delinquency Features}.
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{PreviousDelinq_InformationGain_InteractiveGrouping}
-	\caption{Barplot of feature ranking by Information Value after coarse selection \\is applied to the macro-economic features of the Previous Delinquency dataset}
+	\caption{Barplot of feature ranking by Information Value after coarse classification \\is applied to the macro-economic features of the Previous Delinquency dataset}
 	\label{fig:Information Value using SAS Previous Delinquency Features}
 \end{figure}
 
-If you look to the left the barplot above you can see that there 5 or 6 features which have a much higher information value than the rest.
+If you look to the left the barplot above you can see that there five or six features which have a much higher information value than the rest.
 
 
 Fig. \ref{fig:Interactive Grouping Diff Percent 06 2012 ED} demonstrates the results of the top 5 macro economic binned features.
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth,center]{ExampleInteractiveGrouping}
-	\caption{Top 5 binned features results based on information value after coarse \\selection is applied to the macro-economic features of the Previous Delinquency dataset
-	\\ Top 5 Binned Features: \textit{DIFF PERCENT 06 2012 ED, ED LIVE LST MTH VS 3MTH AVG LIVE MEAN, LA LIVE LST MTH VS 12MTH AVG LIVE MEAN, ED DISC LST 3MTH MED VS PRV 3MTH MED SPEND MEDIAN, ED LIVE LST MTH VS 6MTH AVG LIVE MEAN}}
+	\caption{Top 5 binned features results based on information value after coarse \\classification is applied to the macro-economic\\ features of the Previous Delinquency dataset}
 	\label{fig:Interactive Grouping Diff Percent 06 2012 ED}
 \end{figure}
 
-Fig. \ref{fig:Interactive Grouping Diff Percent 06 2012 ED} shows demonstrates how the features now look in their binned nominal state. Optimal cutpoint are decided using WoE and information value as discussed earlier. The group highlighted in the chart above shows the rules for building that bin which is highlighted the equation below
+Fig. \ref{fig:Interactive Grouping Diff Percent 06 2012 ED} shows demonstrates how the features  \textit{DIFF PERCENT 06 2012 ED, ED LIVE LST MTH VS 3MTH AVG LIVE MEAN, LA LIVE LST MTH VS 12MTH AVG LIVE MEAN, ED DISC LST 3MTH MED VS PRV 3MTH MED SPEND MEDIAN, ED LIVE LST MTH VS 6MTH AVG LIVE MEAN} appear in their binned state after coarse classification. 
+
+The optimal cut-off for each bin in a feature is calculated using the WoE. Information value is used for ranking binned features importance for prediction. 
+
+The group highlighted in the chart above shows the rules for building that bin which is highlighted the equation below
 \[
 \text{Group 4(Event Rate 37.75) Values} = 0.05 \leq \text{\textit{DIFF PERCENT 06 2012 ED}} < 0.16
 \]
-It saying that for all the features values greater than or equal to $0.05$ and less than $0.16$ assign then to bin 4, the event rate details what percentage of the times it happens in this example it 37.75\% of the time. It can be observed that all the features in Fig. \ref{fig:Interactive Grouping Diff Percent 06 2012 ED} got transformed into features of 5 bins which would have been the optimal result based on WoE and information value.
+This equation is saying for all \textit{DIFF PERCENT 06 2012 ED} values greater than or equal to $0.05$ and less than $0.16$ assign then to bin 4, the event rate details what percentage of the times it happens in this example it 37.75\% of the time. It can be observed that all the features in Fig. \ref{fig:Interactive Grouping Diff Percent 06 2012 ED} got transformed into features of 5 bins which would have been the optimal result based on WoE and information value.
 
 Using these results separate models will be trained using the top 5, 10, 15 and 20 features from
 the coarse classification ranked on information value. Table \ref{table:CoarsePDModelResults} details the results for the re-trained model
@@ -470,56 +504,40 @@ on the test data using the features selected as part of the coarse classificatio
 		\textit{PD\_Coarse20\_SAS} & 0.511 & 0.625 & 0.568 & 0.59  \\\hline 
 	\end{tabular}
 	\caption{Previous Delinquency Model results when most important\\
-		Macro-Economic features calculated using Coarse selection were included.
+		Macro-Economic features calculated using coarse classification were included.
 		\\ *BA = Balanced Accuracy}
 	\label{table:CoarsePDModelResults}
 \end{table}
 
-The results from including macro-economic features based on the coarse selection process are compared against the benchmark model (\textit{PD\_Bench\_SAS}) built in Section \ref{sec:benchModels}. \textit{PD\_Coarse5\_SAS} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{PD\_Coarse10\_SAS} is the top 10 features, \textit{PD\_Coarse15\_SAS} is the top 15 features, \textit{PD\_Coarse20\_SAS} is the top 20 features. The highest results for each performance metric are highlighted in green.
+The results from including macro-economic features based on the coarse classification process are compared against the benchmark model (\textit{PD\_Bench\_SAS}) built in Section \ref{sec:benchModels}. \textit{PD\_Coarse5\_SAS} will relate to the model that was trained using the top 5 features from the information value calculation, \textit{PD\_Coarse10\_SAS} is the top 10 features, \textit{PD\_Coarse15\_SAS} is the top 15 features, \textit{PD\_Coarse20\_SAS} is the top 20 features. The highest results for each performance metric are highlighted in green.
 
-Results are very promising from this experiment,the \textit{PD\_Coarse5\_SAS} and \textit{PD\_Coarse10\_SAS} models outperformed the benchmark model(\textit{PD\_Bench\_SAS}) over every performance measure suggesting it would be valid to include these macro-economic values in the development of a model in the future. 
+Results are very promising from this experiment,the \textit{PD\_Coarse5\_SAS} and \textit{PD\_Coarse10\_SAS} models outperformed the benchmark model(\textit{PD\_Bench\_SAS}) over every performance measure suggesting it would be valid to include these macro-economic values in the development of a model in the future. The best model appears to be \textit{PD\_Coarse5\_SAS} it uses a less features than \textit{\textit{PD\_Coarse10\_SAS}} and has a much larger AUC. However \textit{PD\_Coarse10\_SAS} has a much larger recall value. 
 
-Although the tests for this experiment are very promising further tests would need to be carried out to evaluate if the inclusion of these binned features in the model is statistically significant. 
+These are strong results that the differences between the benchmark model \textit{PD\_Coarse5\_SAS} and coarse classification model \textit{PD\_Coarse5\_SAS} performance measures are so large that these macro economic features did improve the model.
 
 
-\subsubsection{Coarse Selection for No Previous Delinquency Data}
-Coarse selection will be run on the macro-economic No Previous Delinquency features. As mentioned previous a maximum of 6 bins/groups per feature will be created as per the literature. As with previous experiments in this chapter the top 5, 10, 15, 20 grouped features will be added to the existing Previous Delinquency model feature set and models will be generated. The results from these models will then be compared and evaluated against the results from the benchmark model.
+\subsubsection{Coarse classification for No Previous Delinquency Data}
 
-Coarse selection is applied to the previous delinquency macro-economic features, results are shown in Fig. \ref{fig:NPDCoarseSelectionVariableImportanceInformationGain}
+Coarse classification is applied to the no previous delinquency macro-economic features, results are shown in Fig. \ref{fig:NPDCoarseSelectionVariableImportanceInformationGain}
 
 \begin{figure}[H]
-	\includegraphics[width=0.9\textwidth,center]{NPDCoarseSelectionVariableImportanceInformationGain}
-	\caption{Feature ranking by Information Value after coarse selection \\is applied to the macro-economic features of the No Previous Delinquency dataset}
+	\includegraphics[width=0.6\textwidth,center]{NPDCoarseSelectionVariableImportanceInformationGain}
+	\caption{Feature ranking by Information Value after coarse classification \\is applied to the macro-economic features of the No Previous Delinquency dataset}
 	\label{fig:NPDCoarseSelectionVariableImportanceInformationGain}
 \end{figure}
 
 
-The results from the coarse selection are interesting, there are 13 binned features based on local authority and 7 based on electoral division. This is first time during any of the experiments in this research where local authority features are more dominant than the electoral division features. Most (12) of the binned features are sourced from source from the discretionary/non-discretionary spend dataset  (See Table \ref{discretionarySpend}). The top rated feature \textit{DIFF PERCENT 06 2013 ED} is the difference in SME default rates at June 2013 and at the observation point June 2014 by electoral division. It is worth noting that the top 5 binned features appear to be much more predictive based on the information value than the rest. This illustrated in in Fig. \ref{fig:Information Value using SAS No Previous Delinquency Features}.
+The features chosen by coarse classification are very similar to the previous experiment on the previous delinquency dataset. This time however there are more features based on local authority than on electoral division. This is first time during any of the experiments in this research where local authority features are more dominant than the electoral division features after a feature selection process. The top ranked feature \textit{DIFF PERCENT 06 2013 ED} is the difference in SME default rates at June 2013 and at the observation point June 2014 by electoral division. 
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{NoPreviousDelinq_InformationGain_InteractiveGrouping}
-	\caption{Barplot of feature ranking by Information Value after coarse selection \\is applied to the macro-economic features of the No Previous Delinquency dataset}
+	\caption{Barplot of feature ranking by Information Value after coarse classification \\is applied to the macro-economic features of the No Previous Delinquency dataset}
 	\label{fig:Information Value using SAS No Previous Delinquency Features}
 \end{figure}
 
-If you look to the left the barplot above you can see that there top 5 features are the which have a much higher information value than the rest. This result may mean when we include these features in the building the prediction model we will se promising results.
+In Fig. \ref{fig:Information Value using SAS No Previous Delinquency Features} like in the previous experiment there appears to five strong features ranked by the information value. 
 
-Fig. \ref{fig:ExampleInteractiveGroupingNPD} demonstrates the results of the top 5 macro economic binned features.
-
-\begin{figure}[H]
-	\includegraphics[width=1\textwidth,center]{ExampleInteractiveGroupingNPD}
-	\caption{Top 5 binned features results based on information value after coarse \\selection is applied to the macro-economic features of the Previous Delinquency dataset
-		\\ Top 5 Binned Features: \textit{DIFF PERCENT 06 2013 ED, ED LOWER THAN UPPER SECONDARY RATIO, LA DISC LST 6MTH MED VS PRV 6MTH MED SPEND MEDIAN, LA LIVE LST 3MTH AVG VS 6MTH AVG LIVE MEAN, LA LIVE LST 3MTH MED VS 6MTH MED LIVE MEDIAN  }}
-	\label{fig:ExampleInteractiveGroupingNPD}
-\end{figure}
-
-Fig. \ref{fig:ExampleInteractiveGroupingNPD} shows demonstrates how the features now look in their binned nominal state. Optimal cutpoint are decided using WoE and information value as discussed earlier. The group highlighted in the chart above shows the rules for building that bin which is highlighted the equation below
-\[
-\text{Group 3(Event Rate 63.15) Values} = 0.0 < \text{\textit{DIFF PERCENT 06 2013 ED}} < 0.13
-\]
-It saying that for all the features values greater than $0.0$ and less than $0.13$ assign then to bin 3, the event rate details what percentage of the times it happens in this example it 63.15\% of the time. It can be observed that all the features in Fig. \ref{fig:ExampleInteractiveGroupingNPD} got transformed into features of 5 bins which would have been the optimal result based on WoE and information value.
-
-Using these results separate models will be trained using the top 5, 10, 15 and 20 features from
+Using the results separate models will be trained using the top 5, 10, 15 and 20 features from
 the coarse classification ranked on information value. Table \ref{table:CoarseNPDModelResults} details the results for the re-trained model
 on the test data using the features selected as part of the coarse classification process
 
@@ -536,15 +554,15 @@ on the test data using the features selected as part of the coarse classificatio
 		\textit{NPD\_Coarse20\_SAS} & 0.500 & 0.739 & 0.619 & 0.665  \\\hline 
 	\end{tabular}
 	\caption{{No Previous Delinquency Model results when most important\\
-			Macro-Economic features calculated using Coarse selection were included.
+			Macro-Economic features calculated using coarse classification were included.
 			\\ *BA = Balanced Accuracy}}
 	\label{table:CoarseNPDModelResults}
 \end{table}
-The results from including macro-economic features based on the coarse selection process are compared against the benchmark model (\textit{PD\_Bench\_SAS}) built in Section \ref{sec:benchModels}. \textit{NPD\_Coarse5\_SAS} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{NPD\_Coarse10\_SAS} is the top 10 features, \textit{NPD\_Coarse15\_SAS} is the top 15 features, \textit{NPD\_Coarse20\_SAS} is the top 20 features. The highest results for each performance metric are highlighted in green.
+The results from including macro-economic features based on the coarse classification process are compared against the benchmark model (\textit{PD\_Bench\_SAS}) built in Section \ref{sec:benchModels}. \textit{NPD\_Coarse5\_SAS} will relate to the model that was trained using the top 5 features from the information gain calculation, \textit{NPD\_Coarse10\_SAS} is the top 10 features, \textit{NPD\_Coarse15\_SAS} is the top 15 features, \textit{NPD\_Coarse20\_SAS} is the top 20 features. The highest results for each performance metric are highlighted in green.
 
-Results are promising for this experiment but not as promising as the experiment for coarse selection on the previous delinquency. This because we do not see promising results from the models using macro economic features until we introduce 15 features, ideally you want to keep number of features in the model small for simplicity and robustness. However the \textit{NPD\_Coarse15\_SAS} model has outperformed the benchmark on three of the four performance measures. AUC, recall and balanced accuracy. This means across all possible threshold this model is performing better than the benchmark (AUC), its identifying correctly more customers that will go into arrears (recall), and on average its identifying correctly more customer than will or will not go into arrears (balanced accuracy). 
+Results are promising for this experiment but not as promising as the experiment for coarse classification on the previous delinquency dataset. This because we do not see promising results from the models using macro economic features until we introduce 15 features, ideally you want to keep number of features in the model small for simplicity and robustness. However the \textit{NPD\_Coarse15\_SAS} model has outperformed the benchmark on three of the four performance measures. AUC, recall and balanced accuracy. This means across all possible threshold this model is performing better than the benchmark (AUC), its identifying correctly more customers that will go into arrears (recall), and on average its identifying correctly more customer than will or will not go into arrears (balanced accuracy) but at the same time it is introducing a large number of features to training model which could be problematic. 
 
-Although the tests for this experiment are promising further tests would need to be carried out to evaluate if the inclusion of these binned features in the model are statistically significant. 
+There are two hypothesis suggested for why this experiment not being as successful for the no previous delinquency data compared to the previous delinquency data is that. One is that the class imbalance in the no previous delinquency model is so low (97:03) the information is not getting picked up. The other is that the coarse selection process for previous delinquency data that was successful mainly made up of electoral division features where coarse classification in this experiment was mainly made up of local authority features. It may be that local authority features are at too high a level. 
 
 \section{Addressing the imbalance in the dataset}
 To address the class imbalance property that exists in the dataset in this experiment a number of methods that manipulate the data by re-sampling have been proposed such \textit{random undersampling of the majority class}, \textit{random oversampling of the minority class} and \textit{synthetic sampling of the minority class} (See Section \ref{sec:imBalance}). Re-sampling of the dataset must and will only be carried out on the training set of the data as otherwise your training data could contain anachronistic features.
