@@ -119,7 +119,7 @@
 	
 	\Declaration{
 		
-		\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
+		\addtocontents{toc}{}%{\vspace{1em}} % Add a gap in the Contents, for aesthetics
 		
 		I, \authornames, declare that this thesis titled, ``\ttitle'' and the work presented in it are my own. I confirm that:
 		
@@ -177,9 +177,9 @@
 	\chapter*{\centering Abstract}
 	This research project investigates the predictive capability of macro-economic features in modelling credit risk for small medium enterprises (SME/SMEs). There have been indications that there is strong correlation between the size of the SME sector in an economy and economic growth. However, since the financial crisis SMEs have been hampered trying to get credit due to policies and regulations. It has also been noted that even though there has been a substantial amount of time spent understanding and developing the credit risk literature, there not been much time spent researching how macroeconomic factors affect credit risk. By being able to improve the credit scoring by even a small amount can have a very positive effect on a financial institutions profits, reputation and being able to support the economy.
 	
-	Typically, in the credit scoring process two methods of scoring are carried out, application scoring model and behavioural scoring model. These models for predicting customers who are likely to default usually rely upon financial, demographic and transactional data as the predictive inputs. This research investigates the use of a much more coarse source of data at a macro-economic level by a low level and high level regions in Ireland. Features such as level of employment/unemployment, level of education, consumer spending trends and default levels by different banking products will be evaluated as part of the research project.
+	Typically, in the credit scoring process two methods of scoring are carried out, application scoring model and behavioural scoring model. These models for predicting customers who are likely to default usually rely upon financial, demographic and transactional data as the predictive inputs. This research investigates the use of a much coarser source of data at a macro-economic level by a low level and high level regions in Ireland. Features such as level of employment/unemployment, level of education, consumer spending trends and default levels by different banking products will be evaluated as part of the research project.
 	
-	Techniques and methods are established for evaluating the usefulness of features from the macro-economic features created as part of this research which are subsequently introduced into the predictive models to be evaluated. It was found that while employing coarse classification and subsequently choosing the macro-economic features with the highest information value in the predictive model the accuracy across all performance measures improved significantly. This has proven that macro-economic features have the potential to used in modelling credit risk for SMEs in the future.
+	Techniques and methods are established for evaluating the usefulness of macro-economic features created as part of this research which are subsequently introduced into the predictive models to be evaluated. It was found that while employing coarse classification and subsequently choosing the macro-economic features with the highest information value in the predictive model the accuracy across all performance measures improved significantly. This has proven that macro-economic features have the potential to be used in modelling credit risk for SMEs in the future.
 		
 		\clearpage
 		%----------------------------------------------------------------------------------------
@@ -188,7 +188,8 @@
 		
 		\setstretch{1.3} % Reset the line-spacing to 1.3 for body text (if it has changed)
 		
-		\acknowledgements{\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
+		\acknowledgements{
+			\addtocontents{toc}{}%{\vspace{1em}} % Add a gap in the Contents, for aesthetics
 			
 			I would like to thank my supervisor, \supname , for all the help she has provided to me in this project.
 		}

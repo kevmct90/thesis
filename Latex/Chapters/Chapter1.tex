@@ -9,17 +9,15 @@
 % INTRO
 \section*{Overview of Project Area}
 
-In the finance credit risk is one of the oldest forms of risk. Credit risk can be defined as one party ``a lender'' trusting another party ``a borrower'' enough that they are happy to give them with money ``some credit'' where they anticipate to be paid back not instantly but after some time interval, the credit risk is the probability or chance that the ``lender'' is never paid back by the ``borrower''. Credit risk has been in existence since lending commenced itself dating back to 1800 B.C., where there is forever a certain amount of precariousness involved in the lending borrowing process \citep{caouette_managing_1998}.
+In finance, credit risk is one of the oldest forms of risk. Credit risk can be defined as one party ``a lender'' trusting another party ``a borrower'' enough that they are happy to give them money ``some credit'' where they anticipate to be paid back not instantly but after some time interval, the credit risk is the probability or chance that the ``lender'' is never paid back by the ``borrower''. There has always existed a certain amount of uncertainty in the lending borrowing process since lending commenced in 1800 B.C.\citep{caouette_managing_1998}.
 
+There are many credit risks in the repayment process where the lender may not receive the full payment, the principle, the interest or anything at all. To help mitigate this issue, credit risk scoring and modelling have been employed by financial institutions to identify what borrowers are likely to fail paying back their financial obligation \citep{sirirattanaphonkun_default_2012}.
 
-There are many credit risks in the repayment process of lending where the lender may not receive the full payment, the principle, the interest or both. To help mitigate this issue credit risk scoring and modelling have been employed by financial institutions to identify what borrowers are likely to fail paying back their financial obligation \citep{sirirattanaphonkun_default_2012}.
+The phrase \textit{credit scoring} is commonly used to define the procedure of assessing the risk a borrower poses of defaulting on their financial agreement \citep{hand_statistical_1997}. The aim of these models is to classify borrowers ``customers of the financial institution'' into to one of two classes: \textit{good} and \textit{bad}. Good and bad can also be referred to as \textit{defaulters} or \textit{non-defaulters/performing}. Customers in the good class are thought to be more likely to pay back their financial agreement while customers in the bad classes are thought to be unlikely to pay back their financial agreement. 
 
-The phrase \textit{credit scoring} is commonly used to define the procedure of assessing the risk of borrower poses of defaulting on their financial agreement \citep{hand_statistical_1997}. The aim of these models is to classify borrowers ``customers of the financial institution'' into to one of two classes: \textit{good} and {bad}. Good and bad can also be referred to as \textit{defaulters} or \textit{non-defaulters/performing}. Customers in the good class are thought to be more likely to pay back their financial agreement. Customers in the bad classes are thought to be unlikely to pay back their financial agreement. 
+\textit{Small and Medium-Sized Enterprises} (SME/SMEs) are commonly defined as registered businesses with fewer than 250 employees \citep{ifc_sme_2009}. There is no consistent definition though as it can vary in different countries and across financial institutions. \cite{beck_bank_2008} research indicates that most commercial financial institutions consider the SME sector to be very profitable. Studies also demonstrate that performing SMEs or a strong SME sector is important as it forms the spine of countries economies all around the world. This is because countries with a strong SME sector are hubs for providing jobs, innovation and growth to the economy \citep{craig_sba-guaranteed_2004}. It is therefore vital from a financial institutions profitability and a countries economies point of view that credit risk models are as accurate as possible and have all the relevant information available to make informed predictions.
 
-\textit{Small and Medium-Sized Enterprises} (SME/SMEs) are commonly defined as registered businesses with fewer than 250 employees \citep{ifc_sme_2009}. There is no consistent definition though as it can vary in different countries and across financial institutions. \cite{beck_bank_2008} research indicates that most commercial financial institutions consider the SME sector to be very profitable. Studies also demonstrate that performing SMEs or a strong SME sector is important as it forms the spine of countries economies all around the world, because they are hubs for providing jobs, innovation and growth to the economy \citep{craig_sba-guaranteed_2004}. It is therefore vital from a financial institution profitability point of view that their credit risk models are as accurate as possible and have all the information available to make an informed prediction. It is also vital from a countries economies point of view that this is done so SMEs do not default and people do not lose their jobs. 
-
-
-Since the financial crisis of 2007-2008 there has been a much greater emphasis on credit scoring for the entire consumer lending process in financial institutions. One of the most common methods of building credit risk models is by using data mining \citep{baesens_50_2009}. One of the benefits to improving the scoring accuracy of a credit model is the significant future savings \citep{west_neural_2000} but also financial institutions are under increasing pressures from global (Bank for International Settlements) e.g. The European Central Bank and national bank e.g. Central bank of Ireland. Since the crisis these regulators police that financial institutions keep better care of their credit scoring systems. Poor performing credit systems can have massive adverse effect on that financial institutions profits, reputation and ability to support the economy.
+Since the financial crisis of 2007-2008 there has been a much greater emphasis on credit scoring for the entire consumer lending process in financial institutions. One of the most common methods of building credit risk models is by using data mining \citep{baesens_50_2009}. One of the benefits to improving the scoring accuracy of a credit model is the significant future savings \citep{west_neural_2000} but also financial institutions are under increasing pressures from global (Bank for International Settlements) e.g. The European Central Bank and national bank e.g. Central Bank of Ireland. Since the crisis these regulators police that financial institutions keep better care of their credit scoring systems. Poor performing credit systems can have massive adverse effect on financial institutions profits, reputations and ability to support the economy.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -27,13 +25,13 @@ Since the financial crisis of 2007-2008 there has been a much greater emphasis o
 
 \section{Background}
 
-Credit scoring processes carried out by financial institutions can generally be split into two groups \citep{bijak_does_2012}. There groups will differ on the data used and task they are trying to perform. 
+Credit scoring processes carried out by financial institutions can generally be split into two groups \citep{bijak_does_2012}. These processes will differ by what data is used for scoring and the task they are trying to perform. 
 
-Firstly \textit{application scoring}, is employed when a application for credit is submitted. The \textit{application credit scoring model} evaluates an applicants probability of defaulting at a later point in time based on the applicants credit application details. The predictive features that are typically used for this model are financial and demographic information which are then compared against previous applications with the same features along with their good/bad state at a later point in time.
+Firstly \textit{application scoring}, is employed when an application for credit is submitted. The \textit{application credit scoring model} evaluates an applicants probability of defaulting at a later point in time based on the applicants credit application details. Financial and demographic information are typically used for this model where the current applications details are compared against previous applications with the same features along with their good/bad state at a later point in time.
 
-Secondly \textit{behavioural scoring}, is employed once the borrower has secured credit from the lender. The \textit{behavioural credit scoring model} evaluates the borrowers probability of defaulting at a later point in time once the borrower has secured credit. This allows financial institutions to constantly monitor borrowers performance allowing them to aid them if they are seen to be showing signs of \textit{financial stress}. The predictive features that are typically used building this model are commonly based on borrowers lending repayment performance and the borrows good/bad classification at some time in the future. If financial institutions want to be sustainable and profitable it is imperative that they are able to accurately identify borrowers that are likely to default in the future. For borrowers that are found to be of high risk it allows the financial institution to make suitable decisions to mitigate the impact from its loses.
+Secondly \textit{behavioural scoring}, is employed once the borrower has secured credit from the lender. The \textit{behavioural credit scoring model} evaluates the borrowers probability of defaulting at a later point in time once the borrower has secured credit. This allows financial institutions to constantly monitor borrowers performance allowing them to aid them if they are seen to be showing signs of \textit{financial stress}. The predictive features that are typically used building this model are commonly based on borrowers lending repayment performance and the borrows good/bad classification at some time in the future. 
 
-The experiments in this research paper will focus only on the \textit{behavioural scoring} aspect of \textit{credit scoring}.
+If financial institutions want to be sustainable and profitable it is imperative that they are able to accurately identify borrowers that are likely to default in the future. For borrowers that are found to be of high risk it allows the financial institution to make suitable decisions to mitigate the impact from its loses. The experiments in this research paper will focus only on the \textit{behavioural scoring} aspect of \textit{credit scoring}.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
@@ -52,23 +50,22 @@ The primary goal of this research is to assess the predictive capability of macr
 
  
 The objectives of this research are:
-
 \begin{itemize}
 	\item To study the relevant state-of-the-art literature and industry best practices for credit risk scoring, predictive modelling and how macro-economic features are utilised in credit risk modelling.
 	
-	\item Design and build application to generate, collate and identify macro-economic features that will be assessed for predicting SMEs defaulting.
+	\item Design and build an application to generate, collate and identify macro-economic features that will be assessed for predicting SMEs defaulting.
 	
 	\item Design experiments to test the hypothesis
 	
 	\item Use feature selection techniques to identify the most predictive  macro-economic features.
 	
-	\item Train benchmark predictive model to compare the and evaluate the experiment with.
+	\item Train benchmark predictive models to compare and evaluate the experiment models.
 	
-	\item Train a predictive models including macro-economic features to be evaluated against the benchmark model.
+	\item Train predictive models including macro-economic features to be evaluated against the benchmark models.
 
 	\item Critically assess the results from predictive models including macro-economic features compared to the benchmark model to evaluate if macro-economic features should be included in credit risk models in the future.
 
-	\item Determine what future research could be undertaken in the area to expand on the project.
+	\item Determine what future research could be undertaken in the area to expand on the research project.
 \end{itemize}
 	
 
@@ -77,13 +74,13 @@ The objectives of this research are:
 %----------------------------------------------------------------------------------------
 \section{Research Methodology \& Analytical Approach}
 
-The research methodology that will be deployed in this project is empirical evaluation that will involve investigation and experimentation on a large number of macro-economic. These features will be generated based on customer transactional spending behaviour, default trends over disparate banking credit products (Personal Loans, Homeloans, SMEs) and Census data(Employment levels, Education levels, and Occupation Type).   
+The research methodology that will be deployed in this project is empirical evaluation that will involve investigation and experimentation on a large number of macro-economic features. These features will be generated based on customer transactional spending behaviour, default trends over many banking credit products (personal loans, homeloans, SMEs) and Census data (employment levels, education levels, and occupation types).   
 
 The experiment in this research undertaken is based on building a prediction model that is able to accurately predict if SME customers will default or not default in the future. As part of the experiment macro-economic features are evaluated to ascertain if any are accurately able to predict arrears. Building prediction models and evaluating the prediction power of features are common practices in Data Mining.
 
 Data mining is used to explain historic events and forecast future events by applying data analysis. Data mining is commonly used for identify trends that are not obvious. 
 
-In this experiment were are trying to investigate the relationship between good and bad SME customers by macro-economic features by region to see if there are any relationships from the past that could be used to predict the future. It not be feasible to investigate all these relationships manually. Data mining gives you a methodology which is supported by data analysis and experiments. 
+In this experiment were are trying to investigate the relationship between good and bad SME customers by including macro-economic features by region to see if there are any relationships from the past that could be used to predict the future. It is not be feasible to investigate all these relationships manually. Data mining gives you a methodology which is supported by data analysis and experiments. 
 
 Data mining techniques for measuring the importance of features and evaluating the performance of prediction models will be used throughout the empirical evaluation of this project. Many tests will be carried out to try and derive interesting insights from the macro-economic features relationship with SME customer default behaviour.
 
@@ -91,9 +88,9 @@ Data mining techniques for measuring the importance of features and evaluating t
 %	SECTION 6
 %----------------------------------------------------------------------------------------
 \section{Scope and Limitations}
-The scope of this project is to build a prediction model in \subjectname\ for SMEs which utilises macro-economic features by geographic regions (Electoral Division and Local Authority) in the Republic of Ireland. The aim of the experiment is to evaluate the predictiveness of these macro-economic features and evaluate if they should be included in industry credit risk models in \subjectname\ in the future.
+The scope of this project is to build a prediction model for SMEs in \subjectname\  which utilises macro-economic features by geographic regions (Electoral Division and Local Authority) in the Republic of Ireland. The aim of the experiment is to evaluate the predictiveness of these macro-economic features and evaluate if they should be included in industry credit risk models in \subjectname\ in the future.
 
-SMEs included in this project will only be taken from one of the accounting systems in \subjectname. Macro-economic features for this experiment will be generated from customer transactional spending behaviour, default trends over disparate banking credit products (Personal Loans, Homeloans, SMEs) and Census data(Employment levels, Education levels, and Occupation Type). 
+SMEs included in this project will only be taken from one of the accounting systems in \subjectname. Macro-economic features for this experiment will be generated from customer transactional spending behaviour, default trends over disparate banking credit products (personal loans, homeloans, SMEs) and Census data (employment levels, education levels, and occupation types).
 
 As part of the experiment a benchmark prediction model will be trained using features that were selected to be in a SME credit risk model in the past. Further prediction models will be built using the features from the benchmark model and the macro-economic features generated as part of this research. Prediction models using macro-economic features will be compared and evaluated against the benchmark model. If the models trained using the  macro-economic features perform better than the benchmark model then these features should be considered for inclusion in the SME credit risk model in the future. 
 
@@ -110,9 +107,9 @@ The remaining chapters of this thesis are organised as follows:
 	
 	\item Chapter 2 documents and evaluates the current state of the art in the field of credit scoring, the use of macro-economic features in credit scoring, and the general field of data mining which includes predictive modelling, performance measurement and, handling imbalanced datasets. Techniques and methods for feature set reduction and selection are also discussed here. 
 	
-	\item Chapter 3	presents the data that will be used for the experiments in this research. It will detail what SME customers are used for the experiment, where they were sourced, under what criteria and what period of time period the experiment will be tested over. It will also include details of how the macro-economic features for this experiment were generated. This will include details of where the data is sourced and details how this data was mapped to geographic regions.  
+	\item Chapter 3	presents the data that will be used for the experiments in this research. It will detail what SME customers are used for the experiment, where they were sourced, under what criteria and what period of time the experiment will be tested over. It will also include details of how the macro-economic features for this experiment were generated. This will include details of where the data is sourced and details how this data was mapped to geographic regions.  
 	
-	\item Chapter 4 presents the design and research methodology that was put in place in an attempt improve upon the prediction of a benchmark predictive model by introducing macro-economic features. Feature selection and performance measurement techniques will be addressed in this chapter for the experiment.
+	\item Chapter 4 presents the design and research methodology for the project in an attempt improve upon the prediction of a benchmark predictive model by introducing macro-economic features. Feature selection and performance measurement techniques will be addressed in this chapter for the experiment.
 	
 	\item Chapter 5 presents the implementation of the experiments carried out as part of this research. Results will be evaluated and critically assessed. Conclusions and observations will be made where it is possible to do so. 
 	
