@@ -11,23 +11,23 @@
 %----------------------------------------------------------------------------------------
 \section{Introduction}
 
-This chapter will cover off research literature in the field of credit risk and predicting default of Small Medium Enterprises (SME/SMEs) customers in financial institutions. The first couple of sections will cover off the field of SME, detailing SME definitions, credit risk and how macro economic features are utilised in modelling credit risk for SMEs and economies. These early sections will discuss challenges observed from the past in the field such as lack of common definitions and statistics while also details recommendations that have been made to strengthen the field. The literature for macro-economic features is reviewed and it is noted that there has not much time spent researching how macro-economic factors affect SME credit and credit risk as a whole. It finishes detailing how there has been success using macro-economic factors in Italy, Portugal in predicting credit risk utilising features based on default rates and unemployment by geographic location.   
+This chapter will cover the research literature in the field of credit risk and predicting default of Small Medium Enterprises (SME/SMEs) customers in financial institutions. The first couple of sections will cover off the field of SME, detailing SME definitions, credit risk and how macro economic features are utilised in modelling credit risk for SMEs and economies. These early sections will discuss challenges observed from the past in the field such as lack of common definitions and statistics while it also details recommendations that have been made to strengthen the field. The literature for macro-economic features is reviewed and it is noted that there has not been much time spent researching how macro-economic factors affect SME credit risk and credit risk as a whole. It finishes detailing how there has been success using macro-economic factors in Italy and Portugal in predicting credit risk utilising features based on default rates and unemployment by geographic location.   
 
-The chapter will also review research literature in the field of knowledge discovery, data mining with a particular focus on predictive modelling. Knowledge discovery and data mining will be explained and illustrated with frameworks and methodologies about how to approach tasks in each. The literature is reviewed to understand the processes, prediction algorithms, feature selection methods, validation methods and performance measures to build a predictive model to predict SME customers that are likely to default i.e. risky customers. One key observation in building a model to predict what customers will default is that there tends to a very large class imbalance in the dataset e.g. there will be a much larger proportion of good/well performing than bad/poorly performing customers. Methods of addressing this class imbalance by either manipulating the data set through sampling techniques or through fine tuning the algorithm by alternating input parameters tailored to the imbalance in the dataset are also discussed in this chapter.
+The chapter will also review research literature in the field of knowledge discovery, data mining with a particular focus on predictive modelling. Knowledge discovery and data mining will be explained and illustrated with frameworks and methodologies about how to approach tasks in each. The literature is reviewed to understand the processes, prediction algorithms, feature selection methods, validation methods and performance measures to build a predictive model to predict SME customers that are likely to default i.e. risky customers. One key observation in building a model to predict what customers will default is that there tends to be a very large class imbalance in the dataset e.g. there will be a much larger proportion of good/well performing than bad/poorly performing customers. Methods of addressing this class imbalance are also discussed later in this chapter.
 
 \section{SME Definition}
-The most common definition for an SME is a registered business that with less than 250 employees \citep{ifc_sme_2009}, however this definition is not always consistent and can vary from country to country, financial institution to financial institution. 
+The most common definition for a SME is a registered business that with less than 250 employees \citep{ifc_sme_2009}, however this definition is not always consistent and can vary from country to country and financial institution to financial institution. 
 
-At a European level an SME business is categorised as SME if they have two hundred and fifty people or less employed and if the annual turnover not surpassing \EUR50 million, and/or an annual balance sheet not surpassing \EUR43 million\footnote{\url{http://isme.ie/advice/sme-facts-faq}}\footnote{\url{https://www.enterprise-ireland.com/en/About-Us/Our-Clients/SME-Definition.html}}. SMEs can also be broken down further into smaller subcategories. Micro enterprises are defined as businesses that employ fewer than ten people, have annual turnover below \EUR2 million, and annual balance sheet total not surpassing 2 million. Small enterprises are defined as businesses that have employed between ten and fifty people, have annual turnover below 10 million, and annual balance sheet total below \EUR10 million. Medium enterprises are defined as businesses that have employed between fifty and two hundred and fifty people employed, have an annual turnover less than \EUR50 million, and an annual balance sheet total below \EUR43 million\footnote{\url{http://www.cgap.org/financialindicators}}.
+At a European level a SME business is categorised as SME if they have two hundred and fifty people or less employed and if the annual turnover not surpassing \EUR50 million, and/or an annual balance sheet not surpassing \EUR43 million\footnote{\url{http://isme.ie/advice/sme-facts-faq}}\footnote{\url{https://www.enterprise-ireland.com/en/About-Us/Our-Clients/SME-Definition.html}}. SMEs can also be broken down further into smaller subcategories. Micro enterprises are defined as businesses that employ fewer than ten people, have annual turnover below \EUR2 million, and annual balance sheet total not surpassing 2 million. Small enterprises are defined as businesses that have employed between ten and fifty people, have annual turnover below 10 million, and annual balance sheet total below \EUR10 million. Medium enterprises are defined as businesses that have employed between fifty and two hundred and fifty people employed, have an annual turnover less than \EUR50 million, and an annual balance sheet total below \EUR43 million\footnote{\url{http://www.cgap.org/financialindicators}}.
 
-Worldwide the most common method by regulators for defining businesses as SME are based the number of people they have employed, sales/turnover or/and loan size \citep{ardic_small_2011}.
+Worldwide the most common method by regulators for defining businesses as SME are based on the number of people they have employed, sales/turnover or/and loan size \citep{ardic_small_2011}.
 
-In 2004 at the Organisation for Economic Co-operation and Development (OECD) conference on SMEs there were two key recommendations made by economies that were members of OECD and non-member states\footnote{Second OECD Conference of Ministers Responsible for Small and Medium-Sized Enterprises (SMEs), Istanbul,2004. \url{http://www.oecd.org/cfe/smes/31919278.pdf}}: (i) develop SME statistics that can be compared internationally, and (ii) establish a common definition and set of rules for what an SME is. Without these statistics and definitions in place it would be more difficult to deploy programs that aim to expand and strengthen the SME sector \citep{ardic_small_2011}. The aim of these recommendations is that by having a consistent and standard definition and statistics for SME will allow economies and analysts to learn from each other on a global scale with an end goal of building a stronger SME sector.
+In 2004 at the Organisation for Economic Co-operation and Development (OECD) conference on SMEs there were two key recommendations made by economies that were members of OECD and non-member states\footnote{Second OECD Conference of Ministers Responsible for Small and Medium-Sized Enterprises (SMEs), Istanbul,2004. \url{http://www.oecd.org/cfe/smes/31919278.pdf}}: (i) develop SME statistics that can be compared internationally, and (ii) establish a common definition and set of rules for what an SME is. Without these statistics and definitions in place it would be more difficult to deploy programs that aim to expand and strengthen the SME sector \citep{ardic_small_2011}. The aim of these recommendations is that by having a consistent definition and statistics for SMEs will allow economies and analysts to learn from each other on a global scale with an end goal of building a stronger SME sector.
 
 
 \section{Credit Scoring}
 
-Financial institutions use classification systems called \textit{credit scoring} to evaluate the credit risks related with lending to a borrower. \textit{Credit risk} is the risk of losses expected when a borrower ability or willingness to repay a financial obligation is adversely effected \citep{anderson_credit_2007}. \textit{Credit scoring} is the phrase used to encompass the methods and prediction techniques used by lenders to assess the credit risk of existing and prospective borrowers. 
+Financial institutions use classification systems called \textit{credit scoring} to evaluate the credit risks related with lending to a borrower. \textit{Credit risk} is the risk of losses expected when a borrowers ability or willingness to repay a financial obligation is adversely effected \citep{anderson_credit_2007}. \textit{Credit scoring} is the phrase used to encompass the methods and prediction techniques used by lenders to assess the credit risk of existing and prospective borrowers. 
 
 The aim of credit scoring is to classify prospective borrowers and existing borrowers into one of two groups, good or bad. The bad group signifies a borrower that was deemed likely to default on the financial obligation. The good group signifies borrowers that were deemed likely repay their financial obligation.
 
@@ -39,8 +39,8 @@ Before credit scoring systems were employed by financial institutions, the risk 
 	\renewcommand{\labelenumi}{(\roman{enumi})}  
 	\item \textbf{Character} - does the borrower, or their family have a relationship with the lender?
 	\item \textbf{Capital} - what is credit amount requested?
-	\item \textbf{Collateral} - is security is being offered?
-	\item \textbf{Capacity} - how fit it the borrower to repay?
+	\item \textbf{Collateral} - is security being offered?
+	\item \textbf{Capacity} - how fit is the borrower to repay?
 	\item \textbf{Condition} - how is the economy performing presently?
 \end{enumerate}
 
@@ -50,9 +50,9 @@ Credit scoring systems are imperfect solutions as they can only be used as estim
 
 Generally a credit scoring system is built using a credit scorecard. Scorecard points are added based on important borrower characteristics and a score is generated that represents the risk of that borrower relative to all the other borrowers in order of who is most likely to default on their financial obligation.
 
-The most basic credit scorecards consist of a set of features that are statistically supported to be predicting the credit risk of a borrowers \citep{siddiqi_credit_2012}. One of the reasons for building a credit scorecard is for financial institutions to have a standardised, structured, and easy to interpret mechanism of assess borrowers credit worthiness.
+The most basic credit scorecards consist of a set of features that are statistically supported to be predicting the credit risk of a borrowers \citep{siddiqi_credit_2012}. One of the reasons for building a credit scorecard is for financial institutions to have a standardised, structured, and easy to interpret mechanism of assessing borrowers credit worthiness.
  
-The credit scorecard in Fig. \ref{fig:appScorecard} uses features such as age, previous banking history, credit card limits, years at current job, accommodation status, self employed status and monthly income assign \textit{Applicant X} a credit score. It can be seen in Fig. \ref{fig:appScorecard} that each feature is split into attributes and for each attribute a score has been generated which is added to the overall credit score for that customer. 
+The credit scorecard in Fig. \ref{fig:appScorecard} uses features such as age, previous banking history, credit card limits, years at current job, accommodation status, self employed status and monthly income to assign \textit{Applicant X} a credit score. It can be seen in Fig. \ref{fig:appScorecard} that each feature is split into attributes and for each attribute a score has been generated which is added to the overall credit score for that applicant. 
 
 \begin{figure}[H]
 	\includegraphics[width=0.8\textwidth, center]{appScorecard}
@@ -61,13 +61,13 @@ The credit scorecard in Fig. \ref{fig:appScorecard} uses features such as age, p
 	\label{fig:appScorecard}
 \end{figure}
 
-It can be observed from Fig. \ref{fig:appScorecard} that high value attributes are associated with borrowers that are statistically thought to less likely to default on a financial obligation. For example \textit{Applicant X} in the example had an overall score of 355 if they was another applicant say \textit{Applicant Y} that had an overall score of 450, \textit{Applicant Y} would score higher therefore less likely to default on the financial obligation than {Applicant X}.
+It can be observed from Fig. \ref{fig:appScorecard} that high value attributes are associated with borrowers that are statistically thought to be less likely to default on a financial obligation. For example \textit{Applicant X} in the example had an overall score of 355, if there was another applicant say \textit{Applicant Y} that had an overall score of 450, \textit{Applicant Y} would score higher therefore less likely to default on the financial obligation than {Applicant X}.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 \section{Importance of Credit Risk Modelling for SMEs}
-Recent research indicates that SME development is closely linked with economic growth, \cite{beck_smes_2005} indicates there are strong correlations between the size of the SME sector in an economy and economic growth. After the recent global financial crisis of 2008 and 2009 it is important to note that the SME segment is recognised as one of the most important factors to sustainable employment and economic recovery \citep{lawless_smes_2012}. \cite{lawless_smes_2012} also note that this is mainly due to the indigenous, employment-intensive nature of SMEs. SMEs are of major importance to many economies, in Ireland SME account for 68 percent of employment and 99 percent of firms in the private sector \citep{lawless_irish_2012}. Since the financial crisis SMEs have been hampered trying to get credit due to policies and regulations, however it has been recognised internationally that businesses that are credit constrained engage with less economically valuable and growth enhancing activity such as job and employment creation than similar unconstrained businesses \citep{campello_real_2010}. This means that financial institutions sit at the heart of the economy making decisions on what businesses to give credit to . They will do this first to maximise their own profits but also promote growth leading to a sustainable employment sector and economy. This requires financial institutions credit risk models to be aware at all times of the current economic factors that are influencing good and bad credit decision. 
+Recent research indicates that SME development is closely linked with economic growth, \cite{beck_smes_2005} indicates there are strong correlations between the size of the SME sector in an economy and economic growth. After the recent global financial crisis of 2008 and 2009 it is important to note that the SME segment is recognised as one of the most important factors to sustainable employment and economic recovery \citep{lawless_smes_2012}. \cite{lawless_smes_2012} also note that this is mainly due to the indigenous, employment-intensive nature of SMEs. SMEs are of major importance to many economies, in Ireland SME account for 68 percent of employment and 99 percent of firms in the private sector \citep{lawless_irish_2012}. Since the financial crisis SMEs have been hampered trying to get credit due to policies and regulations, however it has been recognised internationally that businesses that are credit constrained engage with less economically valuable and growth enhancing activity such as job and employment creation than similar unconstrained businesses \citep{campello_real_2010}. This means that financial institutions sit at the heart of the economy making decisions on what businesses to give credit to. They will do this first to maximise their own profits but also promote growth leading to a sustainable employment sector and economy. This requires financial institutions credit risk models to be aware at all times of the current economic factors that are influencing good and bad credit decision. 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
@@ -79,7 +79,7 @@ Recent research indicates that SME development is closely linked with economic g
 
 Financial institutions can also suffer from a risk known as the \textit{winners curse}. In banking this is a scenario where other financial institutions credit risk models score a borrower too risky to lend to. That same borrower then arrives at ``our bank" where ``our model" scores them as a good or likely to repay borrower and decide to lend to them. As a result ``our bank" will take on an excessive amount of risk that where other banks expected loses \citep{duffie_credit_2012}. \cite{duffie_credit_2012} also discuss how banks can mitigate their risk to the winners curse by including metrics such as borrowing rates and credit risk concentration limits by area or location.
 
-Based on the Italian market, \citep{di_pietro_regional} investigated if SMEs experienced different levels of default rate based on the region they were located in. They investigated the business cycles of these areas and looked at identifying which macroeconomic features were the most influential in predicting default. In their experiment they divided Italy into five areas, centre, north-east, north-west, south, and the islands. In their analysis they confirmed that there were statistically a significant difference between default rates in different areas which can be seen in Fig. \ref{fig:evolutionOfItalianDefaultRate}
+Based on the Italian market, \citep{di_pietro_regional} investigated if SMEs experienced different levels of default rates based on the region they were located in. They investigated the business cycles of these areas and looked at identifying which macroeconomic features were the most influential in predicting default. In their experiment they divided Italy into five areas, centre, north-east, north-west, south, and the islands. In their analysis they confirmed that there were statistically a significant difference between default rates in different areas which can be seen in Fig. \ref{fig:evolutionOfItalianDefaultRate}
 
 \begin{figure}[H]
 	\includegraphics[width=0.8\textwidth, center]{evolutionOfItalianDefaultRate}
@@ -89,11 +89,11 @@ Based on the Italian market, \citep{di_pietro_regional} investigated if SMEs exp
 	\label{fig:evolutionOfItalianDefaultRate}
 \end{figure}
 
-It is  illustrated clearly in Fig. \ref{fig:evolutionOfItalianDefaultRate} that the average default rate in South of the country(Green Trend Line) and islands(Blue Trend Line) is significantly higher than in the North-West(Red Trend Line) and North-East(Orange Trend Line). They use the Kruskal-Walls test to confirm that the differences between the default rates are significantly significant.
+It is  illustrated clearly in Fig. \ref{fig:evolutionOfItalianDefaultRate} that the average default rate in south of the country(green trend line) and islands(blue trend line) is significantly higher than in the north-west(red trend line) and north-east(orange trend line). They use the Kruskal-Walls test to confirm that the differences between the default rates are significantly significant.
 
 In \cite{antunes_estimating_2005}, based on Portuguese data they found that macroeconomic features such as the employment rate, short term interest rate and gross domestic product were useful when included in the predictive models to estimate the probability of default. Using these features allowed them to develop stress tests where they could run macroeconomic scenarios that would have a negative affect on the economy. This is the same method that is widely adopted by the International Monetary Fund (IMF) in their Financial Stability Assessment Program (FSAP) which is used to assess a countries financial sector resilience and capacity to manage financial crisis. They produce tailored recommendations of a micro and macro nature based on each countries circumstances \citep{marston_financial_2001} 
 
-\cite{ardic_small_2011} discusses how competition in developed countries and instability in developing countries provide some the biggest challenges to modelling credit risk for SMEs. This view of developing counties is supported by research carried out by \cite{rocha_status_2011} which provides evidence from financial institution in the North Africa and the Middle East, detailing the immaturity of their financial systems and SME transparency to be some of the main obstacles. 
+\cite{ardic_small_2011} discusses how competition in developed countries and instability in developing countries provide some of the biggest challenges to modelling credit risk for SMEs. This view of developing counties is supported by research carried out by \cite{rocha_status_2011} which provides evidence from financial institution in North Africa and the Middle East, detailing the immaturity of their financial systems and SME transparency to be some of the main obstacles. 
 
 
 \section{Data Mining \& Predictive Modelling}\label{sec:dataMining}
@@ -121,7 +121,7 @@ The goal at the end of the KDD process is to realise some value or extract some 
 There are methodologies and frameworks for data mining one being \textit{Cross Industry Standard Process for Data Mining}, usually referred to by CRISP-DM \citep{shearer_crisp-dm_2000}. This data mining framework is the most commonly adopted by data miners to workout a problem. Some polls show it is the leading methodology used by data miners\footnote{\url{http://www.kdnuggets.com/polls/2014/analytics-data-mining-data-science-methodology.html}}. It can be seen in Fig. \ref{fig:crisp_dm}, that the CRISP-DM process is split into six main steps or tasks; \textit{business understanding}, \textit{data understanding}, \textit{data preparation}, \textit{modelling}, \textit{evaluation} and \textit{deployment}. The next most popular framework is known as Sample, Explore, Modify, Model and Assess more commonly known as SEMMA \citep{azevedo_kdd_2008}. This solution has been developed by Statistical Analysis System (SAS) institute but is seen more as a list of sequential steps that can be used to build out data mining solutions. The big advantage with the CRISP-DM methodology over SEMMA which can be illustrated in Fig. \ref{fig:crisp_dm} is that it does not restrict you from moving between the different steps, and the arrow wrapping around the process suggests that even after deployment the process will continue.  
 
 
-The frameworks of KDD and CRISP-DM that outline steps to to extract insights have grown and developed since they were established over 20 years ago. These areas have grown and developed and there are a growing number of communities that continuously overlap together. This can be illustrated below in Fig. \ref{fig:data_mining_venn_diagram}\footnote{\url{http://blogs.sas.com/content/subconsciousmusings/2014/08/22/looking-backwards-looking-forwards-sas-data-mining-and-machine-learning/}} where you can see data mining, statistics, artificial intelligence, machine learning communities all having some common values. Data mining as a result can seen as combination of KDD, machine learning, statistics, pattern recognition that may or may not leverage on databases. This results in the field of data mining being largely made up of data scientists, data analysts, computer scientists and statisticians \citep{coenen_data_2011}. 
+The frameworks of KDD and CRISP-DM that outline steps to to extract insights have grown and developed since they were established over 20 years ago. These areas have grown and developed and there are a growing number of communities that continuously overlap. This can be illustrated below in Fig. \ref{fig:data_mining_venn_diagram}\footnote{\url{http://blogs.sas.com/content/subconsciousmusings/2014/08/22/looking-backwards-looking-forwards-sas-data-mining-and-machine-learning/}} where you can see data mining, statistics, artificial intelligence, machine learning communities all having some common values. Data mining as a result can seen as combination of KDD, machine learning, statistics, pattern recognition that may or may not leverage on databases. This results in the field of data mining being largely made up of data scientists, data analysts, computer scientists and statisticians \citep{coenen_data_2011}. 
 
 \begin{figure}[H]
 	\includegraphics[width=0.6\textwidth, center]{data_mining_venn_diagram}
@@ -137,7 +137,7 @@ Predictive modelling can be applied to many applications across a wide range of 
 Financial institution would be common practitioners of predictive modelling across a wide variety of domains e.g. marketing and risk. In risk areas, banks will build predictive models to predict default probabilities for existing customers that are on their book and evaluate customers applying for lending. This can reduce their risk allowing them to increase profits meaning they can offer customers a better service and more personalised products. Thus credit scoring is one of the most used application fields for
 data mining \citep{baesens_50_2009}.
 
-Predictive models are built by using interval/numerical or/and categorical/nominal features/variables/predictors/attributes that are able to explain the target/class/outcome you are trying to predict. Once the model is trained on historic data, model performance and evaluation is carried out on unseen data for testing. The data used in training will not be the same as in test thus the model may not generalise well on unseen data. This is known as model over-fitting on the training dataset in the literature. Methodologies, frameworks and testing can be put in place to mitigate the risk to this issue. These will discussed further throughout this chapter.
+Predictive models are built by using interval/numerical or/and categorical/nominal features/variables/predictors/attributes that are able to explain the target/class/outcome trying to be predicted. Once the model is trained on historic data, model performance and evaluation is carried out on unseen data for testing. The data used in training will not be the same as in test thus the model may not generalise well on unseen data. This is known as model over-fitting on the training dataset in the literature. Methodologies, frameworks and testing can be put in place to mitigate the risk to this issue. These will discussed further throughout this chapter.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4
@@ -145,19 +145,16 @@ Predictive models are built by using interval/numerical or/and categorical/nomin
 
 \section{Dataset Construction}\label{sec:datasetConstruction}
 
-Experts often detail how steps performed in the data construction and preparation stage can turn out to some of the most time consuming  when building predictive models\footnote{For example see \url{http://www.kdnuggets.com/polls/2003/data_preparation.htm}}. There are many steps that need to be considered during the data preparation stage for building a prediction model that model credit risk of SMEs, two that will be discussed in this section are the Sampling Period and Class Label Definition. 
+Experts often detail how steps performed in the data construction and preparation stage can turn out to some of the most time consuming  when building predictive models\footnote{For example see \url{http://www.kdnuggets.com/polls/2003/data_preparation.htm}}. There are many steps that need to be considered during the data preparation stage for building a prediction model that model credit risk of SMEs, two that will be discussed in this section are the \textit{sampling period} and \textit{class label definition}. 
 
-Practitioners often cite the steps performed during this stage as the most time-consuming
-activities performed during the construction of credit scorecards1. The
-main steps performed when creating a dataset with which to construct a scorecard
-are described hereafter.
+Practitioners often cite the steps performed during the data construction stage as the most time-consuming
+activities performed during the construction of credit scorecards.
 
 \subsection{Sampling Period}
-As already stated in the thesis, predictive models are built using historical data. It must be stated that past performance can be useful predictor of default it does not guarantee that future predictions of the model will be accurate or reliable. A training dataset is built to build a predictive model, customers are observed at two different points in time \citep{martens_credit_2010}. They are observed at the time that the prediction is made based on past performance. They are observed sometime in the future called the \textit{default observation point} at which they will classified from the model as good or bad. The amount of time between these two points is commonly known as the \textit{outcome window}. The length of the outcome window can vary based on business objectives and requirements, the industry standard in \subjectname\ dictates that this usually 12 months. \\\\
-
+As already stated in the thesis, predictive models are built using historical data. It must be stated that past performance can be useful predictor of default but it does not guarantee that future predictions of the model will be accurate or reliable. A training dataset is built to train a predictive model where customers are observed at two different points in time \citep{martens_credit_2010}. They are observed at the time that the prediction is made based on past performance. They are then observed sometime in the future called the \textit{default observation point} at which they will classified from the model as good or bad. The amount of time between these two points is commonly known as the \textit{outcome window}. The length of the outcome window can vary based on business objectives and requirements, the industry standard in \subjectname\ dictates that this usually 12 months. 
 
 \subsection{Class Label Definition} \label{classLabelDef}
-For customer to be defined as defaulted is dependant on what the objective of that predictive model is and the requirements of the financial institution \citep{mcnab_principles_2000}. The Basel II definition (paragraph 452) which is widely used by financial institutions and \subjectname\ considers a default to have taken place when either or both of the following criteria are met:
+For a customer to be defined as defaulted is dependant on what the objective of that predictive model is and the requirements of the financial institution \citep{mcnab_principles_2000}. The Basel II definition (paragraph 452) which is widely used by financial institutions and \subjectname\ considers a default to have taken place when either or both of the following criteria are met:
 \vspace{-3mm} 
 \begin{itemize}
 	\item The bank/financial institution considers that the obligor is unlikely to pay its credit obligations to the banking group in full, without recourse by the bank to actions such as realising security (if held).
@@ -168,7 +165,7 @@ There are two well known approaches to class label definition that financial ins
 
 
 \subsection{Segmentation}\label{sec:segment}
-Segmentation is carried out by splitting the dataset population into multiple groups and building a prediction model for each group \citep{myatt_making_2007}. This splitting will be carried out using group specific criteria and allows for modelling characteristics and features that are important each group independently.
+Segmentation is carried out by splitting the dataset population into multiple groups and building a prediction model for each group \citep{myatt_making_2007}. This splitting will be carried out using group specific criteria and allows for modelling characteristics and features that are important to each group independently.
 
 For marketing, \cite{wedel_market_2012} portrays how segmentation can be utilised to collate customers in homogeneous groups founded on those customers buying pattens, and demographic data like location, age, income.
 
@@ -181,20 +178,20 @@ Segmentation is carried out by analysts who generally would need both subject ma
 %	SECTION 5
 %----------------------------------------------------------------------------------------
 \section{Predictive Models}\label{sec:predictModels}
-This section details some of the classification algorithms that can be used when modelling a binary classification problem, in this thesis the problem is if a customer did default or not-default on their financial obligation. The algorithms discussed in this section are not an exhausted list but all are suitable for use in the financial industry. Classification models discussed include Linear \& Logistic Regression, k-nearest neighbour (KNN), support vector machines (SVM), neural networks. 
+This section details some of the classification algorithms that can be used when modelling a binary classification problem, in this thesis the problem is if a customer did default or not-default on their financial obligation is a binary classification problem. The algorithms discussed in this section are not an exhausted list but all are suitable for use in the financial industry. Classification models discussed include linear \& logistic regression, k-nearest neighbour (KNN), support vector machines (SVM), neural networks. 
 
 Logistic regression is one of the most widely used classification algorithms used by industry based on research and experience working in industry.
 
 \subsection{Regression} \label{Reg}
 Regression models are used to model the linear relationship between features in a feature space or between the features and the target variable. 
 
-A very simple form of linear regression is where there is one independent and one dependent variable, which is the target we are attempting to predict. The model is often represented by the following equation
+A very simple form of linear regression is where there is one independent and one dependent variable, which is the target attempting to be predicted. The model is often represented by the following equation
 
 \begin{equation} \label{eq:reg}
 	\text{Linear Model} = y = b_0 + b_1x
 \end{equation}
 
-where we're trying to predict $y$ based using the value of $x$.
+where the model is trying to predict $y$ based using the value of $x$.
 
 Fig. \ref{fig:simpleLinearRegression} illustrates a very simple real life example of linear regression. It demonstrates the linear relationship between a persons heights and a persons weight.
 
@@ -208,7 +205,7 @@ Fig. \ref{fig:simpleLinearRegression} illustrates a very simple real life exampl
 It can be seen from the above the $y$ in this example is weight (wgt) and $b_0 + b_1x$ is $80 + 2*Height(hgt)$ is what we are using to predict $y$. This is a very basic example but demonstrates how this can be leveraged for more complex feature sets. Predicting arrears is a dichotomous problem meaning the outcome of the experiment can only have two possible values. 
 
 \subsection{Logistic Regression} \label{LogReg}
-\textit{Logistic Regression} \cite[See:][]{hosmer_applied_2000} within the credit scoring industry is one of the most used algorithms \citep{hand_evaluating_2010}. As seen above in Fig. \ref{fig:simpleLinearRegression} a simple regression model outputs a continuous response, in that example body weight. Credit scoring or predicting arrears is a problem where there can only be two possibly values default or not-default, to simplify this we will reduce this to a binary problem where the outcome will be 1 or 0 \citep{zou_modified_2004}. To transform the output of a regression model from $[-\infty, +\infty]$ to a probability between 0 and 1 a logistic transformation is applied. The logistic function can be used to take any value between $+\infty$ and $-\infty$ and output a value between $0$ and $1$. Fig. \ref{fig:logistic_function} below illustrates what a logistic function looks like.
+\textit{Logistic Regression} \cite[See:][]{hosmer_applied_2000} within the credit scoring industry is one of the most used algorithms \citep{hand_evaluating_2010}. As seen above in Fig. \ref{fig:simpleLinearRegression} a simple regression model outputs a continuous response, in that example body weight. Credit scoring or predicting arrears is a problem where there can only be two possibly values default or not-default, to simplify this is reduced to a binary problem where the outcome will be 1 or 0 \citep{zou_modified_2004}. To transform the output of a regression model from $[-\infty, +\infty]$ to a probability between 0 and 1 a logistic transformation is applied. The logistic function can be used to take any value between $+\infty$ and $-\infty$ and output a value between $0$ and $1$. Fig. \ref{fig:logistic_function} below illustrates what a logistic function looks like.
 
 
 \begin{figure}[H]
@@ -276,7 +273,7 @@ The results from k-NN will vary depending on your choice of distance measurement
 Analysis can be completed to evaluate what the optimal value for \textit{k} is based on inspecting the results and creating benchmarks. Anecdotally the larger the value of \textit{k} the more precise the algorithm can be but as with most things in data mining there are no guarantees. Choosing a high $k$ could potentially cause over-fitting of the training data.
 
 \subsection{Decision Trees} \label{decTrees}
-The \textit{decision tree} algorithm classifies observations into classes in the form of tree like structure, hence the name. The algorithm seeks to partition the dataset into smaller subsets, using the relationship between the feature set and target variable to do so. an example can of a simple decision can be seen in Fig. \ref{fig:decisionTree}
+The \textit{decision tree} algorithm classifies observations into classes in the form of tree like structure, hence the name. The algorithm seeks to partition the dataset into smaller subsets, using the relationship between the feature set and target variable to do so. An example can of a simple decision can be seen in Fig. \ref{fig:decisionTree}
 
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth, center]{decisionTree}
@@ -284,7 +281,7 @@ The \textit{decision tree} algorithm classifies observations into classes in the
 	\label{fig:decisionTree}
 \end{figure}
 
-The output of the algorithm splits the data into smaller subsets of data, which output is a tree with root node, internal nodes and leaf nodes. As can be seen in Fig. \ref{fig:decisionTreeExplained}, the root node in this example \textit{Outlook} is the first node in the tree which means it is the most predictive feature. 
+The output of the algorithm splits the data into smaller subsets of data, which output is a tree with a root node, internal nodes and leaf nodes. As can be seen in Fig. \ref{fig:decisionTreeExplained}, the root node in this example \textit{Outlook} is the first node in the tree which means it is the most predictive feature. 
 
 \begin{figure}[H]
 	\includegraphics[width=.6\textwidth, center]{decisionTreeExplained}
@@ -367,7 +364,7 @@ Fig. \ref{fig:annFotwardFeeding} shows a common layout of an ANN. Like in the br
 
 Data comes in through the input layers nodes and is fed through the network, from the input to the hidden and then onto the output layer. In the hidden layer each node calculates a sum based on the input node and the weight of the connection, these hidden nodes then pass on values to the nodes in the outer layer where another calculation which converts the value to a value between 0 and 1 by passing it through the sigmoid function seen in Fig. \ref{fig:logistic_function}. Throughout the training process the connection weights are changed and tested in order for the ANN to learn and improve its predictions \citep{haykin_neural_1998}
 
-Although ANN have become increasingly popular in recent years due to improvements in the algorithms, the the increase in computer power and success in application such as object and speech recognition,  some are still sceptical because of the "black box" nature of their results, where users do not know what the internal workings of the algorithm are  \citep{kaastra_forecasting_1995}. 
+Although ANN have become increasingly popular in recent years due to improvements in the algorithms, the the increase in computer power and success in application such as object and speech recognition,  some are still sceptical because of the ``black box" nature of their results, where users do not know what the internal workings of the algorithm are  \citep{kaastra_forecasting_1995}. 
 
 
 
@@ -397,7 +394,7 @@ It has been documented across a range of domains where SVMs perform well such as
 \subsection{Ensemble Models \& Boosting} \label{boosting}
 
 In 1907, mathematician Sir Francis Galton went to a market in which there was a challenge
-to approximate the weight of an Ox. After evaluating the 787 forecasts made by the
+to approximate the weight of an ox. After evaluating the 787 forecasts made by the
 participants, he noticed that while there was a large variance in the forecast from the correct weight, the median value of the
 forecasts was less than 1\% away from the correct weight of the Ox \citep{galton_vox_1907}. Although separate forecasts failed miserably, the united wisdom of the every guess generated a very accurate estimate. This is a similar how ensemble models are generated.
 
@@ -413,7 +410,7 @@ Random forests are another example of an ensemble model generated using multiple
 Feature selection is a process of choosing the best subset of features from the full dataset to train the prediction model. \cite{guyon_introduction_2003} discusses that feature selection methods are usually split into one of three categories (i) filter techniques (ii) wrapper techniques (iii) embedded techniques. 
 
 \subsubsection{Filter Methods}
-Filter feature selection methods use statistics to to assign a score for each feature versus the target. The features are then ordered by predictive and a decision is made what features to keep. Filter method techniques include information gain, correlation coefficient and the chi squared test.
+Filter feature selection methods use statistics to assign a score for each feature versus the target. The features are then ordered by predictability and a decision is made what features to keep. Filter method techniques include information gain, correlation coefficient and the chi squared test.
 
 \subsubsection{Wrapper Methods}
 Wrapper feature selection method evaluates various subsets of features together while scoring the model for each subset. The different model results are then evaluated and compared against the other results returning the result which returned the best score based on the model evaluation criteria. Forward, backward and general stepwise regression are very common techniques of wrapper methods used.
@@ -421,16 +418,16 @@ Wrapper feature selection method evaluates various subsets of features together 
 \subsubsection{Embedded Methods}
 Embedded feature selection method attempts to combine the two previous methods together. That is, the method looks to learn what features are useful as the model is being created. 
 
-Feature selection is very important in the credit scoring process and there are many reasons in the literature that suggest it should be used. The \textit{curse of dimensionality} is one such issue. If you have too many features in your model it may perform well on the training dataset but when executed on unseen data it may perform poorly because the model has over-fitted many irrelevant or noisy features \citep{loughrey_overfitting_2005}. Research from (\cite{thomas_consumer_2009}; \cite{mays_credit_2004})  advise that to build a robust scoring model you should have somewhere between 8 and 20 predictive features. There are many reason for this, there is a practical issue of having to model more features. There are costs, overheads and maintenance associated with each feature that is redundant in the model. Referencing Fig. \ref{fig:simpleComplex} we can see that is much more desirable to have simple decision tree than a complex decision tree with the same outputs, likewise if two datasets are providing the same results only one is a subset it is always better to choose the subset. 
+Feature selection is very important in the credit scoring process and there are many reasons in the literature that suggest it should be used. The \textit{curse of dimensionality} is one such issue. If there are too many features in the model it may perform well on the training dataset but when executed on unseen data it may perform poorly because the model has over-fitted many irrelevant or noisy features \citep{loughrey_overfitting_2005}. Research from (\cite{thomas_consumer_2009}; \cite{mays_credit_2004})  advise that to build a robust scoring model you should have somewhere between 8 and 20 predictive features. There are many reason for this, there is a practical issue of having to model more features. There are costs, overheads and maintenance associated with each feature that is redundant in the model. Referencing Fig. \ref{fig:simpleComplex} we can see that it is much more desirable to have simple decision tree than a complex decision tree with the same outputs, likewise if two datasets are providing the same results only one is a subset it is always better to choose the subset. 
 
 \section{Coarse Classification} \label{sec:binning}
 Coarse classification is often utilized to transform the predictive features into a simpler form which is better suited for modelling \citep{carroll_transformation_1988}. Coarse classification is also referred to in the literature as binning, grouping, discretisation. For continuous and categorical feature values are transformed into a small number of bins or groups. These values  are mapped into these groups by referring to the target feature to identify the optimal cut-off points. 
 
-Coarse classification has many benefits, one is that it allows one you to capture some of the features non liner relationship with the target feature. This is done through each category in the group being treated as its own dummy variable which will have its own weight in a logistic regression model \citep{hand_optimal_2005}. Coarse selection can also increase the overall robustness of the model by reducing the possibility of over-fitting by creating groups with the optimal number of good and records \citep{baesens_50_2009}. It also gives you the capability of mitigating against the risk or outliers and missing values. 
+Coarse classification has many benefits, one is that it allows for capturing the features non liner relationship with the target feature. This is done through each category in the group being treated as its own dummy variable which will have its own weight in a logistic regression model \citep{hand_optimal_2005}. Coarse selection can also increase the overall robustness of the model by reducing the possibility of over-fitting by creating groups with the optimal number of good and records \citep{baesens_50_2009}. It also gives you the capability of mitigating against the risk or outliers and missing values. 
 
 Coarse classification is also very quick to deploy, previously it would have been completed by analysts iteratively completing the process which was a very time consuming process. Algorithms now such as chimerge and recursive partitioning to name a few, find optimal cut-points in the features quickly and accurately. These groups are then evaluated using the \textit{Weight of Evidence} (WoE) and \textit{Information Value} (IV) \citep{garcia_survey_2013}. 
 
-A common methodology to coarse classification is to break up each feature into roughly three to six bins or groups \citep{hand_optimal_2005}. It is recommended that bins are limited to six to ensure the model does not become over-parameterised and difficult to manage. Contrarily, the model will become too rigid less than three groups are used. 
+A common methodology to coarse classification is to break up each feature into roughly three to six bins or groups \citep{hand_optimal_2005}. It is recommended that bins are limited to six to ensure the model does not become over-parameterised and difficult to manage. Contrarily, the model will become too rigid if less than three groups are used. 
 
 Approximating the WoE of each bin, and tuning where optimal is the most known method to carrying out coarse selection \citep{thomas_consumer_2009}. In a credit scoring problem the WoE for bin $i$ is defined as 
   
@@ -448,7 +445,7 @@ The information value is frequently applied with the WoE. The IV is powerful met
 
 where $j$ is the amount of bins in a feature. The IV of each bin is known as a contribution, which are then added together to generate the IV of a feature.
 
-In general binned features with an IV between 0.3 and and less than 0.5 are thought to be very predictive features \citep{mays_credit_2004}. If the the IV is more than 0.5 it could be an anachronistic feature and should be examined further \citep{siddiqi_credit_2012}. Binned features with an IV smaller than 0.1 are thought to be weaker features and could be considered to be removed from the model \citep{anderson_credit_2007}.
+In general binned features with an IV between 0.3 and and less than 0.5 are thought to be very predictive features \citep{mays_credit_2004}. If the IV is more than 0.5 it could be an anachronistic feature and should be examined further \citep{siddiqi_credit_2012}. Binned features with an IV smaller than 0.1 are thought to be weaker features and could be considered to be removed from the model \citep{anderson_credit_2007}.
 
 \begin{comment}
 \subsection{Correlation-based Feature Selection}
@@ -479,7 +476,7 @@ As mentioned previously, very often in real world problems class imbalance exist
 
 \subsubsection{Manipulating the data} \label{sec:dataManip}
 
-A method of manipulating the data is to resample to data with the aim of balancing the distribution of the target class. Solutions proposed are as follows
+A method of manipulating the data is to resample the data with the aim of balancing the distribution of the target class. Solutions proposed are as follows
 
 \begin{itemize}
 	\item Random undersampling of the majority class
@@ -515,7 +512,7 @@ Above in Fig. \ref{fig:smoteExample} it is illustrated how synthetic data using 
 
 
 \subsubsection{Fine tuning the algorithm}
-There are methods that also cater for the target class imbalance of the dataset by fine tuning the algorithm. One method which is illustrated in Chapter \ref{Chapter4} of this thesis is to adjust the cut-off or threshold value for the model which some performance measures are dependant on \cite{provost_machine_2000} warns that it would \textit{``critical mistake"}. \cite{chawla_editorial:_2004} suggests using evaluation measures such as accuracy that rely on a specific threshold could lead to misleading results when the target class is imbalanced, they instead recommend using ROC and AUC to get a more accurate predictions.
+There are methods that handle class imbalance issue by fine tuning the algorithm. One method which is illustrated in Chapter \ref{Chapter4} of this thesis is to adjust the cut-off or threshold value for the model which some performance measures are dependant on. \cite{provost_machine_2000} warns that it would be \textit{``critical mistake"} not to do so if faced with this issue. \cite{chawla_editorial:_2004} suggests using evaluation measures such as accuracy that rely on a specific threshold could lead to misleading results when the target class is imbalanced, they instead recommend using ROC and AUC to get a more accurate and conclusive predictions.
 
 
 %----------------------------------------------------------------------------------------
@@ -525,9 +522,9 @@ There are methods that also cater for the target class imbalance of the dataset 
 In data mining historic data is used to train a model to make future predictions. Trained classification algorithms like the ones already discussed in this chapter need to validated and tested. This section details some of the methods and approaches to tackling this problem, and has been discussed extensively in \citep{refaeilzadeh_cross-validation_2009}.
 
 \subsubsection{Holdout Validation}
-The \textit{holdout validation} method is used to split the dataset into partitions, one for training and one for testing. The algorithm is trained on the training partition. This allows for the model testing to be carried out when the model classifies the test partition to evaluate how well it generalises and performs on unseen data. This method has an issue however where one, not all the data is used for training, and two the results can be dependent on the how and what data are used for training and testing. Examples where this could become an issue is if important information in the data for training is lost in the test partition, or the instances chosen for test may be too easy or too difficult to classify, this may cause your results to be skewed and making your predictions bias to that testing partition. 
+The \textit{holdout validation} method is used to split the dataset into partitions, one for training and one for testing. The algorithm is trained on the training partition. This allows for the model testing to be carried out when the model classifies the test partition to evaluate how well it generalises and performs on unseen data. This method has an issue however where one, not all the data is used for training, and two the results can be dependent on the how and what datasets are used for training and testing. Examples where this could become an issue is if important information in the data for training is lost in the test partition, or the instances chosen for test may be too easy or too difficult to classify, this may cause results to be skewed and making  predictions bias to that testing partition. 
 
-The hold-out method can also incorporate a third subset called the \textit{validation set}. In the case the dataset is partitioned into three partitions train, validation, and test. The validation sets purpose is to fine tune models parameters, for example selecting the best threshold cut-off measure for a model or performance measure. It is not required always for building predictive models. 
+The hold-out method can also incorporate a third subset called the \textit{validation set}. In this case the dataset is partitioned into three partitions train, validation, and test. The validation sets purpose is to fine tune models parameters, for example selecting the best threshold cut-off measure for a model or performance measure. It is not always required for building predictive models. 
 
 \begin{figure}[H]
 	\includegraphics[width=0.6\textwidth,center]{holdout}
@@ -535,15 +532,12 @@ The hold-out method can also incorporate a third subset called the \textit{valid
 	\label{fig:holdout}
 \end{figure}
 
-Fig. \ref{fig:holdout} illustrates how the complete dataset is partitioned into a training and test sets. 
-
-
-
+Fig. \ref{fig:holdout} illustrates how the complete dataset is partitioned into a training and test datasets. 
 
 To address the biasses in the holdout method tests can be ran multiple times with the results averaged, or more commonly employ a method such as \textit{k-fold cross-validation} discussed in the next subsection.
 
 \subsubsection{K-Fold Cross Validation}\label{subsec:k_fold}
-The \textit{k-fold cross validation} can be used to deal with the bias issues discussed above in the holdout method. The first step of this method is to split the data into $k$ equally sized partitions called folds. A model is then trained using $k$ iterations, where for each iteration a different fold of data is used for testing and training the model. This can be illustrated well below in Fig. \ref{fig:5-fold-cv} where there are 5-folds, and for each iteration you can see different fold is being used for testing.  
+The \textit{k-fold cross validation} can be used to deal with the bias issues discussed above in the holdout method. The first step of this method is to split the data into $k$ equally sized partitions called folds. A model is then trained using $k$ iterations, where for each iteration a different fold of data is used for testing and training the model. This is illustrated below in Fig. \ref{fig:5-fold-cv} where there are 5-folds, and for each iteration you can see a different fold is being used for training and testing.  
 
 \begin{figure}[H]
 	\includegraphics[width=0.7\textwidth,center]{5-fold-cv}
@@ -551,7 +545,7 @@ The \textit{k-fold cross validation} can be used to deal with the bias issues di
 	\label{fig:5-fold-cv}
 \end{figure}
 
-It is important and usually common practice that each fold is representative of the the whole dataset, for each example that the target class ratio split is the same for each fold as for the entire dataset. 
+It is important and usually common practice that each fold is representative of the whole dataset, for each example that the target class ratio split is the same for each fold as for the entire dataset. 
 
 \subsubsection{Leave-One-Out Cross-Validation}
 The \textit{leave-one-out cross-validation} (LOOCV) method is a specialised version of $k$-fold cross-validation, where $k$ is equal to the number of observations in the dataset. In layman's term this means all the data bar one observation is utilized training the model, and testing is done on one observation. This is completed for each observation in the dataset. Although it is worth noting that accuracy estimated using this method produces unbiased results, it also output high variance which can lead to misleading results \citep{refaeilzadeh_cross-validation_2009}.
@@ -562,7 +556,7 @@ The \textit{repeated k-fold cross validation} method is another specialised vers
 
 \subsubsection{Summary}
 
-The holdout and cross validation methods are both used extensively for evaluating the performance of the prediction models. If there is a large enough dataset then holdout method is usually a good choice for measuring model performance. When there is a small amount of data available it better to use a $k$-fold cross validation. $k$-fold theoretically simple to understand but may not be a simple to implement as the code may be tedious and time consuming where the gains may not be worth the investment in industry. 
+The holdout and cross validation methods are both used extensively for evaluating the performance of the prediction models. If there is a large enough dataset then holdout method is usually a good choice for measuring model performance. When there is a small amount of data available it better to use a $k$-fold cross validation. $K$-fold theoretically simple to understand but may not be a simple to implement as the code may be tedious and time consuming where the gains may not be worth the investment in industry. 
 
 \cite{kohavi_study_1995} and \cite{salzberg_comparing_1997} both performed research on approaches to choosing the correct validation method. \cite{kohavi_study_1995} analysed many cross validation methods, regular, leave-one-out, stratified. They came to the conclusion that 10-fold cross-validation produced the most accurate and unbiased results. \cite{salzberg_comparing_1997} also studies the issues of comparing model performance and proposes a solution that combines k-fold cross validation combined with appropriate hypothesis tests opposed to evaluating the average accuracy.   
 
@@ -571,7 +565,7 @@ The holdout and cross validation methods are both used extensively for evaluatin
 %----------------------------------------------------------------------------------------
 \section{Model Performance Measures}\label{modelPerformMeasure}
 
-This section details some of the metrics that are used to assess the accuracy of a classifier. The result of the classification algorithm maps the modelled data into a category, in this thesis it is a binary classifier that is output: 1 is output for identifying customers who will default (bad) or 0 is output for customers who will be not-default (good). The majority of classification algorithms will produce a ranked numeric value which can be converted to a binary representation by some threshold or cut-off decision driven from  the business objective that is being optimised. This section will begin with a confusion matrix, details how this is leveraged to build other performance measures. It also details how charts and metrics can be leveraged together to decide on the performance measure to maximise the intended objective.
+This section details some of the metrics that are used to assess the accuracy of a classifier. The result of the classification algorithm maps the modelled data into a category, in this thesis it is a binary classifier that is output: 1 is output for identifying customers who will default (bad) or 0 is output for customers who will not-default (good). The majority of classification algorithms will produce a ranked numeric value which can be converted to a binary representation by some threshold or cut-off where the decision is driven from  the business objective that is being optimised. This section will begin with a confusion matrix, detailing how it is leveraged to build other performance measures. It also details how charts and metrics can be leveraged together to decide on the performance measure to maximise the intended objective.
 
 \subsubsection{Confusion Matrix}
 
@@ -594,7 +588,7 @@ Fig \ref{fig:ConfusionMatrix} illustrates how information from a confusion matri
 	\label{fig:ConfusionMatrix}
 \end{figure}
 
-Using the results from the confusion matrix, model evaluation measures can calculated and evaluated for the required objective, measures such as \textit{accuracy} (Equation \ref{eq:Accuracy}) which measures proportion of the number of predictions that were correct, the \textit{misclassification rate} (Equation \ref{eq:Misclassification Rate}) what proportion of predictions were wrong, the \textit{sensitivity} (Equation \ref{eq:Sensitivity}), otherwise known as \textit{recall} or the \textit{true positive rate} (TPR), measures the proportion of the positive instances that are correctly identified i.e. proportion default cases that have been predicted correctly. \textit{Specificity} (Equation \ref{eq:Specificity}) measures the proportion of negative cases that are predicted correctly i.e. proportion of non-default cases that have been predicted correctly, \textit{precision} (Equation \ref{eq:precision}) measures when the classifier predicts positive outcomes what proportion are correct, \textit{negative predictive value} (NPV) (Equation \ref{eq:npv}) measures the proportion of negative predictions that were correct i.e. if the classifier predicted the outcome would be non-default what proportion were correct. One measure that can be very useful when the where there is class imbalance is \textit{balanced accuracy} (Equation \ref{eq:Balanaced Accuracy}), \citep{brodersen_balanced_2010} discusses how using this negates the impact of bias or skewness from the more frequent class.
+Using the results from the confusion matrix, model evaluation measures can calculated and evaluated for the required objective. Measures such as \textit{accuracy} (Equation \ref{eq:Accuracy}) which measures proportion of the number of predictions that were correct, the \textit{misclassification rate} (Equation \ref{eq:Misclassification Rate}) what proportion of predictions were wrong, the \textit{sensitivity} (Equation \ref{eq:Sensitivity}), otherwise known as the \textit{recall} or the \textit{true positive rate} (TPR), measures the proportion of the positive instances that are correctly identified i.e. proportion default cases that have been predicted correctly. \textit{Specificity} (Equation \ref{eq:Specificity}) measures the proportion of negative cases that are predicted correctly i.e. proportion of non-default cases that have been predicted correctly, \textit{precision} (Equation \ref{eq:precision}) measures when the classifier predicts positive outcomes what proportion are correct, \textit{negative predictive value} (NPV) (Equation \ref{eq:npv}) measures the proportion of negative predictions that were correct i.e. if the classifier predicted the outcome would be non-default what proportion were correct. One measure that can be very useful when there is class imbalance is \textit{balanced accuracy} (Equation \ref{eq:Balanaced Accuracy}), \citep{brodersen_balanced_2010} discusses how using this negates the impact of bias or skewness from the more frequent class.
 
 \begin{equation} \label{eq:Sensitivity}
 \text{Sensitivity} = \text{Recall} = \frac{TP}{TP + FN}
@@ -631,9 +625,9 @@ Using the results from the confusion matrix, model evaluation measures can calcu
 	\label{fig:ConfusionMatrixExample}
 \end{figure}
 
-Fig. \ref{fig:ConfusionMatrixExample} illustrates how the TP, FP, FN, TN can be used to create performance metrics for classification algorithm. As discussed already confusion matrix based performance measures are built on the threshold that is selected for converting the predicted numeric scores into a binary outcome. Anecdotally you might believe that the cut-off or threshold of 0.50 is acceptable but this rule may not always especially if there is an imbalance between the positive and negative class in the dataset. The cut-off should should ideally be based on you business objective where you look to minimise, maximise and analyse the trade off as you alter the cut-off. 
+Fig. \ref{fig:ConfusionMatrixExample} illustrates how the TP, FP, FN, TN can be used to create performance metrics for classification algorithm. As discussed already confusion matrix based performance measures are built on the threshold that is selected for converting the predicted numeric scores into a binary outcome. Anecdotally you might believe that the cut-off or threshold of 0.50 is acceptable but this rule may not always apply especially if there is an imbalance between the positive and negative class in the dataset. The cut-off should should ideally be based on the business objective which will look to minimise, maximise and analyse the trade off as cut-off is altered. 
 
-The confusion matrix is not the only way to evaluate the performance of the classification algorithm and is not always advocated in the literature or by industry. In studies completed by \cite{lessmann_benchmarking_2008} choose not to select a classification cut-off arguing that studies comparing the same dataset and classifier could come to the different conclusions.
+The confusion matrix is not the only way to evaluate the performance of the classification algorithm and is not always advocated in the literature or by industry. In studies completed by \cite{lessmann_benchmarking_2008} choose not to select a classification cut-off arguing that studies comparing the same dataset and classifier could come to different conclusions.
 
 As mentioned in this section the confusion matrix measures the performance of classifier at a specific threshold, this can be leveraged to create graphical representations of the overall fitness of the model at any threshold. One such method that will be discussed in the next section is the \textit{receiver operating characteristic} (ROC). 
 
@@ -642,7 +636,7 @@ Confusion matrix is used to evaluate the model where you have divided the output
 
 \subsubsection{ROC Chart, AUC and Gini Coefficient}
 %\url{https://staesthetic.wordpress.com/2014/04/14/gini-roc-auc-and-accuracy/}
-The ROC chart is used to evaluate and illustrate how well the model fits training and test data. This can be a quick test to see if the model generalises well on test data. Fig. \ref{fig:ROC} illustrates on the \textit{x-axis} the false positive rate, and on the \textit{y-axis} the true positive rate is represented. As mentioned previously the points on the ROC chart are generated from confusion matrix built from many cut-off or threshold value between $\theta \in [0,1]$. Fig. \ref{fig:ROC} conceptually illustrates how the ROC chart is generated for varying thresholds. 
+The ROC chart is used to evaluate and illustrate how well the model fits training and test data. This can be a quick test to see if the model generalises well on test data. Fig. \ref{fig:ROC} illustrates on the \textit{x-axis} the false positive rate, and on the \textit{y-axis} the true positive rate is represented. As mentioned previously the points on the ROC chart are generated from the confusion matrix built from many cut-off or threshold value between $\theta \in [0,1]$. Fig. \ref{fig:ROC} illustrates how the ROC chart is generated for varying thresholds. 
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,height=7cm,center]{ROC}
@@ -653,13 +647,13 @@ The ROC chart is used to evaluate and illustrate how well the model fits trainin
 
 Fig. \ref{fig:ROC} also illustrates how point (0,1) represents \textit{perfect classification}, that is the classifier correctly predicting all outcomes. 
 
-The ROC chart is basically a combination of confusion matrices over many cut-off values of a classifier. As you can see above finite number of observations in the dataset dictates the number of thresholds that can be used to generate a ROC chart.
+The ROC chart is basically a combination of confusion matrices over many cut-off values of a classifier. As you can see above, a finite number of observations in the dataset dictates the number of thresholds that can be used to generate a ROC chart.
 
 To compare ROC chart results of different classifiers the \textit{area under the ROC curve} (AUC) is utilised (\cite{bradley_use_1997}; \cite{hanley_meaning_1982}). In Fig. \ref{fig:ROC} the area under the blue ROC line represents the AUC, which is intuitively the area under the curve. In the case of perfect classification this value will be 1, for a random classifier the AUC would be 0.5. 
 
-It is worth noting that AUC does not give total probability of the classifier, and also its usefulness when combined with the ROC to evaluate your classifier across training, validation and test datasets. For example if the ROC curve shifts significantly or is not similar from training to test data it suggests that there is possibly over-fitting and the model does not generalise well. Also it is worth looking out for a drastic change in the AUC from training to validation/test another sign the classifier does not generalise well may not be useful for predictions. Because of this it is a very strong measure for classifier selection, ROC don't tend to cross over, therefore when comparing two classifiers the one which AUC is higher will be the better classifier independent of the threshold or cut-off.
+It is worth noting that AUC does not give total probability of the classifier, and also its usefulness when combined with the ROC to evaluate your classifier across training, validation and test datasets. For example if the ROC curve shifts significantly or is not similar from training to test data it suggests that there is possibly over-fitting and the model does not generalise well. Also it is worth looking out for a drastic change in the AUC from training to validation/test another sign the classifier does not generalise well may not be useful for predictions. These attributes makes it a very strong measure for classifier selection. ROC also do not tend to cross over, therefore when comparing two classifiers the one which AUC is higher will be the better classifier independent of the threshold or cut-off.
 
-It is illustrated in Fig. \ref{fig:matric_compare} how the performance measures for the confusion matrix vary for different thresholds, but again to keep in mind that it there be just one measure for the AUC of the this ROC chart for this model.
+It is illustrated in Fig. \ref{fig:matric_compare} how the performance measures for the confusion matrix vary for different thresholds, but again to keep in mind that there is just one measure for the AUC of the ROC chart for this model.
 
 \begin{figure}[H]
 	\centering
@@ -705,7 +699,7 @@ There is no worldwide definition for what a small medium enterprise (SME) are. I
 
 It was discussed in the research that consumer confidence and a strong SME sector are dependant on each other. It has been acknowledged that there has not been a substantial amount of time spent researching how macro economic features affect credit risk. However research has demonstrated that the differences between default rates by region in Italy were shown to be statistically significant. It was also found that there have been examples when unemployment rate and default rates have useful when used in modelling credit risk.
 
-Data mining and predictive modelling encapsulates a large number of subject topics such as feature selection, classification algorithms, model validation and model performance. Logistic regression the most commonly used classification algorithm for credit scoring when predicting how likely a customer is to default on their financial obligation. Coarse classification is the most common method in credit scoring of selecting and evaluating features to be included in the predictive model. Its technique is to create bins within each feature and evaluate these bins relationship with the target feature. It widely used because of the accuracy of the results, and its ability to create a robust feature set for prediction with is able to cater for missing values and outliers. \textit{Area under the curve} (AUC) is the most common method of evaluating the performance of the credit scoring model. It is generated by measuring the performance of the model over all possible thresholds.
+Data mining and predictive modelling encapsulates a large number of subject topics such as feature selection, classification algorithms, model validation and model performance. Logistic regression the most commonly used classification algorithm for credit scoring when predicting how likely a customer is to default on their financial obligation. Coarse classification is the most common method in credit scoring of selecting and evaluating features to be included in the predictive model. Its technique is to create bins within each feature and evaluate these bins relationship with the target feature. It widely used because of the accuracy of the results, and its ability to create a robust feature set for prediction which is able to cater for missing values and outliers. \textit{Area under the curve} (AUC) is the most common method of evaluating the performance of the credit scoring models and is generated by measuring the performance of the model over all possible thresholds.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 6
