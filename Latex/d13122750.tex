@@ -50,7 +50,13 @@
 % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
 \setcitestyle{authoryear}
 \usepackage[export]{adjustbox}
-\hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
+% \hypersetup{urlcolor=black, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
+\hypersetup{colorlinks,%
+	citecolor=black,%
+	filecolor=black,%
+	linkcolor=black,%
+	urlcolor=black
+}
 \title{\ttitle} % Defines the thesis title - don't touch this
 \begin{document}
 	
@@ -125,7 +131,7 @@
 		
 		\begin{itemize} 
 			\item[\tiny{$\blacksquare$}] This work was done wholly or mainly while in candidature for a research degree at this University.
-			\item[\tiny{$\blacksquare$}] Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.s
+			\item[\tiny{$\blacksquare$}] Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated
 			\item[\tiny{$\blacksquare$}] Where I have consulted the published work of others, this is always clearly attributed.
 			\item[\tiny{$\blacksquare$}] Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
 			\item[\tiny{$\blacksquare$}] I have acknowledged all main sources of help.
@@ -175,11 +181,13 @@
 	\end{comment}
 		
 	\chapter*{\centering Abstract}
-	This research project investigates the predictive capability of macro-economic features in modelling credit risk for small medium enterprises (SME/SMEs). There have been indications that there is strong correlation between the size of the SME sector in an economy and economic growth. However, since the financial crisis SMEs have been hampered trying to get credit due to policies and regulations. It has also been noted that even though there has been a substantial amount of time spent understanding and developing the credit risk literature, there not been much time spent researching how macroeconomic factors affect credit risk. By being able to improve the credit scoring by even a small amount can have a very positive effect on a financial institutions profits, reputation and being able to support the economy.
+	This research project investigates the predictive capability of macro-economic features in modelling credit risk for small medium enterprises (SME/SMEs). There have been indications that there is strong correlation between economic growth and the size of the SME sector in an economy. However, since the financial crisis and consequent policies and regulations, SMEs have been hampered in attempts to access credit. It has also been noted that while there is a substantial amount of credit risk literature, there is little research on how macro-economic factors affect credit risk. Being able to improve credit scoring by even a small amount can have a very positive effect on a financial institution's profits, reputation and ability to support the economy.
 	
-	Typically, in the credit scoring process two methods of scoring are carried out, application scoring model and behavioural scoring model. These models for predicting customers who are likely to default usually rely upon financial, demographic and transactional data as the predictive inputs. This research investigates the use of a much coarser source of data at a macro-economic level by a low level and high level regions in Ireland. Features such as level of employment/unemployment, level of education, consumer spending trends and default levels by different banking products will be evaluated as part of the research project.
+	Typically, in the credit scoring process two methods of scoring are carried out, application scoring model and behavioural scoring model. These models for predicting customers who are likely to default usually rely upon financial, demographic and transactional data as the predictive inputs. This research investigates the use of a much coarser source of data at a macro-economic level by a low level and high level regions in Ireland. Features such as level of employment/unemployment, education attainment, consumer spending trends and default levels by different banking products will be evaluated as part of the research project.
 	
-	Techniques and methods are established for evaluating the usefulness of macro-economic features created as part of this research which are subsequently introduced into the predictive models to be evaluated. It was found that while employing coarse classification and subsequently choosing the macro-economic features with the highest information value in the predictive model the accuracy across all performance measures improved significantly. This has proven that macro-economic features have the potential to be used in modelling credit risk for SMEs in the future.
+	In the course of this research, techniques and methods are established for evaluating the usefulness of macro-economic features. These are subsequently introduced into the predictive models to be evaluated. It was found that while employing coarse classification and subsequently choosing the macro-economic features with the highest information value in the predictive model, the accuracy across all performance measures improved significantly. This has proven that macro-economic features have the potential to be used in modelling credit risk for SMEs in the future.
+	
+	\textbf{Key words:} Small medium enterprises, SME, credit risk, predictive modelling, macro-economic features
 		
 		\clearpage
 		%----------------------------------------------------------------------------------------
