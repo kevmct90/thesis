@@ -22,11 +22,11 @@ As part of the research the following objectives were achieved:
 
 \begin{itemize}
 	\item Reviewed the relevant literature on credit scoring, the use of macro-economic factors in credit risk modelling, data mining techniques and methods for extracting insights from large datasets and building prediction models
-	\item Designed a scalable and efficient address matching application to assign addresses in Ireland to geographic regions such as electoral divisions and local authorities
-	\item Generated, collated and identified macro-economic features suitable for predicting if SMEs defaulting are going to default on their financial obligation
+	\item Designed a scalable and efficient address-matching application to assign addresses in Ireland to geographic regions such as electoral divisions and local authorities
+	\item Generated, collated and identified macro-economic features suitable for predicting if SMEs are likely to default
 	\item Designed and built a benchmark prediction model that could be used to compare experiment results
 	\item Employed feature selection techniques to identify the most predictive macro-economic features such as random forest variable importance, information gain and coarse classification
-	\item Designed an experiment to identify the threshold or cut-off value of a classier that's aim was to maximise balanced accuracy, recall and specificity 
+	\item Designed an experiment to identify the optimal threshold or cut-off value that's aim was to maximise balanced accuracy, recall and specificity 
 	\item Evaluated a sampling technique to handle the class imbalance issue in the data
 \end{itemize}
 
@@ -42,11 +42,11 @@ As part of the research the following objectives were achieved:
 The following constitutes the worthwhile contributions to the discipline:
 
 \begin{itemize}
-	\item This research demonstrated how an open source search engine and string distance metrics can be combined to build a scalable and efficient address matching application.
+	\item This research demonstrated how an open source search engine and string distance metrics can be combined to build a scalable and efficient address-matching application.
 	
 	\item Explored SME default rates using a geographical information system (GIS) application on a map of Ireland which supported the hypothesis that macro-economic factors are important when modelling the credit risk of SMEs.
 	
-	\item Demonstrated in this experiment that feature selection techniques  information gain and the random forest importance variable were not successful in identifying macro-economic features that were capable of improving the accuracy of the benchmark model   
+	\item Demonstrated in this experiment that feature selection techniques, information gain and the random forest importance variable were not successful in identifying macro-economic features that were capable of improving the accuracy of the benchmark model   
 	
 	\item Assessed alternative prediction models to the traditionally used logistic regression for credit scoring and observed that there was no model that significantly outperformed the logistic regression model
 	
@@ -59,17 +59,17 @@ The following constitutes the worthwhile contributions to the discipline:
 %	SECTION 4
 %----------------------------------------------------------------------------------------
 \section{Experimentation, Evaluation, Limitations and Open Problems}
-The aim of this research project was to generate macro-economic features and assess their capability in predicting SME customers that will default on their financial obligation in the future. 
+The aim of this research project was to generate macro-economic features and assess their capability to predict SME customers that are at risk of defaulting on their financial obligation in the future. 
 
-The first objective of this project was to create a mechanism for creating macro-economic features. There was no master addresses database that would allow you to link customer addresses to geographic regions so therefore creating this link was the first task. To do this an address matching application was built that mapped \subjectname\ customer addresses to geographic regions in Ireland called electoral divisions and local authority. Once there was way of linking SMEs to local authorities and electoral division macro-economic features could be assigned to that SME. Internal \subjectname\ and open data sources were used to generate features in these experiments. The Irish census information was used to generate employment, education and occupation features. Internal data was taken mainly from transaction behavioural data and product default rates such as SMEs, Personal loans and Homeloans.  
+The first objective of this project was to create a mechanism for creating macro-economic features. There was no master addresses database that would allow linking customer addresses to geographic regions so therefore creating this link was the first task. To do this, an address-matching application was built that mapped \subjectname\ customer addresses to geographic regions in Ireland called electoral divisions and local authorities. Once there was a way of linking SMEs to local authorities and electoral divisions, macro-economic features could be assigned to that SME. Internal \subjectname\ and open data sources were used to generate features in these experiments. The Irish census information was used to generate employment, education and occupation features. Internal data was taken mainly from transaction behavioural data and product default rates such as SMEs, personal loans and homeloans.  
 
 Once the macro-economic features had been generated a benchmark  predictive model for SME customers could be trained. This model would be used for comparing the results of models that were trained using macro economic features. As part of the benchmark building process multiple modelling algorithms were trained and evaluated. It was found that there was no discernible difference between most of the algorithms and that most performed well apart from Support Vector Machines (SVM) polynomial and sigmoid which completely over-fitted.  
 
-After the feature generation process was complete there were 116 macro-economic features to be assessed for prediction. Feature selection and reduction techniques were applied. Correlation analysis was performed to reduce features that were linearly correlated and could be redundant. Information gain and random forest variable importance feature selection techniques were applied to identify predictive features. After identifying the most important features based on these feature selection processes the features were then included in the training model to see if they could improve the performance of the benchmark model. Overall they did not provide any promising results and failed to improve on the modelling accuracy of the benchmark model.
+After the feature generation process was complete there were 116 macro-economic features to be assessed for prediction. Feature selection and reduction techniques were applied. Correlation analysis was performed to reduce features that were linearly correlated and could be redundant. Information gain and random forest variable importance feature selection techniques were applied to identify predictive features. After identifying the most important features based on these feature selection processes, these features were then included in the training model to see if they could improve the performance of the benchmark model. Overall they did not provide any promising results and failed to improve on the modelling accuracy of the benchmark model.
 
-Coarse classification was then applied to the macro-economic features. This is a process of transforming interval and nominal predictive feature into grouped features with a small number of categories. It is also a technique widely adopted in credit scoring. After applying this transformation to the macro-economic features the most predictive of these new grouped features were included in the benchmark model. It was found the introduction of these macro economic features increased the accuracy of the model. This research has proven that macro-economic features can be used to predict SME defaulting and could possibly be applied to other risk areas in \subjectname\ also.
+Coarse classification was then applied to the macro-economic features. This is a process of transforming interval and nominal predictive features into grouped features with a small number of categories. It is also a technique widely adopted in credit scoring. After applying this transformation to the macro-economic features the most predictive of these new grouped features were included in the benchmark model. It was found the introduction of these macro-economic features increased the accuracy of the model. This research has proven that macro-economic features can be used to predict SME defaulting and could possibly be applied to other risk areas in \subjectname\ also.
 
-Feedback in \subjectname\ as been very positive. Geographic data is one data source that the Chief Data Officer wants to start utilising more and more. One of the issues or limitations going forward if these features were to be considered for use in an industry wide credit scorecard the maintenance of these features would be an issue. This data does not exist on the Enterprise Data Warehouse in \subjectname\ so it would not be possible to use it until there are more controls and production systems in place. 
+Feedback in \subjectname\ has been very positive. Geographic data is a data source that the Chief Data Officer wants to increasingly utilise. One of the issues or limitations going forward if these features were to be considered for use in an industry-wide credit scorecard is the potential for the maintenance of these features to be an issue. This data does not exist on the Enterprise Data Warehouse in \subjectname\ so it would not be possible to use it until there are more controls and production systems in place. 
 
 
 
@@ -78,20 +78,20 @@ Feedback in \subjectname\ as been very positive. Geographic data is one data sou
 %----------------------------------------------------------------------------------------
 \section{Future Work and Research}
 
-There are many additional worthwhile experiments worth doing on this dataset. First of all features in this experiment were just applied to \textit{behvioual credit scoring}. Similar experiments could be run on \textit{application credit scoring}. It could also be included in fields such as marketing.
+There are numerous other experiments that could be carried out on this dataset that are worthy of consideration. First of all, features in this experiment were applied only to \textit{behavioural credit scoring}. Similar experiments could be run on \textit{application credit scoring}. It could also be included in fields such as marketing.
 
-Statistical tests could be carried out to identify if there is significant differences between default rates in different regions of Ireland, for example at a local authority level over a time period. 
+Statistical tests could be carried out to identify whether there are significant differences between default rates in different regions of Ireland, for example, at a local authority level over a time period. 
 
-Macro-economic features could be used for segmentation, this way locations/areas that are like each other based on some features will be grouped together
+Macro-economic features could be used for segmentation. This way, locations/areas that are similar to each other based on some features will be grouped together
 
-Data exploration and visualisation capabilities are very useful informing people or when trying to tell a story. GIS applications could be used for showing the adverse impact of when a large employer closes and how the impacts the local economy in the surrounding area.
+Data exploration and visualisation techniques have significant potential as informational tools. GIS applications could be used to illustrate the adverse impact caused by the closure of a significant employer and the related impact on the local economy.
 %----------------------------------------------------------------------------------------
 %	SECTION 6
 %----------------------------------------------------------------------------------------
 \section{Conclusion}
-This chapter concludes the research and experimentation performed in order to assess the predictive capability of macro-economic features in predicting if SME customers will default. It delivered an overview of the research and work that was carried out as well the results that were achieved. Future research topics were introduced whereby the experiment can be continued and improved upon. Some of the risks and limitations with this research were called out.
+This chapter concludes the research and experimentation performed in order to assess the predictive capability of macro-economic features in predicting if SME customers will default. It delivered an overview of the research and work that was carried out as well the results that were achieved. Future research topics were introduced whereby the experiment can be continued and improved upon. Some of the risks and limitations with this research were identified.
 
-Overall the experiment has been success as it showed that macro-economic features could be used to increase the accuracy on the benchmark model. Also the address matching application created in this research is going to be tested against vendors who offer the same services to evaluate what its full potential is.
+Overall the experiment has been a success as it showed that macro-economic features could be used to increase the accuracy on the benchmark model. Also the address-matching application created in this research will be tested against vendors who offer the same services to evaluate its full potential.
 
 
 
