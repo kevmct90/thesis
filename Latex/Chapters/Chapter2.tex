@@ -97,7 +97,7 @@ In \cite{antunes_estimating_2005}, using Portuguese data, they found that macro-
 
 
 \section{Data Mining and Predictive Modelling}\label{sec:dataMining}
-Knowledge discovery is defined by \cite{frawley_knowledge_1992} as the \textit{``Knowledge Discovery in Databases as the non-trivial process of identifying valid, novel, potentially useful, and ultimately understandable patterns in data''}. Knowledge discovery can be thought of extracting some piece of insight or value from data that could not have been done using a simple query. \cite{fayyad_knowledge_1996} outlined an approach to extracting these useful patterns from data stored in large databases called the \textit{Knowledge Discovery in Databases} (KDD).
+Knowledge discovery is defined by \cite{frawley_knowledge_1992} as the \textit{``as the non-trivial process of identifying valid, novel, potentially useful, and ultimately understandable patterns in data''}. Knowledge discovery can be thought of as extracting some piece of insight or value from data that could not have been done using a simple query. \cite{fayyad_knowledge_1996} outlined an approach called the Knowledge Discovery in Databases (KDD) which centres on extracting these useful patterns from data stored in large databases.
 
 \begin{figure}[H]
 	\includegraphics[width=0.8\textwidth, center]{kdd}
@@ -107,7 +107,7 @@ Knowledge discovery is defined by \cite{frawley_knowledge_1992} as the \textit{`
 	\label{fig:kdd}
 \end{figure}
 
-The goal at the end of the KDD process is to realise some value or extract some piece of insight. This is typically done through the data mining step of the process, but Fig. \ref{fig:kdd} above illustrates it is only one step in the overall framework of KDD. Steps such as data selection, preprocessing, transformation or data modelling must be completed prior to the data mining step. 
+The goal at the end of the KDD process is to realise some value or extract some piece of insight. This is typically done through the data mining step of the process, but Fig. \ref{fig:kdd} above illustrates it is only one step in the overall framework of KDD. Steps such as data selection, pre-processing, transformation or data modelling must be completed prior to the data mining step. 
 
 
 \begin{figure}[H]
@@ -118,10 +118,11 @@ The goal at the end of the KDD process is to realise some value or extract some 
 	\label{fig:crisp_dm}
 \end{figure}
 
-There are methodologies and frameworks for data mining one being \textit{Cross Industry Standard Process for Data Mining}, usually referred to by CRISP-DM \citep{shearer_crisp-dm_2000}. This data mining framework is the most commonly adopted by data miners to workout a problem. Some polls show it is the leading methodology used by data miners\footnote{\url{http://www.kdnuggets.com/polls/2014/analytics-data-mining-data-science-methodology.html}}. It can be seen in Fig. \ref{fig:crisp_dm}, that the CRISP-DM process is split into six main steps or tasks; \textit{business understanding}, \textit{data understanding}, \textit{data preparation}, \textit{modelling}, \textit{evaluation} and \textit{deployment}. The next most popular framework is known as Sample, Explore, Modify, Model and Assess more commonly known as SEMMA \citep{azevedo_kdd_2008}. This solution has been developed by Statistical Analysis System (SAS) institute but is seen more as a list of sequential steps that can be used to build out data mining solutions. The big advantage with the CRISP-DM methodology over SEMMA which can be illustrated in Fig. \ref{fig:crisp_dm} is that it does not restrict you from moving between the different steps, and the arrow wrapping around the process suggests that even after deployment the process will continue.  
+There are methodologies and frameworks for data mining. One of these is the \textit{Cross Industry Standard Process for Data Mining}, usually referred to by CRISP-DM \citep{shearer_crisp-dm_2000}. This data mining framework is the one most commonly adopted by data miners to work out a problem. Some polls show it is the leading methodology used by data miners\footnote{\url{http://www.kdnuggets.com/polls/2014/analytics-data-mining-data-science-methodology.html}}. It can be seen in Fig. \ref{fig:crisp_dm}, that the CRISP-DM process is split into six main steps or tasks; \textit{business understanding}, \textit{data understanding}, \textit{data preparation}, \textit{modelling}, \textit{evaluation} and \textit{deployment}. The next most popular framework is known as Sample, Explore, Modify, Model and Assess more commonly known as SEMMA \citep{azevedo_kdd_2008}. This solution has been developed by Statistical Analysis System (SAS) institute but is seen more as a list of sequential steps that can be used to build out data mining solutions. The big advantage with the CRISP-DM methodology over SEMMA (illustrated in Fig. \ref{fig:crisp_dm}), is that it does not restrict one from moving between the different steps, and the arrow wrapping around the process suggests that even after deployment the process can continue.  
 
 
-The frameworks of KDD and CRISP-DM that outline steps to to extract insights have grown and developed since they were established over 20 years ago. These areas have grown and developed and there are a growing number of communities that continuously overlap. This can be illustrated below in Fig. \ref{fig:data_mining_venn_diagram}\footnote{\url{http://blogs.sas.com/content/subconsciousmusings/2014/08/22/looking-backwards-looking-forwards-sas-data-mining-and-machine-learning/}} where you can see data mining, statistics, artificial intelligence, machine learning communities all having some common values. Data mining as a result can seen as combination of KDD, machine learning, statistics, pattern recognition that may or may not leverage on databases. This results in the field of data mining being largely made up of data scientists, data analysts, computer scientists and statisticians \citep{coenen_data_2011}. 
+Since they were established over 20 years ago, the frameworks of KDD and CRISP-DM outlining steps to extract insights have grown and developed. There are a growing number of communities that continuously overlap. This can be illustrated below in Fig. \ref{fig:data_mining_venn_diagram}\footnote{\url{http://blogs.sas.com/content/subconsciousmusings/2014/08/22/looking-backwards-looking-forwards-sas-data-mining-and-machine-learning/}} where one can see that data mining, statistics, artificial intelligence and machine learning communities all share some common values. As a result, one can consider data mining as a
+combination of KDD, machine learning, statistics and pattern recognition that may or may not leverage on databases. This results in the field of data mining being largely made up of data scientists, data analysts, computer scientists and statisticians \citep{coenen_data_2011}. 
 
 \begin{figure}[H]
 	\includegraphics[width=0.6\textwidth, center]{data_mining_venn_diagram}
@@ -129,15 +130,14 @@ The frameworks of KDD and CRISP-DM that outline steps to to extract insights hav
 	\label{fig:data_mining_venn_diagram}
 \end{figure}
 
-For this research we are mainly interested in a subset of the data mining process called predictive modelling which can be seen in Fig. \ref{fig:crisp_dm}. Predictive modelling is where you want to predict future events based on based on past or historic data. The predictions are trained using past real world events and are tested and evaluated on unseen real world data to see how they perform. 
+For this research, the primary focus is on a subset of the data mining process called predictive modelling. This is represented in Fig. \ref{fig:crisp_dm}. Predictive modelling centres on predicting future events based on based on past or historic data. The predictions are trained using past real world events and are tested and evaluated on unseen real world data to see how they perform. 
 
-Predictive modelling can be applied to many applications across a wide range of domains including a few, election outcomes (\citep{silver_signal_2012}; \cite{tumasjan_predicting_2010}), predicting how oil slicks spread \citep{liu_tracking_2011}, healthcare to predict cancer \citep{delen_predicting_2005}, and recently predictive modelling has become popular in sports predictions of baseball \citep{lewis_moneyball_2004}, basketball \citep{stekler_predicting_2012} and horse racing \citep{silverman_predicting_2013}.
+Predictive modelling has many applications across a wide range of domains: some examples include election outcomes (\citep{silver_signal_2012}; \cite{tumasjan_predicting_2010}), predicting how oil slicks spread \citep{liu_tracking_2011}, cancer prediction \citep{delen_predicting_2005}, and recently predictive modelling has become popular in sports predictions of baseball \citep{lewis_moneyball_2004}, basketball \citep{stekler_predicting_2012} and horse racing \citep{silverman_predicting_2013}.
  
 
-Financial institution would be common practitioners of predictive modelling across a wide variety of domains e.g. marketing and risk. In risk areas, banks will build predictive models to predict default probabilities for existing customers that are on their book and evaluate customers applying for lending. This can reduce their risk allowing them to increase profits meaning they can offer customers a better service and more personalised products. Thus credit scoring is one of the most used application fields for
-data mining \citep{baesens_50_2009}.
+Financial institution commonly utilise predictive modelling across a variety of domains e.g. marketing and risk. In risk areas, banks will build predictive models to predict default probabilities for existing customers and evaluate customers applying for lending. This can reduce their risk, allowing them to increase profits meaning they can offer customers a better service and more personalised products. Thus credit scoring i s one of the most used application fields for data mining \citep{baesens_50_2009}.
 
-Predictive models are built by using interval/numerical or/and categorical/nominal features/variables/predictors/attributes that are able to explain the target/class/outcome trying to be predicted. Once the model is trained on historic data, model performance and evaluation is carried out on unseen data for testing. The data used in training will not be the same as in test thus the model may not generalise well on unseen data. This is known as model over-fitting on the training dataset in the literature. Methodologies, frameworks and testing can be put in place to mitigate the risk to this issue. These will discussed further throughout this chapter.
+Predictive models are built by using interval/numerical or/and categorical/nominal features/variables/predictors/attributes that can explain the target/class/outcome to be predicted. Once the model is trained on historic data, model performance and evaluation is carried out on unseen data for testing. The data used in training will not be the same as in test thus the model may not generalise well on unseen data. In the literature, this is known as model over-fitting on the training dataset. Methodologies, frameworks and testing can be put in place to mitigate the risk to this issue. These will discussed further throughout this chapter.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4
@@ -145,55 +145,52 @@ Predictive models are built by using interval/numerical or/and categorical/nomin
 
 \section{Dataset Construction}\label{sec:datasetConstruction}
 
-Experts often detail how steps performed in the data construction and preparation stage can turn out to some of the most time consuming  when building predictive models\footnote{For example see \url{http://www.kdnuggets.com/polls/2003/data_preparation.htm}}. There are many steps that need to be considered during the data preparation stage for building a prediction model that model credit risk of SMEs, two that will be discussed in this section are the \textit{sampling period} and \textit{class label definition}. 
-
-Practitioners often cite the steps performed during the data construction stage as the most time-consuming
-activities performed during the construction of credit scorecards.
+Experts often detail how steps performed i n the data construction and preparation stage can be some of the most time consuming when building predictive models\footnote{For example see \url{http://www.kdnuggets.com/polls/2003/data_preparation.htm}}. There are many steps that need to be considered during the data preparation stage for building a prediction model that models credit risk of SMEs. Two that will be discussed in this section are the \textit{sampling period} and \textit{class label definition}. 
 
 \subsection{Sampling Period}
-As already stated in the thesis, predictive models are built using historical data. It must be stated that past performance can be useful predictor of default but it does not guarantee that future predictions of the model will be accurate or reliable. A training dataset is built to train a predictive model where customers are observed at two different points in time \citep{martens_credit_2010}. They are observed at the time that the prediction is made based on past performance. They are then observed sometime in the future called the \textit{default observation point} at which they will classified from the model as good or bad. The amount of time between these two points is commonly known as the \textit{outcome window}. The length of the outcome window can vary based on business objectives and requirements, the industry standard in \subjectname\ dictates that this usually 12 months. 
+As previously stated, predictive models are built using historical data. It must be acknowledged that past performance can be a useful predictor of defaulting but it does not guarantee that future predictions of the model will be accurate or reliable. A training dataset is built to train a predictive model where customers are observed at two different points in time \citep{martens_credit_2010}. They are observed at the time that the prediction is made based on past performance. They are then observed sometime in the future called the \textit{default observation point} at which they will classified by the model as good or bad. The amount of time between these two points is commonly known as the \textit{outcome window}. The length of the outcome window can vary based on business objectives and requirements. The industry standard in \subjectname\ dictates that this is usually 12 months. 
 
 \subsection{Class Label Definition} \label{classLabelDef}
-For a customer to be defined as defaulted is dependant on what the objective of that predictive model is and the requirements of the financial institution \citep{mcnab_principles_2000}. The Basel II definition (paragraph 452) which is widely used by financial institutions and \subjectname\ considers a default to have taken place when either or both of the following criteria are met:
+Defining a customer as defaulted is dependant on the objective of the particular predictive model and the requirements of the financial institution \citep{mcnab_principles_2000}. The Basel II definition (paragraph 452) which is widely used by financial institutions, including \subjectname\, considers a default to have taken place when either or both of the following criteria are met:
 \vspace{-3mm} 
 \begin{itemize}
 	\item The bank/financial institution considers that the obligor is unlikely to pay its credit obligations to the banking group in full, without recourse by the bank to actions such as realising security (if held).
 	\item The obligor is past due more than 90 days on any material credit obligation to the banking group. Overdrafts will be considered as being past due once the customer has breached an advised limit or been advised of a limit smaller than current outstandings.
 \end{itemize} 
 
-There are two well known approaches to class label definition that financial institutions can choose according to \cite{anderson_credit_2007}: (\textit{i}) a \textit{current status} label definition which classifies a customer to have defaulted or not at the end of the outcome window; or option (\textit{ii}) a \textit{worst status} label definition which classifies whether the customer has defaulted or not throughout the outcome window. It is \subjectname's industry standard to use the \textit{worst status} option. This agrees with Basel II \citep{basel_international_2006}, that customers 90 days worst status covering a one-year period is considered the standard definition for customers that have defaulted. 
+According to \cite{anderson_credit_2007}, there are two well known approaches to class label definition that financial institutions can choose: (\textit{i}) a \textit{current status} label definition which classifies a customer to have defaulted or not at the end of the outcome window or (\textit{ii}) a \textit{worst status} label definition which classifies whether the customer has defaulted or not throughout the outcome window. It is \subjectname's industry standard to use the \textit{worst status} option. This is in keeping with Basel II \citep{basel_international_2006}, that customers' 90 days worst status covering a one-year period is considered the standard definition for customers who have defaulted. 
 
 
 \subsection{Segmentation}\label{sec:segment}
 Segmentation is carried out by splitting the dataset population into multiple groups and building a prediction model for each group \citep{myatt_making_2007}. This splitting will be carried out using group specific criteria and allows for modelling characteristics and features that are important to each group independently.
 
-For marketing, \cite{wedel_market_2012} portrays how segmentation can be utilised to collate customers in homogeneous groups founded on those customers buying pattens, and demographic data like location, age, income.
+For marketing, \cite{wedel_market_2012} illustrate how segmentation can be utilised to collate customers into homogeneous groups based on those customers' buying pattens and demographic data like location, age and income.
 
-Segmentation can be used in credit scoring to allow the lender to have more flexibility when personalising credit products for customers for example interest rate and repayment structure\citep{kennedy_credit_2013}.
+Segmentation can be used in credit scoring to allow the lender to have more flexibility when personalising credit products for customers, for example interest rate and repayment structure\citep{kennedy_credit_2013}.
 
-Segmentation is carried out by analysts who generally would need both subject matter expert experience and by leveraging statistical methods \citep{siddiqi_credit_2012}
+Segmentation is carried out by analysts who generally require both subject matter expert experience and by leveraging statistical methods \citep{siddiqi_credit_2012}
 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 5
 %----------------------------------------------------------------------------------------
 \section{Predictive Models}\label{sec:predictModels}
-This section details some of the classification algorithms that can be used when modelling a binary classification problem, in this thesis the problem is if a customer did default or not-default on their financial obligation is a binary classification problem. The algorithms discussed in this section are not an exhausted list but all are suitable for use in the financial industry. Classification models discussed include linear \& logistic regression, k-nearest neighbour (KNN), support vector machines (SVM), neural networks. 
+This section details some of the classification algorithms that can be used when modelling a binary classification problem. For this thesis the problem is if a customer defaulted or did not default on their financial obligation; hence, it is a binary classification problem. The algorithms discussed in this section are not an exhaustive list but all are suitable for use in the financial industry. Classification models discussed include linear and logistic regression, k-nearest neighbour (KNN), support vector machines (SVM) and neural networks. 
 
-Logistic regression is one of the most widely used classification algorithms used by industry based on research and experience working in industry.
+Based on research and experience working in industry, logistic regression is one of the most widely used classification algorithms used by industry.
 
 \subsection{Regression} \label{Reg}
-Regression models are used to model the linear relationship between features in a feature space or between the features and the target variable. 
+Regression models are used to model the linear relationship between features in a feature space or between the features and the target variable.
 
-A very simple form of linear regression is where there is one independent and one dependent variable, which is the target attempting to be predicted. The model is often represented by the following equation
+A very simple form of linear regression is where there is one independent and one dependent variable, which is the target one is attempting to predict. The model is often represented by the following equation
 
 \begin{equation} \label{eq:reg}
 	\text{Linear Model} = y = b_0 + b_1x
 \end{equation}
 
-where the model is trying to predict $y$ based using the value of $x$.
+where the model is trying to predict $y$ using the value of $x$.
 
-Fig. \ref{fig:simpleLinearRegression} illustrates a very simple real life example of linear regression. It demonstrates the linear relationship between a persons heights and a persons weight.
+Fig. \ref{fig:simpleLinearRegression} illustrates a very simple real life example of linear regression. It demonstrates the linear relationship between a person's heights and a person's weight.
 
 \begin{figure}[H]
 	\includegraphics[center]{simpleLinearRegression}
@@ -202,10 +199,10 @@ Fig. \ref{fig:simpleLinearRegression} illustrates a very simple real life exampl
 	\label{fig:simpleLinearRegression}
 \end{figure}
 
-It can be seen from the above the $y$ in this example is weight (wgt) and $b_0 + b_1x$ is $80 + 2*Height(hgt)$ is what we are using to predict $y$. This is a very basic example but demonstrates how this can be leveraged for more complex feature sets. Predicting arrears is a dichotomous problem meaning the outcome of the experiment can only have two possible values. 
+It can be seen from the above that $y$ in this example is weight (wgt) and $b_0 + b_1x$ is $80 + 2*Height(hgt)$ is what we are using to predict $y$. This is a very basic example but demonstrates how this can be leveraged for more complex feature sets. Predicting arrears is a dichotomous problem meaning the outcome of the experiment can only have two possible values. 
 
 \subsection{Logistic Regression} \label{LogReg}
-\textit{Logistic Regression} \cite[See:][]{hosmer_applied_2000} within the credit scoring industry is one of the most used algorithms \citep{hand_evaluating_2010}. As seen above in Fig. \ref{fig:simpleLinearRegression} a simple regression model outputs a continuous response, in that example body weight. Credit scoring or predicting arrears is a problem where there can only be two possibly values default or not-default, to simplify this is reduced to a binary problem where the outcome will be 1 or 0 \citep{zou_modified_2004}. To transform the output of a regression model from $[-\infty, +\infty]$ to a probability between 0 and 1 a logistic transformation is applied. The logistic function can be used to take any value between $+\infty$ and $-\infty$ and output a value between $0$ and $1$. Fig. \ref{fig:logistic_function} below illustrates what a logistic function looks like.
+\textit{Logistic Regression} \cite[See:][]{hosmer_applied_2000} within the credit scoring industry is one of the most used algorithms \citep{hand_evaluating_2010}. As seen above in Fig. \ref{fig:simpleLinearRegression}, a simple regression model outputs a continuous response, in the given example it is body weight. Credit scoring or predicting arrears is a problem where there can only be two possibly values default or not-default. To simplify, this is reduced to a binary problem where the outcome will be 1 or 0 \citep{zou_modified_2004}. To transform the output of a regression model from $[-\infty, +\infty]$ to a probability between 0 and 1, a logistic transformation is applied. The logistic function can be used to take any value between $+\infty$ and $-\infty$ and output a value between $0$ and $1$. Fig. \ref{fig:logistic_function} below illustrates what a logistic function looks like.
 
 
 \begin{figure}[H]
@@ -221,7 +218,7 @@ The logistic function is defined in Equation \ref{eq:logitReg} as the following:
 	\text{Logistic Model}  =  p  =  \frac{1}{1 + e^{-(b_0 + b_1x)}}
 \end{equation}
 
-As discussed previously linear regression is an unsuitable classifier for making dichotomous predictions as linear regression produces predictions for a range beyond 0 to 1. Logistic regression also produces a curved line that is bounded by values between 0 and 1. see Fig. \ref{fig:LogRegVsLineReg}.
+As discussed previously, linear regression is an unsuitable classifier for making dichotomous predictions as linear regression produces predictions for a range beyond 0 to 1. Logistic regression also produces a curved line that is bounded by values between 0 and 1 (See Fig. \ref{fig:LogRegVsLineReg}).
 
 \begin{figure}[H]
 	\includegraphics[width=0.6\textwidth, center]{LogRegVsLineReg}
@@ -231,19 +228,19 @@ As discussed previously linear regression is an unsuitable classifier for making
 
 In Fig. \ref{fig:LogRegVsLineReg} the constant, $b_0$ dictates the position of the curve which can be moved left and right depending on its value, $b_1$ will be the slope of the curve. 
 
-The logistic regression model can be extended to include any number of interval and nominal features which is illustrated in Equation \ref{eq:logitRegExtended}
+The logistic regression model can be extended to include any number of interval and nominal features. This is illustrated in Equation \ref{eq:logitRegExtended}.
 
 \begin{equation} \label{eq:logitRegExtended}
 	p  =  \frac{1}{1 + e^{-(b_0 + b_1x_1 + b_2x_2 +\cdot\cdot\cdot+ b_px_p )}}
 \end{equation}
 
-Logistic Regression can also be used in cases where there are more than two outcome groups. For example it could be used in predicting what stage a customer is in the customer lifecycle e.g. Awareness, Interest/Consideration, Evaluation/Purchase, this is referred to \textit{multinomial logistic regression}
+Logistic Regression can also be used in cases where there are more than two outcome groups. For example, it could be used in predicting at what stage a customer is in the customer lifecycle e.g. Awareness, Interest/Consideration, Evaluation/Purchase. This is referred to as \textit{multinomial logistic regression}.
 
 
-One of the main major attractions of logistic regressions it allows you to use discrete, continuous features or a combination of both \citep{lee_application_2005}.
+One of the main major attractions of logistic regressions is that it allows one to use discrete, continuous features or a combination of both \citep{lee_application_2005}.
 
-\subsection{K-Nearest Neighbours} \label{kNN}
-The \textit{k-nearest neighbour} or {k-NN} for short, is an algorithm that classifies observations based on how its nearest neighbours are classified. It can be known as the nearest neighbour but in the majority of cases it is useful to use more than one neighbour \citep{henley_k-nearest-neighbour_1996}. The intuition behind this algorithm is that instances which are close by each other will more likely be classified the same way \citep{cover_nearest_1967}. We can see in Fig. \ref{fig:KNN_Example}\\ %added space for small gap in picture 
+\subsection{K-Nearest Neighbour} \label{kNN}
+The \textit{k-nearest neighbour}, or {k-NN} for short, is an algorithm that classifies observations based on how its nearest neighbours are classified. It can be known as the nearest neighbour but in the majority of cases it is useful to use more than one neighbour \citep{henley_k-nearest-neighbour_1996}. The intuition behind this algorithm is that instances which are close by each other will more likely be classified the same way \citep{cover_nearest_1967}. We can see in Fig. \ref{fig:KNN_Example}\\ %added space for small gap in picture 
 
 
 \begin{figure}[H]
@@ -252,9 +249,9 @@ The \textit{k-nearest neighbour} or {k-NN} for short, is an algorithm that class
 	\label{fig:KNN_Example}
 \end{figure}
 
-that results of the algorithm can vary with the choice of \textit{k}. It should also be noted that when applying this algorithm to binary experiment it is good practice to only choose odd values of \textit{k}, this will eliminate the risk of ties from the decision process \citep{keller_fuzzy_1985} 
+that results of the algorithm can vary with the choice of \textit{k}. It should also be noted that when applying this algorithm to a binary experiment, it is good practice to choose only odd values of \textit{k}, as this will eliminate the risk of ties from the decision process \citep{keller_fuzzy_1985} 
 
-While adopting the k-NN algorithm there are multiple methods to decide what is your nearest neighbours. There are some common distance measures for continuous features only. Equation \ref{eq:Minkowski} is the \textit{minkowski distance}, it is one of the most common, where \textit{p=1} this becomes the Equation \ref{eq:Manhatten} the \textit{manhatten distance} and where \textit{p=2} this becomes the Equation \ref{eq:Euclidean} the \textit{euclidean distance}
+While adopting the k-NN algorithm there are multiple methods to decide what are your nearest neighbours. There are some common distance measures for continuous features only. Equation \ref{eq:Minkowski} is the \textit{Minkowski distance}, which is one of the most common, where \textit{p=1} this becomes the Equation \ref{eq:Manhatten}, the \textit{Manhatten distance}, and where \textit{p=2} this becomes the Equation \ref{eq:Euclidean} the \textit{Euclidean distance}.
 
 \begin{equation} \label{eq:Minkowski}
 	\text{Minkowski Distance}   = \Big(\sum_{i=1}^k (\abs{x_i-y_i})^p\Big)^\frac{1}{p}
@@ -268,12 +265,12 @@ While adopting the k-NN algorithm there are multiple methods to decide what is y
 	\text{Euclidean Distance}   = \sqrt{\sum_{i=1}^k (x_i-y_i)^2}
 \end{equation}
 
-The results from k-NN will vary depending on your choice of distance measurement. There are also other distance metrics for continuous features such as \textit{Correlation Similarity}, \textit{Cosine Similarity} \citep{sarwar_item-based_2001}
+The results from k-NN will vary depending on your choice of distance measurement. There are also other distance metrics for continuous features such as \textit{Correlation Similarity} and \textit{Cosine Similarity} \citep{sarwar_item-based_2001}
 
-Analysis can be completed to evaluate what the optimal value for \textit{k} is based on inspecting the results and creating benchmarks. Anecdotally the larger the value of \textit{k} the more precise the algorithm can be but as with most things in data mining there are no guarantees. Choosing a high $k$ could potentially cause over-fitting of the training data.
+Through analysis one can evaluate the optimal value for \textit{k}, one based on inspecting the results and creating benchmarks. Anecdotally, the larger the value of \textit{k} the more precise the algorithm can be but as with most things in data mining there are no guarantees. Choosing a high $k$ could also potentially cause over-fitting of the training data.
 
 \subsection{Decision Trees} \label{decTrees}
-The \textit{decision tree} algorithm classifies observations into classes in the form of tree like structure, hence the name. The algorithm seeks to partition the dataset into smaller subsets, using the relationship between the feature set and target variable to do so. An example can of a simple decision can be seen in Fig. \ref{fig:decisionTree}
+The \textit{decision tree} algorithm classifies observations into classes in the form of tree-like structure, hence the name. The algorithm seeks to partition the dataset into smaller subsets, using the relationship between the feature set and target variable to do so. An example of a simple decision can be seen in Fig. \ref{fig:decisionTree}
 
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth, center]{decisionTree}
@@ -281,7 +278,7 @@ The \textit{decision tree} algorithm classifies observations into classes in the
 	\label{fig:decisionTree}
 \end{figure}
 
-The output of the algorithm splits the data into smaller subsets of data, which output is a tree with a root node, internal nodes and leaf nodes. As can be seen in Fig. \ref{fig:decisionTreeExplained}, the root node in this example \textit{Outlook} is the first node in the tree which means it is the most predictive feature. 
+The output of the algorithm splits the data into smaller subsets of data; the output is a tree with a root node, internal nodes and leaf nodes. As can be seen in Fig. \ref{fig:decisionTreeExplained}, the root node in this example \textit{`Outlook'} is the first node in the tree which means it is the most predictive feature. 
 
 \begin{figure}[H]
 	\includegraphics[width=.6\textwidth, center]{decisionTreeExplained}
@@ -289,11 +286,11 @@ The output of the algorithm splits the data into smaller subsets of data, which 
 	\label{fig:decisionTreeExplained}
 \end{figure}
 
-The \textit{root node} will have have two or more branches in this case three \textit{Rainy, Overcast} and \textit{Sunny}. Below these branches you have \textit{internal or split node} \textit{Windy} and \textit{Humidity} which output more branches. The bottom nodes of each decision or branch is the prediction or classification, this is called the \textit{leaf node}. In this example the leaf node decision will be whether or not it will rain represented by Yes/No in Fig. \ref{fig:decisionTreeExplained}
+The \textit{root node} will have have two or more branches. In this case, there are three \textit{`Rainy', `Overcast'} and \textit{`Sunny'}. Below these branches there are \textit{internal or split nodes} \textit{'Windy'} and \textit{`Humidity'} which in turn output more branches. The bottom nodes of each decision or branch is the prediction or classification, this is called the \textit{leaf node}. In this example the leaf node decision will be whether or not it will rain represented by Yes/No in Fig. \ref{fig:decisionTreeExplained}.
 
-The algorithm that builds decision trees is called the \textit{iterative dichotomiser 3} more commonly known as ID3 \citep{quinlan_induction_1986}. The algorithm applies a top down approach to choosing its root and internal nodes. The algorithm only evaluates one step ahead from where it is in the decision process at any time and does not allow for any backtracking. This decision making process is known as a greedy approach as it just makes the optimal solution at that stage of the process. Thus because of these limitations the optimal solution is not guaranteed \citep{friedman_lazy_1996}.
+The algorithm that builds decision trees is called the \textit{iterative dichotomiser 3} or more commonly known as ID3 \citep{quinlan_induction_1986}. The algorithm applies a top down approach to choosing its root and internal nodes. The algorithm only evaluates one step ahead from where it is in the decision process at any time and does not allow for any backtracking. This decision making process is known as a greedy approach as it just makes the optimal solution at that particular stage of the process. Due to these limitations, the optimal solution is not guaranteed \citep{friedman_lazy_1996}.
 
-The ID3 algorithm works by calculating the \textit{entropy} and \textit{information gain} at each step or decision node, where you use the feature with the smallest entropy or feature that maximises information gain.
+The ID3 algorithm works by calculating the \textit{entropy} and \textit{information gain} at each step or decision node, where one uses the feature with the smallest entropy or feature that maximises information gain.
 
 Entropy $H(S)$ seen in Equation \ref{eq:entropy} measures how much uncertainty there is in the data \citep{shannon_mathematical_2001}
 
@@ -302,11 +299,11 @@ Entropy $H(S)$ seen in Equation \ref{eq:entropy} measures how much uncertainty t
 \end{equation}
 Where:
 \begin{itemize}[label=]
-	\item $S$: The current dataset entropy is being calculated for, this will change each time entropy is being calculated
+	\item $S$: The current dataset for which entropy is being calculated, this will change each time entropy is calculated
 	\item $X$: The set of classes in $S$
 	\item $p(x)$: Proportion of observations in class $x$ compared to total number in set $S$
 \end{itemize}
-If $H(S) = 0$ then the observations in $S$ are all of the same class. Entropy is calculated for each feature, the feature with the smallest entropy is used to split at that step.
+If $H(S) = 0$ then the observations in $S$ are all of the same class. Entropy is calculated for each feature and the feature with the smallest entropy is used to split at that step.
 
 Information gain is used to measure the decrease in entropy after the dataset is split on a feature. The equation for the information is 
 
@@ -321,7 +318,7 @@ Where:
 
 Information gain is calculated and the feature with the highest information gain is chosen to split the dataset. The algorithm then runs recursively until all the data is classified and predictions have been made. 
 
-Multiple decision trees may output the same results. This can be seen in Fig. \ref{fig:simpleComplex} where two different decision trees classify the dataset correctly. \cite{quinlan_induction_1986} suggests that that in scenarios like this the simpler decision tree would be chosen Fig. \ref{fig:simple}
+Multiple decision trees may output the same results. This can be seen in Fig. \ref{fig:simpleComplex} where two different decision trees classify the dataset correctly. \cite{quinlan_induction_1986} suggests that that in scenarios like this, the simpler decision tree would be chosen (Fig. \ref{fig:simple}).
 
 \begin{figure}[H]
 	\centering
@@ -341,9 +338,9 @@ Multiple decision trees may output the same results. This can be seen in Fig. \r
 	\label{fig:simpleComplex}
 \end{figure}
 
-This is done because the simpler the rules of the tree the more likely the tree is to generalise well on unseen data. In other words if the tree is too complex it is more than likely over-fitting the training dataset. There is also a computational cost to classifying complex algorithms. 
+This is done because the simpler the rules of the tree the more likely the tree is to generalise well on unseen data. In other words, if the tree is too complex it is more than likely over-fitting the training dataset. There is also a computational cost to classifying complex algorithms. 
 
-There are also other issues to be aware of when building a classifier using a decision tree. Information gain can be biased to features that have a large number of values. These features will result in a root node that produces a very broad or wide tree that classifies the training data well or perfectly but performs very poorly on unseen cases. One scenario where this could happen would be if you used the unique identifier of each record  as a training input, this model would perform very well in training but would not perform well on unseen data. There are methods to mitigate the the risk of over-fitting against these features such as \textit{gain ratio}, \textit{symmetric uncertainty} and the \textit{gini index}. \cite{quinlan_induction_1986} noted that using these methods for node decision often found favourable results compared with information gain. It should also be noted that \textit{gain ratio}, \textit{symmetric uncertainty}, \textit{gini index}, and \textit{information gain} can be used in the feature selection process which is discussed in Section \ref{sec2:featureSection}.
+ Other issues one needs to be mindful of when building a classifier using a decision tree include the following. Information gain can be biased to features that have a large number of values. These features will result in a root node that produces a very broad or wide tree which classifies the training data well or perfectly but performs very poorly on unseen cases. One scenario where this could happen would be if one used the unique identifier of each record  as a training input; this model would perform very well in training but would not perform well on unseen data. There are methods to mitigate the risk of over-fitting against these features such as \textit{gain ratio}, \textit{symmetric uncertainty} and the \textit{Gini index}. \cite{quinlan_induction_1986} noted that using these methods for node decision often produced favourable results when compared with information gain. It should also be noted that \textit{gain ratio}, \textit{symmetric uncertainty}, \textit{Gini index}, and \textit{information gain} can be used in the feature selection process which is discussed in Section \ref{sec2:featureSection}.
 
 \subsection{Artificial Neural Networks} \label{neuralNets}
 The \textit{artificial neural network} (ANN) is learning algorithm that is based on an understanding of how neural networks, such as our brain learns. Motivation to study how ANN comes from the success of how the human brain was faster than the worlds fastest computers at certain applications such as object recognition, speech recognition and general perception \citep{haykin_neural_1998}.
