@@ -343,13 +343,13 @@ This is done because the simpler the rules of the tree the more likely the tree 
  Other issues one needs to be mindful of when building a classifier using a decision tree include the following. Information gain can be biased to features that have a large number of values. These features will result in a root node that produces a very broad or wide tree which classifies the training data well or perfectly but performs very poorly on unseen cases. One scenario where this could happen would be if one used the unique identifier of each record  as a training input; this model would perform very well in training but would not perform well on unseen data. There are methods to mitigate the risk of over-fitting against these features such as \textit{gain ratio}, \textit{symmetric uncertainty} and the \textit{Gini index}. \cite{quinlan_induction_1986} noted that using these methods for node decision often produced favourable results when compared with information gain. It should also be noted that \textit{gain ratio}, \textit{symmetric uncertainty}, \textit{Gini index}, and \textit{information gain} can be used in the feature selection process which is discussed in Section \ref{sec2:featureSection}.
 
 \subsection{Artificial Neural Networks} \label{neuralNets}
-The \textit{artificial neural network} (ANN) is learning algorithm that is based on an understanding of how neural networks, such as our brain learns. Motivation to study how ANN comes from the success of how the human brain was faster than the worlds fastest computers at certain applications such as object recognition, speech recognition and general perception \citep{haykin_neural_1998}.
+The \textit{artificial neural network} (ANN) is a learning algorithm based on an understanding of how neural networks, such as our brains, learn. Motivation to study how an ANN works comes from the success of how the human brain is faster than the worlds' fastest computers at certain applications such as object recognition, speech recognition and general perception \citep{haykin_neural_1998}.
 
-As a human grows their brain develops, learns and creates a set rules based on the experiences it has had. These rules and experiences are stored in approximately 100 billion neurons or nerve cells in the brain. These neurons are connected in a network and use this as a method of communication sending electrical and chemical signals back and forth between each other. On their own each neuron is not very useful but together combined and with communication has allowed humans to learn and grow so successfully. 
+As a human grows, their brain develops, learns and creates a set of rules based on the experiences it has had. These rules and experiences are stored in approximately 100 billion neurons or nerve cells in the brain. These neurons are connected in a network and use this as a method of communication, sending electrical and chemical signals back and forth between each other. On their own, each neuron is not very useful but in combination with other neurons and communication, this has allowed humans to learn and grow so successfully. 
 
-An ANN seeks to replicate the neural network of the human brain, albeit on a much smaller scale. It does this by taking advantage of powerful computers which carry out a lot of simple tasks very quickly. ANN have proven their value from their ability to map out any non-linear function \citep{white_learning_1989} and their prowess in applications such as pattern and speech recognition and forecasting \citep{kaastra_forecasting_1995}.
+An ANN seeks to replicate the neural network of the human brain, albeit on a much smaller scale. It does this by taking advantage of powerful computers which carry out a lot of simple tasks very quickly. ANNs have proven their value from their ability to map out any non-linear function \citep{white_learning_1989} and their prowess in applications such as pattern and speech recognition and forecasting \citep{kaastra_forecasting_1995}.
 
-Fig. \ref{fig:annFotwardFeeding} shows a common layout of an ANN. Like in the brain the ANN is comprised of processing neurons usually known as nodes which are organised into three layers, input, hidden and output. Between layers nodes are connected and as seen in Fig. \ref{fig:annFotwardFeeding} each connection may carry a different weight.
+Fig. \ref{fig:annFotwardFeeding} shows a common layout of an ANN. As in the human brain, the ANN is comprised of processing neurons usually known as nodes which are organised into three layers, input, hidden and output. Nodes are connected between layers and as seen in Fig. \ref{fig:annFotwardFeeding} each connection may carry a different weight.
 
 \begin{figure}[H]
 	\includegraphics[width=.6\textwidth, center]{annFotwardFeeding}
@@ -359,14 +359,14 @@ Fig. \ref{fig:annFotwardFeeding} shows a common layout of an ANN. Like in the br
 	\label{fig:annFotwardFeeding}
 \end{figure}
 
-Data comes in through the input layers nodes and is fed through the network, from the input to the hidden and then onto the output layer. In the hidden layer each node calculates a sum based on the input node and the weight of the connection, these hidden nodes then pass on values to the nodes in the outer layer where another calculation which converts the value to a value between 0 and 1 by passing it through the sigmoid function seen in Fig. \ref{fig:logistic_function}. Throughout the training process the connection weights are changed and tested in order for the ANN to learn and improve its predictions \citep{haykin_neural_1998}
+Data comes in through the input layer's nodes and is fed through the network, from the input to the hidden and then onto the output layer. In the hidden layer, each node calculates a sum based on the input node and the weight of the connection. These hidden nodes then pass on values to the nodes in the outer layer where another calculation is performed: this calculation converts the value to a value between 0 and 1 by passing it through the sigmoid function seen in Fig. \ref{fig:logistic_function}. Throughout the training process, the connection weights are changed and tested in order for the ANN to learn and improve its predictions \citep{haykin_neural_1998}
 
-Although ANN have become increasingly popular in recent years due to improvements in the algorithms, the the increase in computer power and success in application such as object and speech recognition,  some are still sceptical because of the ``black box" nature of their results, where users do not know what the internal workings of the algorithm are  \citep{kaastra_forecasting_1995}. 
+ANNs have become increasingly popular in recent years due to improvements in the algorithms, the increase in computer power and success in application such as object and speech recognition. However, some remain sceptical because of the ``black box" nature of their results, where users do not know what the internal workings of the algorithm are  \citep{kaastra_forecasting_1995}. 
 
 
 
 \subsection{Support Vector Machines} \label{SVM}
-A Support Vector Machines (SVMs) algorithm was developed first by \cite{vapnik_nature_1995}. The algorithm performs classifications via a hyperplane in a higher dimensional feature space that maximises the margin or distance separating the two classes. It can be seen in Fig. \ref{fig:svmExample} that the two classes are linearly separable using the hyperplane in the higher dimensional feature space. 
+A Support Vector Machine (SVM) algorithm was developed first by \cite{vapnik_nature_1995}. The algorithm performs classifications via a hyperplane in a higher dimensional feature space that maximises the margin or distance separating the two classes. It can be seen in Fig. \ref{fig:svmExample} that the two classes are linearly separable using the hyperplane in the higher dimensional feature space. 
 
 \begin{figure}[H]
 	\includegraphics[width=.5\textwidth, center]{svmExample}
@@ -376,7 +376,7 @@ A Support Vector Machines (SVMs) algorithm was developed first by \cite{vapnik_n
 	\label{fig:svmExample}
 \end{figure}
 
-SVM handles situations of non-linear data by using kernel functions (non linear) to transform the data into a higher dimensional feature space. This allows it to become linearly separable via a hyperplane, this is known as the \textit{kernel trick}. It can illustrated in Fig. \ref{fig:svm_nonLinearlySeperable} by transforming non linearly seperable data into a higher dimensional feature space where it can be linearly separated using a hyperplane. This is ability is what differentiates SVM from logistic regression.
+SVM handles situations of non-linear data by using kernel functions (non-linear) to transform the data into a higher dimensional feature space. This allows it to become linearly separable via a hyperplane, this is known as the \textit{kernel trick}. This is illustrated in Fig. \ref{fig:svm_nonLinearlySeperable}, where non linearly separable data is transformed into a higher dimensional feature space where it can be linearly separated using a hyperplane. This ability is what differentiates SVM from logistic regression.
 
 \begin{figure}[H]
 	\includegraphics[width=.5\textwidth, center]{svm_nonLinearlySeperable}
@@ -386,63 +386,63 @@ SVM handles situations of non-linear data by using kernel functions (non linear)
 	\label{fig:svm_nonLinearlySeperable}
 \end{figure}
 
-It has been documented across a range of domains where SVMs perform well such as credit risk evaluation \citep{van_gestel_credit_2009} and text categorisation, cancer diagnosis and pattern recognition \citep{shin_application_2005}
+There is much documentation illustrating the successful application of SVMs in several domains, including areas such as credit risk evaluation \citep{van_gestel_credit_2009} and text categorisation, cancer diagnosis and pattern recognition \citep{shin_application_2005}.
 
 \subsection{Ensemble Models and Boosting} \label{boosting}
 
 In 1907, mathematician Sir Francis Galton went to a market in which there was a challenge
 to approximate the weight of an ox. After evaluating the 787 forecasts made by the
 participants, he noticed that while there was a large variance in the forecast from the correct weight, the median value of the
-forecasts was less than 1\% away from the correct weight of the Ox \citep{galton_vox_1907}. Although separate forecasts failed miserably, the united wisdom of the every guess generated a very accurate estimate. This is a similar how ensemble models are generated.
+forecasts was less than 1\% away from the correct weight of the Ox \citep{galton_vox_1907}. Although separate forecasts failed miserably, the united wisdom of the every guess generated a very accurate estimate. This is similar to how ensemble models are generated.
 
 
-Boosting relates to a powerful principal of generating a very accurate prediction model using an aggregation of reasonably inaccurate ``rules of thumb'' \citep{freund_short_1999}. A frequently utilised ensemble is the Adaptive Boosting algorithm which is frequently called AdaBoost in the literature. A weak learner is produced from the first iteration where all of the observations can potentially be chosen. For later sampling of the distribution the model makes adjustments based on the error rates of the classifier so that model only will look at samples of data that were incorrectly classified \citep{freund_short_1999}. This way the algorithm is step by step adapting based on the errors of past classifications and then focuses on correcting the record labels it got incorrect. A specific method of AdaBoost is the Boosted-Stumps Model. This is an ensemble model that leverages decision tree stumps, these are decision trees with one split. This method is seen to be optimal compared to the common AdaBoost model which tends to over-fit the training dataset \citep{caruana_empirical_2006}.
+Boosting relates to a powerful principal of generating a very accurate prediction model using an aggregation of reasonably inaccurate ``rules of thumb'' \citep{freund_short_1999}. A frequently utilised ensemble is the Adaptive Boosting algorithm which is frequently called AdaBoost in the literature. A weak learner is produced from the first iteration where all of the observations can potentially be chosen. For later sampling of the distribution, the model makes adjustments based on the error rates of the classifier, so that model only will look at samples of data that were incorrectly classified \citep{freund_short_1999}. In this way, the algorithm is adopting step by step, based on the errors of past classifications and then focuses on correcting the record labels it got incorrect. A specific method of AdaBoost is the Boosted-Stumps Model. This is an ensemble model that leverages decision tree stumps, which are decision trees with one split. This method is seen to be optimal compared to the common AdaBoost model which tends to over-fit the training dataset \citep{caruana_empirical_2006}.
 
-Bagging is an alternative method employed to generate ensemble models leveraging decision trees. One method of bagging is \textit{bootstrap replica}. This method works on the principal for a dataset of size $n$ that will be used to train a model, it generates trees using just different partitions of the training data with replacement \citep{dietterich_experimental_2000}. 
+Bagging is an alternative method employed to generate ensemble models leveraging decision trees. One method of bagging is \textit{bootstrap replica}. This method works on the principle for a dataset of size $n$ to be used to train a model, generating trees using just different partitions of the training data with replacement \citep{dietterich_experimental_2000}. 
 
-Random forests are another example of an ensemble model generated using multiple decision trees. A large number of decisions trees will be trained and results are combined together to make a classification, hence why its called a forest. Each decision tree is trained on random subsets of the features available hence why its called a random forest. Research provided by \cite{breiman_random_2001} demonstrated that the random forests performed better on tests compared to AdaBoost method across a variety of datasets.
+Random forests are another example of an ensemble model generated using multiple decision trees. A large number of decisions trees will be trained and results are combined together to make a classification, hence why it is called a `forest'. Each decision tree is trained on random subsets of the features available, hence why its called a `random' forest. Research provided by \cite{breiman_random_2001} demonstrated that the random forests performed better on tests compared to the AdaBoost method across a variety of datasets.
 
 
 \section{Feature Selection}\label{sec2:featureSection}
-Feature selection is a process of choosing the best subset of features from the full dataset to train the prediction model. \cite{guyon_introduction_2003} discusses that feature selection methods are usually split into one of three categories (i) filter techniques (ii) wrapper techniques (iii) embedded techniques. 
+Feature selection is a process of choosing the best subset of features from the full dataset to train the prediction model. \cite{guyon_introduction_2003} discusses that feature selection methods are usually split into one of three categories (i) filter techniques (ii) wrapper techniques and (iii) embedded techniques. 
 
 \subsubsection{Filter Methods}
-Filter feature selection methods use statistics to assign a score for each feature versus the target. The features are then ordered by predictability and a decision is made what features to keep. Filter method techniques include information gain, correlation coefficient and the chi squared test.
+Filter feature selection methods use statistics to assign a score for each feature versus the target. The features are then ordered by predictability and a decision is made as to what features to keep. Filter method techniques include information gain, correlation coefficient and the chi squared test.
 
 \subsubsection{Wrapper Methods}
-Wrapper feature selection method evaluates various subsets of features together while scoring the model for each subset. The different model results are then evaluated and compared against the other results returning the result which returned the best score based on the model evaluation criteria. Forward, backward and general stepwise regression are very common techniques of wrapper methods used.
+Wrapper feature selection methods evaluate various subsets of features together while scoring the model for each subset. The resultant different model results are then evaluated and compared against the other results, returning the result which offered the best score based on the model evaluation criteria. Forward, backward and general stepwise regression are very common techniques of wrapper methods.
 
 \subsubsection{Embedded Methods}
-Embedded feature selection method attempts to combine the two previous methods together. That is, the method looks to learn what features are useful as the model is being created. 
+Embedded feature selection methods attempt to combine the two previous methods. That is, the method looks to learn what features are useful as the model is being created. 
 
-Feature selection is very important in the credit scoring process and there are many reasons in the literature that suggest it should be used. The \textit{curse of dimensionality} is one such issue. If there are too many features in the model it may perform well on the training dataset but when executed on unseen data it may perform poorly because the model has over-fitted many irrelevant or noisy features \citep{loughrey_overfitting_2005}. Research from (\cite{thomas_consumer_2009}; \cite{mays_credit_2004})  advise that to build a robust scoring model you should have somewhere between 8 and 20 predictive features. There are many reason for this, there is a practical issue of having to model more features. There are costs, overheads and maintenance associated with each feature that is redundant in the model. Referencing Fig. \ref{fig:simpleComplex} we can see that it is much more desirable to have simple decision tree than a complex decision tree with the same outputs, likewise if two datasets are providing the same results only one is a subset it is always better to choose the subset. 
+Feature selection is very important in the credit scoring process and there are many reasons in the literature that suggest it should be used. The \textit{curse of dimensionality} is one such issue. If there are too many features in the model, it may perform well on the training dataset but when executed on unseen data it may perform poorly because the model has over-fitted many irrelevant or noisy features \citep{loughrey_overfitting_2005}. Research from (\cite{thomas_consumer_2009}; \cite{mays_credit_2004}) advises that to build a robust scoring model there should be somewhere between 8 and 20 predictive features. There are many reason for this: there is a practical issue of having to model more features; there are costs, overheads and maintenance associated with each redundant feature in the model. Referencing Fig. \ref{fig:simpleComplex}, one can see that it is much more desirable to have a simple decision tree than a complex decision tree with the same outputs. Similarly, if two datasets are providing the same results and one is a subset, it is always better to choose the subset. 
 
 \section{Coarse Classification} \label{sec:binning}
-Coarse classification is often utilized to transform the predictive features into a simpler form which is better suited for modelling \citep{carroll_transformation_1988}. Coarse classification is also referred to in the literature as binning, grouping, discretisation. For continuous and categorical feature values are transformed into a small number of bins or groups. These values  are mapped into these groups by referring to the target feature to identify the optimal cut-off points. 
+Coarse classification is often utilised to transform the predictive features into a simpler form which is better suited for modelling \citep{carroll_transformation_1988}. Coarse classification is also referred to in the literature as binning, grouping or discretisation. For continuous and categorical features, values are transformed into a small number of bins or groups. These values  are mapped into these groups by referring to the target feature to identify the optimal cut-off points. 
 
-Coarse classification has many benefits, one is that it allows for capturing the features non liner relationship with the target feature. This is done through each category in the group being treated as its own dummy variable which will have its own weight in a logistic regression model \citep{hand_optimal_2005}. Coarse selection can also increase the overall robustness of the model by reducing the possibility of over-fitting by creating groups with the optimal number of good and records \citep{baesens_50_2009}. It also gives you the capability of mitigating against the risk or outliers and missing values. 
+Coarse classification has many benefits, one of which is that it allows for capturing the features' non-liner relationship with the target feature. This is achieved by each category in the group being treated as its own dummy variable which will have its own weight in a logistic regression model \citep{hand_optimal_2005}. Coarse selection can also increase the overall robustness of the model by reducing the possibility of over-fitting. It does this by creating groups with the optimal number of good records \citep{baesens_50_2009}. It also offers the capability of mitigating against the risk of outliers and missing values. 
 
-Coarse classification is also very quick to deploy, previously it would have been completed by analysts iteratively completing the process which was a very time consuming process. Algorithms now such as chimerge and recursive partitioning to name a few, find optimal cut-points in the features quickly and accurately. These groups are then evaluated using the \textit{Weight of Evidence} (WoE) and \textit{Information Value} (IV) \citep{garcia_survey_2013}. 
+Coarse classification is also very quick to deploy. Previously, it would have been achieved by analysts iteratively completing the process which was a very time consuming. Algorithms now such as chimerge and recursive partitioning to name a few, find optimal cut-points in the features quickly and accurately. These groups are then evaluated using the \textit{Weight of Evidence} (WoE) and \textit{Information Value} (IV) \citep{garcia_survey_2013}. 
 
-A common methodology to coarse classification is to break up each feature into roughly three to six bins or groups \citep{hand_optimal_2005}. It is recommended that bins are limited to six to ensure the model does not become over-parameterised and difficult to manage. Contrarily, the model will become too rigid if less than three groups are used. 
+A common methodology in coarse classification is to break up each feature into roughly three to six bins or groups \citep{hand_optimal_2005}. It is recommended that bins are limited to six to ensure the model does not become over-parameterised and difficult to manage. Conversely, the model will become too rigid if fewer than three groups are used. 
 
-Approximating the WoE of each bin, and tuning where optimal is the most known method to carrying out coarse selection \citep{thomas_consumer_2009}. In a credit scoring problem the WoE for bin $i$ is defined as 
+Approximating the WoE of each bin and tuning where optimal is the most-known method in carrying out coarse selection \citep{thomas_consumer_2009}. In a credit scoring problem the WoE for bin $i$ is defined as 
   
 \begin{equation} \label{eq:woe}
 \text{WoE} =  \ln\bigg(\frac{n_g(i)}{n_b(i)} \bigg/ \frac{N_g}{N_b}\bigg)
 \end{equation}
 
-where the amount of goods in a bin $i$ is $n_g(i)$, and the amount of bads in a bin $i$ is $n_b(i)$. $N_g$ and $N_b$ are the total amount of goods and bads in the full dataset. A negative WoE signals that a bin is more likely to default, whereas a positive WoE signals they likely to not default.
+where the amount of goods in a bin $i$ is $n_g(i)$, and the amount of bads in a bin $i$ is $n_b(i)$. $N_g$ and $N_b$ are the total amount of goods and bads in the full dataset. A negative WoE signals that a bin is more likely to default, whereas a positive WoE signals they are likely to not default.
 
-The information value is frequently applied with the WoE. The IV is powerful method ranking variables by their importance which can be used for feature selection in the prediction model. The IV suggests the predictive capability of a binned feature, it is defined as  
+The information value is frequently applied with the WoE. The IV is a powerful method for ranking variables by their importance which can be used for feature selection in the prediction model. The IV suggests the predictive capability of a binned feature and is defined as  
  
 \begin{equation} \label{eq:informatoValue}
 \text{IV} =  \sum\limits_{i=1}^j \bigg(\frac{n_g(i)}{N_g} -   \frac{n_b(i)}{N_b}\bigg) * \text{WoE$_i$}
 \end{equation}
 
-where $j$ is the amount of bins in a feature. The IV of each bin is known as a contribution, which are then added together to generate the IV of a feature.
+where $j$ is the number of bins in a feature. The IV of each bin is known as a contribution, which are then added together to generate the IV of a feature.
 
-In general binned features with an IV between 0.3 and and less than 0.5 are thought to be very predictive features \citep{mays_credit_2004}. If the IV is more than 0.5 it could be an anachronistic feature and should be examined further \citep{siddiqi_credit_2012}. Binned features with an IV smaller than 0.1 are thought to be weaker features and could be considered to be removed from the model \citep{anderson_credit_2007}.
+In general, binned features with an IV between 0.3 and 0.5 are thought to be very predictive features \citep{mays_credit_2004}. If the IV is more than 0.5 it could be an anachronistic feature and should be examined further \citep{siddiqi_credit_2012}. Binned features with an IV smaller than 0.1 are thought to be weaker features and their removal from the model should be considered \citep{anderson_credit_2007}.
 
 \begin{comment}
 \subsection{Correlation-based Feature Selection}
@@ -451,13 +451,13 @@ In general binned features with an IV between 0.3 and and less than 0.5 are thou
 \end{comment}
 
 \section{Class Imbalance Problem}\label{sec:imBalance}
-One of the biggest assumptions that needs to be understood when using classification algorithms is that most assume there is a balanced distribution of the target class \citep{japkowicz_class_2000}. Target class imbalance is described by  \citep{chawla_smote:_2002} where the number of  of records in each class are not equal. In a balanced dataset, the ratio between the a binary target class would be close to 50:50. 
+A key assumption which needs to be taken into account when using classification algorithms is that there is a balanced distribution of the target class \citep{japkowicz_class_2000}. Target class imbalance is described by  \citep{chawla_smote:_2002} where the number of records in each class are not equal. In a balanced dataset, the ratio between the a binary target class would be close to 50:50. 
 
-One of the issues with imbalance arises when algorithms assume there is a balanced target class, and they attempt to maximise the accuracy by predicting the most common class \citep{drummond_severe_2005}. The algorithms attempt to minimise the classification errors, but does not account for the incorrectly classifying cases \citep{seiffert_improving_2009}. While the overall classification might be very accurate the results are not very useful in real world problems. This is because in the majority of cases the algorithm will focus on the majority class, because of how heavily it is weighted in the training dataset ignoring the minority class. This is major problem because in the majority of cases the aim will be to predict the minority class. In this thesis SME customers going into default is the minority e.g. there are more SME customers that do not default at the end of the outcome window than SME customers that do default.
+One of the issues with imbalance arises when algorithms assume there is a balanced target class and they attempt to maximise the accuracy by predicting the most common class \citep{drummond_severe_2005}. The algorithms attempt to minimise the classification errors but fails to account for the incorrectly classifying cases \citep{seiffert_improving_2009}. While the overall classification might be very accurate, the results are not very useful in real world problems. This is because, in most cases, the algorithm will focus on the majority class, because of how heavily it is weighted in the training dataset and therefore ignoring the minority class. This is a serious issue because in most situations, the aim will be to predict the minority class. In this thesis, SME customers going into default is the minority e.g. there are more SME customers who do not default at the end of the outcome window than SME customers who default.
 
-The study of class imbalance has started to receive more and more attention in relation to data mining and machine learning in recent times. \cite{weiss_mining_2004} discusses the role and issues that rare class instances can play in data mining. \cite{weiss_mining_2004} makes the distinction that there are two types of class imbalance which depend on the type of rarity in the data, these are called \textit{absolute rarity} and \textit{relative rarity}.
+In recent years, more of the data mining and machine learning literature has explored the issue of class imbalance. \cite{weiss_mining_2004} discusses the role and issues that rare class instances can play in data mining. \cite{weiss_mining_2004} makes the distinction that there are two types of class imbalance which depend on the type of rarity in the data, these are called \textit{absolute rarity} and \textit{relative rarity}.
 
-The major issue with rarity is that there is simply a lack of data in real world problems. Absolute rarity occurs when the number of instances related to the rare class is very small in an absolute sense. Lack of data means it is difficult to identify what leads to a rare class. Fig. \ref{fig:absoluteRarity} illustrates how absolute rarity can become an issue.
+The primary issue with rarity is that there is simply a lack of data in real world problems. Absolute rarity occurs when the number of instances related to the rare class is very small in an absolute sense. Lack of data means it is difficult to identify what leads to a rare class. Fig. \ref{fig:absoluteRarity} illustrates how absolute rarity can pose difficulty.
 
 \begin{figure}[H]
 	\includegraphics[width=0.6\textwidth,center]{absoluteRarity}
@@ -467,13 +467,13 @@ The major issue with rarity is that there is simply a lack of data in real world
 	\label{fig:absoluteRarity}
 \end{figure}
 
-It can be seen on the left side of Fig. \ref{fig:absoluteRarity} that there is only one rare/positive example, compared to the right where there is more data thus more rare cases. It can be observed that the decision boundary on the right side of Fig. \ref{fig:absoluteRarity} is much more accurate when there is more data than on the left side Fig. \ref{fig:absoluteRarity} when there is just one observed rare class. This is a simple illustration that having more data should allow you to make better predictions. Relative rarity is where classes are not rare in an absolute sense but are rare relative to other objects. A supermarket example can illustrate this better, imagine trying to identify the relationship between two items, but these items are rarely purchased as a whole, so even if they happen to be purchased together the relationship may be difficult to identify.
+On the left side of Fig. \ref{fig:absoluteRarity} there is only one rare/positive example, compared to the right where there is more data thus more rare cases. It can be observed that the decision boundary on the right side of Fig. \ref{fig:absoluteRarity} is much more accurate when there is more data than on the left side Fig. \ref{fig:absoluteRarity} when there is just one observed rare class. This is a simple illustration of the fact that more data should facilitate better predictions. Relative rarity is where classes are not rare in an absolute sense but are rare relative to other objects. A supermarket example can illustrate this better: imagine trying to identify the relationship between two items but these items are rarely purchased as a whole, so even if they happen to be purchased together, the relationship may be difficult to identify.
 
-As mentioned previously, very often in real world problems class imbalance exists in the dataset, thus research has been completed proposing methods of mitigating against this risk. \cite{chawla_editorial:_2004} proposes solutions fine tuning the algorithm and manipulating the data. 
+As previously mentioned, class imbalances in the dataset occur very often in real world problems and thus research has been devoted to proposing methods of mitigating against this risk. \cite{chawla_editorial:_2004} proposed solutions centres on fine tuning the algorithm and manipulating the data. 
 
 \subsubsection{Manipulating the data} \label{sec:dataManip}
 
-A method of manipulating the data is to resample the data with the aim of balancing the distribution of the target class. Solutions proposed are as follows
+A method of manipulating the data is to resample the data with the aim of balancing the distribution of the target class. Solutions proposed are as follows:
 
 \begin{itemize}
 	\item Random undersampling of the majority class
@@ -481,11 +481,11 @@ A method of manipulating the data is to resample the data with the aim of balanc
 	\item Synthetic sampling of the minority class 
 \end{itemize}
 
-A very common method used is to randomly oversample the minority class in your training set, one of the biggest issues with this is that you are increasing your chances of over-fitting the algorithm to the training data as the model has been trained on multiple copies of the same data which are not adding any new information. This may cause the trained model to be biased and skewed on the training data, causing it to perform poorly on the test data \cite[See][]{hawkins_problem_2004}.
+A method commonly used is to randomly oversample the minority class in the training set. However, this increases the chances of over-fitting the algorithm to the training data as the model has been trained on multiple copies of the same data, none of which are adding any new information. This may cause the trained model to be biased and skewed on the training data, causing it to perform poorly on the test data \cite[See][]{hawkins_problem_2004}.
 
-Random undersampling of the minority class is where random samples of the training dataset that are part of the majority class are removed. This means the number of minority classes remains unchanged but the majority class is reduced, thus the overall the target class will become more balanced. The issue that arises from undersampling is that there is a possibility that important information from the training dataset will be removed. \cite{kennedy_credit_2013} details that undersampling the majority class is not a useful solution for the issue of absolute rarity.
+Random undersampling of the minority class is where random samples of the training dataset that are part of the majority class are removed. This means the number of minority classes remains unchanged but the majority class is reduced, therefore the overall target class will become more balanced. The issue that arises from undersampling is that there is a possibility that important information from the training dataset will be removed. \cite{kennedy_credit_2013} details that undersampling the majority class is not a useful solution for the issue of absolute rarity.
 
-Synthetic sampling is an alternative method to randomly oversampling the minority class. New data items are added to the training dataset but unlike oversampling which adds duplicate records the records added are dummy or made up in a way to look similar and take characteristics of the already existing records, thus they are not duplicates but synthetic. One method for creating synthetic data was proposed by \citep{chawla_smote:_2002} where data was generated by creating data items using \textit{k-nearest neighbours} (KNN) where the item would sit between minority classes.
+Synthetic sampling is an alternative method to randomly oversampling the minority class. New data items are added to the training dataset but unlike oversampling, which adds duplicate records, the records added are dummy or made up in a way to look similar and take characteristics of the already existing records, thus they are not duplicates but synthetic. One method for creating synthetic data was proposed by \citep{chawla_smote:_2002} where data was generated by creating data items using \textit{k-nearest neighbours} (KNN) where the item would sit between minority classes.
 
 \begin{figure}[H]
 	\centering
@@ -505,23 +505,24 @@ Synthetic sampling is an alternative method to randomly oversampling the minorit
 	\label{fig:smoteExample}
 \end{figure}
 
-Above in Fig. \ref{fig:smoteExample} it is illustrated how synthetic data using the SMOTE methodology can be generated.
+Above in Fig. \ref{fig:smoteExample} above illustrates how synthetic data using the SMOTE methodology can be generated.
 
 
 \subsubsection{Fine tuning the algorithm}
-There are methods that handle class imbalance issue by fine tuning the algorithm. One method which is illustrated in Chapter \ref{Chapter4} of this thesis is to adjust the cut-off or threshold value for the model which some performance measures are dependant on. \cite{provost_machine_2000} warns that it would be \textit{``critical mistake"} not to do so if faced with this issue. \cite{chawla_editorial:_2004} suggests using evaluation measures such as accuracy that rely on a specific threshold could lead to misleading results when the target class is imbalanced, they instead recommend using ROC and AUC to get a more accurate and conclusive predictions.
+Some methods to handle the class imbalance issue do so by fine tuning the algorithm. One method which is illustrated in Chapter 4 of this thesis is to adjust the cut-off or threshold value for the model on which some performance measures are dependant. \cite{provost_machine_2000} warns that it would be \textit{``critical mistake"} not to do so if faced with this issue. \cite{chawla_editorial:_2004} suggests using evaluation measures (such as accuracy) that rely on a specific threshold, could lead to misleading results when the target class is imbalanced. They instead recommend using ROC (Receiver Operating Characteristic) and AUC (Are
+Under Curve) to get more accurate and conclusive predictions.
 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 7
 %----------------------------------------------------------------------------------------
 \section{Model Validation Methods}\label{sec:modelValid}
-In data mining historic data is used to train a model to make future predictions. Trained classification algorithms like the ones already discussed in this chapter need to validated and tested. This section details some of the methods and approaches to tackling this problem, and has been discussed extensively in \citep{refaeilzadeh_cross-validation_2009}.
+In data mining, historic data is used to train a model to make future predictions. Trained classification algorithms like the ones already discussed in this chapter need to be validated and tested. This section details some of the methods and approaches to tackling this problem, such as those discussed extensively in \citep{refaeilzadeh_cross-validation_2009}.
 
 \subsubsection{Holdout Validation}
-The \textit{holdout validation} method is used to split the dataset into partitions, one for training and one for testing. The algorithm is trained on the training partition. This allows for the model testing to be carried out when the model classifies the test partition to evaluate how well it generalises and performs on unseen data. This method has an issue however where one, not all the data is used for training, and two the results can be dependent on the how and what datasets are used for training and testing. Examples where this could become an issue is if important information in the data for training is lost in the test partition, or the instances chosen for test may be too easy or too difficult to classify, this may cause results to be skewed and making  predictions bias to that testing partition. 
+The \textit{holdout validation} method is used to split the dataset into partitions, one for training and one for testing. The algorithm is trained on the training partition. This allows for the model testing to be carried out: when the model classifies the test partition to evaluate how well it generalises and performs on unseen data. This method is not faultless however, particularly where not all the data is used for training and because results can be dependent on how and what datasets are used for training and testing. Examples where this could become an issue is if important information in the data for training is lost in the test partition, or the instances chosen for test may be too easy or too difficult to classify. These situations may cause results to be skewed and cause prediction bias in that testing partition.
 
-The hold-out method can also incorporate a third subset called the \textit{validation set}. In this case the dataset is partitioned into three partitions train, validation, and test. The validation sets purpose is to fine tune models parameters, for example selecting the best threshold cut-off measure for a model or performance measure. It is not always required for building predictive models. 
+The hold-out method can also incorporate a third subset called the \textit{validation set}. In this case the dataset is partitioned into three partitions train, validation, and test. The validation set's purpose is to fine tune model's parameters, for example selecting the best threshold cut-off measure for a model or performance measure. It is not always required for building predictive models. 
 
 \begin{figure}[H]
 	\includegraphics[width=0.6\textwidth,center]{holdout}
@@ -529,9 +530,9 @@ The hold-out method can also incorporate a third subset called the \textit{valid
 	\label{fig:holdout}
 \end{figure}
 
-Fig. \ref{fig:holdout} illustrates how the complete dataset is partitioned into a training and test datasets. 
+Fig. \ref{fig:holdout} illustrates how the complete dataset is partitioned into training and test datasets. 
 
-To address the biasses in the holdout method tests can be ran multiple times with the results averaged, or more commonly employ a method such as \textit{k-fold cross-validation} discussed in the next subsection.
+To address the biases in the holdout method, one can run tests multiple times with the results averaged, or more commonly employ a method such as \textit{k-fold cross-validation} discussed in the next subsection.
 
 \subsubsection{K-Fold Cross Validation}\label{subsec:k_fold}
 The \textit{k-fold cross validation} can be used to deal with the bias issues discussed above in the holdout method. The first step of this method is to split the data into $k$ equally sized partitions called folds. A model is then trained using $k$ iterations, where for each iteration a different fold of data is used for testing and training the model. This is illustrated below in Fig. \ref{fig:5-fold-cv} where there are 5-folds, and for each iteration you can see a different fold is being used for training and testing.  
@@ -542,36 +543,36 @@ The \textit{k-fold cross validation} can be used to deal with the bias issues di
 	\label{fig:5-fold-cv}
 \end{figure}
 
-It is important and usually common practice that each fold is representative of the whole dataset, for each example that the target class ratio split is the same for each fold as for the entire dataset. 
+It is important and usually common practice that each fold is representative of the whole dataset, that is for each example that the target class ratio split is the same for each fold as for the entire dataset. 
 
 \subsubsection{Leave-One-Out Cross-Validation}
-The \textit{leave-one-out cross-validation} (LOOCV) method is a specialised version of $k$-fold cross-validation, where $k$ is equal to the number of observations in the dataset. In layman's term this means all the data bar one observation is utilized training the model, and testing is done on one observation. This is completed for each observation in the dataset. Although it is worth noting that accuracy estimated using this method produces unbiased results, it also output high variance which can lead to misleading results \citep{refaeilzadeh_cross-validation_2009}.
+The \textit{leave-one-out cross-validation} (LOOCV) method is a specialised version of $k$-fold cross-validation, where $k$ is equal to the number of observations in the dataset. In layman's terms, this means all the data except for one observation is utilised in training the model and testing is done on one observation. This is completed for each observation in the dataset. Although it is worth noting that accuracy estimated using this method produces unbiased results, it also outputs high variance which can lead to misleading results \citep{refaeilzadeh_cross-validation_2009}.
  
 
 \subsubsection{Repeated K-Fold Cross Validation}
-The \textit{repeated k-fold cross validation} method is another specialised version of $k$-fold cross-validation. In an attempt to improve the performance of the model using this method $k$-fold cross-validation is rerun multiples times. Each time it is re-ran the data is shuffled so data will appear in different folds for each repeat run. 
+The \textit{repeated k-fold cross validation} method is another specialised version of $k$-fold cross-validation. In an attempt to improve the performance of the model, in this method $k$-fold cross-validation is re-run multiples times. Each time it is re-ran the data is shuffled so data will appear in different folds for each repeat run. 
 
 \subsubsection{Summary}
 
-The holdout and cross validation methods are both used extensively for evaluating the performance of the prediction models. If there is a large enough dataset then holdout method is usually a good choice for measuring model performance. When there is a small amount of data available it better to use a $k$-fold cross validation. $K$-fold theoretically simple to understand but may not be a simple to implement as the code may be tedious and time consuming where the gains may not be worth the investment in industry. 
+The holdout and cross validation methods are both used extensively for evaluating the performance of the prediction models. If there is a large enough dataset, then the holdout method is usually a good choice for measuring model performance. When there is a small amount of data available it better to use $k$-fold cross validation. $K$-fold is theoretically simple to understand but may not be as simple to implement as the code may be tedious and time-consuming meaning the gains may not be worth the investment in industry.
 
-\cite{kohavi_study_1995} and \cite{salzberg_comparing_1997} both performed research on approaches to choosing the correct validation method. \cite{kohavi_study_1995} analysed many cross validation methods, regular, leave-one-out, stratified. They came to the conclusion that 10-fold cross-validation produced the most accurate and unbiased results. \cite{salzberg_comparing_1997} also studies the issues of comparing model performance and proposes a solution that combines k-fold cross validation combined with appropriate hypothesis tests opposed to evaluating the average accuracy.   
+\cite{kohavi_study_1995} and \cite{salzberg_comparing_1997} both evaluated approaches to choosing the best validation method. \cite{kohavi_study_1995} analysed many cross validation methods, including regular, leave-one-out, stratified. They came to the conclusion that 10-fold cross-validation produced the most accurate and unbiased results. \cite{salzberg_comparing_1997} also studied the issues of comparing model performance and proposes a solution that combines k-fold cross validation with appropriate hypothesis tests as opposed to evaluating the average accuracy.   
 
 %----------------------------------------------------------------------------------------
 %	SECTION 8
 %----------------------------------------------------------------------------------------
 \section{Model Performance Measures}\label{modelPerformMeasure}
 
-This section details some of the metrics that are used to assess the accuracy of a classifier. The result of the classification algorithm maps the modelled data into a category, in this thesis it is a binary classifier that is output: 1 is output for identifying customers who will default (bad) or 0 is output for customers who will not-default (good). The majority of classification algorithms will produce a ranked numeric value which can be converted to a binary representation by some threshold or cut-off where the decision is driven from  the business objective that is being optimised. This section will begin with a confusion matrix, detailing how it is leveraged to build other performance measures. It also details how charts and metrics can be leveraged together to decide on the performance measure to maximise the intended objective.
+This section details some of the metrics used to assess the accuracy of a classifier. The result of the classification algorithm maps the modelled data into a category, in this thesis it is a binary classifier that has output of 1, identifying customers who will default (bad) or 0 signifying customers who will not default (good). The majority of classification algorithms will produce a ranked numeric value which can be converted to a binary representation by some threshold or cut-off, where the decision is driven from the business objective to be optimised. This section will begin with a description of a confusion matrix, detailing how it is leveraged to build other performance measures. It also explores how charts and metrics can be leveraged together to decide on the performance measure which maximises the intended objective.
 
 \subsubsection{Confusion Matrix}
 
-The results that are produced by the classification algorithm can be represented by a contingency table known as a confusion matrix. In this thesis the classification algorithm will output a binary classification, so the confusion matrix will be made from a $2 \times 2$ matrix that has two classes, known as the \textit{positive} and \textit{negative} class. For this thesis, the positive class will be the customers that default and negative class will be the customers that do not default. It will illustrate what proportion of correct and incorrect predictions were made with respect to the target. The confusion matrix can be broken down into the following categories for this thesis:
+The results produced by the classification algorithm can be represented by a contingency table known as a confusion matrix. In this thesis, the classification algorithm will output a binary classification, so the confusion matrix will be a $2 \times 2$ matrix with two classes, known as the \textit{positive} and \textit{negative} class. For this study, the positive class will be the customers who default and the negative class will be the customers who do not default. The confusion matrix will illustrate what proportion of correct and incorrect predictions were made with respect to the target. The confusion matrix in this research can be broken down into the following categories:
 
 \begin{itemize}
 	\item \textit{true positive} (TP), cases that are predicted to default, and are {\color{green}{correctly}} classified as \textit{positive}
-	\item \textit{false positive} (FP), cases that are predicted to default, and are {\color{red}{incorrectly}} classified as \textit{positive}, also known as \textit{Type I error}.
-	\item \textit{false negative} (FN), cases that are predicted to not-default, and are {\color{red}{incorrectly}} classified as \textit{negative}, also known as \textit{Type II error}.
+	\item \textit{false positive} (FP), cases that are predicted to default, and are {\color{red}{incorrectly}} classified as \textit{positive}, also known as \textit{Type I error}
+	\item \textit{false negative} (FN), cases that are predicted to not default, and are {\color{red}{incorrectly}} classified as \textit{negative}, also known as \textit{Type II error}
 	\item  \textit{true negative} (TN), cases that are predicted to not default, and are {\color{green}{correctly}} classified \textit{negative}
 	
 \end{itemize}
@@ -585,7 +586,7 @@ Fig \ref{fig:ConfusionMatrix} illustrates how information from a confusion matri
 	\label{fig:ConfusionMatrix}
 \end{figure}
 
-Using the results from the confusion matrix, model evaluation measures can calculated and evaluated for the required objective. Measures such as \textit{accuracy} (Equation \ref{eq:Accuracy}) which measures proportion of the number of predictions that were correct, the \textit{misclassification rate} (Equation \ref{eq:Misclassification Rate}) what proportion of predictions were wrong, the \textit{sensitivity} (Equation \ref{eq:Sensitivity}), otherwise known as the \textit{recall} or the \textit{true positive rate} (TPR), measures the proportion of the positive instances that are correctly identified i.e. proportion default cases that have been predicted correctly. \textit{Specificity} (Equation \ref{eq:Specificity}) measures the proportion of negative cases that are predicted correctly i.e. proportion of non-default cases that have been predicted correctly, \textit{precision} (Equation \ref{eq:precision}) measures when the classifier predicts positive outcomes what proportion are correct, \textit{negative predictive value} (NPV) (Equation \ref{eq:npv}) measures the proportion of negative predictions that were correct i.e. if the classifier predicted the outcome would be non-default what proportion were correct. One measure that can be very useful when there is class imbalance is \textit{balanced accuracy} (Equation \ref{eq:Balanaced Accuracy}), \citep{brodersen_balanced_2010} discusses how using this negates the impact of bias or skewness from the more frequent class.
+Using the results from the confusion matrix, model evaluation measures can be calculated and evaluated for the required objective. Measures such as \textit{accuracy} (Equation \ref{eq:Accuracy}) which measures the proportion of predictions that were correct and the \textit{misclassification rate} (Equation \ref{eq:Misclassification Rate}) which shows the proportion of predictions which were wrong. Other measures are \textit{sensitivity} (Equation \ref{eq:Sensitivity}), otherwise known as the \textit{recall} or the \textit{true positive rate} (TPR), which measures the proportion of the positive instances that are correctly identified i.e. proportion of default cases that have been predicted correctly and \textit{specificity} (Equation \ref{eq:Specificity}) which measures the proportion of negative cases that are predicted correctly i.e. proportion of non default cases that have been predicted correctly. Finally, there is \textit{precision} (Equation \ref{eq:precision}) which measures what proportion are correct when the classifier predicts positive outcomes and \textit{negative predictive value} (NPV) (Equation \ref{eq:npv}) that measures the proportion of negative predictions that were correct i.e. what proportion were correct if the classifier predicted the outcome would be non default. One measure that can be very useful when there is class imbalance is \textit{balanced accuracy} (Equation \ref{eq:Balanaced Accuracy}), \citep{brodersen_balanced_2010} discusses how using this negates the impact of bias or skewness from the more frequent class.
 
 \begin{equation} \label{eq:Sensitivity}
 \text{Sensitivity} = \text{Recall} = \frac{TP}{TP + FN}
@@ -608,7 +609,7 @@ Using the results from the confusion matrix, model evaluation measures can calcu
 \end{equation}
 
 \begin{equation} \label{eq:Balanaced Accuracy}
-\text{Average Accuracy} = \text{Balanaced Accuracy} = \frac{Sensitivity + Specificity}{2}
+\text{Average Accuracy} = \text{Balanced Accuracy} = \frac{Sensitivity + Specificity}{2}
 \end{equation}
 
 \begin{equation} \label{eq:Misclassification Rate}
@@ -622,18 +623,18 @@ Using the results from the confusion matrix, model evaluation measures can calcu
 	\label{fig:ConfusionMatrixExample}
 \end{figure}
 
-Fig. \ref{fig:ConfusionMatrixExample} illustrates how the TP, FP, FN, TN can be used to create performance metrics for classification algorithm. As discussed already confusion matrix based performance measures are built on the threshold that is selected for converting the predicted numeric scores into a binary outcome. Anecdotally you might believe that the cut-off or threshold of 0.50 is acceptable but this rule may not always apply especially if there is an imbalance between the positive and negative class in the dataset. The cut-off should should ideally be based on the business objective which will look to minimise, maximise and analyse the trade off as cut-off is altered. 
+Fig. \ref{fig:ConfusionMatrixExample} illustrates how the TP, FP, FN, TN can be used to create performance metrics for a classification algorithm. As discussed above, confusion matrix based performance measures are built on the threshold that is selected for converting the predicted numeric scores into a binary outcome. Anecdotally, a cut-off or threshold of 0.50 might seem acceptable but this rule may not always apply, especially if there is an imbalance between the positive and negative class in the dataset. The cut-off should ideally be based on the business objective which will look to minimise, maximise and analyse the trade off as cut-off is altered. 
 
-The confusion matrix is not the only way to evaluate the performance of the classification algorithm and is not always advocated in the literature or by industry. In studies completed by \cite{lessmann_benchmarking_2008} choose not to select a classification cut-off arguing that studies comparing the same dataset and classifier could come to different conclusions.
+A confusion matrix is not the only way to evaluate the performance of the classification algorithm and is not always advocated in the literature or by industry. In studies completed by \cite{lessmann_benchmarking_2008}, a classification cut-off was not selected, arguing that studies comparing the same dataset and classifier could come to different conclusions.
 
-As mentioned in this section the confusion matrix measures the performance of classifier at a specific threshold, this can be leveraged to create graphical representations of the overall fitness of the model at any threshold. One such method that will be discussed in the next section is the \textit{receiver operating characteristic} (ROC). 
+As mentioned in this section the confusion matrix measures the performance of classifier at a specific threshold. This can be leveraged to create graphical representations of the overall fitness of the model at any threshold. One such method that will be discussed in the next section is the \textit{receiver operating characteristic} (ROC). 
 
 
-Confusion matrix is used to evaluate the model where you have divided the output into distinct or discrete categories. A confusion matrix can be reconstructed for any point on the ROC curve. ROC is also is directly related to two other performance methods \textit{area under the roc curve} (AUC/AUROC) and \textit{gini} which will also be discussed.  
+As a confusion matrix is used to evaluate the model where output is divided into distinct or discrete categories, it cn be reconstructed for any point on the ROC curve. ROC is also directly related to two other performance methods, \textit{area under the roc curve} (AUC/AUROC) and \textit{Gini} which will also be discussed.  
 
 \subsubsection{ROC Chart, AUC and Gini Coefficient}
 %\url{https://staesthetic.wordpress.com/2014/04/14/gini-roc-auc-and-accuracy/}
-The ROC chart is used to evaluate and illustrate how well the model fits training and test data. This can be a quick test to see if the model generalises well on test data. Fig. \ref{fig:ROC} illustrates on the \textit{x-axis} the false positive rate, and on the \textit{y-axis} the true positive rate is represented. As mentioned previously the points on the ROC chart are generated from the confusion matrix built from many cut-off or threshold value between $\theta \in [0,1]$. Fig. \ref{fig:ROC} illustrates how the ROC chart is generated for varying thresholds. 
+The ROC chart is used to evaluate and illustrate how well the model fits training and test data. This can be a quick test to see if the model generalises well on test data. Fig. \ref{fig:ROC} illustrates this: on the \textit{x-axis} the false positive rate and on the \textit{y-axis} the true positive rate is represented. The points on the ROC chart are generated from the confusion matrix built from many cut-off or threshold value between $\theta \in [0,1]$. Fig. \ref{fig:ROC} illustrates how the ROC chart is generated for varying thresholds. 
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,height=7cm,center]{ROC}
@@ -644,13 +645,13 @@ The ROC chart is used to evaluate and illustrate how well the model fits trainin
 
 Fig. \ref{fig:ROC} also illustrates how point (0,1) represents \textit{perfect classification}, that is the classifier correctly predicting all outcomes. 
 
-The ROC chart is basically a combination of confusion matrices over many cut-off values of a classifier. As you can see above, a finite number of observations in the dataset dictates the number of thresholds that can be used to generate a ROC chart.
+The ROC chart is basically a combination of confusion matrices over many cut-off values of a classifier. As you can see above, a finite number of observations in the dataset dictates the number of thresholds which can be used to generate a ROC chart.
 
-To compare ROC chart results of different classifiers the \textit{area under the ROC curve} (AUC) is utilised (\cite{bradley_use_1997}; \cite{hanley_meaning_1982}). In Fig. \ref{fig:ROC} the area under the blue ROC line represents the AUC, which is intuitively the area under the curve. In the case of perfect classification this value will be 1, for a random classifier the AUC would be 0.5. 
+To compare ROC chart results of different classifiers, the \textit{area under the ROC curve} (AUC) is utilised (\cite{bradley_use_1997}; \cite{hanley_meaning_1982}). In Fig. \ref{fig:ROC} the area under the blue ROC line represents the AUC, which is intuitively the area under the curve. In the case of perfect classification this value will be 1, for a random classifier the AUC would be 0.5. 
 
-It is worth noting that AUC does not give total probability of the classifier, and also its usefulness when combined with the ROC to evaluate your classifier across training, validation and test datasets. For example if the ROC curve shifts significantly or is not similar from training to test data it suggests that there is possibly over-fitting and the model does not generalise well. Also it is worth looking out for a drastic change in the AUC from training to validation/test another sign the classifier does not generalise well may not be useful for predictions. These attributes makes it a very strong measure for classifier selection. ROC also do not tend to cross over, therefore when comparing two classifiers the one which AUC is higher will be the better classifier independent of the threshold or cut-off.
+It is worth noting that AUC does not give total probability of the classifier. Its usefulness is linked ot it being combined with the ROC to evaluate a classifier across training, validation and test datasets. For example if the ROC curve shifts significantly or is not similar from training to test data, this is suggestive to possible over-fitting and the model does not generalise well. Also it is worth looking out for a drastic change in the AUC from training to validation/test, as this is another sign the classifier does not generalise well and may not be useful for predictions. These attributes make it a very strong measure for classifier selection. ROC also do not tend to cross over, therefore when comparing two classifiers the one for which AUC is higher will be the better classifier, independent of the threshold or cut-off.
 
-It is illustrated in Fig. \ref{fig:matric_compare} how the performance measures for the confusion matrix vary for different thresholds, but again to keep in mind that there is just one measure for the AUC of the ROC chart for this model.
+Fig. \ref{fig:matric_compare} demonstrates how the performance measures for the confusion matrix vary for different thresholds, but again bearing in mind that there is just one measure for the AUC of the ROC chart for this model.
 
 \begin{figure}[H]
 	\centering
@@ -668,35 +669,36 @@ It is illustrated in Fig. \ref{fig:matric_compare} how the performance measures 
 	\label{fig:matric_compare}
 \end{figure}
 
-A metric that is commonly used for performance measurement in \subjectname\ and industry for credit scoring is the \textit{gini coefficient} this is discussed in \citep{hand_good_2005}. Gini equates to twice the area in between the diagonal of a random classifier and the ROC curve. The equation for this can be seen below in Equation \ref{eq:gini}
+A metric that is commonly used for performance measurement in \subjectname\ and industry for credit scoring is the \textit{Gini coefficient} and this is discussed in \citep{hand_good_2005}. Gini equates to twice the area in between the diagonal of a random classifier and the ROC curve. The equation for this can be seen below in Equation \ref{eq:gini}
 
 \begin{equation} \label{eq:gini}
 \text{Gini} = 2*\text{AUC} - 1
 \end{equation}
 
-Just like using a threshold there are limitations to using the AUC and gini to measure classifier performance, although extremely useful for analysing the performance of wide range of thresholds it is not as useful when trying to maximise the performance over a narrow range of thresholds. 
+As when using a threshold, there are limitations to using the AUC and Gini to measure classifier performance. Although extremely useful for analysing the performance of a wide range of thresholds, it is not as useful when trying to maximise the performance over a narrow range of thresholds. 
 
 One statistic that is commonly used in credit scoring in \subjectname\, industry and in the literature is the \textit{kolmogorov-smirnov} (KS) statistic, this will be discussed in the next subsection.
 	
 
 \subsubsection{K-S Statistic}\label{subsub:ks}
 %\url{http://www.saedsayad.com/model_evaluation_c.htm}
-The Kolmogorov-Smirnov (KS) statistic measures performance of prediction models. The measure is a single value between 0 and 1. The KS evaluates what is the maximum difference between the cumulative positive and negative distributions of the predicted positive and negative class \citep{seliya_study_2009}. This means it evaluates at each threshold of the model the cumulative percentage of positive cases identified and cumulative count of negative cases identified.
+The Kolmogorov-Smirnov (KS) statistic measures performance of prediction models. The measure is a single value between 0 and 1. The KS evaluates the maximum difference between the cumulative positive and negative distributions of the predicted positive and negative class \citep{seliya_study_2009}. This means it evaluates, at each threshold of the model, the cumulative percentage of positive cases identified and the cumulative count of negative cases identified.
 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 9
 %----------------------------------------------------------------------------------------
 \section{Conclusion}\label{sotaConc}
-This chapter has summarised the relevant literature for a number of topics based on the research project.
+This chapter has summarised the relevant literature for a number of topics central to this research project.
 
-Credit scorecards are generally employed by financial institutions to assess the risk of existing or potential customers defaulting on their financial obligation, allowing them make informed decisions about future loses. Credit score models are built using data such as borrowers repayment performance information and demographic details. These scorecards give lenders a standardised, structured, easy to interpret and transparent result which is used for assessing customer likelihood to default on the financial obligation. 
+Credit scorecards are generally employed by financial institutions to assess the risk of existing or potential customers defaulting on their financial obligation, allowing the institutions to make informed decisions about future loses. Credit score models are built using data such as borrowers' repayment performance information and demographic details. These scorecards give lenders a standardised, structured, easy to interpret and transparent result which is used for assessing customer likelihood to default on the financial obligation.
 
-There is no worldwide definition for what a small medium enterprise (SME) are. In Ireland the definition for a SME is that they're registered business with less than 250 employees and have an annual turnover not above \EUR50 million, and/or an annual balance sheet total not above \EUR43 million.
+There is no worldwide definition for what a small and medium enterprise (SME) ia. In Ireland, the definition for a SME is a registered business with fewer than 250 employees, an annual turnover not above \EUR50 million, and/or an annual balance sheet total not above \EUR43 million.
 
-It was discussed in the research that consumer confidence and a strong SME sector are dependant on each other. It has been acknowledged that there has not been a substantial amount of time spent researching how macro economic features affect credit risk. However research has demonstrated that the differences between default rates by region in Italy were shown to be statistically significant. It was also found that there have been examples when unemployment rate and default rates have useful when used in modelling credit risk.
+The interdependency between consumer confidence and a strong SME sector were
+highlighted. It has been acknowledged that there is a lack of research into how macro-economic features affect credit risk. However, one study demonstrated that the differences between default rates by region in Italy were shown to be statistically significant. It was also found that there have been examples when unemployment rate and default rates have useful when used in modelling credit risk.
 
-Data mining and predictive modelling encapsulates a large number of subject topics such as feature selection, classification algorithms, model validation and model performance. Logistic regression the most commonly used classification algorithm for credit scoring when predicting how likely a customer is to default on their financial obligation. Coarse classification is the most common method in credit scoring of selecting and evaluating features to be included in the predictive model. Its technique is to create bins within each feature and evaluate these bins relationship with the target feature. It widely used because of the accuracy of the results, and its ability to create a robust feature set for prediction which is able to cater for missing values and outliers. \textit{Area under the curve} (AUC) is the most common method of evaluating the performance of the credit scoring models and is generated by measuring the performance of the model over all possible thresholds.
+Data mining and predictive modelling encapsulates a large number of subject areas such as feature selection, classification algorithms, model validation and model performance. Logistic regression is the most commonly used classification algorithm for credit scoring when predicting how likely a customer is to default on their financial obligation. Similarly, coarse classification is the most common method used in credit scoring to select and evaluate features to be included in the predictive model. This technique creates bins within each feature and evaluates these bins' relationship with the target feature. It is widely used because of the accuracy of the results and its ability to create a robust feature set for prediction which is able to cater for missing values and outliers. Area under the curve (AUC) is the most common method of evaluating the performance of the credit scoring models and is generated by measuring the performance of the model over all possible thresholds.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 6
