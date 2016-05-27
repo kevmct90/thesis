@@ -109,14 +109,13 @@ It is evident from Table \ref{table:prevdelinqbase} that there no one stand-out 
 
 Although the AUC is very useful for detailing how well the prediction performed over all possible thresholds, it is not very useful splitting the predictions into `goods' and `bads'. In an ideal scenario, the target class distribution would be 50:50 and this would allow the baseline/default threshold of 0.50. When there is an imbalance in the dataset, many thresholds need to be evaluated to test which one meets the business objective.
 
-Recall measures the percentage of defaulters (positive class) that were identified correctly. Accuracy measures what percentage of the predictions made were correct. Specificity measures the percentage of the non-defaulter (negative class) that were identified correctly. Precision measures of the positive predictions made what percentage were correctly identified. Balanced accuracy is the average of the sum of recall and specificity. All of these performance measures are based on a single threshold in the predictions made, a cut-off point.
+Recall measures the percentage of defaulters (positive class) that were identified correctly. Accuracy measures what percentage of the predictions made were correct. Specificity measures the percentage of the non-defaulter (negative class) that were identified correctly. Precision measures the percentage of the positive predictions made that were correctly identified. Balanced accuracy is the average of the sum of recall and specificity. All of these performance measures are based on a single threshold in the predictions made i.e. a cut-off point.
 
-Selecting this cut-off point is important for your business objective. In predicting defaults you want to maximise recall where possible but you cannot maximise this performance measure because all the good customers will get predicted bad too. Balanced accuracy is a useful performance measure as it uses how many of the negative class and positive class are being classified correctly but because it is an average the results could be skewed by one performance measure performing well so recall and specificity will have to be checked to ensure there is no bias. So this experiment will try and maximise balanced accuracy, recall and specificity.
+Selecting the cut-off point is crucial for any business objective. In predicting defaults, the focus is on maximising recall where possible. However, maximising this performance measure is not possible because all the `good' customers will also be predicted `bad'. Balanced accuracy is a useful performance measure as it uses how many of the negative class and positive class are being classified correctly. However, it is an average therefore the results could be skewed by one performance measure performing well. Therefore, one must check recall and specificity, to ensure there is no bias. This experiment will aim to maximise balanced accuracy, recall and specificity.
 
-An experiment will be generated for the previous delinquency and no previous delinquency dataset where threshold will selected based on the validation dataset and will then evaluated on the test dataset. The default cut-off is 0.50 so it will be included in the experiment as a base. The minimum misclassification rate, Kologorov-Smirnov (K-S) statistic, and event precision event recall (EPER) methods of evaluating cut-off values for this problem will be use.
-K-S statistic measures at what cut-off the maximum difference between the cumulative positive and negative distributions of the predicted positive and negative class are. EPER measures at what value the cut-off precision and recall measures are the same. The min misclassification rate is the cut-off where the model makes the most correct prediction. 
+An experiment will be generated for the previous delinquency and no previous delinquency dataset, where the threshold will be selected based on the validation dataset and then evaluated on the test dataset. As a baseline, a default cut-off of 0.50 will be included in the experiment. The minimum misclassification rate, Kologorov-Smirnov (K-S) statistic and event precision event recall (EPER) methods will be used to evaluate cut-off points. K-S statistic measures at what cut-off the maximum difference between the cumulative positive and negative distributions of the predicted positive and negative class. EPER measures at what value the cut-off precision and recall measures are the same. The min misclassification rate is the cut-off where the model makes the most correct prediction. 
 
-Results for the previous delinquency data can observed below in Table \ref{table:DelinquencyModelCutoff}. 	
+Results for the previous delinquency data can be observed below in Table \ref{table:DelinquencyModelCutoff}. 	
 
 \begin{table}[H]
 	\centering
@@ -134,26 +133,26 @@ Results for the previous delinquency data can observed below in Table \ref{table
 			0.29             & EPER* (Test)           & 0.688             & 0.342           & 0.802                 & 0.572    \\ \hline
 		\end{tabular}
 	\caption{Previous Delinquency Cut-off Results 
-			\\ K-S = Optimal Threshold for Kologorov-Smirnov Statistic
-			\\ Min MR = Optimal Threshold for Min Mis-classification Rate
-			\\ EPER = Optimal Threshold for Event Precision Equals Recall
+			\\ K-S = Optimal threshold for Kologorov-Smirnov Statistic
+			\\ Min MR = Optimal threshold for Min Mis-classification Rate
+			\\ EPER = Optimal threshold for Event Precision Equals Recall
 			\\ BA = Balanced Accuracy = $\frac{Recall + Specificity }{2}$
 		}
 	\label{table:DelinquencyModelCutoff}
 \end{table}
 
-The validation data is used to choose the cut-off for the measures and the test data is then evaluated to see how they perform on unseen data. Optimal values are coloured in yellow in Table \ref{table:DelinquencyModelCutoff}.
+The validation data is used to choose the cut-off for the measures and then the test data is then evaluate performance on unseen data. Optimal values are coloured in yellow in Table \ref{table:DelinquencyModelCutoff}.
 
-The min misclassification rate calculates the accuracy of model, but because the model is so heavily imbalanced the majority negative class (good customers) is skewing the results. It can be seen that the cut-off that gives the min misclassification rate scores accuracy very well, but terribly on the recall so it will be discounted.
+The min mis-classification rate calculates the accuracy of model, but because the model is so heavily imbalanced, the majority negative class (good customers) is skewing the results. It can be seen that the cut-off that gives the min misclassification rate scores accuracy very well, but performs terribly on the recall. As a result, this will be discounted.
 
-The EPER cut-off derives the threshold where the precision rate and recall rate intersect. This method performs extremely well on the specificity, while also performing at a decent level on the recall.
+The EPER cut-off derives the threshold where the precision rate and recall rate intersect. This method performs extremely well on the specificity, while also performing at an acceptable level on the recall.
 
-The KS statistic gives threshold that maximises the separation between good and bads. It scores the optimal results as it is scores recall the highest and balanced accuracy while specificity also performs well. For these reason the threshold that will be used when building the benchmark model for previous delinquency will be where the cut-off value is equal to 0.25.
+The KS statistic gives the threshold maximising the separation between `good' and `bads'. It scores recall and balanced accuracy highly, while specificity also performs well. For this reason, the threshold to be used when building the benchmark model for previous delinquency will be where the cut-off value is equal to 0.25.
 
 
 \subsubsection{No Previous Delinquency}
 
-There are 9 features in the dataset to model customers who \textbf{have not been} in default in the past. For privacy reasons the names and descriptions of these features could not be disclosed. There is an imbalance in the dataset, of the total customers to be be modelled in the No Previous Delinquency model approximately 2.7\% of customers are in default at the end of outcome window which can be seen in Table \ref{table:benchmark_holdout}. This default rate is just based on customers in this analysis and is not reflective of the enterprise default rate. The results for the baseline benchmarks models are as follows in Table \ref{table:NoPreviousDelinquencyBaseModelDetails}.
+In the dataset to model customers who \textbf{have not been} in default in the past, there are 9 features. For privacy reasons, the names and descriptions of these features cannot not be disclosed. There is an imbalance in the No Previous Delinquency dataset; of the total customers to be be modelled, approximately 2.7\% of customers are in default at the end of outcome window (see Table \ref{table:benchmark_holdout}). This default rate is derived from customers in this analysis and is not reflective of the enterprise default rate. The results for the baseline benchmarks models are as outlined in Table \ref{table:NoPreviousDelinquencyBaseModelDetails}.
 
 \begin{table}[H]
 	\centering
@@ -180,7 +179,7 @@ There are 9 features in the dataset to model customers who \textbf{have not been
 	\label{table:NoPreviousDelinquencyBaseModelDetails}
 \end{table}
 
-The model that outputted the best result highlighted in green in Table \ref{table:NoPreviousDelinquencyBaseModelDetails} was the Logistic Regression, this is based on the highest validation AUC = 0.71. We can see above in Table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} below that the Logistic Regression Model generalises quite well across the training, validation and testing partitions.
+Highlighted in green in green in Table \ref{table:NoPreviousDelinquencyBaseModelDetails}, Logistic Regression is the model with the best result, with the highest validation and test AUC. From Table \ref{table:NoPreviousDelinquencyBaseModelDetails} above and Fig. \ref{fig:NonDelinq_Model_ROC} below, it is evident that the Logistic Regression model generalises quite well across the training, validation and testing partitions.
 
 \begin{figure}[H]
 	\includegraphics[width=0.9\textwidth,center]{Base_NonDelinq_Model_ROC}
@@ -188,9 +187,9 @@ The model that outputted the best result highlighted in green in Table \ref{tabl
 	\label{fig:NonDelinq_Model_ROC}
 \end{figure}
 
-It can be observed that the majority of the models generalise quite well and are predictive. However it can observed in Table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC} the AutoNeural Network, Decision Tree and SVM Polynomial Models are not predictive at all. These models as a result will be removed from any further analysis. Out of the remaining model logistic regression performed the best like in the previous delinquency dataset in this experiment. 
+It can be observed that the majority of the models generalise quite well and are predictive. However, it is also evident from Table \ref{table:NoPreviousDelinquencyBaseModelDetails} and Fig. \ref{fig:NonDelinq_Model_ROC}, that the AutoNeural Network, Decision Tree and SVM Polynomial models are not at all predictive. Therefore, these models will be removed from any further analysis. Of the remaining models, logistic regression performed the best; just as it did in the previous delinquency dataset element of this experiment. 
 
-An experiment for the no previous delinquency dataset to evaluate what threshold will now be carried out like in the previous delinquency dataset. Results for the no previous delinquency data can observed below in Table. \ref{table:NoDelinquencyModelCutoff}.
+The next step is to evaluate a threshold for the no previous delinquency dataset. Results for the no previous delinquency data can observed below in Table. \ref{table:NoDelinquencyModelCutoff}.
 
 \begin{table}[H]
 	\centering
@@ -211,22 +210,22 @@ An experiment for the no previous delinquency dataset to evaluate what threshold
 			0.08            & EPER* (Test)      & 0.942             & 0.162           & 0.963                 & 0.563     \\ \hline
 		\end{tabular}
 	\caption{No Previous Delinquency Cut-off Results
-			\\ K-S = Optimal Threshold for Kologorov-Smirnov Statistic
-			\\ MR = Optimal Threshold for Mis-classification Rate
-			\\ EPER = Optimal Threshold for Event Precision Equals Recall
+			\\ K-S = Optimal threshold for Kologorov-Smirnov Statistic
+			\\ MR = Optimal threshold for Mis-classification Rate
+			\\ EPER = Optimal threshold for Event Precision Equals Recall
 			\\ BA = Balanced Accuracy = $\frac{Recall + Specificity }{2}$
 			}
 	\label{table:NoDelinquencyModelCutoff}
 \end{table}
 
-The validation data is used to choose the cut-off value and the test data is then evaluated to see how they perform on unseen data. Optimal values are coloured in yellow in Table \ref{table:NoDelinquencyModelCutoff}.
+The validation data is used to choose the cut-off for the measures and then the test data is used to evaluate performance on unseen data. Optimal values are coloured in yellow in Table \ref{table:NoDelinquencyModelCutoff}.
 
-As with the previous experiment evaluating on the previous delinquency dataset the threshold for the K-S statistic performs significantly better when analysing the recall, specificity and balanced accuracy. For this reason  the threshold that will be used when building the benchmark model for the no previous delinquency dataset will be where the cut-off value is equal to 0.03.
+As in the previous experiment, the threshold for the K-S statistic performs significantly better when analysing the recall, specificity and balanced accuracy. For this reason, the threshold to be used when building the benchmark model for the no previous delinquency dataset will be where the cut-off value is equal to 0.03.
 
 \section{Methodology for Evaluating Macro-Economic Features}
-Leading on from the results in Section \ref{sec:benchFeature} this section will layout the design of the experiment to evaluate macro-economic features created as part of this research. 
+Leading on from the results in Section \ref{sec:benchFeature}, this part of the chapter will delineate the design of the experiment to evaluate macro-economic features created as part of this research. 
  
-Fig. \ref{fig:Experiment_Workflow} below illustrates at a high level design of this experiment. 
+Fig. \ref{fig:Experiment_Workflow} below illustrates at a high level, the design of this experiment. 
 
 \begin{figure}[H]
 	\includegraphics[width=1\textwidth,height = 11cm,center]{Experiment_Workflow}
@@ -236,26 +235,26 @@ Fig. \ref{fig:Experiment_Workflow} below illustrates at a high level design of t
 	\label{fig:Experiment_Workflow}
 \end{figure}
 
+As discussed in Chapter \ref{Chapter3}, data for this experiment will include features used in a historical credit scorecard model in \subjectname\ (see Section \ref{sec:existFeatures}), along with macro-economic features built from transaction spend, census metrics, default ratios and trends (see Section \ref{sec:dataForExper}). 
 
-Data for this experiment as discussed in Chapter \ref{Chapter3} will include features that were used in a historical credit scorecard model in \subjectname\ (See Section \ref{sec:existFeatures}) along with macro-economic features built from transaction spend, census metrics, default ratios and trends (See Section \ref{sec:dataForExper}). 
+Stratified sampling will be applied to the target class to build the training and test datasets. The split will be 70\% training and 30\% test, as recommended in research conducted by \cite{siddiqi_credit_2012}. Since parameters for the model have been tuned using the benchmark evaluation, there is no longer a requirement for a validation dataset. A baseline benchmark model will be built using this 70/30 split of data which will be evaluated using the AUC and balanced accuracy using the threshold from the KS statistic discussed in the previous section. Due to results outlined in earlier sections, logistic regression is the algorithm of choice.
 
-Stratified sampling will applied on target class to build the training and test datasets. The split will broken down into 70\% training and 30\% test recommended by research completed by \cite{siddiqi_credit_2012}. There is no longer a requirement for a validation dataset since parameters for the model have been tuned using the benchmark evaluation. A baseline benchmark model will be built using this 70/30 split of data which will be evaluated using the AUC and balanced accuracy using the threshold from the KS statistic discussed in the previous section. Regression will be used as the algorithm of choice for both datasets due to the results in previous sections.
+Once the benchmark model has been built, the next phase will be to evaluate the macro-economic features. As part of the study, 116 features were created. As part of the study, 116 features were created. Models can suffer from the curse of dimensionality where too many features are trained in the model (see Section \ref{sec2:featureSection}). This can cause over-fitting and the resulting model may not generalise well when making predictions on unseen data. As noted, research suggests as a guideline, a model should encompass between 8 and 20 features \citep{thomas_consumer_2009, mays_credit_2004}.
 
-Once the benchmark model has been built the next phase will be to evaluate the macro economic features. There were 116 features created as part of this research. As discussed in Section \ref{sec2:featureSection} models can suffer from the curse of dimensionality where too many features are trained in the model. This can cause over-fitting and the resulting model may not generalise well when making predictions on unseen data. It is also discussed in this section that research suggests a model should encompass between 8 and 20 features as a guideline \citep{thomas_consumer_2009, mays_credit_2004}.
+Therefore, feature selection will be used in this experiment to analyse what features have the strongest relationship with the target feature. Two methods of features selection will be explored; correlation feature based selection and information gain. The features demonstrating the strongest relationship to the target feature will be added for model training and evaluation. The correlation based feature selection will be run over the combined datasets (previous delinquency and no previous delinquency). The information gain feature selection will be run twice, once over each homogeneous dataset separately (previous delinquency and no previous delinquency). Variable importance will be applied, using the random forests method. The random forest feature importance is used to generate an indicator of the importance of each feature in the training dataset. This is done by generating 1000 decision trees with subsets of the training dataset features. Collating these results will identify what features were of greatest importance at the decision node of each tree.
 
-Therefore as part of the experiment feature selection will be used to analyse what features have the strongest relationship with the target feature. Two methods of features selection will be visited, correlation feature based selection and information gain. The features that demonstrate the strongest relationship to the target feature will be added for model training and evaluation. The correlation based feature selection will be run over the combined datasets (previous delinquency and no previous delinquency). The information gain feature selection will be run twice, once over each homogeneous dataset separately (previous delinquency and no previous delinquency). Variable importance using the random forests method will also be applied. The random forest feature importance is used to generate an importance of each feature in the training dataset. This is done by generating 1000 decision trees with subsets of the training dataset features. Collating these results will identify what features were of greatest importance at the decision node of each tree.
+Next, coarse selection will be applied to try and reduce the macro-economic features to a manageable level. As reviewed in Section \ref{sec:binning}, this method will transform all the continuous macro-economic features into nominal/ordinal features. These nominal features will have a small number of values. As discussed earlier, this allows the model to become more robust, mitigating the risk of over-fitting and also allowing it handle missing values for features. As already outlined, the information gain of each feature will then be calculated and the binned features demonstrating the strongest relationship to the target class will be added for model training and evaluation. 
 
-Coarse selection will next be applied to try and reduce the macro-economic features to a manageable level. As reviewed in Section \ref{sec:binning} this method will transform all the continuous macro-economic features into nominal/ordinal features. These nominal features will have a small number of values. As discussed earlier in the literature this allows the model to become more robust, mitigating the risk of over-fitting and also allowing it handle missing values for features. As discussed previously the information gain of each feature will then be calculated. As with the previous method the binned features that demonstrate the strongest relationship to the target class will be added for model training and evaluation. 
+Cognisant that the distribution of the number of `good' and `bad' customers is very imbalanced in the dataset for prediction, random over sampling will be used to tackle the issue. This method creates new instances of the minority dataset on which the model can be trained. This method will be applied to the datasets which include macro-economic features in order to evaluate if these models performed better than imbalanced tests.
 
-As discussed earlier the distribution of the number of good and bad customers is very imbalanced in the dataset for prediction. Random over sampling is a method of tackling this issue by creating new instances of the minority dataset that the model can be trained on. This method will be applied to the datasets including macro economic features to evaluate if it these models performed better than imbalanced tests.
-
-
-It must be noted that all feature and coarse selection were carried out on the same training datasets as the benchmark model. Also it must be ensured that feature and coarse selection must only be carried out on the training dataset or the model could end up over fitting the the test data which may cause misleading results. All models will be trained, tested and evaluated based on results discussed in Section \ref{sec:benchFeature}. All results will then be documented for comparison with the benchmark model. 
+It must be noted that all feature and coarse selection were carried out on the same training datasets as the benchmark model. Also it is important to ensure that feature and coarse selection must only be carried out on the training dataset; otherwise the model could end up over-fitting the test data which may cause misleading results. All models will be trained, tested and evaluated based on results discussed in Section \ref{sec:benchFeature}. All results will then be documented for comparison with the benchmark model. 
 
 
 \section{Conclusions}
-This chapter focused on two main topics. The first topic of this chapter focused on designing and building an experiment to evaluate the best algorithm to build the benchmark prediction model. Decision trees, logistic regression, auto neural network, Support Vector Machine (SVM) Polynomial, SVM Radial Basis Function, SVM Sigmoid, and Gradient Boosting were evaluated. AUC was used to evaluate how accurate each model was over all possible thresholds. It was found that SVM Sigmoid model performed poorly for both the previous delinquency and no previous delinquency datasets so it should not be used in the future for this problem. The algorithms that performed best were the logistic regression and gradient boosting, they performed the best and second best in each of the datasets. It was decided because of the wide use and support for logistic regression in credit scoring that it would be chosen as the algorithm for modelling in the remaining experiments. 
 
-AUC is the performance measure of choice for assessing how a model performed over all possible thresholds but it does not detail the threshold that should be chosen to break the predictions into goods and bads. An experiment was set-up to evaluate what threshold should be selected for maximising performance measure such as recall, specificity and balanced accuracy. It was found that the threshold using the K-S statistic gave the best overall results for recall, specificity and balanced accuracy over the previous delinquency and no previous delinquency dataset.
+This chapter focussed on two main topics. The first of which centred on the design and build of an experiment to evaluate the best algorithm to create the benchmark prediction model. Decision trees, logistic regression, auto neural network, Support Vector Machine (SVM) Polynomial, SVM Radial Basis Function, SVM Sigmoid, and Gradient Boosting were evaluated. AUC was used to 
+establish the accuracy of each model across all possible thresholds. It was found that SVM Sigmoid model performed poorly for both the previous delinquency and no previous delinquency datasets so it was discarded. The best performing algorithms were logistic regression and gradient boosting; in both datasets they emerged as the best and second best. Due to the wide use and support for logistic regression in credit scoring, it was decided that it would be chosen as the algorithm for modelling in the remaining experiments. 
 
-The second topic of this chapter details the experiment design for evaluating the predictive capability of macro-economic features in modelling credit risk for small medium enterprises. This experiment will incorporate two benchmark models one for the previous delinquency dataset and one for the no previous delinquency dataset. Macro-economic features will be put through various feature selection processes to try and and identify features that could be predictive in the model. There will also be an experiment to address the target feature imbalance in these dataset. This will be done through a sampling method \textit{random oversampling of the minority class}.
+AUC is the performance measure of choice for assessing how a model performed over all possible thresholds but it does not detail the threshold to be chosen to best categorise the predictions into `goods' and `bads'. An experiment was conducted to evaluate what threshold should be selected to maximise performance measures such as recall, specificity and balanced accuracy. The threshold offered by using the K-S statistic gave the best overall results for recall, specificity and balanced accuracy across the previous delinquency and no previous delinquency dataset.
+
+The second focus of this chapter centred on the experiment design for evaluating the predictive capability of macro-economic features in modelling credit risk for small and medium enterprises. This experiment will incorporate two benchmark models; one for the previous delinquency dataset and one for the no previous delinquency dataset. Macro-economic features will be put through various feature selection processes in an effort to identify features which could be predictive in the model. There will also be an experiment to address the target feature imbalance in these datasets. Random sampling of the minority class will be used to achieve this.
